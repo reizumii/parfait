@@ -167,5 +167,10 @@ toolbar .toolbarbutton-1 {
   #PersonalToolbar {
     margin-inline-start: var(--pf-sidebar-width);
     transition: none !important;
+    
+    &[collapsed] {
+      max-height: var(--pf-bookmarks-height) !important;
+      visibility: unset !important;
+    }
   }
 }
