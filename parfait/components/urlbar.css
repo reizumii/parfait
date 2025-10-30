@@ -334,6 +334,10 @@
     list-style-image: url("chrome://devtools/skin/images/alert.svg") !important;
     fill: light-dark(var(--color-red-50), var(--color-red-30));
   }
+  & .urlbar-page-action,
+  & .urlbar-revert-button,
+  & .urlbar-go-button,
+  & .search-go-button,
   & #tracking-protection-icon-container,
   & #identity-box {
     margin-block: 2px;

@@ -219,7 +219,7 @@ spacer[part="overflow-end-indicator"] {
         position: absolute;
         left: -4px;
         top: -4px;
-        background: color-mix(in srgb, var(--identity-icon-color), transparent 80%);
+        background: color-mix(in srgb, var(--identity-icon-color), transparent 90%);
         border: 1px dashed color-mix(in srgb, var(--identity-icon-color), transparent 70%);
         border-radius: var(--pf-border-radius-small);
         box-sizing: border-box;
