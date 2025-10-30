@@ -1,12 +1,8 @@
 <p align="center"><img width="220" src="https://github.com/reizumii/parfait/blob/master/parfait/assets/logo/logo.png" alt="Parfait logo"></p>
 
 <p align="center">
-  <a href="https://github.com/reizumii/parfait/releases/latest">
-    <img src="https://img.shields.io/github/v/release/reizumii/parfait?style=for-the-badge&label=version&color=dcb9ff">
-  </a>
-  <a href="https://www.firefox.com/">
-    <img src="https://img.shields.io/badge/firefox-144-ff8a50?style=for-the-badge&logo=firefoxbrowser&logoColor=ff8a50">
-  </a>
+  <a href="https://github.com/reizumii/parfait/releases/latest"><img src="https://img.shields.io/github/v/release/reizumii/parfait?style=for-the-badge&label=version&color=dcb9ff"></a>
+  <a href="https://www.firefox.com/"><img src="https://img.shields.io/badge/firefox-144-ff8a50?style=for-the-badge&logo=firefoxbrowser&logoColor=ff8a50"></a>
 </p>
 
 <p align="center">A tasty theme modification for Firefox 🦊</p>
