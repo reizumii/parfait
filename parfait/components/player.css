@@ -1,0 +1,15 @@
+/* 
+  Parfait - player.css
+  https://github.com/reizumii/parfait
+*/
+
+@-moz-document url("chrome://global/content/pictureinpicture/player.xhtml") {
+  @media (-moz-platform: windows) {
+    :root {
+      --player-bg-color: transparent !important;
+    }
+  }
+  #timestamp {
+    font-family: inherit !important;
+  }
+}

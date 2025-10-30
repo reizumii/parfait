@@ -1,0 +1,171 @@
+/* 
+  Parfait - toolbar.css
+  https://github.com/reizumii/parfait
+*/
+
+/* toolbar items */
+toolbar .toolbarbutton-1 {
+  min-width: var(--pf-toolbaritem-size);
+  min-height: var(--pf-toolbaritem-size);
+  max-width: var(--pf-toolbaritem-size);
+  max-height: var(--pf-toolbaritem-size);
+  padding: 0 !important;
+  border-radius: var(--pf-border-radius-small);
+  
+  --toolbarbutton-icon-fill: var(--pf-icon-color);
+  --toolbarbutton-hover-background: var(--pf-toolbar-bgcolor-hover);
+  --toolbarbutton-active-background: var(--pf-toolbar-bgcolor-active);
+
+  &:not(.webextension-browser-action) {
+    & > .toolbarbutton-icon {
+      width: calc(2 * var(--toolbarbutton-inner-padding) + var(--pf-icon-size)) !important;
+      height: calc(2 * var(--toolbarbutton-inner-padding) + var(--pf-icon-size)) !important;
+    }
+    & > .toolbarbutton-badge-stack > .toolbarbutton-icon {
+      width: var(--pf-icon-size) !important;
+    }
+  }
+  & .toolbarbutton-icon {
+    transition: var(--pf-ts-25);
+    transition-timing-function: var(--pf-fx-bounce) !important;
+    background-color: transparent !important;
+  }
+  & > .toolbarbutton-badge-stack {
+    background-color: transparent !important;
+  }
+  &:not([disabled]) {
+    &[checked],
+    &:hover {
+      background-color: var(--pf-toolbar-bgcolor-hover);
+    }
+    &[open],
+    &:active {
+      background-color: var(--pf-toolbar-bgcolor-active);
+    }
+    &:hover:active {
+      fill: var(--pf-icon-color-active) !important;
+    }
+    &:not(:is(
+      #back-button,
+      #forward-button,
+      #reload-button
+    )):active .toolbarbutton-icon {
+      scale: 0.95;
+    }
+  }
+}
+/* set positioning */
+#navigator-toolbox {
+  z-index: unset !important;
+}
+#toolbar-menubar,
+#nav-bar {
+  z-index: 2;
+}
+/* ti: align toolbar items */
+#nav-bar,
+#nav-bar-customization-target {
+  align-items: center;
+}
+#nav-bar-customization-target {
+  gap: var(--pf-toolbar-spacing);
+}
+#PanelUI-button {
+  align-items: center;
+}
+#PanelUI-menu-button {
+  margin-inline-end: var(--toolbar-start-end-padding) !important;
+}
+/* ti: change icons */
+#sidebar-button {
+  list-style-image: url("chrome://browser/skin/sidebars.svg") !important;
+}
+/* hide sidebar active state */
+#sidebar-button:not(:hover) {
+  background-color: transparent !important;
+}
+
+/* ti: animations */
+#back-button:not([disabled]):hover:active .toolbarbutton-icon {
+  transform: translateX(-2px);
+}
+#forward-button:not([disabled]):hover:active .toolbarbutton-icon {
+  transform: translateX(2px);
+}
+#stop-reload-button {
+  #reload-button:not([disabled]) {
+    transition: all var(--pf-ts-15);
+    transition-timing-function: var(--pf-fx-bounce);
+    
+    &:hover:active .toolbarbutton-icon {
+      transform: rotate(90deg);
+    }
+  }
+  @media not -moz-pref("parfait.animations.enabled", false) {
+    #reload-button,
+    #stop-button {
+      opacity: 1 !important;
+      
+      & > .toolbarbutton-icon {
+        animation: bounce var(--pf-ts-25);
+        background-color: transparent !important;
+      }
+      .toolbarbutton-animatable-image {
+        --anim-steps: 0 !important;
+      }
+    }
+  }
+}
+@keyframes bounce {
+  0% { scale: 0.6; }
+  100% { scale: 1; }
+}
+
+/* ts: prevent topbar from expanding */
+:root:not([customizing]) {
+  #vertical-spacer {
+    max-width: 0 !important;
+    min-width: 0 !important;
+
+    &::before {
+      content: "";
+      min-width: var(--pf-sidebar-width);
+      max-width: var(--pf-sidebar-width);
+      min-height: var(--pf-topbar-height);
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
+  }
+}
+/* keep toolbar items on top of vertical spacer */
+#nav-bar-customization-target > :is(toolbarbutton, toolbaritem) {
+  z-index: 1;
+}
+
+/* menu bar */
+#toolbar-menubar:not([inactive]) {
+  position: fixed;
+  top: var(--pf-separation);
+  right: var(--pf-separation);
+  z-index: 3;
+  min-height: 34px !important;
+  border-radius: var(--pf-border-radius-small);
+  background-color: var(--arrowpanel-background) !important;
+  border: 1px solid var(--pf-border-color) !important;
+  box-shadow: var(--pf-shadow-medium);
+  padding: 4px !important;
+  
+  & .titlebar-buttonbox-container {
+    display: none;
+  }
+}
+
+/* bookmarks toolbar */
+:root:not([customizing]):has(#tabbrowser-tabs[expanded]) {
+  #PersonalToolbar {
+    margin-inline-start: var(--pf-sidebar-width);
+    transition: none !important;
+  }
+}

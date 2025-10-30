@@ -1,0 +1,271 @@
+/* 
+  Parfait Pages - new-tab.css
+  https://github.com/reizumii/parfait
+*/
+
+@-moz-document url(chrome://browser/content/browser.xul), url(about:newtab), url(about:home) {
+  :root {
+    --pf-accent-color: #bb88ee;
+    --pf-bg-blur: blur(64px);
+    --pf-border-color: light-dark(rgba(21, 21, 21, 0.15), rgba(255, 255, 255, 0.125)) !important;
+    --pf-border-color-alt: light-dark(rgba(21, 21, 21, 0.075), rgba(255, 255, 255, 0.075)) !important;
+    
+    --newtab-background-color-secondary: light-dark(rgba(255, 255, 255, 0.75), rgba(21, 21, 21, 0.7)) !important;
+    --newtab-border-color: light-dark(rgba(0, 0, 0, 0.08), rgba(255, 255, 255, 0.08)) !important;
+    --text-color-deemphasized: color-mix(in srgb, currentColor, transparent 55%) !important;
+    --color-accent-primary: var(--pf-accent-color) !important;
+    --color-accent-primary-hover: color-mix(in srgb, var(--pf-accent-color), black 10%) !important;
+    
+    --border-radius-medium: 12px !important;
+  }
+  @media (-moz-platform: windows) {
+    body {
+      font-family: "Segoe UI Variable", system-ui, sans-serif !important;
+    }
+  }
+  @media -moz-pref("parfait.new-tab.bg.pattern") {
+    body {
+      background-size: unset !important;
+      background-repeat: repeat !important;
+    }
+  }
+  .search-wrapper .search-handoff-button,
+  .search-wrapper input {
+    backdrop-filter: var(--pf-bg-blur);
+    box-shadow: 0 2px 2px rgba(0, 0, 0, 0.04), 0 2px 16px rgba(0, 0, 0, 0.08) !important;
+    border: 1px solid var(--pf-border-color-alt) !important;
+    --border-radius-medium: 99px !important;
+  }
+  /* logo */
+  @media -moz-pref("parfait.new-tab.logo", 0) {
+    .logo-and-wordmark { display: none !important; }
+  }
+  @media not -moz-pref("parfait.new-tab.logo", 1) {
+    .logo, .wordmark { display: none !important; }
+    .logo-and-wordmark {
+      width: 300px;
+      height: 126px;
+      margin-inline: auto;
+      background-size: 100%;
+      background-position: center;
+      
+      @media -moz-pref("parfait.new-tab.logo", 2) {
+        background-image: url("../assets/logo/logo.png");
+      }
+      @media -moz-pref("parfait.new-tab.logo", 3) {
+        background-image: url("../assets/logo/logo-uwu.png");
+      }
+    }
+  }
+  /* customize button */
+  .personalize-button {
+    background-color: rgba(0, 0, 0, 0.25) !important;
+    backdrop-filter: var(--pf-bg-blur);
+    box-shadow: 0 0 0 1px var(--pf-border-color-alt) !important;
+    opacity: 0.5;
+    visibility: visible !important;
+    transition: all 0.25s !important;
+    transition-timing-function: cubic-bezier(0.125, 1.125, 0.25, 1.0125) !important;
+    --border-radius-small: 99px;
+    --button-full-width: var(--button-collapsed-width) !important;
+    
+    &:hover {
+      opacity: 1;
+      transform: scale(1.1);
+    }
+  }
+  .personalize-button > div > img {
+    --icon-color: #fff;
+  }
+  .personalize-button > label {
+    display: none;
+  }
+  .customize-menu.customize-animate-enter-done,
+  .customize-menu.customize-animate-enter-active {
+    transform: scale(1) !important;
+  }
+  /* customize menu */
+  .customize-menu {
+    width: 450px !important;
+    height: fit-content !important;
+    top: unset !important;
+    right: 20px !important;
+    bottom: 20px !important;
+    padding: 0 !important;
+    border: 1px solid var(--pf-border-color);
+    border-radius: var(--border-radius-medium);
+    box-shadow: none !important;
+    backdrop-filter: var(--pf-bg-blur);
+    transform: scale(0) !important;
+    transform-origin: bottom right;
+    transition-timing-function: cubic-bezier(0.125, 1.125, 0.25, 1.0125) !important;
+    overflow: hidden !important;
+  }
+  .personalize-button.personalize-animate-exit-done {
+    transform: scale(0);
+  }
+  .close-button-wrapper {
+    display: none;
+  }
+  .home-section {
+    height: 100%;
+    padding-inline: 20px !important;
+    padding-block-end: 8px !important;
+    grid-row-gap: 8px !important;
+  }
+  .home-section .divider {
+    margin-inline: -20px !important;
+  }
+  /* wallpaper */
+  .home-section .wallpapers-section h2 {
+    font-size: 18px !important;
+    font-weight: 600 !important;
+  }
+  .wallpapers-reset {
+    text-decoration: none !important;
+    font-weight: 600;
+    --newtab-text-primary-color: var(--link-color);
+  }
+  .wallpaper-input {
+    height: 100px !important;
+    box-shadow: inset 0 0 0 1px var(--pf-border-color) !important;
+    transition: all 0.15s !important;
+    --border-radius-medium: 8px;
+    
+    &:hover:active {
+      transform: scale(1.025);
+    }
+  }
+  #custom-wallpaper {
+    box-shadow: none !important;
+  }
+  .category-list {
+    grid-auto-rows: 100px !important;
+    gap: 10px !important;
+  }
+  .category-list > div {
+    position: relative;
+  }
+  .category-list label {
+    position: absolute;
+    left: 10px;
+    bottom: 8px;
+    font-weight: 600;
+    text-align: left !important;
+    color: #fff;
+  }
+  #custom-wallpaper {
+    border-width: 1px !important;
+  }
+  #custom-wallpaper + label {
+    display: none !important;
+  }
+  .wallpaper-list.category {
+    width: 100% !important;
+    height: 100% !important;
+    margin: 0 !important;
+    left: 0 !important;
+    transform: translateY(100%) !important;
+    backdrop-filter: blur(64px);
+    z-index: 2001 !important;
+    overflow-y: auto;
+  }
+  .wallpaper-list.category.wallpaper-list-enter-done {
+    transform: translateY(0) !important;
+  }
+  .wallpaper-list.category fieldset {
+    padding-inline: 20px !important;
+    gap: 10px !important;
+    grid-auto-rows: 100px !important;
+  }
+  .arrow-button {
+    margin: 16px !important;
+  }
+  /* settings */
+  .settings-toggles {
+    padding-block: 16px;
+    margin-block-end: auto !important;
+  }
+  .toggle-button {
+    margin-right: 16px !important;
+    --toggle-width: 36px;
+    --toggle-height: 20px;
+    --toggle-background-color: light-dark(rgba(0, 0, 0, 0.04), rgba(255, 255, 255, 0.04));
+    --toggle-border-color: light-dark(rgba(0, 0, 0, 0.08), rgba(255, 255, 255, 0.15));
+    
+    &::before {
+      --toggle-dot-width: 12px;
+      --toggle-dot-height: 12px;
+      --toggle-dot-margin: 3px;
+    }
+  }
+  .description {
+    --input-space-offset: 52px !important;
+  }
+  #settings-link {
+    width: calc(100% + 24px);
+    padding: 12px 40px !important;
+    margin-inline: -12px;
+    margin-block-end: 0 !important;
+    text-decoration: none !important;
+    text-align: left;
+    background-position: 12px 13px !important;
+    --link-color: color-mix(in srgb, currentColor, transparent 30%);
+    --link-color-hover: color-mix(in srgb, currentColor, transparent 20%);
+    --border-radius-small: 6px;
+    
+    &:hover {
+      background-color: color-mix(in srgb, currentColor, transparent 90%) !important;
+    }
+  }
+  /* context menu */
+  .context-menu {
+    padding: 4px;
+    border-radius: 8px !important;
+    backdrop-filter: var(--pf-bg-blur);
+  }
+  .context-menu > ul {
+    padding: 0 !important;
+  }
+  .context-menu > ul > li {
+    font-size: 13px !important;
+  }
+  .context-menu > ul > li > a,
+  .context-menu > ul > li > button {
+    border-radius: 4px !important;
+  }
+  .context-menu > ul > li.separator {
+    width: calc(100% - 20px) !important;
+    margin-inline: 10px !important;
+  }
+  /* weather */
+  .weatherCard {
+    backdrop-filter: var(--pf-bg-blur);
+  }
+  .weatherInfoLink,
+  .weatherButtonContextMenuWrapper {
+    --newtab-weather-background-color: light-dark(rgba(255, 255, 255, 0.65), rgba(0, 0, 0, 0.5));
+  }
+  .weatherButtonContextMenuWrapper {
+    width: 32px !important;
+  }
+  .weatherButtonContextMenuWrapper::after {
+    display: none !important;
+  }
+  /* attribution */
+  .wallpaper-attribution {
+    background-color: rgba(0, 0, 0, 0.15) !important;
+    color: rgba(255, 255, 255, 0.7) !important;
+    margin-left: 20px;
+    margin-block: 0;
+    padding: 6px 12px !important;
+    border-radius: 999px;
+    backdrop-filter: var(--pf-bg-blur);
+    --font-size-small: 12px;
+  }
+  .wallpaper-attribution a {
+    color: #fff !important;
+    font-weight: 600;
+    text-decoration: none;
+  }
+}

@@ -1,0 +1,411 @@
+/* 
+  Parfait - urlbar.css
+  https://github.com/reizumii/parfait
+*/
+
+/* urlbar */
+@media -moz-pref("sidebar.verticalTabs") {
+  :root:not([customizing]) {
+    --pf-urlbar-x: var(--pf-separation);
+    --pf-urlbar-y: var(--pf-topbar-height);
+    
+    & #urlbar:not([open]) {
+      & .urlbar-background {
+        border: 0 !important;
+        border-radius: var(--pf-border-radius) !important;
+        transition: background-color var(--pf-ts-25);
+        --toolbar-field-background-color: var(--pf-toolbar-bgcolor);
+        --toolbar-field-color: var(--lwt-text-color);
+        
+        #urlbar:hover & {
+          --toolbar-field-background-color: var(--pf-toolbar-bgcolor-hover);
+        }
+      }
+      &[focused] .urlbar-background {
+        box-shadow: inset 0 0 0 1px var(--pf-accent-color), 0 0 0 2px color-mix(in srgb, var(--pf-accent-color), transparent 50%) !important;
+        outline: none !important;
+      }
+    }
+    /* mini urlbar */
+    & #urlbar:not([open]),
+    & #urlbar-container::before {
+      position: fixed !important;
+      left: var(--pf-urlbar-x) !important;
+      top: var(--pf-urlbar-y) !important;
+      width: calc(var(--pf-sidebar-width) - (var(--pf-separation) * 2)) !important;
+      height: var(--pf-urlbar-height) !important;
+    }
+    & #urlbar:not([open]) {
+      /* urlbar items */
+      & #userContext-label,
+      & #identity-box:not([pageproxystate="invalid"]):not(.notSecure) #identity-icon-box:not([open]),
+      & #tracking-protection-icon-container:not([open]) {
+        max-width: 0 !important;
+        margin-inline: 0 !important;
+        padding-inline: 0 !important;
+        overflow: hidden;
+      }
+      /* page actions */
+      & .urlbar-page-action:not([open]) {
+        width: 0 !important;
+        padding-inline: 0 !important;
+        opacity: 0;
+        transition: var(--pf-ts-15) !important;
+
+        #urlbar:hover & {
+          width: calc(var(--urlbar-min-height) - 2px - 2 * var(--urlbar-container-padding)) !important;
+          padding-inline: 2px !important;
+          opacity: 1;
+        }
+      }
+      /* input box */
+      & .urlbar-input-container {
+        padding-inline-end: 3px !important;
+      }
+      & .urlbar-input-box {
+        padding-left: 10px;
+      }
+      &[pageproxystate="invalid"] {
+        & .urlbar-input-box {
+          padding-left: 4px;
+        }
+        & #urlbar-input {
+          text-overflow: ellipsis;
+        }
+      }
+      & .urlbar-go-button,
+      & .search-go-button {
+        display: none;
+      }
+      /* allow top bar dragging */
+      & #urlbar-container { -moz-window-dragging: drag; }
+    }
+    /* normal urlbar */
+    & #urlbar:not([open]) {
+      @media -moz-pref("sidebar.visibility", "expand-on-hover") or -moz-pref("parfait.toolbar.unified-sidebar", false) {
+        left: unset !important;
+        right: unset !important;
+        top: unset !important;
+        width: var(--urlbar-width) !important;
+      }
+      @media -moz-pref("sidebar.visibility", "always-show") {
+        :root:has(#tabbrowser-tabs:not([expanded])) & {
+          left: unset !important;
+          right: unset !important;
+          top: unset !important;
+          width: var(--urlbar-width) !important;
+        }
+      }
+    }
+    /* floating urlbar */
+    & #urlbar[open] {
+      position: fixed !important;
+      left: 50% !important;
+      top: 25% !important;
+      transform: translateX(-50%);
+      margin: 0 !important;
+      width: 90vw !important;
+      max-width: var(--pf-urlbar-width-max) !important;
+      --inactive-titlebar-opacity: 1;
+      
+      & .urlbar-background {
+        border-radius: var(--pf-urlbar-fl-radius) !important;
+        box-shadow: var(--pf-urlbar-border), var(--pf-shadow-large) !important;
+        border: 0 !important;
+        transition: none !important;
+        --toolbar-field-focus-background-color: var(--pf-urlbar-bgcolor);
+      }
+      & > .urlbar-input-container {
+        padding-inline: calc((var(--urlbar-container-height) - var(--urlbar-height)) / 2 + var(--urlbar-container-padding)) !important;
+        --urlbar-container-height: var(--pf-urlbar-input-height);
+      }
+      & #urlbar-input {
+        font-size: 16px !important;
+        font-weight: 600 !important;
+      }
+      &[pageproxystate="valid"] {
+        .urlbar-input-box {
+          padding-left: 8px;
+        }
+      }
+      & #urlbar-searchmode-switcher {
+        margin-inline: 1px 10px !important;
+      }
+      & #userContext-icons {
+        background-color: color-mix(in srgb, var(--identity-tab-color), transparent 80%);
+        color: color-mix(in srgb, var(--identity-icon-color), var(--pf-text-color));
+        margin-inline-end: 0 !important;
+        padding: 6px 8px;
+        border-radius: var(--pf-border-radius-small);
+        
+        & #userContext-label {
+          font-size: 1rem !important;
+          font-weight: 600;
+        }
+      }
+      /* fu: search mode glow */
+      @media -moz-pref("parfait.urlbar.search-mode.glow") {
+        &[searchmode] {
+          animation: searchbar var(--pf-ts-25);
+          transform-origin: center;
+          
+          &::before {
+            content: "";
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            animation: searchbar-expand var(--pf-ts-65);
+            border-radius: var(--pf-border-radius);
+          }
+        }
+      }
+    }
+  }
+  /* center url */
+  @media -moz-pref("parfait.urlbar.url.center") {
+    #urlbar:not([open]) #urlbar-input {
+      text-align: center !important;
+    }
+  }
+  /* search results */
+  & .urlbarView-row {
+    border-radius: var(--pf-urlbar-result-radius) !important;
+    --urlbarView-highlight-background: var(--pf-toolbar-bgcolor-active) !important;
+    
+    @media not -moz-pref("parfait.urlbar.results.compact") {
+      &:not([type="tip"], [type="dynamic"]) {
+        min-height: var(--pf-urlbar-result-height) !important;
+      }
+    }
+    & .urlbarView-row-inner {
+      flex-wrap: nowrap !important;
+      
+      & .urlbarView-no-wrap {
+        flex-basis: unset !important;
+      }
+      & .urlbarView-title > strong {
+        font-weight: 600;
+      }
+      & .urlbarView-url {
+        margin-left: 0 !important;
+        
+        .urlbarView-row:not([selected]) & {
+          --link-color: var(--pf-accent-text-color);
+        }
+      }
+    }
+    /* sr: type */
+    &:is(
+      [type="history_serp"], [type="autofill_url"],
+      [type="top_site"], [type="bookmark"],
+      [type="history"], [type="autofill_origin"]
+    ) {
+      & .urlbarView-title-separator {
+        display: flex !important;
+        opacity: 0.5;
+      }
+    }
+    /* sr: hide labels */
+    &[label] {
+      --urlbarView-labeled-row-margin-top: 0;
+      
+      &::before {
+        display: none !important;
+      }
+    }
+    &:is([type="search"], [type="switchtab"]) {
+      & .urlbarView-title-separator,
+      & .urlbarView-action {
+        display: none;
+      }
+    }
+    /* sr: switch tab */
+    &[type="switchtab"] {
+      & .urlbarView-no-wrap {
+        flex-basis: 100% !important;
+        align-items: center !important;
+      }
+      & .urlbarView-switchToTab {
+        display: flex;
+        align-items: center;
+        color: color-mix(in srgb, var(--pf-text-color), transparent 50%);
+        background-image: none !important;
+        font-size: 13px !important;
+        margin-inline-start: auto !important;
+        padding-inline-end: 8px !important;
+        visibility: visible !important;
+        width: unset !important;
+        
+        &::after {
+          content: "";
+          width: var(--pf-icon-size-large);
+          height: var(--pf-icon-size-large);
+          margin-inline-start: 8px;
+          display: flex;
+          background-color: var(--pf-toolbar-bgcolor);
+          background-image: url("chrome://browser/skin/forward.svg");
+          fill: var(--pf-text-color);
+          background-position: center;
+          background-repeat: no-repeat;
+          border-radius: calc(var(--pf-urlbar-result-radius) - 4px);
+        }
+      }
+      /* sr: selected item */
+      &[selected] {
+        & .urlbarView-switchToTab {
+          color: var(--pf-text-color);
+          
+          &::after {
+            background-color: var(--pf-text-color);
+            fill: var(--pf-urlbar-bgcolor);
+          }
+        }
+      }
+      /* sr: container */
+      & .urlbarView-userContext {
+        display: flex !important;
+        flex-direction: row-reverse;
+        background-color: color-mix(in srgb, var(--identity-tab-color), transparent 70%);
+        color: color-mix(in srgb, var(--identity-icon-color), var(--pf-text-color));
+        padding: 5px 8px !important;
+        gap: 6px;
+        
+        & .urlbarView-userContext-textMode {
+          display: flex !important;
+        }
+        & .urlbarView-userContext-iconMode {
+          display: flex;
+          align-items: center;
+        }
+      }
+    }
+    /* sr: icons */
+    & .urlbarView-favicon {
+      border-radius: 4px;
+      
+      &[src^="chrome://"] {
+        opacity: 0.75;
+      }
+    }
+    & .urlbarView-button {
+      margin-inline-end: 12px !important;
+    }
+    & .urlbarView-action {
+      border: none !important;
+    }
+  }
+  /* fu: bar skeleton */
+  #urlbar-container:has(> #urlbar:is([open]))::before {
+    content: "";
+    background-color: var(--pf-toolbar-bgcolor-inactive) !important;
+    border: 1px dashed var(--pf-toolbar-bgcolor-active) !important;
+    border-radius: var(--pf-border-radius);
+    pointer-events: none;
+    box-sizing: border-box;
+  }
+  /* move and hide stuff */
+  & #identity-box {
+    margin-inline-end: 0 !important;
+    order: 1;
+  }
+  & #tracking-protection-icon-container {
+    order: 1 !important;
+  }
+  & #identity-icon-label,
+  & #urlbar-label-box,
+  & #identity-permission-box > #blocked-permissions-container {
+      display: none;
+  }
+  /* urlbar icons */
+  & .urlbar-icon {
+    fill: var(--pf-icon-color) !important;
+    --urlbar-icon-fill-opacity: 1;
+  }
+  & .urlbar-page-action {
+    align-items: center;
+    justify-content: center;
+  }
+  & #identity-box[pageproxystate="valid"]:is(.notSecureText, .chromeUI, a.extensionPage) > .identity-box-button {
+    padding-inline: var(--urlbar-icon-padding) !important;
+  }
+  & #identity-box[pageproxystate="valid"].notSecure #identity-icon,
+  & #identity-box[pageproxystate="valid"].mixedActiveContent #identity-icon,
+  & #identity-box[pageproxystate="valid"].httpsOnlyErrorPage #identity-icon {
+    list-style-image: url("chrome://devtools/skin/images/alert.svg") !important;
+    fill: light-dark(var(--color-red-50), var(--color-red-30));
+  }
+  & #tracking-protection-icon-container,
+  & #identity-box {
+    margin-block: 2px;
+  }
+  /* ui: zoom */
+  #urlbar-zoom-button {
+    min-height: var(--pf-icon-size);
+    margin: 0 !important;
+    padding: 4px 8px !important;
+    order: 99;
+    animation: none !important;
+    --urlbar-box-bgcolor: var(--pf-toolbar-bgcolor);
+  }
+  /* search mode switcher */
+  & #urlbar-searchmode-switcher {
+    margin: 2px 0 2px 2px !important;
+    padding: var(--urlbar-searchmodeswitcher-inline-padding) !important;
+    border-radius: var(--pf-border-radius) !important;
+    --urlbar-box-bgcolor: transparent;
+    --urlbar-box-focus-bgcolor: transparent;
+    
+    &:hover {
+      background-color: var(--pf-toolbar-bgcolor-hover) !important;
+    }
+    & .searchmode-switcher-icon {
+      fill: var(--pf-icon-color) !important;
+      opacity: 0.75;
+    }
+    & .searchmode-switcher-dropmarker { display: none; }
+  }
+  & .searchmode-switcher-chicklet {
+    background-color: color-mix(in srgb, var(--pf-accent-color), var(--toolbar-bgcolor) 40%) !important;
+    color: var(--pf-text-color) !important;
+    border-radius: 999px !important;
+    padding-inline: 8px !important;
+    
+    #urlbar:not([open]) & {
+      height: calc(var(--pf-urlbar-height) - 12px) !important;
+      margin-top: 4px;
+    }
+    & .searchmode-switcher-title {
+      font-size: 12px;
+      font-weight: 600;
+    }
+    #urlbar[open] & {
+      padding-inline: 12px !important;
+      
+      & .searchmode-switcher-title {
+        font-size: var(--pf-font-size-1);
+      }
+    }
+    & .searchmode-switcher-close {
+      width: 0 !important;
+      padding: 0 !important;
+      margin-inline: 0 !important;
+      opacity: 0;
+      transition: var(--pf-ts-15);
+      
+      & .searchmode-switcher-chicklet:hover & {
+        width: 16px !important;
+        margin-inline: 4px 0 !important;
+        opacity: 1;
+      }
+    }
+  }
+}
+/* fu: search mode glow */
+@keyframes searchbar {
+  0% { transform: translateX(-50%) scale(0.985); }
+  100% { transform: translateX(-50%) scale(1); }
+}
+@keyframes searchbar-expand {
+  0% { box-shadow: 0 0 20px color-mix(in srgb, var(--pf-accent-color), var(--toolbar-color) 20%); }
+  100% { box-shadow: 0 0 300px color-mix(in srgb, var(--pf-accent-color), transparent 100%); }
+}

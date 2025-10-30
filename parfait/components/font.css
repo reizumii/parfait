@@ -1,0 +1,45 @@
+/* 
+  Parfait - font.css
+  https://github.com/reizumii/parfait
+*/
+
+:root {
+  --pf-font-size-1: 14px;
+  --pf-font-size-2: 14px;
+  --pf-font-weight: 500;
+  --pf-letter-spacing: 0;
+  
+  @media (-moz-platform: windows) {
+    --pf-font: "Segoe UI Variable", "Segoe UI", system-ui, sans-serif;
+  }
+  @media (-moz-platform: macos) {
+    --pf-font: "SF Pro", system-ui, sans-serif;
+    --pf-font-size-1: 13.5px;
+    --pf-font-size-2: 13px;
+    --pf-font-weight: 510;
+    --pf-letter-spacing: -0.15px;
+  }
+}
+
+/* font */
+@media not (-moz-platform: linux) {
+  :root,
+  panel,
+  menupopup {
+    font-family: var(--pf-font) !important;
+  }
+}
+#urlbar-input {
+  font-size: var(--pf-font-size-2) !important;
+}
+.tab-label,
+.tab-group-label,
+#tabs-newtab-button,
+#vertical-tabs-newtab-button {
+  font-size: var(--pf-font-size-1);
+  font-weight: var(--pf-font-weight);
+  letter-spacing: var(--pf-letter-spacing);
+}
+.tab-group-label {
+  font-weight: 600;
+}

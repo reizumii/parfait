@@ -1,0 +1,26 @@
+/* 
+  ⋅˚₊‧ ୨୧ ‧₊˚ ⋅
+     Parfait
+  ⋅˚₊‧ ୨୧ ‧₊˚ ⋅
+
+  https://github.com/reizumii/parfait
+*/
+
+@import "components/variables.css";
+@import "components/browser.css";
+@import "components/font.css";
+@import "components/csd.css";
+@import "components/sidebar.css";
+@import "components/toolbar.css";
+@import "components/urlbar.css";
+@import "components/tabbar.css";
+@import "components/findbar.css";
+@import "components/popups.css";
+@import "components/player.css";
+@import "components/icons.css";
+
+/*
+  for custom configuration, add your changes to the custom.css,
+  this file doesn't exist by default, so create it first.
+*/
+@import "custom.css";

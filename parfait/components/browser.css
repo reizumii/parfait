@@ -1,0 +1,129 @@
+/* 
+  Parfait - browser.css
+  https://github.com/reizumii/parfait
+*/
+
+/* window: background */
+:root:not([lwtheme]) {
+  @media -moz-pref("parfait.bg.transparent") {
+    --toolbox-bgcolor: var(--pf-browser-bgcolor-transparent) !important;
+  }
+  @media -moz-pref("parfait.bg.accent-color") {
+    --toolbox-bgcolor: color-mix(in oklab, transparent, var(--pf-browser-bgcolor) var(--pf-browser-opacity)) !important;
+    --pf-sidebar-bgcolor-1: var(--pf-browser-bgcolor);
+    --pf-sidebar-bgcolor-2: var(--pf-browser-bgcolor);
+    
+    @media -moz-pref("parfait.bg.gradient") {
+      --pf-bg-gradient-fade: color-mix(in oklab, var(--pf-browser-bgcolor), var(--pf-browser-bgcolor-mix) 50%);
+      --pf-bg-gradient-1: color-mix(in oklab, transparent, var(--pf-bg-gradient-fade) var(--pf-browser-opacity));
+      --pf-bg-gradient-2: color-mix(in oklab, transparent, var(--pf-browser-bgcolor) var(--pf-browser-opacity));
+      --toolbox-bgcolor: linear-gradient(var(--pf-bg-gradient-1), var(--pf-bg-gradient-2)) !important;
+      
+      & .browser-toolbox-background {
+        background: var(--pf-bg-gradient-1) !important;
+      }
+      & #browser {
+        background: var(--toolbox-bgcolor) !important;
+      }
+    }
+    /* expand on hover */
+    &[sidebar-expand-on-hover] #sidebar-main:is([sidebar-launcher-expanded], [sidebar-ongoing-animations]) {
+      background: var(--toolbox-bgcolor) !important;
+    }
+  }
+}
+
+/* lwt theming */
+:root[lwtheme] {
+  --pf-accent-color: var(--toolbarbutton-icon-fill);
+  --pf-text-color: var(--lwt-text-color);
+  --pf-icon-color: var(--toolbarbutton-icon-fill);
+  
+  --pf-sidebar-bgcolor-1: var(--toolbox-bgcolor);
+  --pf-sidebar-bgcolor-2: var(--toolbox-bgcolor);
+  
+  & .browser-toolbox-background {
+    background-color: var(--lwt-accent-color);
+  }
+  & #navigator-toolbox {
+    &::before {
+      content: "";
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      background: linear-gradient(transparent 75%, var(--toolbox-bgcolor));
+    }
+  }
+  & .urlbarView-row[selected] {
+    background-color: color-mix(in srgb, AccentColor, light-dark(rgba(0, 0, 0, 0.25), rgba(255, 255, 255, 0.25)) 40%) !important;
+  }
+  &[sidebar-expand-on-hover] #sidebar-main {
+    background: var(--toolbox-bgcolor) !important;
+  }
+  /* alt lwt theming: only works for select themes! */
+  @media -moz-pref("parfait.theme.lwt.alt") {
+    background-image: var(--lwt-additional-images) !important;
+    background-color: var(--lwt-accent-color) !important;
+    background-repeat: var(--lwt-background-tiling) !important;
+    background-position: var(--lwt-background-alignment) !important;
+    
+    & #navigator-toolbox {
+      background-image: none !important;
+    }
+    & .browser-toolbox-background,
+    & #navigator-toolbox::before {
+      background: transparent !important;
+    }
+    /* floating sidebar */
+    @media -moz-pref("sidebar.visibility", "hide-sidebar") {
+      &:has(#tabbrowser-tabs:not([expanded])) #sidebar-main {
+        background-image: var(--lwt-additional-images) !important;
+        background-color: var(--lwt-accent-color) !important;
+        background-repeat: var(--lwt-background-tiling) !important;
+        background-position: var(--lwt-background-alignment) !important;
+      }
+    }
+  }
+}
+
+/* separation */
+:root:not([inDOMFullscreen]) {
+  @media -moz-pref("sidebar.verticalTabs") {
+    #tabbrowser-tabbox {
+      border-radius: var(--pf-browser-radius) !important;
+      margin-inline: var(--pf-browser-separation-inline) !important;
+      margin-bottom: var(--pf-browser-separation) !important;
+      overflow: clip;
+      -moz-window-dragging: no-drag;
+
+      @media -moz-pref("parfait.window.borderless") {
+        --pf-browser-radius: 0;
+        --pf-browser-separation: 0;
+        --pf-browser-separation-inline: 0;
+      }
+      @media -moz-pref("parfait.window.browser-view-shadow", false) {
+        box-shadow: none !important;
+      }
+    }
+  }
+}
+
+/* full screen */
+:root[inFullscreen] {
+  #navigator-toolbox { margin-top: 0 !important; }
+}
+
+/* customize menu */
+#customization-container {
+  margin-inline: var(--pf-browser-separation);
+  margin-block: 0 var(--pf-browser-separation);
+  border: 1px solid var(--pf-border-color);
+  border-radius: var(--pf-browser-radius);
+}
+#customization-panel-container {
+  padding-right: var(--pf-browser-separation) !important;
+}
+.panel-arrowcontent {
+  border-radius: var(--pf-border-radius-small) !important;
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0.05), 0 2px 8px rgba(0, 0, 0, 0.075) !important;
+}

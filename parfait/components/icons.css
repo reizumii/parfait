@@ -1,0 +1,42 @@
+/* 
+  Parfait - icons.css
+  https://github.com/reizumii/parfait
+*/
+
+:root {
+  --pf-icon-chevron-right-small: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='context-fill' fill-opacity='context-fill-opacity' viewBox='0 0 12 12'%3E%3Cpath d='M9.213 6.475q0 .146-.059.278a.75.75 0 0 1-.175.244l-3.755 3.677a.64.64 0 0 1-.464.185.64.64 0 0 1-.327-.088.7.7 0 0 1-.245-.234.667.667 0 0 1 .117-.81L7.65 6.475 4.306 3.223A.656.656 0 0 1 4.76 2.09a.64.64 0 0 1 .464.185l3.755 3.677q.117.118.175.244.06.127.059.279'/%3E%3C/svg%3E");
+  
+  /* traffic lights */
+  --pf-tl-min-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='context-fill' fill-opacity='context-fill-opacity' viewBox='0 0 16 16'%3E%3Cpath d='M11.37 6.88H4.64a1.122 1.122 0 0 0 0 2.244h6.73a1.122 1.122 0 1 0 0-2.243'/%3E%3C/svg%3E");
+  --pf-tl-max-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='context-fill' fill-opacity='context-fill-opacity' viewBox='0 0 16 16'%3E%3Cpath d='M4.64 9.784 9.783 4.64H5.761c-.466 0-1.122.656-1.122 1.122zm1.586 1.587h4.023c.466 0 1.122-.656 1.122-1.122V6.226z'/%3E%3C/svg%3E");
+  --pf-tl-close-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='context-fill' fill-opacity='context-fill-opacity' viewBox='0 0 16 16'%3E%3Cpath d='M4.832 4.832a1.12 1.12 0 0 0 0 1.587l1.586 1.586-1.586 1.587a1.12 1.12 0 0 0 0 1.586c.44.44 1.147.44 1.586 0l1.587-1.586 1.587 1.586c.439.44 1.147.44 1.586 0a1.12 1.12 0 0 0 0-1.586L9.592 8.005l1.586-1.586a1.12 1.12 0 0 0 0-1.587 1.12 1.12 0 0 0-1.586 0L8.005 6.419 6.418 4.832a1.12 1.12 0 0 0-1.586 0'/%3E%3C/svg%3E");
+  --pf-tl-restore-icon: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='context-fill' fill-opacity='context-fill-opacity' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7.72984 12.8744V8.85191C7.72984 8.38577 8.38577 7.72984 8.85191 7.72984H12.8744L7.72984 12.8744Z'/%3E%3Cpath d='M8.28453 7.16344C8.2841 7.62955 7.62844 8.28453 7.16246 8.28453H3.14L8.28453 3.14V7.16344Z'/%3E%3C/svg%3E");
+  
+  /*
+    findbar icons
+    match case, diacritics, and whole word icons by reizumi
+  */
+  --pf-icon-search-highlight: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='context-fill' fill-opacity='context-fill-opacity' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2.49893 12.6246C2.61892 12.6246 2.73892 12.6046 2.85692 12.5656L6.28981 11.4196L13.2886 4.42184C14.0186 3.69086 14.0186 2.5009 13.2886 1.76992L12.2286 0.709954C11.4967 -0.0200238 10.3087 -0.0200238 9.57671 0.709954L2.57793 7.70874L1.43296 11.1446C1.29796 11.5506 1.40196 11.9926 1.70495 12.2946C1.92095 12.5096 2.20594 12.6246 2.49893 12.6246ZM10.4607 1.59493C10.7027 1.35093 11.1017 1.35093 11.3437 1.59493L12.4046 2.65589C12.6486 2.89889 12.6486 3.29588 12.4046 3.53887L11.3397 4.60484L9.39472 2.65989L10.4607 1.59493ZM3.66989 8.38472L8.50974 3.54487L10.4537 5.48881L5.61383 10.3297L2.69692 11.3026L3.66989 8.38472Z' fill='black'/%3E%3Cpath d='M14.8166 13.3136L13.0226 13.8615C12.3306 14.0725 11.5906 14.1105 10.8857 13.9675L8.80373 13.5506C7.58477 13.3076 6.29781 13.4796 5.18484 14.0355C3.95288 14.6515 2.46693 14.4115 1.49196 13.4356L1.44096 13.3846L0.607983 14.3205C1.46296 15.1745 2.59992 15.6245 3.75289 15.6245C4.42887 15.6245 5.10985 15.4705 5.74383 15.1525C6.6088 14.7205 7.60877 14.5855 8.55874 14.7765L10.6407 15.1935C11.5506 15.3755 12.5006 15.3265 13.3876 15.0555L15.1815 14.5075L14.8166 13.3136Z'/%3E%3C/svg%3E");
+  --pf-icon-search-matchcase: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='context-fill' fill-opacity='context-fill-opacity' viewBox='0 0 16 16'%3E%3Cpath d='M4.352 3.434a.8.8 0 0 0-.739.492L0 12.564h1.518L2.59 10h4.256l1.072 2.564h1.518L5.822 3.926a.8.8 0 0 0-.738-.492ZM11 4.58v1.4h2l.195.006q.293.022.551.1c.23.069.416.165.555.266a.9.9 0 0 1 .256.263.3.3 0 0 1 .043.137v.807h-2.1l-.256.013a2.502 2.502 0 0 0 .256 4.989H16V6.752c0-.285-.078-.567-.229-.83a2.3 2.3 0 0 0-.65-.707 3.3 3.3 0 0 0-.973-.469A4 4 0 0 0 13 4.58Zm-6.283.334L6.26 8.6H3.178ZM12.5 8.96h2.1v2.201h-2.1a1.1 1.1 0 1 1 0-2.201'/%3E%3C/svg%3E");
+  --pf-icon-search-matchdiacritics: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='context-fill' fill-opacity='context-fill-opacity' viewBox='0 0 16 16'%3E%3Cpath d='M2.518 1v1.4h1.4V1Zm3 0v1.4h1.4V1ZM11 1.5v1.4h4V1.5ZM4.352 3.434a.8.8 0 0 0-.739.492L0 12.564h1.518L2.59 10h4.256l1.072 2.564h1.518L5.822 3.926a.8.8 0 0 0-.738-.492ZM11 4.58v1.4h2l.195.006q.293.022.551.1c.23.069.416.165.555.266a.9.9 0 0 1 .256.263.3.3 0 0 1 .043.137v.807h-2.1l-.256.013a2.502 2.502 0 0 0 .256 4.989H16V6.752c0-.285-.078-.567-.229-.83a2.3 2.3 0 0 0-.65-.707 3.3 3.3 0 0 0-.973-.469A4 4 0 0 0 13 4.58Zm-6.283.334L6.26 8.6H3.178ZM12.5 8.96h2.1v2.201h-2.1a1.1 1.1 0 1 1 0-2.201'/%3E%3C/svg%3E");
+  --pf-icon-search-matchwholeword: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='context-fill' fill-opacity='context-fill-opacity' viewBox='0 0 16 16'%3E%3Cpath d='M9 2.43v9.13h3l.256-.013a2.5 2.5 0 0 0 2.23-2.23l.014-.258v-1a2.5 2.5 0 0 0-2.5-2.5h-1.6v-3.13ZM3 3.58v1.4h2l.195.006c.193.014.38.048.551.1.23.069.416.165.555.266a.9.9 0 0 1 .256.263.3.3 0 0 1 .043.137v.807H4.5l-.256.013a2.5 2.5 0 0 0 .256 4.989H8V5.752c0-.285-.078-.567-.229-.83a2.3 2.3 0 0 0-.65-.707 3.3 3.3 0 0 0-.973-.469A4 4 0 0 0 5 3.58Zm7.4 3.379H12a1.1 1.1 0 0 1 1.1 1.1v1c0 .607-.492 1.101-1.1 1.101h-1.6zm-5.9 1h2.1v2.201H4.5a1.101 1.101 0 0 1 0-2.201M1.75 13v1.4h12.5V13Z'/%3E%3C/svg%3E");
+  
+  /* folder */
+  --pf-icon-folder-out: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' fill='context-fill' fill-opacity='context-fill-opacity' stroke='context-fill' stroke-opacity='context-fill-opacity' viewBox='0 0 22 22'%3E%3Cpath fill-opacity='.25' stroke='%23fff' stroke-width='1.5' d='M2.75 5A2.25 2.25 0 0 1 5 2.75h3.948c.51 0 1.006.174 1.405.493l.857.685a3.75 3.75 0 0 0 2.342.822H17A2.25 2.25 0 0 1 19.25 7v10A2.25 2.25 0 0 1 17 19.25H5A2.25 2.25 0 0 1 2.75 17z'/%3E%3C/svg%3E");
+  
+  /* firefox */
+  --pf-browser-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='context-fill' fill-opacity='context-fill-opacity' viewBox='0 0 24 24'%3E%3Cpath d='M8.824 7.287c.008 0 .004 0 0 0m-2.8-1.4c.006 0 .003 0 0 0m16.754 2.161c-.505-1.215-1.53-2.528-2.333-2.943.654 1.283 1.033 2.57 1.177 3.53l.002.02c-1.314-3.278-3.544-4.6-5.366-7.477-.091-.147-.184-.292-.273-.446a4 4 0 0 1-.13-.24 2 2 0 0 1-.172-.46.03.03 0 0 0-.027-.03.04.04 0 0 0-.021 0l-.006.001-.01.005.005-.008c-2.585 1.515-3.657 4.168-3.932 5.856a6.2 6.2 0 0 0-2.305.587.297.297 0 0 0-.147.37c.057.162.24.24.396.17a5.6 5.6 0 0 1 2.008-.523l.067-.005a5.9 5.9 0 0 1 1.957.222l.095.03a6 6 0 0 1 .616.228q.12.054.238.112l.107.055a6 6 0 0 1 .368.211 5.95 5.95 0 0 1 2.034 2.104c-.62-.437-1.733-.868-2.803-.681 4.183 2.09 3.06 9.292-2.737 9.02a5.2 5.2 0 0 1-1.513-.292 4 4 0 0 1-.538-.232c-1.42-.735-2.593-2.121-2.74-3.806 0 0 .537-2 3.845-2 .357 0 1.38-.998 1.398-1.287-.005-.095-2.029-.9-2.817-1.677-.422-.416-.622-.616-.8-.767a4 4 0 0 0-.301-.227 5.4 5.4 0 0 1-.032-2.842c-1.195.544-2.124 1.403-2.8 2.163h-.006c-.46-.584-.428-2.51-.402-2.913-.006-.025-.343.176-.389.206a8.4 8.4 0 0 0-1.136.974q-.596.606-1.085 1.303a9.8 9.8 0 0 0-1.562 3.52c-.003.013-.11.487-.19 1.073q-.02.135-.037.272a8 8 0 0 0-.069.667l-.002.034-.023.387-.001.06C.386 18.795 5.593 24 12.016 24c5.752 0 10.527-4.176 11.463-9.661q.028-.223.052-.448c.232-1.994-.025-4.09-.753-5.844z'/%3E%3C/svg%3E");
+}
+/* browser icon */
+.tab-icon-image[src="chrome://branding/content/icon32.png"] {
+  content: var(--pf-browser-icon);
+}
+.site-information-popup[connection="chrome"] .identity-popup-security-connection,
+#identity-box[pageproxystate="valid"].chromeUI #identity-icon {
+  list-style-image: var(--pf-browser-icon) !important;
+}
+/* icons: rounded favicons */
+.tab-icon-image {
+  border-radius: 4px;
+  overflow: hidden;
+}

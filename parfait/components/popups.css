@@ -1,0 +1,215 @@
+/* 
+  Parfait - popups.css
+  https://github.com/reizumii/parfait
+*/
+
+/* extensions panel */
+#unified-extensions-panel {
+  --panel-width: var(--pf-extensions-width) !important;
+}
+#unified-extensions-messages-container {
+  --arrowpanel-menuitem-margin: 2px;
+}
+#unified-extensions-view {
+  --menu-panel-width-wide: var(--pf-extensions-width) !important;
+  
+  toolbarseparator,
+  .panel-header {
+    display: none !important;
+  }
+  .panel-subview-body {
+    margin-inline: 8px;
+    margin-block: 4px 6px;
+  }
+}
+#unified-extensions-area,
+.unified-extensions-list {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 8px;
+  --arrowpanel-menuitem-margin: 0;
+}
+.unified-extensions-list {
+  margin-top: 8px;
+  filter: grayscale(1);
+  
+  .unified-extensions-item {
+    background-color: color-mix(in srgb, var(--pf-toolbar-bgcolor), transparent 70%);
+    border-radius: var(--pf-border-radius) !important;
+  }
+}
+.unified-extensions-item {
+  margin-block: 0 !important;
+}
+.unified-extensions-item-menu-button,
+.unified-extensions-item-contents {
+  display: none;
+}
+.unified-extensions-item-action-button {
+  justify-content: center !important;
+  --arrowpanel-menuitem-border-radius: var(--pf-border-radius);
+  --button-background-color-ghost: var(--pf-toolbar-bgcolor);
+  --uei-icon-size: 16px;
+}
+.unified-extensions-item-icon,
+.unified-extensions-item .webextension-browser-action.subviewbutton > .toolbarbutton-badge-stack {
+  margin-inline-end: 0 !important;
+}
+#unified-extensions-manage-extensions {
+  border: 1px solid var(--pf-border-color);
+  
+  .toolbarbutton-text {
+    text-align: center !important;
+  }
+}
+
+/* status link indicator */
+#statuspanel-label {
+  margin-left: 8px !important;
+  margin-bottom: 8px !important;
+  padding: 4px 10px !important;
+  border: 1px solid light-dark(rgba(0, 0, 0, 0.125), rgba(255, 255, 255, 0.125)) !important;
+  border-radius: var(--pf-border-radius) !important;
+  
+  @media -moz-pref("parfait.bg.accent-color") {
+    background-color: color-mix(in srgb, var(--pf-accent-color), var(--pf-panel-bgcolor) 80%) !important;
+  }
+}
+
+/* context menu */
+@media not (-moz-platform: macos) {
+  menupopup {
+    --panel-padding: 5px 4px !important;
+    color: var(--panel-color);
+  }
+  menu, menuitem, menucaption {
+    --menuitem-border-radius: 5px !important;
+    --menuitem-padding: 3px 10px;
+    --menuitem-margin-inline: 1px;
+    --menuitem-margin: 1px var(--menuitem-margin-inline);
+  }
+  :root:not([lwtheme]) {
+    menu, menuitem {
+      &:where([_moz-menuactive]:not([disabled="true"])) {
+        background: color-mix(in srgb, var(--pf-accent-color), black 20%) !important;
+        color: var(--pf-menu-color) !important;
+      }
+    }
+  }
+  menuseparator {
+    padding-inline: 10px !important;
+  }
+  menupopup > menu::after {
+    background-image: var(--pf-icon-chevron-right-small) !important;
+    --menu-arrow-size: 12px;
+  }
+  #context-navigation {
+    flex-direction: column;
+    align-items: start;
+    
+    & .menuitem-iconic {
+      width: calc(100% - (var(--menuitem-margin-inline) * 2));
+      justify-content: start !important;
+      padding: var(--menuitem-padding) !important;
+      margin: var(--menuitem-margin) !important;
+
+      &::after { content: attr(aria-label); }
+      & .menu-icon { display: none !important; }
+    }
+  }
+}
+
+/* fullscreen */
+.pointerlockfswarning {
+  background-color: rgba(0, 0, 0, 0.75) !important;
+  padding: 14px 20px !important;
+  box-shadow: var(--pf-shadow-medium) !important;
+  border: none !important;
+  --border-radius-medium: 12px;
+  
+  &:is([data-identity="verifiedDomain"], [data-identity="unknownIdentity"])::before {
+    width: var(--pf-icon-size) !important;
+    height: var(--pf-icon-size) !important;
+  }
+  .pointerlockfswarning-domain-text,
+  .pointerlockfswarning-generic-text {
+    font-size: var(--pf-font-size-1) !important;
+  }
+}
+#fullscreen-exit-button {
+  padding: 6px 10px !important;
+}
+
+/* notifications */
+#notifications-toolbar {
+  position: fixed;
+  z-index: 5;
+  width: 450px;
+  bottom: calc(var(--pf-separation) / 2);
+  right: calc(var(--pf-separation) / 2);
+}
+notification-message {
+  margin: 0 !important;
+  border-radius: var(--pf-border-radius) !important;
+  
+  &::before,
+  &[style*="opacity: 0"] {
+    display: none !important;
+  }
+}
+.container {
+  padding: 10px 16px !important;
+}
+.container > .content > .text-container {
+  padding-block: 4px 12px !important;
+}
+
+/* tab switcher */
+#ctrlTab-panel {
+  --panel-background: var(--arrowpanel-background) !important;
+  --panel-color: var(--toolbox-color) !important;
+  --panel-border-radius: var(--pf-border-radius) !important;
+  --panel-width: fit-content !important;
+}
+.ctrlTab-preview,
+#ctrlTab-showAll {
+  text-shadow: none !important;
+}
+.ctrlTab-preview-inner {
+  border: 0 !important;
+  border-radius: var(--pf-border-radius) !important;
+  
+  .ctrlTab-preview:focus & {
+    background-color: var(--toolbarbutton-hover-background) !important;
+  }
+}
+.ctrlTab-canvas {
+  border: 1px solid var(--pf-border-color);
+  border-radius: var(--pf-border-radius-small);
+  box-shadow: var(--pf-shadow-medium) !important;
+  overflow: hidden;
+}
+.ctrlTab-favicon-container {
+  justify-content: flex-start !important;
+}
+.ctrlTab-favicon {
+  width: 16px !important;
+  height: 16px !important;
+  margin-inline: 0 !important;
+  margin-block: 8px 0 !important;
+  padding: 0 !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+.ctrlTab-label {
+  justify-content: start !important;
+  margin-left: 26px !important;
+  margin-top: -18px !important;
+  font-size: var(--pf-font-size-1);
+  font-weight: 500;
+}
+#ctrlTab-showAll-container {
+  opacity: 0;
+  height: 0 !important;
+}

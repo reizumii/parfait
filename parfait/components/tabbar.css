@@ -1,0 +1,381 @@
+/* 
+  Parfait - tabbar.css
+  https://github.com/reizumii/parfait
+*/
+
+/* new tab button */
+#tabbrowser-arrowscrollbox[orient="vertical"] > #tabbrowser-arrowscrollbox-periphery > #tabs-newtab-button,
+#vertical-tabs-newtab-button {
+  opacity: .5;
+  --tab-min-height: var(--pf-tab-height);
+  --tab-inner-inline-margin: var(--pf-separation);
+}
+#tabbrowser-arrowscrollbox[orient="vertical"]  {
+  #tabbrowser-arrowscrollbox-periphery {
+    margin-top: calc(var(--pf-separation) / 2);
+    
+    #tabs-newtab-button {
+      margin-top: 6px !important;
+    }
+  }
+  &:not([overflowing]) #tabbrowser-arrowscrollbox-periphery::before {
+    content: "";
+    width: calc(100% - (var(--pf-separation) * 4));
+    position: absolute;
+    border-top: 1px solid var(--sidebar-border-color);
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+#vertical-tabs-newtab-button {
+  position: relative;
+  margin-block: calc(var(--pf-separation) / 2) var(--pf-separation) !important;
+  opacity: 1 !important;
+  
+  & > .toolbarbutton-icon,
+  & > .toolbarbutton-text {
+    opacity: 0.4;
+  }
+  &::before {
+    content: "";
+    width: calc(100% + (var(--tab-inner-inline-margin) * 2));
+    position: absolute;
+    top: calc(2px - var(--pf-separation));
+    border-top: 1px solid var(--sidebar-border-color);
+    transition: var(--pf-ts-15);
+  }
+  :root:has([overflowing][scrolledtoend]) &::before {
+    width: calc(100% - (var(--pf-separation) * 2));
+  }
+}
+
+/* tabs: overflow */
+spacer[part="overflow-start-indicator"],
+spacer[part="overflow-end-indicator"] {
+  background-image: none !important;
+  border-top: 1px solid var(--sidebar-border-color);
+}
+spacer[part="overflow-end-indicator"] {
+  visibility: hidden;
+}
+#tabbrowser-tabs[orient="vertical"]::after {
+  display: none;
+}
+
+/* tabs: pinned tabs */
+#pinned-tabs-container[orient="vertical"] {
+  #tabbrowser-tabs[expanded] & {
+    padding-inline: calc(var(--pf-separation) - 4px);
+    --tab-pinned-min-width-expanded: 56px;
+    --tab-pinned-container-margin-inline-expanded: 0;
+    --tab-height-with-margin-padding: calc(var(--pf-pinned-height) + 3px);
+  }
+  @media -moz-pref("sidebar.visibility", "hide-sidebar") {
+    padding-inline: calc(var(--pf-separation) - 4px);
+    --tab-pinned-min-width-expanded: 56px;
+    --tab-pinned-container-margin-inline-expanded: 0;
+    --tab-height-with-margin-padding: calc(var(--pf-pinned-height) + 3px);
+  }
+  @media not -moz-pref("sidebar.visibility", "hide-sidebar") {
+    #tabbrowser-tabs:not([expanded]) & {
+      width: var(--pf-sidebar-collapsed) !important;
+    }
+  }
+  & .tabbrowser-tab[pinned] {
+    & .tab-background {
+      #tabbrowser-tabs[expanded] & {
+        --tab-pinned-margin-inline-expanded: 4px;
+        --tab-inner-inline-margin: 4px !important;
+        --tab-block-margin: 3px;
+      }
+      @media -moz-pref("sidebar.visibility", "hide-sidebar") {
+        --tab-pinned-margin-inline-expanded: 4px;
+        --tab-inner-inline-margin: 4px !important;
+        --tab-block-margin: 3px;
+      }
+      .tabbrowser-tab:not(:hover) > .tab-stack > &:not([selected], [multiselected]) {
+        background-color: var(--pf-toolbar-bgcolor) !important;
+      }
+      .tabbrowser-tab:hover > .tab-stack > &:not([selected], [multiselected]) {
+        background-color: var(--pf-toolbar-bgcolor-hover) !important;
+      }
+    }
+    & .tab-content[titlechanged] {
+      background-position-x: 90% !important;
+    }
+  }
+}
+
+/* tabs: regular */
+#tabbrowser-tabs[orient="vertical"] {
+  & .tabbrowser-tab {
+    padding-block: 0 !important;
+    --tab-border-radius: var(--pf-border-radius-small);
+    
+    & .tab-icon-image {
+      transition: var(--pf-ts-15) !important;
+    }
+    &[busy] .tab-icon-image {
+      scale: 0.8;
+    }
+    /* tabs: title changed */
+    .tab-label-container {
+      
+      transition: padding-left var(--pf-ts-15);
+    }
+    &[titlechanged]:not([pinned]) {
+      & .tab-content {
+        background-image: none !important;
+      }
+      & .tab-label-container {
+        position: relative;
+        padding-left: 12px;
+
+        & .tab-label::before {
+          content: "";
+          width: 2px;
+          height: 16px;
+          background-color: color-mix(in srgb, currentColor, transparent 60%);
+          position: absolute;
+          left: 0;
+          top: 50%;
+          transform: skewX(-17deg) translateY(-50%);
+        }
+      }
+    }
+    /* pending tabs */
+    &[pending] {
+      & .tab-icon-image { opacity: 0.4; }
+      & .tab-label-container { opacity: 0.6; }
+    }
+    /* unloaded tabs */
+    &[discarded] {
+      & .tab-icon-stack::after {
+        content: "";
+        width: 20px !important;
+        height: 20px !important;
+        border: 1px dashed var(--pf-text-color);
+        position: absolute;
+        left: -3px;
+        top: -3px;
+        border-radius: 999px;
+        opacity: 0.4;
+      }
+      & .tab-icon-image {
+        transform: scale(0.9);
+      }
+    }
+  }
+  & .tab-background {
+    --tab-min-height: var(--pf-tab-height);
+    --tab-selected-bgcolor: light-dark(rgba(255, 255, 255, 0.8), rgba(238, 239, 243, 0.2));
+    --tab-selected-shadow: 0 0 1px rgba(0, 0, 0, 0.075), 0 1px 1px 1px rgba(0, 0, 0, 0.09);
+    --tab-inner-inline-margin: var(--pf-separation);
+    outline: none !important;
+
+    :root[uidensity="compact"] & {
+      --tab-min-height: var(--pf-tab-height);
+    }
+    &[multiselected]:not([selected]) {
+      background-color: var(--tab-hover-background-color) !important;
+      box-shadow: none !important;
+    }
+  }
+  & .tab-content {
+    padding-inline: calc(var(--tab-inline-padding) + var(--pf-separation) - 8px) !important;
+  }
+  & .tab-label {
+    color: var(--pf-text-color);
+    
+    &:-moz-window-inactive {
+      color: var(--pf-text-inactive-color);
+    }
+  }
+  &[expanded] {
+    --tab-icon-end-margin: 10px !important;
+  }
+  .tab-close-button {
+    outline: none !important;
+  }
+  /* tabs: hide close button */
+  & .tabbrowser-tab[visuallyselected]:not([pinned]) {
+    & .tab-close-button { display: none !important; }
+    &:is(:hover) .tab-close-button { display: block !important; }
+  }
+}
+
+/* tabs: containers */
+@media -moz-pref("sidebar.verticalTabs") {
+  .tabbrowser-tab[usercontextid] {
+    &:not([pinned]) {
+      & .tab-context-line {
+        display: none;
+      }
+      .tab-icon-stack::before {
+        content: "";
+        width: 24px;
+        height: 24px;
+        display: block;
+        position: absolute;
+        left: -4px;
+        top: -4px;
+        background: color-mix(in srgb, var(--identity-icon-color), transparent 80%);
+        border: 1px dashed color-mix(in srgb, var(--identity-icon-color), transparent 70%);
+        border-radius: var(--pf-border-radius-small);
+        box-sizing: border-box;
+        position: absolute;
+      }
+    }
+    &[pinned] {
+      & .tab-context-line {
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 3px;
+        width: 16px !important;
+        height: 2px !important;
+        margin: 0 !important;
+        transition: var(--pf-ts-25);
+      }
+      &[selected] {
+        & .tab-context-line {
+          width: calc(100% - (var(--pf-border-radius) * 4)) !important;
+        }
+      }
+    }
+  }
+}
+
+/* tabs: groups */
+#tabbrowser-tabs[orient="vertical"] {
+  .tab-group-label-hover-highlight {
+    margin: 0 !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+  }
+  .tab-group-label {
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: var(--pf-tab-height) !important;
+    margin-inline-end: 0 !important;
+    background-color: transparent !important;
+    box-shadow: none !important;
+    outline: none !important;
+    color: var(--pf-text-color) !important;
+    --tab-border-radius: var(--pf-border-radius);
+    
+    /* folder colors */
+    --pf-folder-color-1: var(--toolbar-bgcolor);
+    --pf-folder-color-2: color-mix(in srgb, var(--toolbar-color), var(--toolbar-bgcolor) 50%);
+    --pf-folder-color-bg: color-mix(in srgb, var(--pf-folder-color-1), light-dark(white, black) 95%);
+    --pf-folder-color-fg: light-dark(color-mix(in srgb, var(--pf-folder-color-2), black 40%), color-mix(in srgb, var(--pf-folder-color-2), white 40%));
+    
+    &:-moz-window-inactive {
+      color: var(--pf-text-inactive-color) !important;
+    }
+    #tabbrowser-tabs[movingtab-group] tab-group:has(.tab-group-label[dragover-groupTarget]) &,
+    &:hover {
+      background-color: var(--tab-hover-background-color) !important;
+    }
+    &::before {
+      content: "";
+      min-width: 24px;
+      min-height: 24px;
+      margin-inline: 2px 6px;
+      mask-image: var(--pf-icon-folder-out);
+      mask-repeat: no-repeat;
+      background-color: var(--pf-folder-color-fg);
+      transition: transform var(--pf-ts-25) var(--pf-fx-folder);
+    }
+    &::after {
+      content: "";
+      width: 18px;
+      height: 14px;
+      display: flex;
+      position: absolute;
+      left: 8px;
+      bottom: var(--pf-folder-bottom);
+      background: var(--pf-folder-color-bg);
+      border-radius: 3px;
+      box-shadow: inset 0 0 0 1.5px var(--pf-folder-color-fg);
+      transition: transform var(--pf-ts-25) var(--pf-fx-folder);
+    }
+    #tabbrowser-tabs[movingtab-group] tab-group:has(.tab-group-label[dragover-groupTarget]) &,
+    &[aria-expanded="true"] {
+      &::before { transform: skewX(16deg) scale(.85); }
+      &::after { transform: skewX(-16deg) scale(.85) translate(4.5px, 0px); }
+    }
+  }
+  tab-group {
+    --tab-group-line-color: color-mix(in srgb, var(--toolbar-color), var(--toolbar-bgcolor) 50%) !important;
+    
+    /* folders: accent color */
+    @media -moz-pref("parfait.bg.accent-color") {
+      --tab-group-line-color: color-mix(in srgb, var(--pf-accent-color), var(--toolbar-color) 30%) !important;
+      
+      .tab-group-label {
+        --pf-folder-color-1: var(--pf-accent-color);
+        --pf-folder-color-2: light-dark(var(--pf-accent-color), color-mix(in srgb, var(--pf-accent-color), white 60%));
+      }
+    }
+    /* folders: tab group color */
+    @media -moz-pref("parfait.tabs.groups.color") {
+      .tab-group-label {
+        --pf-folder-color-1: var(--tab-group-color);
+        --pf-folder-color-2: var(--tab-group-color);
+      }
+    }
+    & > .tabbrowser-tab {
+      min-height: var(--pf-tab-height);
+      max-height: calc(var(--pf-tab-height) + 4px);
+      transition-property: min-height, max-height, opacity !important;
+      transition-duration: var(--pf-ts-15) !important;
+      
+      #tabbrowser-tabs[movingtab] &:not(:is([selected], [multiselected])) {
+        transition: var(--pf-ts-15) !important;
+      }
+    }
+    &[collapsed] > .tabbrowser-tab:not([selected]) {
+      display: unset !important;
+      min-height: 0;
+      max-height: 0;
+      opacity: 0;
+      pointer-events: none;
+    }
+    &[collapsed]:not([hasactivetab]):has(.tabbrowser-tab[soundplaying]) .tab-group-label-container::after {
+      content: url("chrome://browser/skin/tabbrowser/tab-audio-playing-small.svg");
+      position: absolute;
+      right: calc(var(--pf-separation) * 1.5);
+      opacity: 0.5;
+      pointer-events: none;
+    }
+  }
+  .tab-group-label-container {
+    max-width: 100% !important;
+    margin-block: 2px !important;
+    margin-inline: var(--pf-separation) !important;
+    
+    #tabbrowser-tabs[orient="vertical"] & {
+      tab-group:not([collapsed]) > &, tab-group[collapsed][hasactivetab] > & {
+        padding-block-end: 2px !important;
+      }
+    }
+    &::after {
+      #tabbrowser-tab[orient="vertical"][expanded] & { display: none; }
+    }
+  }
+  .tab-group-line {
+    #tabbrowser-tabs[orient="vertical"][expanded] & {
+      width: 0 !important;
+    }
+  }
+  .tab-group-overflow-count-container { display: none !important; }
+  &[expanded] {
+    & tab-group > :is(.tabbrowser-tab),
+    &[movingtab][movingtab-addToGroup]:not([movingtab-group], [movingtab-ungroup]) .tabbrowser-tab:is(:active, [multiselected]) {
+      --space-medium: 18px;
+    }
+  }
+}

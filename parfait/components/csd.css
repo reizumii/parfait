@@ -1,0 +1,111 @@
+/* 
+  Parfait - csd.css
+  https://github.com/reizumii/parfait
+*/
+
+/* title bar */
+#nav-bar > .titlebar-buttonbox-container {
+  height: var(--pf-topbar-height);
+  visibility: visible !important;
+}
+
+@media -moz-pref("parfait.traffic-lights.enabled") or (-moz-platform: macos) {
+  .titlebar-buttonbox-container {
+    order: -1 !important;
+    margin-inline: 14px 4px;
+  }
+  .titlebar-buttonbox {
+    align-items: center !important;
+    gap: var(--pf-tl-gap);
+  }
+  .titlebar-button {
+    width: var(--pf-tl-size);
+    height: var(--pf-tl-size);
+    padding: 0 !important;
+    background-color: var(--pf-tl-button-color) !important;
+    box-shadow: inset 0 0 0 1px var(--pf-tl-border) !important;
+    border-radius: 50%;
+
+    &.titlebar-close {
+      order: 1 !important;
+      --pf-tl-button-color: var(--pf-tl-close-color);
+      --pf-tl-button-icon: var(--pf-tl-close-icon);
+    }
+    &.titlebar-min {
+      order: 2 !important;
+      --pf-tl-button-color: var(--pf-tl-min-color);
+      --pf-tl-button-icon: var(--pf-tl-min-icon);
+    }
+    &.titlebar-max,
+    &.titlebar-restore {
+      order: 3 !important;
+      --pf-tl-button-color: var(--pf-tl-max-color);
+    }
+    &.titlebar-max {
+      --pf-tl-button-icon: var(--pf-tl-max-icon);
+    }
+    &.titlebar-restore {
+      order: 3 !important;
+      --pf-tl-button-icon: var(--pf-tl-restore-icon);
+    }
+    &:hover {
+      filter: brightness(0.9);
+    }
+    &::before {
+      content: "" !important;
+      min-width: 12px;
+      height: 12px;
+      display: block;
+      background-image: var(--pf-tl-button-icon);
+      background-size: 12px;
+      background-position: center;
+      opacity: 0;
+    }
+    &:-moz-window-inactive {
+      --pf-tl-button-color: var(--pf-tl-mono);
+      --pf-tl-border: transparent;
+    }
+  }
+  .titlebar-buttonbox:not(:-moz-window-inactive):hover .titlebar-button::before {
+    opacity: 0.5;
+  }
+  /* tl: monochrome buttons */
+  @media -moz-pref("parfait.traffic-lights.mono") {
+    .titlebar-buttonbox:not(:hover) .titlebar-button {
+      --pf-tl-button-color: var(--pf-tl-mono);
+      --pf-tl-border: transparent;
+    }
+  }
+  /* tl: force traffic lights */
+  @media (-moz-platform: linux) {
+    .titlebar-button {
+      display: flex !important;
+    }
+    :root[sizemode="normal"] .titlebar-restore,
+    :root[sizemode="maximized"] .titlebar-max {
+      display: none !important;
+    }
+  }
+  /* tl: macos fixes */
+  @media (-moz-platform: macos) {
+    @media -moz-pref("parfait.toolbar.unified-sidebar") and -moz-pref("sidebar.visibility", "hide-sidebar") {
+      :root:has(#tabbrowser-tabs:not([expanded])) {
+        .titlebar-button {
+          display: flex !important;
+          appearance: none !important;
+        }
+        &[sizemode="normal"] .titlebar-restore,
+        &[sizemode="maximized"] .titlebar-max {
+          display: none !important;
+        }
+        /* hide native csd */
+        .titlebar-buttonbox {
+          appearance: none !important;
+        }
+      }
+    }
+    .titlebar-buttonbox {
+      margin-inline: 0 !important;
+    }
+  }
+}
