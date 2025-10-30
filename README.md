@@ -1,13 +1,30 @@
-<h1 align="center">Parfait</h1>
+<p align="center"><img width="220" src="https://github.com/reizumii/parfait/blob/master/parfait/assets/logo/logo.png" alt="Parfait logo"></p>
 
-<p align="center">A tasty theme modification for Firefox 🦊 (WIP)</p>
+<p align="center">
+  <a href="https://github.com/reizumii/parfait/releases/latest">
+    <img src="https://img.shields.io/github/v/release/reizumii/parfait?style=for-the-badge&label=version&color=dcb9ff">
+  </a>
+  <a href="https://www.firefox.com/">
+    <img src="https://img.shields.io/badge/firefox-144-ff8a50?style=for-the-badge&logo=firefoxbrowser&logoColor=ff8a50">
+  </a>
+</p>
 
-<picture>
-	<source media="(prefers-color-scheme: light)" srcset="https://github.com/user-attachments/assets/bcaeaf4e-9d7a-48a6-83be-357136d287b0">
-	<source media="(prefers-color-scheme: dark)" srcset="https://github.com/user-attachments/assets/b5fecefa-0ea7-4b39-9940-4df32aa65ab4">
-	<img width="1420" alt="Mockup of Parfait on macOS">
-</picture>
+<p align="center">A tasty theme modification for Firefox 🦊</p>
+
+<p align="center">
+  <img width="1920" src="https://github.com/user-attachments/assets/48a4a24c-ceec-4d8b-9d29-bbd5ef52cb37" alt="Three browser windows showcasing the features of Parfait; from top to bottom, compact mode, floating sidebar, and unified sidebar">
+</p>
+
+<p align="center">
+  <img width="1000" src="https://github.com/user-attachments/assets/03371cd4-3400-4492-8067-bf6b522f09ac" alt="Demonstration of Parfait theme showing its features">
+</p>
 
 ## Getting started
 
-Under construction... 🚧
+### [Parfait Wiki](https://github.com/reizumii/parfait/wiki)
+
+### [Installing Parfait](https://github.com/reizumii/parfait/wiki/Installing-Parfait)
+
+## Acknowledgements
+
+- [GWfox](https://github.com/akkva/gwfox) by [akkva](https://github.com/akkva) – inspiration and sidebar logic
