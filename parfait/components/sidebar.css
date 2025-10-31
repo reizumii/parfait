@@ -474,7 +474,7 @@ moz-button[view="viewCustomizeSidebar"] { order: 99; }
         &:not(:has(
           #sidebar-button:hover, #back-button:hover, #forward-button:hover,
           #stop-reload-button:hover, #vertical-spacer:hover, #urlbar:hover
-        )):has(#nav-bar:hover, toolbarbutton[open], #downloads-button[notification]) #nav-bar {
+        )):has(#nav-bar:hover, #nav-bar toolbarbutton[open], #downloads-button[notification]) #nav-bar {
           top: 0;
           transition-delay: 0s !important;
         }
@@ -485,7 +485,7 @@ moz-button[view="viewCustomizeSidebar"] { order: 99; }
         .titlebar-buttonbox-container:hover, #sidebar-button:hover,
         #back-button:hover, #forward-button:hover,
         #stop-reload-button:hover, #vertical-spacer:hover, #urlbar:hover
-      )):has(#nav-bar:hover, toolbarbutton[open], #downloads-button[notification]) #nav-bar {
+      )):has(#nav-bar:hover, #nav-bar toolbarbutton[open], #downloads-button[notification]) #nav-bar {
         top: 0;
         transition-delay: 0s !important;
       }
