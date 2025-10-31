@@ -4,7 +4,7 @@
 */
 
 /* toolbar items */
-toolbar .toolbarbutton-1 {
+toolbar .toolbarbutton-1:not(#PlacesChevron) {
   min-width: var(--pf-toolbaritem-size);
   min-height: var(--pf-toolbaritem-size);
   max-width: var(--pf-toolbaritem-size);
@@ -163,14 +163,40 @@ toolbar .toolbarbutton-1 {
 }
 
 /* bookmarks toolbar */
-:root:not([customizing]):has(#tabbrowser-tabs[expanded]) {
-  #PersonalToolbar {
-    margin-inline-start: var(--pf-sidebar-width);
-    transition: none !important;
-    
-    &[collapsed] {
-      max-height: var(--pf-bookmarks-height) !important;
-      visibility: unset !important;
-    }
+#PersonalToolbar {
+  position: fixed;
+  bottom: calc(0px - var(--pf-bookmarks-height));
+  z-index: 3;
+  width: calc(100% - (var(--pf-bookmarks-margin) + var(--pf-browser-separation)));
+  height: var(--pf-bookmarks-height);
+  margin-left: var(--pf-bookmarks-margin);
+  padding: 4px !important;
+  background-color: var(--pf-panel-bgcolor) !important;
+  border: 1px solid var(--pf-border-color) !important;
+  border-radius: var(--pf-border-radius);
+  box-shadow: var(--pf-shadow-medium);
+  overflow: unset !important;
+  opacity: 0;
+  transition: var(--pf-ts-25) !important;
+  transition-delay: var(--pf-ts-25) !important;
+  
+  &:hover,
+  &:has(.bookmark-item[open]) {
+    opacity: 1;
+    bottom: var(--pf-separation);
+  }
+  &::before,
+  &::after {
+    content: "";
+    width: 100%;
+    height: var(--pf-browser-separation);
+    position: absolute;
+    left: 0;
+  }
+  &::before {
+    top: calc(0px - var(--pf-browser-separation));
+  }
+  &::after {
+    bottom: calc(0px - var(--pf-browser-separation));
   }
 }

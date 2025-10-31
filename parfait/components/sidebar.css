@@ -17,6 +17,7 @@
     &:has(#tabbrowser-tabs:not([expanded])) {
       @media not -moz-pref("sidebar.visibility", "hide-sidebar") {
         --pf-topbar-margin: 0;
+        --pf-bookmarks-margin: var(--pf-sidebar-collapsed);
         
         :is(#tabbrowser-tabbox, #sidebar-box) {
           transition-delay: 0s !important;
@@ -35,7 +36,7 @@
     }
     &:has(
       #nav-bar toolbarbutton[open]:not(#urlbar-searchmode-switcher),
-      #nav-bar:hover, #PersonalToolbar:hover, #downloads-button[notification]
+      #nav-bar:hover, #downloads-button[notification]
     ) :is(#tabbrowser-tabbox, #sidebar-box, #sidebar-splitter) {
       margin-top: 0 !important;
       transition-delay: 0s !important;
@@ -272,6 +273,8 @@ moz-button[view="viewCustomizeSidebar"] { order: 99; }
 /* floating sidebar */
 @media -moz-pref("sidebar.verticalTabs") and -moz-pref("sidebar.visibility", "hide-sidebar") {
   :root:has(#tabbrowser-tabs:not([expanded])) {
+    --pf-bookmarks-margin: var(--pf-browser-separation);
+    
     /* sidebar */
     #sidebar-main {
       display: flex !important;

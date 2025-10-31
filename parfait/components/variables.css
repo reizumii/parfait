@@ -13,6 +13,7 @@
   --pf-pinned-height: 48px;
   --pf-tab-height: 36px;
   --pf-topbar-height: 46px;
+  --pf-bookmarks-height: 40px;
   --pf-sidebar-width: 260px;
   --pf-urlbar-height: 36px;
   --pf-urlbar-width-max: 720px;
@@ -34,15 +35,15 @@
   --pf-fl-trigger-width: 12px;
   --pf-findbar-width: 320px;
   --pf-extensions-width: 228px;
-  --pf-bookmarks-height: 0px;
   --pf-folder-bottom: 10px;
   
   /* calc */
   --pf-sidebar-gutter: calc((var(--pf-sidebar-width) - var(--pf-sidebar-min)) + var(--pf-tl-margin));
   --pf-sidebar-gutter-macos: calc(var(--pf-sidebar-width) - var(--pf-sidebar-min) - 2px);
-  --pf-sidebar-margin: calc(var(--pf-topbar-height) - var(--pf-sidebar-urlbar-gap) - var(--pf-bookmarks-height));
-  --pf-topbar-margin: calc(var(--pf-browser-separation) - var(--pf-topbar-height) - var(--pf-bookmarks-height));
+  --pf-sidebar-margin: calc(var(--pf-topbar-height) - var(--pf-sidebar-urlbar-gap));
+  --pf-topbar-margin: calc(var(--pf-browser-separation) - var(--pf-topbar-height));
   --pf-collapsed-width: calc(var(--pf-tl-width) - var(--pf-separation));
+  --pf-bookmarks-margin: var(--pf-sidebar-width);
   
   /* corner radii */
   --pf-border-radius: 12px;
@@ -144,13 +145,6 @@
   @media (-moz-platform: macos) { --pf-window-radius: 12px; }
   @media (-moz-mac-tahoe-theme) { --pf-window-radius: 16px; }
   
-  /* bookmarks toolbar */
-  @media not -moz-pref("browser.toolbars.bookmarks.visibility", "never") {
-    --pf-bookmarks-height: 28px;
-    
-    &[uidensity="compact"] { --pf-bookmarks-height: 22px; }
-    &[uidensity="touch"] { --pf-bookmarks-height: 34px; }
-  }
   
   /* title bar margin */
   @media -moz-pref("parfait.traffic-lights.enabled") {
