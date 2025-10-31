@@ -296,7 +296,7 @@ moz-button[view="viewCustomizeSidebar"] { order: 99; }
         backdrop-filter: var(--pf-acrylic-filter);
         --pf-sidebar-bgcolor-1: color-mix(in srgb, var(--pf-sidebar-bgcolor-2), transparent 20%);
         
-        @media -moz-pref("parfait.bg.gradient") {
+        @media -moz-pref("parfait.bg.accent-color") and -moz-pref("parfait.bg.gradient") {
           --pf-sidebar-bgcolor-1: linear-gradient(color-mix(in srgb, var(--pf-bg-gradient-fade), transparent 20%), color-mix(in srgb, var(--pf-browser-bgcolor), transparent 20%));
         }
       }
