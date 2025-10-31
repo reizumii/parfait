@@ -4,6 +4,9 @@
 */
 
 /* title bar */
+#toolbar-menubar > .titlebar-buttonbox-container {
+  display: none;
+}
 #nav-bar > .titlebar-buttonbox-container {
   height: var(--pf-topbar-height);
   visibility: visible !important;

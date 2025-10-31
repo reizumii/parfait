@@ -36,7 +36,7 @@
     &:has(
       #nav-bar toolbarbutton[open]:not(#urlbar-searchmode-switcher),
       #nav-bar:hover, #PersonalToolbar:hover, #downloads-button[notification]
-    ) :is(#tabbrowser-tabbox, #sidebar-box) {
+    ) :is(#tabbrowser-tabbox, #sidebar-box, #sidebar-splitter) {
       margin-top: 0 !important;
       transition-delay: 0s !important;
     }
@@ -47,8 +47,8 @@
         #urlbar:hover, #sidebar-button:hover,
         #back-button:hover, #forward-button:hover,
         #stop-reload-button:hover, #vertical-spacer:hover
-      ):is(#main-window) :is(#tabbrowser-tabbox, #sidebar-box),
-      &:not([inDOMFullscreen]) :is(#tabbrowser-tabbox, #sidebar-box) {
+      ):is(#main-window) :is(#tabbrowser-tabbox, #sidebar-box, #sidebar-splitter),
+      &:not([inDOMFullscreen]) :is(#tabbrowser-tabbox, #sidebar-box, #sidebar-splitter) {
         margin-top: var(--pf-topbar-margin) !important;
         transition: margin-top var(--pf-ts-25);
       }
@@ -148,6 +148,7 @@
     margin-top: calc(var(--pf-browser-separation) - var(--pf-topbar-height)) !important;
     padding-block-end: var(--pf-browser-separation) !important;
     transition: margin-top var(--pf-ts-25);
+    --browser-area-z-index-sidebar: 2;
   }
   #sidebar {
     --border-radius-medium: var(--pf-browser-radius) !important;
@@ -155,6 +156,7 @@
   #sidebar-splitter {
     width: var(--pf-browser-separation) !important;
     margin-bottom: var(--pf-browser-separation) !important;
+    transition: var(--pf-ts-25) !important;
   }
   #inputs[part="inputs"] {
     padding-inline: 0 !important;
