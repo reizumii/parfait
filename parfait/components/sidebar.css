@@ -145,10 +145,13 @@
 @media -moz-pref("sidebar.verticalTabs") {
   #sidebar-box,
   :root:has(#tabbrowser-tabs[expanded]) #sidebar-splitter {
-    margin-top: calc(var(--pf-browser-separation) - var(--pf-topbar-height)) !important;
     padding-block-end: var(--pf-browser-separation) !important;
-    transition: margin-top var(--pf-ts-25);
     --browser-area-z-index-sidebar: 2;
+    
+    @media -moz-pref("parfait.toolbar.unified-toolbar") {
+      margin-top: calc(var(--pf-browser-separation) - var(--pf-topbar-height)) !important;
+      transition: margin-top var(--pf-ts-25);
+    }
   }
   #sidebar {
     --border-radius-medium: var(--pf-browser-radius) !important;
