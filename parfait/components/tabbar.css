@@ -64,7 +64,7 @@ spacer[part="overflow-end-indicator"] {
 
 /* tabs: pinned tabs */
 #pinned-tabs-container[orient="vertical"] {
-  margin-block-end: -6px;
+  margin-block: -2px -4px;
   
   #sidebar-main[hidden] &,
   #tabbrowser-tabs[expanded] & {
@@ -73,22 +73,14 @@ spacer[part="overflow-end-indicator"] {
     --tab-pinned-container-margin-inline-expanded: 0;
     --tab-height-with-margin-padding: calc(var(--pf-pinned-height) + 8px);
   }
-  @media not -moz-pref("sidebar.visibility", "hide-sidebar") {
-    #tabbrowser-tabs:not([expanded]) & {
-      width: var(--pf-sidebar-collapsed) !important;
-    }
-  }
   & .tabbrowser-tab[pinned] {
     & .tab-background {
+      #sidebar-main[hidden] &,
       #tabbrowser-tabs[expanded] & {
+        --tab-min-height: var(--pf-pinned-height);
         --tab-pinned-margin-inline-expanded: 4px;
         --tab-inner-inline-margin: 4px !important;
-        --tab-block-margin: 2px 6px;
-      }
-      @media -moz-pref("sidebar.visibility", "hide-sidebar") {
-        --tab-pinned-margin-inline-expanded: 4px;
-        --tab-inner-inline-margin: 4px !important;
-        --tab-block-margin: 2px 6px;
+        --tab-block-margin: 4px;
       }
       .tabbrowser-tab:not(:hover) > .tab-stack > &:not([selected], [multiselected]) {
         background-color: var(--pf-toolbar-bgcolor) !important;
