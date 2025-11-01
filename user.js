@@ -19,7 +19,7 @@ user_pref("parfait.animations.enabled", true);
 user_pref("parfait.bg.accent-color", false);
 user_pref("parfait.bg.contrast", 2);
 user_pref("parfait.bg.gradient", false);
-user_pref("parfait.bg.opacity", 2);
+user_pref("parfait.bg.opacity", 4);
 user_pref("parfait.bg.transparent", false);
 
 /* tabs */
