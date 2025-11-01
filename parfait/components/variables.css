@@ -41,7 +41,7 @@
   --pf-sidebar-margin: calc(var(--pf-urlbar-height) + var(--pf-separation) - var(--tab-block-margin));
   --pf-topbar-margin: calc(var(--pf-browser-separation) - var(--pf-topbar-height));
   --pf-collapsed-width: calc(var(--pf-tl-width) - var(--pf-separation));
-  --pf-bookmarks-margin: var(--pf-sidebar-width);
+  --pf-bookmarks-margin: calc(var(--pf-sidebar-width) + var(--pf-separation));
   
   /* corner radii */
   --pf-border-radius: 12px;

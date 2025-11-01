@@ -167,7 +167,7 @@ toolbar .toolbarbutton-1:not(#PlacesChevron) {
   position: fixed;
   bottom: calc(0px - var(--pf-bookmarks-height));
   z-index: 3;
-  width: calc(100% - (var(--pf-bookmarks-margin) + var(--pf-browser-separation)));
+  width: calc(100% - (var(--pf-bookmarks-margin) + (var(--pf-separation) * 2)));
   height: var(--pf-bookmarks-height);
   margin-left: var(--pf-bookmarks-margin);
   padding: 4px !important;
@@ -180,6 +180,9 @@ toolbar .toolbarbutton-1:not(#PlacesChevron) {
   transition: var(--pf-ts-25) !important;
   transition-delay: var(--pf-ts-25) !important;
   
+  @media -moz-pref("parfait.window.borderless") {
+    width: calc(100% - (var(--pf-bookmarks-margin) + var(--pf-separation)));
+  }
   &:hover,
   &:has(.bookmark-item[open]) {
     opacity: 1;
