@@ -30,17 +30,15 @@
   --pf-toolbar-spacing: 2px;
   --pf-sidebar-min: 210px;
   --pf-sidebar-collapsed: 52px;
-  --pf-sidebar-urlbar-gap: 5px;
   --pf-browser-separation-inline: 0 var(--pf-browser-separation);
   --pf-fl-trigger-width: 12px;
   --pf-findbar-width: 320px;
   --pf-extensions-width: 228px;
-  --pf-folder-bottom: 10px;
   
   /* calc */
   --pf-sidebar-gutter: calc((var(--pf-sidebar-width) - var(--pf-sidebar-min)) + var(--pf-tl-margin));
   --pf-sidebar-gutter-macos: calc(var(--pf-sidebar-width) - var(--pf-sidebar-min) - 2px);
-  --pf-sidebar-margin: calc(var(--pf-topbar-height) - var(--pf-sidebar-urlbar-gap));
+  --pf-sidebar-margin: calc(var(--pf-urlbar-height) + var(--pf-separation) - var(--tab-block-margin));
   --pf-topbar-margin: calc(var(--pf-browser-separation) - var(--pf-topbar-height));
   --pf-collapsed-width: calc(var(--pf-tl-width) - var(--pf-separation));
   --pf-bookmarks-margin: var(--pf-sidebar-width);
@@ -97,16 +95,12 @@
     --pf-pinned-height: 40px;
     --pf-urlbar-height: 32px;
     --pf-urlbar-result-height: 32px;
-    --pf-sidebar-urlbar-gap: 10px;
-    --pf-folder-bottom: 7px;
   }
   /* density: touch mode */
   &[uidensity="touch"] {
     --pf-tab-height: 40px;
     --pf-pinned-height: 56px;
     --pf-urlbar-height: 36px;
-    --pf-sidebar-urlbar-gap: 4px;
-    --pf-folder-bottom: 12px;
   }
   
   /* bg: opacity */

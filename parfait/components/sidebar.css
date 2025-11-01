@@ -443,10 +443,9 @@ moz-button[view="viewCustomizeSidebar"] { order: 99; }
     &[macOSNativeFullscreen] {
       --pf-tl-width: var(--pf-separation);
     }
-    
     /* fs: sidebar */
     #sidebar-main {
-      padding-top: calc((var(--pf-topbar-height) * 2) - var(--pf-sidebar-urlbar-gap));
+      padding-top: calc(var(--pf-topbar-height) + var(--pf-sidebar-margin));
     }
     /* fs: keep navbar out of the way :) */
     #nav-bar {

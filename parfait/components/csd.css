@@ -49,7 +49,6 @@
       --pf-tl-button-icon: var(--pf-tl-max-icon);
     }
     &.titlebar-restore {
-      order: 3 !important;
       --pf-tl-button-icon: var(--pf-tl-restore-icon);
     }
     &:hover {
