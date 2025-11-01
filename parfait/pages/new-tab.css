@@ -36,10 +36,26 @@
     border: 1px solid var(--pf-border-color-alt) !important;
     --border-radius-medium: 99px !important;
   }
+  .top-site-outer:hover {
+    background: transparent !important;
+    
+    & .tile {
+      box-shadow: none !important;
+      outline: 6px solid var(--pf-border-color) !important;
+      transition: transform 0.25s;
+    }
+    &:active .tile {
+      transform: scale(0.95);
+    }
+  }
+  .top-site-outer .icon-pin-small {
+    visibility: hidden;
+  }
   .top-site-outer .tile {
     --size-item-large: 36px;
+    --border-radius-large: var(--border-radius-medium);
   }
-  .top-site-outer .tile .icon-wrapper {
+  .top-site-outer:not(.add-button) .tile .icon-wrapper {
     width: 100% !important;
     height: 100% !important;
   }
@@ -55,7 +71,7 @@
     border: 1px solid var(--newtab-border-color) !important;
     --border-radius-small: 99px;
   }
-  .context-menu {
+  .top-sites-list .context-menu {
     inset-block-start: 34px !important;
     inset-inline-start: 50% !important;
   }
