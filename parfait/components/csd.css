@@ -16,6 +16,7 @@
   .titlebar-buttonbox-container {
     order: -1 !important;
     margin-inline: 14px 4px;
+    z-index: 2;
   }
   .titlebar-buttonbox {
     align-items: center !important;

@@ -135,13 +135,13 @@ toolbar .toolbarbutton-1:not(#PlacesChevron) {
       position: fixed;
       top: 0;
       left: 0;
-      z-index: 0;
+      z-index: 1;
     }
   }
 }
 /* keep toolbar items on top of vertical spacer */
 #nav-bar-customization-target > :is(toolbarbutton, toolbaritem) {
-  z-index: 1;
+  z-index: 2;
 }
 
 /* menu bar */

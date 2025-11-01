@@ -36,6 +36,16 @@
     border: 1px solid var(--pf-border-color-alt) !important;
     --border-radius-medium: 99px !important;
   }
+  .top-site-outer .tile {
+    --size-item-large: 36px;
+  }
+  .top-site-outer .context-menu-button {
+    top: 6px !important;
+    right: 16px !important;
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--newtab-border-color) !important;
+    --border-radius-small: 99px;
+  }
   /* logo */
   @media -moz-pref("parfait.new-tab.logo", 0) {
     .logo-and-wordmark { display: none !important; }
