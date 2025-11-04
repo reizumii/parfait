@@ -15,12 +15,14 @@
     --text-color-deemphasized: color-mix(in srgb, currentColor, transparent 55%) !important;
     --color-accent-primary: var(--pf-accent-color) !important;
     --color-accent-primary-hover: color-mix(in srgb, var(--pf-accent-color), black 10%) !important;
+    --color-accent-primary-active: color-mix(in srgb, var(--pf-accent-color), black 20%) !important;
     
+    --border-radius-small: 8px !important;
     --border-radius-medium: 12px !important;
   }
   @media (-moz-platform: windows) {
     body {
-      font-family: "Segoe UI Variable", system-ui, sans-serif !important;
+      font-family: "Segoe UI Variable", "Segoe UI", system-ui, sans-serif !important;
     }
   }
   @media -moz-pref("parfait.new-tab.bg.pattern") {
@@ -36,15 +38,16 @@
     border: 1px solid var(--pf-border-color-alt) !important;
     --border-radius-medium: 99px !important;
   }
-  .top-site-outer:hover {
-    background: transparent !important;
-    
-    & .tile {
+  .top-site-outer {
+    &:hover {
+      background: transparent !important;
+    }
+    &:hover .tile {
       box-shadow: none !important;
       outline: 6px solid var(--pf-border-color) !important;
       transition: transform 0.25s;
     }
-    &:active .tile {
+    & .top-site-button:hover:active .tile {
       transform: scale(0.95);
     }
   }
@@ -158,6 +161,10 @@
   .home-section .divider {
     margin-inline: -20px !important;
   }
+  .home-section .section .selector {
+    font-family: inherit;
+    margin-left: 12px !important;
+  }
   /* wallpaper */
   .home-section .wallpapers-section h2 {
     font-size: 18px !important;
@@ -180,6 +187,10 @@
   }
   #custom-wallpaper {
     box-shadow: none !important;
+    
+    &::after {
+      opacity: 0.5;
+    }
   }
   .category-list {
     grid-auto-rows: 100px !important;
@@ -194,9 +205,11 @@
     bottom: 8px;
     font-weight: 600;
     text-align: left !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
     color: #fff;
   }
   #custom-wallpaper {
+    border-style: solid !important;
     border-width: 1px !important;
   }
   #custom-wallpaper + label {
@@ -279,6 +292,63 @@
   .context-menu > ul > li.separator {
     width: calc(100% - 20px) !important;
     margin-inline: 10px !important;
+  }
+  /* edit shortcut */
+  .edit-topsites-wrapper .modal {
+    width: fit-content !important;
+    border-radius: var(--border-radius-medium) !important;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.125) !important;
+    backdrop-filter: var(--pf-bg-blur);
+    animation: modal 0.25s;
+    animation-timing-function: cubic-bezier(0.42, 0, 0, 1);
+    transform-origin: top center;
+  }
+  @keyframes modal {
+    0% {
+      transform: scale(0.75);
+      filter: blur(8px);
+      opacity: 0;
+    }
+    100% {
+      transform: scale(1);
+      filter: blur(0px);
+      opacity: 1;
+    }
+  }
+  .topsite-form .form-input-container {
+    max-width: 600px !important;
+  }
+  .topsite-form .form-wrapper {
+    min-width: 260px;
+  }
+  .topsite-form label {
+    --font-size-large: 14px;
+  }
+  .topsite-form span {
+    font-size: 13px !important;
+    font-weight: 600;
+    opacity: 0.5;
+  }
+  .topsite-form .form-wrapper input[type="text"] {
+    height: 36px !important;
+  }
+  .topsite-form .top-site-outer {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    min-width: 220px;
+    margin-block-start: 0 !important;
+    border: 1px solid var(--pf-border-color);
+  }
+  .fields-and-preview .top-site-outer .top-site-button {
+    text-decoration: none !important;
+  }
+  .topsite-form .actions {
+    justify-content: space-between !important;
+  }
+  .topsite-form .actions button {
+    font-size: 14px !important;
+    margin-inline-start: 0 !important;
   }
   /* weather */
   .weatherCard {
