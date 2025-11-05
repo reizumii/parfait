@@ -4,6 +4,7 @@
 */
 
 :root {
+  --pf-icon-arrow-right-short: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='context-fill' fill-opacity='context-fill-opacity' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11.44 9H2V7.5H11.44L7.25 3.31L8.31 2.25L13.78 7.72C13.9205 7.86063 13.9993 8.05125 13.9993 8.25C13.9993 8.44875 13.9205 8.63937 13.78 8.78L8.31 14.25L7.25 13.189L11.44 9Z'/%3E%3C/svg%3E");
   --pf-icon-chevron-right-small: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='context-fill' fill-opacity='context-fill-opacity' viewBox='0 0 12 12'%3E%3Cpath d='M9.213 6.475q0 .146-.059.278a.75.75 0 0 1-.175.244l-3.755 3.677a.64.64 0 0 1-.464.185.64.64 0 0 1-.327-.088.7.7 0 0 1-.245-.234.667.667 0 0 1 .117-.81L7.65 6.475 4.306 3.223A.656.656 0 0 1 4.76 2.09a.64.64 0 0 1 .464.185l3.755 3.677q.117.118.175.244.06.127.059.279'/%3E%3C/svg%3E");
   --pf-icon-search: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='context-fill' fill-opacity='context-fill-opacity' viewBox='0 0 16 16'%3E%3Cpath d='M7.625 2a5.5 5.5 0 0 1 4.382 8.821l1.648 1.649a.75.75 0 1 1-1.06 1.06l-1.649-1.648A5.5 5.5 0 1 1 7.625 2m0 1.5a4 4 0 1 0 0 8 4 4 0 0 0 0-8'/%3E%3C/svg%3E");
   

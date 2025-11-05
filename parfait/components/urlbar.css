@@ -251,7 +251,7 @@
           margin-inline-start: 8px;
           display: flex;
           background-color: var(--pf-toolbar-bgcolor);
-          background-image: url("chrome://browser/skin/forward.svg");
+          background-image: var(--pf-icon-arrow-right-short);
           fill: var(--pf-text-color);
           background-position: center;
           background-repeat: no-repeat;
