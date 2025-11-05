@@ -1,5 +1,5 @@
 /*
-  Parfait Presets - Default Configuration
+  Parfait - Default Configuration
   https://github.com/reizumii/parfait
 */
 
