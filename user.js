@@ -48,7 +48,6 @@ user_pref("parfait.urlbar.search-mode.glow", true);
 
 /* window */
 user_pref("parfait.window.borderless", false);
-user_pref("parfait.window.browser-view-shadow", true);
 
 /* new tab */
 user_pref("parfait.new-tab.logo", 1);
