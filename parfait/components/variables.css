@@ -73,6 +73,7 @@
   --pf-toolbar-bgcolor-active: light-dark(rgba(0, 0, 0, 0.1), rgba(248, 248, 248, 0.175));
   --pf-toolbar-bgcolor-inactive: light-dark(rgba(0, 0, 0, 0.04), rgba(248, 248, 248, 0.075));
   --pf-urlbar-bgcolor: light-dark(white, #191a1a);
+  --pf-urlbar-bgcolor-transparent: light-dark(rgba(255, 255, 255, 0.875), rgba(25, 26, 26, 0.925));
   --pf-urlbar-border: inset 0 0 0 1px light-dark(rgba(0, 0, 0, 0.125), rgba(255, 255, 255, 0.15)), 0 0 0 1px light-dark(rgba(0, 0, 0, 0.0125), black);
   --pf-border-color: color-mix(in srgb, currentColor, transparent 87%);
   --pf-shadow-medium: 0 4px 16px rgba(0, 0, 0, 0.1);
@@ -87,7 +88,7 @@
   
   /* other */
   --pf-background-filter: blur(8px);
-  --pf-acrylic-filter: blur(64px) brightness(2);
+  --pf-acrylic-filter: blur(72px) brightness(1.6) saturate(1.4);
   
   /* density: compact mode */
   &[uidensity="compact"] {
@@ -175,6 +176,7 @@
   --focus-outline-color: var(--pf-accent-color) !important;
   --urlbar-box-bgcolor: transparent !important;
   --urlbar-box-focus-bgcolor: transparent !important;
+  --urlbarView-separator-color: light-dark(rgba(0, 0, 0, 0.075), rgba(255, 255, 255, 0.1)) !important;
   --urlbarView-hover-background: var(--pf-toolbar-bgcolor-hover) !important;
   --tab-hover-background-color: var(--pf-toolbar-bgcolor-hover) !important;
   --button-background-color: var(--pf-toolbar-bgcolor) !important;

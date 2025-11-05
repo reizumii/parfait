@@ -106,6 +106,7 @@
       margin: 0 !important;
       width: 90vw !important;
       max-width: var(--pf-urlbar-width-max) !important;
+      border-radius: var(--pf-urlbar-fl-radius);
       --inactive-titlebar-opacity: 1;
       
       & .urlbar-background {
@@ -114,6 +115,13 @@
         border: 0 !important;
         transition: none !important;
         --toolbar-field-focus-background-color: var(--pf-urlbar-bgcolor);
+      }
+      @media -moz-pref("parfait.blur.enabled") {
+        backdrop-filter: var(--pf-acrylic-filter);
+        
+        & .urlbar-background {
+          --toolbar-field-focus-background-color: var(--pf-urlbar-bgcolor-transparent);
+        }
       }
       & > .urlbar-input-container {
         padding-inline: calc((var(--urlbar-container-height) - var(--urlbar-height)) / 2 + var(--urlbar-container-padding)) !important;

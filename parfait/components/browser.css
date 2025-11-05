@@ -104,6 +104,11 @@
       @media -moz-pref("parfait.window.browser-view-shadow", false) {
         box-shadow: none !important;
       }
+      @media -moz-pref("parfait.blur.enabled") {
+        & browser:not(.devtools-toolbox-bottom-iframe) {
+          clip-path: inset(0 round 0.01px);
+        }
+      }
     }
   }
 }

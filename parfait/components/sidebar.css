@@ -300,9 +300,9 @@ moz-button[view="viewCustomizeSidebar"] { order: 99; }
           --pf-sidebar-bgcolor-1: linear-gradient(var(--pf-bg-gradient-fade), var(--pf-browser-bgcolor));
         }
       }
-      @media -moz-pref("parfait.sidebar.acrylic") {
+      @media -moz-pref("parfait.blur.enabled") {
         backdrop-filter: var(--pf-acrylic-filter);
-        --pf-sidebar-bgcolor-1: color-mix(in srgb, var(--pf-sidebar-bgcolor-2), transparent 20%);
+        --pf-sidebar-bgcolor-1: color-mix(in srgb, var(--pf-sidebar-bgcolor-2), transparent 12%);
         
         @media -moz-pref("parfait.bg.accent-color") and -moz-pref("parfait.bg.gradient") {
           --pf-sidebar-bgcolor-1: linear-gradient(color-mix(in srgb, var(--pf-bg-gradient-fade), transparent 20%), color-mix(in srgb, var(--pf-browser-bgcolor), transparent 20%));
@@ -331,12 +331,6 @@ moz-button[view="viewCustomizeSidebar"] { order: 99; }
     &:not([inDOMFullscreen]) #tabbrowser-tabbox {
       margin-inline: var(--pf-browser-separation) !important;
       position: relative;
-    }
-    /* fs: enable content blurring on floating sidebar */
-    @media -moz-pref("parfait.sidebar.acrylic") {
-      #tabbrowser-tabbox browser:not(.devtools-toolbox-bottom-iframe) {
-        clip-path: inset(0 round 0.01px);        
-      }
     }
     /* sidebar 2 */
     #sidebar-box {
