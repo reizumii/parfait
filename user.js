@@ -14,6 +14,7 @@ user_pref("sidebar.position_start", true);
 
 /* general */
 user_pref("parfait.animations.enabled", true);
+user_pref("parfait.blur.enabled", false);
 
 /* background */
 user_pref("parfait.bg.accent-color", false);
@@ -26,7 +27,6 @@ user_pref("parfait.bg.transparent", false);
 user_pref("parfait.tabs.groups.color", false);
 
 /* sidebar */
-user_pref("parfait.sidebar.acrylic", false);
 user_pref("parfait.sidebar.width.preset", 2);
 
 /* theme */
