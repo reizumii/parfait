@@ -63,6 +63,13 @@ toolbar .toolbarbutton-1:not(#PlacesChevron) {
   z-index: 2;
 }
 /* ti: align toolbar items */
+#nav-bar {
+  padding-inline-start: var(--pf-separation) !important;
+
+  @media -moz-pref("parfait.traffic-lights.enabled") or (-moz-platform: macos) {
+    :root:not([macOSNativeFullscreen]) & { padding-inline-start: 0 !important; }
+  }
+}
 #nav-bar,
 #nav-bar-customization-target {
   align-items: center;
