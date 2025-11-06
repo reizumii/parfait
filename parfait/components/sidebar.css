@@ -5,13 +5,9 @@
 
 /* top bar */
 @media -moz-pref("sidebar.verticalTabs") {
-  #nav-bar {
-    min-height: var(--pf-topbar-height) !important;
-  }
   #tabbrowser-tabbox, #sidebar-box {
     transition-delay: var(--pf-ts-15) !important;
   }
-  /* todo: optimize later */
   /* check sidebar state */
   :root {
     &:has(#tabbrowser-tabs:not([expanded])) {
@@ -28,7 +24,7 @@
       --pf-topbar-margin: 0;
     }
     @media not (-moz-platform: macos) {
-      @media -moz-pref("parfait.traffic-lights.enabled", false) {
+      @media not -moz-pref("parfait.traffic-lights.enabled") {
         &:has(.titlebar-buttonbox-container:hover) {
           --pf-topbar-margin: 0;
         }
@@ -54,74 +50,51 @@
         transition: margin-top var(--pf-ts-25);
       }
     }
-  }
-  /* sidebar button gutter */
-  :root:not([customizing]) {
-    #nav-bar-customization-target {
-      .toolbarbutton-1:first-child:is(#sidebar-button) {
-        transition: margin-inline-end var(--pf-ts-25);
-        
-        /* todo: fix this mess later */
-        @media -moz-pref("parfait.traffic-lights.enabled", false) and -moz-pref("parfait.toolbar.sidebar-gutter") {
-          margin-inline-start: var(--pf-separation) !important;
-          
-          @media not (-moz-platform: macos) {
-            :root:has(#tabbrowser-tabs[expanded]) & {
-              margin-inline-end: calc(var(--pf-sidebar-gutter) - var(--pf-separation)) !important;
-            }
-          }
-        }
-        @media -moz-pref("parfait.traffic-lights.enabled") and -moz-pref("parfait.toolbar.sidebar-gutter") {
-          :root:has(#tabbrowser-tabs[expanded]) & {
-            margin-inline-end: var(--pf-sidebar-gutter) !important;
-            margin-inline-start: 0 !important;
-          }
-        }
-        @media -moz-pref("parfait.toolbar.sidebar-gutter") and (-moz-platform: macos) {
-          margin-inline-end: var(--pf-sidebar-gutter-macos) !important;
-          margin-inline-start: 0 !important;
-          
-          :root[macOSNativeFullscreen]:has(#tabbrowser-tabs[expanded]) & {
-            margin-inline-start: var(--pf-separation) !important;
-            margin-inline-end: calc(var(--pf-sidebar-gutter) - var(--pf-separation)) !important;
-          }
-        }
-        @media -moz-pref("sidebar.visibility", "expand-on-hover") {
-          --pf-sidebar-gutter: 0;
-        }
-      }
-    }
-  }
-  /* main sidebar */
-  #sidebar-main {
-    width: var(--pf-sidebar-collapsed);
-    
+    /* sidebar button gutter */
     &:has(#tabbrowser-tabs[expanded]) {
-      width: var(--pf-sidebar-width) !important;
-      transition: width var(--pf-ts-25), transform var(--pf-ts-25) !important;
-      
-      #vertical-tabs {
-        width: var(--pf-sidebar-width);
-        -moz-window-dragging: drag;
-      }
-      @media not -moz-pref("sidebar.visibility", "expand-on-hover") {
-        margin-top: var(--pf-sidebar-margin);
-      }
-      @media -moz-pref("parfait.toolbar.unified-sidebar", false) {
-        margin-top: 0;
+      @media -moz-pref("parfait.toolbar.sidebar-gutter") {
+        --pf-sidebar-btn-margin: calc(var(--pf-sidebar-gutter) - var(--pf-separation));
+
+        @media -moz-pref("parfait.traffic-lights.enabled") {
+          --pf-sidebar-btn-margin: var(--pf-sidebar-gutter);
+        }
+        @media (-moz-platform: macos) {
+          --pf-sidebar-btn-margin: var(--pf-sidebar-gutter-macos);
+
+          &[macOSNativeFullscreen] {
+            --pf-sidebar-btn-margin: calc(var(--pf-sidebar-gutter) - var(--pf-separation));
+          }
+        }
       }
     }
+    @media -moz-pref("sidebar.visibility", "expand-on-hover") {
+      --pf-sidebar-gutter: 0px;
+    }
+    &:not([customizing]) #nav-bar-customization-target > #sidebar-button:first-child {
+      margin-inline-end: var(--pf-sidebar-btn-margin) !important;
+      transition: margin-inline-end var(--pf-ts-25);
+    }
+    /* main sidebar */
+    #sidebar-main {
+      width: var(--pf-sidebar-collapsed);
+
+      &:has(#tabbrowser-tabs[expanded]) {
+        width: var(--pf-sidebar-width) !important;
+        transition: width var(--pf-ts-25), transform var(--pf-ts-25) !important;
+
+        #vertical-tabs {
+          width: var(--pf-sidebar-width);
+          -moz-window-dragging: drag;
+        }
+        @media not -moz-pref("sidebar.visibility", "expand-on-hover") { margin-top: var(--pf-sidebar-margin); }
+        @media not -moz-pref("parfait.toolbar.unified-sidebar") { margin-top: 0; }
+      }
+    }
+    .wrapper { width: 100% !important; }
   }
-  .wrapper {
-    width: 100% !important;
-  }
 }
-#tabbrowser-tabs[orient="vertical"] {
-  grid-gap: 2px !important;
-}
-#sidebar-launcher-splitter {
-  display: none !important;
-}
+#tabbrowser-tabs[orient="vertical"] { grid-gap: 2px !important; }
+#sidebar-launcher-splitter { display: none !important; }
 
 /* sidebar: collapsed mode */
 #tabbrowser-tabs:not([expanded]) {
@@ -133,12 +106,8 @@
   .tab-group-label {
     min-width: var(--pf-tab-height) !important;
     
-    &::before {
-      margin-inline: 3px;
-    }
-    &::after {
-      left: 9px;
-    }
+    &::before { margin-inline: 3px; }
+    &::after { left: 9px; }
   }
 }
 
@@ -430,8 +399,8 @@ moz-button[view="viewCustomizeSidebar"] { order: 99; }
     --pf-fl-btn-reload-x: calc(var(--pf-sidebar-width) - var(--pf-toolbaritem-size));
     
     @media not (-moz-platform: macos) {
-      @media -moz-pref("parfait.traffic-lights.enabled", false) {
-        --pf-tl-width: 0px;
+      @media not -moz-pref("parfait.traffic-lights.enabled") {
+        --pf-tl-width: var(--pf-separation);
       }
     }
     &[macOSNativeFullscreen] {
@@ -463,7 +432,7 @@ moz-button[view="viewCustomizeSidebar"] { order: 99; }
     }
     /* fs: floating navbar hover */
     @media not (-moz-platform: macos) {
-      @media -moz-pref("parfait.traffic-lights.enabled", false) {
+      @media not -moz-pref("parfait.traffic-lights.enabled") {
         &:not(:has(
           #sidebar-button:hover, #back-button:hover, #forward-button:hover,
           #stop-reload-button:hover, #vertical-spacer:hover, #urlbar:hover
@@ -537,7 +506,7 @@ moz-button[view="viewCustomizeSidebar"] { order: 99; }
       --pf-urlbar-y: calc(var(--pf-topbar-height) + var(--pf-separation));
     }
     /* fs: hover state */
-    @media -moz-pref("parfait.traffic-lights.enabled", false) {
+    @media not -moz-pref("parfait.traffic-lights.enabled") {
       &:has(
         #sidebar-main:hover, #vertical-spacer:hover, #sidebar-button:hover,
         #back-button:hover, #forward-button:hover, #stop-reload-button:hover,
@@ -547,10 +516,6 @@ moz-button[view="viewCustomizeSidebar"] { order: 99; }
           .urlbar-page-action[open], #notification-popup-box[open]
         )
       ) {
-        #nav-bar {
-          width: calc(100% - (var(--pf-sidebar-width) + (var(--pf-separation) * 2)));
-          margin-inline: calc(var(--pf-sidebar-width) + (var(--pf-separation) * 2)) 0;
-        }
         #sidebar-main,
         #vertical-spacer::before {
           left: var(--pf-separation);

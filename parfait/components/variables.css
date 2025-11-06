@@ -34,6 +34,7 @@
   --pf-fl-trigger-width: 12px;
   --pf-findbar-width: 320px;
   --pf-extensions-width: 228px;
+  --pf-sidebar-btn-margin: 0px;
   
   /* calc */
   --pf-sidebar-gutter: calc((var(--pf-sidebar-width) - var(--pf-sidebar-min)) + var(--pf-tl-margin));

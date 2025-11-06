@@ -64,6 +64,7 @@ toolbar .toolbarbutton-1:not(#PlacesChevron) {
 }
 /* ti: align toolbar items */
 #nav-bar {
+  min-height: var(--pf-topbar-height) !important;
   padding-inline-start: var(--pf-separation) !important;
 
   @media -moz-pref("parfait.traffic-lights.enabled") or (-moz-platform: macos) {
