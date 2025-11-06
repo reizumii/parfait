@@ -27,13 +27,15 @@
       }
     }
     /* mini urlbar */
-    & #urlbar:not([open]),
-    & #urlbar-container::before {
-      position: fixed !important;
-      left: var(--pf-urlbar-x) !important;
-      top: var(--pf-urlbar-y) !important;
-      width: calc(var(--pf-sidebar-width) - (var(--pf-separation) * 2)) !important;
-      height: var(--pf-urlbar-height) !important;
+    @media -moz-pref("parfait.toolbar.unified-sidebar") {
+      & #urlbar:not([open]),
+      & #urlbar-container::before {
+        position: fixed !important;
+        left: var(--pf-urlbar-x) !important;
+        top: var(--pf-urlbar-y) !important;
+        width: calc(var(--pf-sidebar-width) - (var(--pf-separation) * 2)) !important;
+        height: var(--pf-urlbar-height) !important;
+      }
     }
     & #urlbar:not([open]) {
       /* urlbar items */
@@ -82,7 +84,7 @@
     }
     /* normal urlbar */
     & #urlbar:not([open]) {
-      @media -moz-pref("sidebar.visibility", "expand-on-hover") or -moz-pref("parfait.toolbar.unified-sidebar", false) {
+      @media -moz-pref("sidebar.visibility", "expand-on-hover") {
         left: unset !important;
         right: unset !important;
         top: unset !important;
@@ -196,9 +198,10 @@
       }
       & .urlbarView-url {
         margin-left: 0 !important;
+        --urlbarView-small-font-size: 13px;
         
         .urlbarView-row:not([selected]) & {
-          --link-color: var(--pf-accent-text-color);
+          --link-color: color-mix(in srgb, var(--pf-text-color), transparent 30%);
         }
       }
     }
@@ -211,6 +214,10 @@
       & .urlbarView-title-separator {
         display: flex !important;
         opacity: 0.5;
+        
+        &::before {
+          content: "\2013" !important;
+        }
       }
     }
     /* sr: hide labels */
@@ -268,6 +275,10 @@
             fill: var(--pf-urlbar-bgcolor);
           }
         }
+      }
+      & .urlbarView-url,
+      & .urlbarView-button-menu {
+        display: none !important;
       }
       /* sr: container */
       & .urlbarView-userContext {
@@ -345,6 +356,10 @@
     list-style-image: url("chrome://devtools/skin/images/alert.svg") !important;
     fill: light-dark(var(--color-red-50), var(--color-red-30));
   }
+  .urlbar-go-button,
+  .search-go-button {
+    list-style-image: var(--pf-icon-arrow-right-short) !important;
+  }
   & .urlbar-page-action,
   & .urlbar-revert-button,
   & .urlbar-go-button,
@@ -366,7 +381,7 @@
   & #urlbar-searchmode-switcher {
     margin: 2px 0 2px 2px !important;
     padding: var(--urlbar-searchmodeswitcher-inline-padding) !important;
-    border-radius: var(--pf-border-radius) !important;
+    border-radius: var(--pf-border-radius-small) !important;
     --urlbar-box-bgcolor: transparent;
     --urlbar-box-focus-bgcolor: transparent;
     
