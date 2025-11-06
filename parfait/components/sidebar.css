@@ -296,6 +296,11 @@ moz-button[view="viewCustomizeSidebar"] { order: 99; }
         left: var(--pf-separation);
       }
     }
+    @media not -moz-pref("parfait.toolbar.unified-sidebar") {
+      @media (-moz-platform: macos) {
+        &:has(#sidebar-main:hover) .titlebar-buttonbox { visibility: hidden; }
+      }
+    }
     /* fs: separation */
     &:not([inDOMFullscreen]) #tabbrowser-tabbox {
       margin-inline: var(--pf-browser-separation) !important;
