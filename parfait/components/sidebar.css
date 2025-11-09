@@ -295,10 +295,9 @@ moz-button[view="viewCustomizeSidebar"] { order: 99; }
       &:hover {
         left: var(--pf-separation);
       }
-    }
-    @media not -moz-pref("parfait.toolbar.unified-sidebar") {
-      @media (-moz-platform: macos) {
-        &:has(#sidebar-main:hover) .titlebar-buttonbox { visibility: hidden; }
+      @media not -moz-pref("parfait.toolbar.unified-sidebar") {
+        top: calc(var(--pf-topbar-height) - var(--pf-separation));
+        height: calc(100% - var(--pf-topbar-height));
       }
     }
     /* fs: separation */
