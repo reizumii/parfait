@@ -66,31 +66,35 @@ spacer[part="overflow-end-indicator"] {
 #pinned-tabs-container[orient="vertical"] {
   margin-block: -2px -4px;
   
-  #sidebar-main[hidden] &,
-  #tabbrowser-tabs[expanded] & {
-    padding-inline: calc(var(--pf-separation) - 4px);
-    --tab-pinned-min-width-expanded: 56px;
-    --tab-pinned-container-margin-inline-expanded: 0;
-    --tab-height-with-margin-padding: calc(var(--pf-pinned-height) + 8px);
-  }
-  & .tabbrowser-tab[pinned] {
-    & .tab-background {
-      #sidebar-main[hidden] &,
-      #tabbrowser-tabs[expanded] & {
-        --tab-min-height: var(--pf-pinned-height);
-        --tab-pinned-margin-inline-expanded: 4px;
-        --tab-inner-inline-margin: 4px !important;
-        --tab-block-margin: 4px;
+  @media not -moz-pref("sidebar.visibility", "expand-on-hover") {
+    #sidebar-main[hidden] &,
+    #tabbrowser-tabs[expanded] & {
+      padding-inline: calc(var(--pf-separation) - 4px);
+      --tab-pinned-min-width-expanded: 56px;
+      --tab-pinned-container-margin-inline-expanded: 0;
+      --tab-height-with-margin-padding: calc(var(--pf-pinned-height) + 8px);
+    }
+    & .tabbrowser-tab[pinned] {
+      & .tab-background {
+        #sidebar-main[hidden] &,
+        #tabbrowser-tabs[expanded] & {
+          --tab-min-height: var(--pf-pinned-height);
+          --tab-pinned-margin-inline-expanded: 4px;
+          --tab-inner-inline-margin: 4px !important;
+          --tab-block-margin: 4px;
+        }
       }
-      .tabbrowser-tab:not(:hover) > .tab-stack > &:not([selected], [multiselected]) {
-        background-color: var(--pf-toolbar-bgcolor) !important;
-      }
-      .tabbrowser-tab:hover > .tab-stack > &:not([selected], [multiselected]) {
-        background-color: var(--pf-toolbar-bgcolor-hover) !important;
+      & .tab-content[titlechanged] {
+        background-position-x: calc(100% - 8px) !important;
       }
     }
-    & .tab-content[titlechanged] {
-      background-position-x: calc(100% - 8px) !important;
+  }
+  & .tabbrowser-tab[pinned] .tab-background {
+    .tabbrowser-tab:not(:hover) > .tab-stack > &:not([selected], [multiselected]) {
+      background-color: var(--pf-toolbar-bgcolor) !important;
+    }
+    .tabbrowser-tab:hover > .tab-stack > &:not([selected], [multiselected]) {
+      background-color: var(--pf-toolbar-bgcolor-hover) !important;
     }
   }
 }
