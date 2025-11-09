@@ -35,6 +35,22 @@
         top: var(--pf-urlbar-y) !important;
         width: calc(var(--pf-sidebar-width) - (var(--pf-separation) * 2)) !important;
         height: var(--pf-urlbar-height) !important;
+                
+        /* normal urlbar */
+        @media -moz-pref("sidebar.visibility", "expand-on-hover") {
+          left: unset !important;
+          right: unset !important;
+          top: unset !important;
+          width: var(--urlbar-width) !important;
+        }
+        @media -moz-pref("sidebar.visibility", "always-show") {
+          :root:has(#tabbrowser-tabs:not([expanded])) & {
+            left: unset !important;
+            right: unset !important;
+            top: unset !important;
+            width: var(--urlbar-width) !important;
+          }
+        }
       }
     }
     & #urlbar:not([open]) {
@@ -81,23 +97,6 @@
       }
       /* allow top bar dragging */
       & #urlbar-container { -moz-window-dragging: drag; }
-    }
-    /* normal urlbar */
-    & #urlbar:not([open]) {
-      @media -moz-pref("sidebar.visibility", "expand-on-hover") {
-        left: unset !important;
-        right: unset !important;
-        top: unset !important;
-        width: var(--urlbar-width) !important;
-      }
-      @media -moz-pref("sidebar.visibility", "always-show") {
-        :root:has(#tabbrowser-tabs:not([expanded])) & {
-          left: unset !important;
-          right: unset !important;
-          top: unset !important;
-          width: var(--urlbar-width) !important;
-        }
-      }
     }
     /* floating urlbar */
     & #urlbar[open] {
@@ -168,6 +167,23 @@
             border-radius: var(--pf-border-radius);
           }
         }
+      }
+    }
+    /* fu: urlbar skeleton */
+    #urlbar-container:has(> #urlbar:is([open]))::before {
+      content: "";
+      width: 100%;
+      height: var(--pf-urlbar-height);
+      background-color: var(--pf-toolbar-bgcolor-inactive) !important;
+      border: 1px dashed var(--pf-toolbar-bgcolor-active) !important;
+      border-radius: var(--pf-border-radius);
+      pointer-events: none;
+      box-sizing: border-box;
+    }
+    @media not -moz-pref("sidebar.visibility", "hide-sidebar") {
+      &:has(#tabbrowser-tabs:not([expanded])) #urlbar-container::before {
+        position: unset !important;
+        width: 100% !important;
       }
     }
   }
@@ -315,15 +331,6 @@
     & .urlbarView-action {
       border: none !important;
     }
-  }
-  /* fu: bar skeleton */
-  #urlbar-container:has(> #urlbar:is([open]))::before {
-    content: "";
-    background-color: var(--pf-toolbar-bgcolor-inactive) !important;
-    border: 1px dashed var(--pf-toolbar-bgcolor-active) !important;
-    border-radius: var(--pf-border-radius);
-    pointer-events: none;
-    box-sizing: border-box;
   }
   /* move and hide stuff */
   & #identity-box {
