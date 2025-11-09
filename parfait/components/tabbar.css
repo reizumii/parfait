@@ -355,7 +355,7 @@ spacer[part="overflow-end-indicator"] {
   &[expanded] {
     & tab-group > :is(.tabbrowser-tab),
     &[movingtab][movingtab-addToGroup]:not([movingtab-group], [movingtab-ungroup]) .tabbrowser-tab:is(:active, [multiselected]) {
-      --space-medium: 18px;
+      --space-medium: 14px;
     }
   }
 }
