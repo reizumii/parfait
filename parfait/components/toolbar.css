@@ -146,68 +146,64 @@ toolbar .toolbarbutton-1:not(#PlacesChevron) {
       z-index: 1;
     }
   }
-}
-/* keep toolbar items on top of vertical spacer */
-#nav-bar-customization-target > :is(toolbarbutton, toolbaritem) {
-  z-index: 2;
-}
-
-/* menu bar */
-#toolbar-menubar:not([inactive]) {
-  position: fixed;
-  top: var(--pf-separation);
-  right: var(--pf-separation);
-  z-index: 3;
-  min-height: 34px !important;
-  border-radius: var(--pf-border-radius-small);
-  background-color: var(--arrowpanel-background) !important;
-  border: 1px solid var(--pf-border-color) !important;
-  box-shadow: var(--pf-shadow-medium);
-  padding: 4px !important;
+  /* keep toolbar items on top of vertical spacer */
+  #nav-bar-customization-target > :is(toolbarbutton, toolbaritem) {
+    z-index: 2;
+  }
   
-  & .titlebar-buttonbox-container {
-    display: none;
-  }
-}
+  /* menu bar */
+  #toolbar-menubar:not([inactive]) {
+    position: fixed;
+    top: var(--pf-separation);
+    right: var(--pf-separation);
+    z-index: 3;
+    min-height: 34px !important;
+    border-radius: var(--pf-border-radius-small);
+    background-color: var(--arrowpanel-background) !important;
+    border: 1px solid var(--pf-border-color) !important;
+    box-shadow: var(--pf-shadow-medium);
+    padding: 4px !important;
 
-/* bookmarks toolbar */
-#PersonalToolbar {
-  position: fixed;
-  bottom: calc(0px - var(--pf-bookmarks-height));
-  z-index: 3;
-  width: calc(100% - (var(--pf-bookmarks-margin) + (var(--pf-separation) * 2)));
-  height: var(--pf-bookmarks-height);
-  margin-left: var(--pf-bookmarks-margin);
-  padding: 4px !important;
-  background-color: var(--pf-panel-bgcolor) !important;
-  border: 1px solid var(--pf-border-color) !important;
-  border-radius: var(--pf-border-radius);
-  box-shadow: var(--pf-shadow-medium);
-  overflow: unset !important;
-  opacity: 0;
-  transition: var(--pf-ts-25) !important;
-  transition-delay: var(--pf-ts-25) !important;
+    & .titlebar-buttonbox-container {
+      display: none;
+    }
+  }
   
-  @media -moz-pref("parfait.window.borderless") {
-    width: calc(100% - (var(--pf-bookmarks-margin) + var(--pf-separation)));
-  }
-  &:hover,
-  &:has(.bookmark-item[open]) {
-    opacity: 1;
-    bottom: var(--pf-separation);
-  }
-  &::before,
-  &::after {
-    content: "";
-    width: 100%;
-    height: var(--pf-browser-separation);
-    position: absolute;
-    left: 0;
-  }
-  &::before {
-    top: calc(0px - var(--pf-browser-separation));
-  }
-  &::after {
-    bottom: calc(0px - var(--pf-browser-separation));
+  /* bookmarks toolbar */
+  #PersonalToolbar {
+    position: fixed;
+    bottom: calc(0px - var(--pf-bookmarks-height));
+    z-index: 3;
+    width: calc(100% - (var(--pf-bookmarks-margin) + (var(--pf-separation) * 2)));
+    height: var(--pf-bookmarks-height);
+    margin-left: var(--pf-bookmarks-margin);
+    padding: 4px !important;
+    background-color: var(--pf-panel-bgcolor) !important;
+    border: 1px solid var(--pf-border-color) !important;
+    border-radius: var(--pf-border-radius);
+    box-shadow: var(--pf-shadow-medium);
+    overflow: unset !important;
+    opacity: 0;
+    transition: var(--pf-ts-25) !important;
+    transition-delay: var(--pf-ts-25) !important;
+
+    @media -moz-pref("parfait.window.borderless") {
+      width: calc(100% - (var(--pf-bookmarks-margin) + var(--pf-separation)));
+    }
+    &:hover,
+    &:has(.bookmark-item[open]) {
+      opacity: 1;
+      bottom: var(--pf-separation);
+    }
+    &::before,
+    &::after {
+      content: "";
+      width: 100%;
+      height: var(--pf-browser-separation);
+      position: absolute;
+      left: 0;
+    }
+    &::before { top: calc(0px - var(--pf-browser-separation)); }
+    &::after { bottom: calc(0px - var(--pf-browser-separation)); }
   }
 }
