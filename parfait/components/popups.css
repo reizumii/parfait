@@ -119,6 +119,11 @@
   }
 }
 
+/* tab groups preview */
+#tabgroup-panel-content {
+  max-width: var(--pf-tab-group-preview-width);
+}
+
 /* fullscreen */
 .pointerlockfswarning {
   background-color: rgba(0, 0, 0, 0.75) !important;
