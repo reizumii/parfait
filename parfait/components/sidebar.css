@@ -298,6 +298,10 @@ moz-button[view="viewCustomizeSidebar"] { order: 99; }
       @media not -moz-pref("parfait.toolbar.unified-sidebar") {
         top: calc(var(--pf-topbar-height) - var(--pf-separation));
         height: calc(100% - var(--pf-topbar-height));
+        
+        :root:has(.tab-group-editor-panel[panelopen="true"], #tabgroup-preview-panel[panelopen="true"]) & {
+          left: var(--pf-separation);
+        }
       }
     }
     /* fs: separation */
@@ -514,7 +518,8 @@ moz-button[view="viewCustomizeSidebar"] { order: 99; }
       &:has(
         #sidebar-main:hover, #vertical-spacer:hover, #sidebar-button:hover,
         #back-button:hover, #forward-button:hover, #stop-reload-button:hover,
-        .tabbrowser-tab:is([pendingicon], [multiselected]):not([selected]), .tab-group-editor-panel[panelopen="true"],
+        .tabbrowser-tab:is([pendingicon], [multiselected]):not([selected]),
+        .tab-group-editor-panel[panelopen="true"], #tabgroup-preview-panel[panelopen="true"],
         #urlbar:not([open]) :is(:hover,
           #tracking-protection-icon-container[open], .identity-box-button[open],
           .urlbar-page-action[open], #notification-popup-box[open]
@@ -546,7 +551,8 @@ moz-button[view="viewCustomizeSidebar"] { order: 99; }
       &:has(
         #sidebar-main:hover, #vertical-spacer:hover, #sidebar-button:hover,
         #back-button:hover, #forward-button:hover, #stop-reload-button:hover,
-        .tabbrowser-tab:is([pendingicon], [multiselected]):not([selected]), .tab-group-editor-panel[panelopen="true"],
+        .tabbrowser-tab:is([pendingicon], [multiselected]):not([selected]),
+        .tab-group-editor-panel[panelopen="true"], #tabgroup-preview-panel[panelopen="true"],
         .titlebar-buttonbox-container:hover,
         #urlbar:not([open]) :is(:hover,
           #tracking-protection-icon-container[open], .identity-box-button[open],
