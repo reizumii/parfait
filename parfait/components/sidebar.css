@@ -131,6 +131,11 @@
     margin-bottom: var(--pf-browser-separation) !important;
     transition: var(--pf-ts-25) !important;
   }
+}
+
+
+/* customize sidebar */
+@-moz-document url("chrome://browser/content/sidebar/sidebar-customize.html") {
   #inputs[part="inputs"] {
     padding-inline: 0 !important;
     --sidebar-box-background: var(--pf-toolbar-bgcolor);
@@ -159,6 +164,10 @@
     & > .icon[src^="chrome://"] {
       fill: var(--pf-icon-color) !important;
     }
+  }
+  /* remove right sidebar option */
+  [data-l10n-id="sidebar-show-on-the-right"] {
+    display: none !important;
   }
 }
 
@@ -582,12 +591,5 @@ moz-button[view="viewCustomizeSidebar"] { order: 99; }
         }
       }
     }
-  }
-}
-
-/* remove right sidebar option */
-@-moz-document url("chrome://browser/content/sidebar/sidebar-customize.html") {
-  [data-l10n-id="sidebar-show-on-the-right"] {
-    display: none !important;
   }
 }
