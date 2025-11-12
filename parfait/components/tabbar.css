@@ -103,7 +103,6 @@ spacer[part="overflow-end-indicator"] {
 #tabbrowser-tabs[orient="vertical"] {
   & .tabbrowser-tab {
     padding-block: 0 !important;
-    --tab-border-radius: var(--pf-border-radius-small);
     
     & .tab-icon-image {
       transition: var(--pf-ts-15) !important;
