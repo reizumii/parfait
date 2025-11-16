@@ -88,6 +88,9 @@ toolbar .toolbarbutton-1:not(#PlacesChevron) {
 #sidebar-button {
   list-style-image: url("chrome://browser/skin/sidebars.svg") !important;
 }
+#alltabs-button {
+  list-style-image: var(--pf-icon-tabs) !important;
+}
 /* hide sidebar active state */
 #sidebar-button:not(:hover) {
   background-color: transparent !important;
