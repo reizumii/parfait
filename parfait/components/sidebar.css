@@ -469,11 +469,6 @@ moz-button[view="viewCustomizeSidebar"] { order: 99; }
         transition-delay: 0s !important;
       }
     }
-    /* fs: separation */
-    &:not([inDOMFullscreen]) #tabbrowser-tabbox {
-      margin-inline: var(--pf-browser-separation) !important;
-      position: relative;
-    }
     /* fs: move toolbar items */
     .titlebar-buttonbox-container,
     #sidebar-button,

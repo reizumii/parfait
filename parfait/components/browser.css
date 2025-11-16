@@ -94,7 +94,7 @@
     margin-bottom: var(--pf-browser-separation) !important;
     overflow: clip;
     -moz-window-dragging: no-drag;
-
+    
     @media not -moz-pref("sidebar.visibility", "expand-on-hover") {
       margin-inline: var(--pf-browser-separation-inline) !important;
     }
