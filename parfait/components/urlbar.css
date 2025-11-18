@@ -193,6 +193,18 @@
       text-align: center !important;
     }
   }
+  /* search icon for new tab extensions */
+  & #urlbar:not([textoverflow="right"]):has(> hbox > .extensionPage) {
+    & .searchmode-switcher {
+      position: unset !important;
+    }
+    &:not([open]) .urlbar-input-box {
+      padding-left: 4px !important;
+    }
+    &[open][pageproxystate="valid"] .urlbar-input-box {
+      padding-left: 0 !important;
+    }
+  }
   /* search results */
   & .urlbarView-row {
     border-radius: var(--pf-urlbar-result-radius) !important;
