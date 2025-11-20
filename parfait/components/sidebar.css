@@ -245,6 +245,12 @@ moz-button:not([type~="ghost"]):not(:hover) {
 .button-background:hover > img[src="chrome://global/skin/icons/settings.svg"] {
   transform: rotate(45deg);
 }
+img[src="chrome://browser/skin/synced-tabs.svg"] {
+  content: var(--pf-icon-devices);
+}
+img[src="chrome://browser/skin/sidebar-collapsed.svg"] {
+  content: var(--pf-icon-sidebar);
+}
 /* bottom strip: icon alignment */
 moz-button[view="viewCustomizeSidebar"] { order: 99; }
 

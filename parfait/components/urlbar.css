@@ -387,6 +387,12 @@
   & #identity-box {
     margin-block: 2px;
   }
+  & #taskbar-tabs-button > .urlbar-icon {
+    list-style-image: var(--pf-icon-install) !important;
+  }
+  & #pageAction-urlbar-_testpilot-containers {
+    --pageAction-image: var(--pf-icon-container-open) !important;
+  }
   /* ui: zoom */
   #urlbar-zoom-button {
     min-height: var(--pf-icon-size);

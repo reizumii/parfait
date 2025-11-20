@@ -4,17 +4,18 @@
 */
 
 /* toolbar items */
-toolbar .toolbarbutton-1:not(#PlacesChevron) {
+toolbar .toolbarbutton-1 {
+  border-radius: var(--pf-border-radius-small);
+  --toolbarbutton-icon-fill: var(--pf-icon-color);
+  --toolbarbutton-hover-background: var(--pf-toolbar-bgcolor-hover);
+  --toolbarbutton-active-background: var(--pf-toolbar-bgcolor-active);
+}
+toolbar .toolbarbutton-1:not(#PlacesChevron, .toolbarbutton-combined-buttons-dropmarker) {
   min-width: var(--pf-toolbaritem-size);
   min-height: var(--pf-toolbaritem-size);
   max-width: var(--pf-toolbaritem-size);
   max-height: var(--pf-toolbaritem-size);
   padding: 0 !important;
-  border-radius: var(--pf-border-radius-small);
-  
-  --toolbarbutton-icon-fill: var(--pf-icon-color);
-  --toolbarbutton-hover-background: var(--pf-toolbar-bgcolor-hover);
-  --toolbarbutton-active-background: var(--pf-toolbar-bgcolor-active);
 
   &:not(.webextension-browser-action) {
     & > .toolbarbutton-icon {
@@ -85,12 +86,65 @@ toolbar .toolbarbutton-1:not(#PlacesChevron) {
   margin-inline-end: var(--toolbar-start-end-padding) !important;
 }
 /* ti: change icons */
+:root[fxastatus="not_configured"] {
+  --avatar-image-url: var(--pf-icon-avatar) !important;
+}
+#PanelUI-menu-button {
+  list-style-image: var(--pf-icon-menu) !important;
+}
 #sidebar-button {
-  list-style-image: url("chrome://browser/skin/sidebars.svg") !important;
+  list-style-image: var(--pf-icon-sidebar) !important;
 }
 #alltabs-button {
   list-style-image: var(--pf-icon-tabs) !important;
 }
+#firefox-view-button {
+  list-style-image: var(--pf-icon-library) !important;
+}
+#print-button {
+  list-style-image: var(--pf-icon-print) !important;
+}
+#sync-button {
+  list-style-image: var(--pf-icon-devices) !important;
+}
+#panic-button {
+  list-style-image: var(--pf-icon-forget) !important;
+}
+#open-file-button {
+  list-style-image: var(--pf-icon-openfile) !important;
+}
+#save-page-button {
+  list-style-image: var(--pf-icon-savepage) !important;
+}
+#profiler-button-button > .toolbarbutton-icon {
+  list-style-image: var(--pf-icon-profiler) !important;
+}
+#email-link-button {
+  list-style-image: var(--pf-icon-email) !important;
+}
+#characterencoding-button {
+  list-style-image: var(--pf-icon-text) !important;
+}
+#cut-button {
+  list-style-image: var(--pf-icon-cut) !important;
+}
+#copy-button {
+  list-style-image: var(--pf-icon-copy) !important;
+}
+#paste-button {
+  list-style-image: var(--pf-icon-paste) !important;
+}
+#screenshot-button {
+  list-style-image: var(--pf-icon-screenshot) !important;
+}
+#new-tab-button {
+  list-style-image: var(--pf-icon-plus-square) !important;
+}
+#bookmarks-toolbar-button,
+#bookmarks-toolbar-placeholder {
+  list-style-image: var(--pf-icon-bookmarks-square) !important;
+}
+
 /* hide sidebar active state */
 #sidebar-button:not(:hover) {
   background-color: transparent !important;

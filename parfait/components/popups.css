@@ -118,6 +118,18 @@
     }
   }
 }
+panel toolbarseparator {
+  --panel-separator-color: color-mix(in srgb, currentColor 12%, transparent);
+}
+/* context menu: icons */
+#protections-popup-mainView .subviewbutton-nav:not(.notFound),
+.widget-overflow-list .subviewbutton-nav,
+.PanelUI-subView .subviewbutton-nav {
+  &::after {
+    content: var(--pf-icon-chevron-right-small) !important;
+    fill-opacity: 0.4 !important;
+  }
+}
 
 /* tab groups preview */
 #tabgroup-panel-content {
