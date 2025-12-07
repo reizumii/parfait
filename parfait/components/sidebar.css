@@ -116,6 +116,11 @@
         @media not -moz-pref("sidebar.visibility", "expand-on-hover") { margin-top: var(--pf-sidebar-margin); }
         @media not -moz-pref("parfait.toolbar.unified-sidebar") { margin-top: 0; }
       }
+      @media -moz-pref("sidebar.visibility", "hide-sidebar") {
+        &, #vertical-tabs, #tabbrowser-tabs {
+          width: var(--pf-sidebar-width);
+        }
+      }
     }
     .wrapper { width: 100% !important; }
   }
