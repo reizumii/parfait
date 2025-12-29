@@ -1,0 +1,12 @@
+@media not -moz-pref("parfait.animations.enabled", false) {
+    #tabbrowser-tabpanels > hbox {
+        transition: all 0.3s;
+        scale: 1.04 !important;
+        filter: blur(8px) !important;
+    }
+
+    #tabbrowser-tabpanels > hbox.deck-selected  {
+        scale: 1 !important;
+        filter: none !important;
+    }
+}
