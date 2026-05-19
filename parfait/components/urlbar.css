@@ -140,8 +140,8 @@
     &[pageproxystate="valid"] .urlbar-input-box {
       padding-left: 8px;
     }
-    #urlbar-searchmode-switcher {
-      margin-inline: 1px 10px !important;
+    .searchmode-switcher {
+      margin-inline: 0 9px !important;
     }
     #userContext-icons {
       background-color: color-mix(in srgb, var(--identity-tab-color), transparent 85%);
@@ -242,8 +242,8 @@
 /* search results */
 .urlbarView-row {
   border-radius: var(--pf-urlbar-sr-radius) !important;
-  --urlbarView-highlight-background: var(--pf-toolbar-bgcolor-active) !important;
-  --urlbarView-highlight-color: currentColor;
+  --urlbarview-background-color-hover: var(--pf-toolbar-bgcolor-hover) !important;
+  --urlbarview-background-color-selected: var(--pf-toolbar-bgcolor-active) !important;
 
   @media (not -moz-pref("browser.uidensity", 1)) and (not -moz-pref("parfait.urlbar.results.compact")) {
     &:not([type="tip"], [type="dynamic"]) {
@@ -446,27 +446,31 @@
   --urlbar-box-bgcolor: var(--pf-toolbar-bgcolor);
 }
 /* search mode switcher */
-#urlbar-searchmode-switcher {
-  margin: 2px 0 2px 2px !important;
-  --urlbar-box-bgcolor: transparent;
-  --urlbar-box-focus-bgcolor: transparent;
+.searchmode-switcher {
+  margin-left: 1px;
+  --button-icon-fill: color-mix(in srgb, currentColor, transparent 50%) !important;
+  --button-background-color-active: var(--pf-toolbar-bgcolor-active) !important;
+  --button-background-color-hover: var(--pf-toolbar-bgcolor-hover) !important;
+  --button-background-color: transparent !important;
+  --button-min-height: calc(100% - 2px) !important;
+  --button-padding: 0 6px !important;
+  --button-border-radius: var(--urlbar-inner-border-radius) !important;
+  --space-small: 0 !important;
 
-  &:is(:hover, [open]) {
-    background-color: var(--pf-toolbar-bgcolor-hover) !important;
+  &[open] {
+    --button-background-color: var(--pf-toolbar-bgcolor-hover) !important;
   }
-  .searchmode-switcher-icon {
-    border-radius: var(--pf-favicon-radius);
+  #urlbar:not([searchmode]) & {
+    background: no-repeat center var(--pf-icon-search);
+    fill: var(--pf-icon-color);
     fill-opacity: 0.5;
-    -moz-context-properties: fill, fill-opacity !important;
+    -moz-context-properties: fill, fill-opacity;
+    --button-padding: 0 14px !important;
+    --icon-size: 0;
   }
-  .urlbar:not([searchmode]) & .searchmode-switcher-icon {
-    list-style-image: var(--pf-icon-search) !important;
-  }
-  .searchmode-switcher-close,
-  .searchmode-switcher-title,
-  .searchmode-switcher-dropmarker {
-    display: none !important;
-  }
+}
+.searchmode-switcher-content {
+  display: none !important;
 }
 /* fu: search mode glow */
 @keyframes pf-searchbar {

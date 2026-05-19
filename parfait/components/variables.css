@@ -26,7 +26,7 @@
   --pf-split-resize-padding: 10px;
   --pf-fl-trigger-width: 12px;
   --pf-findbar-width: 320px;
-  --pf-extensions-width: 228px;
+  --pf-extensions-width: 300px;
   --pf-tab-group-preview-width: 260px;
   --pf-wc-width: 0px;
 
@@ -250,8 +250,8 @@
   --background-color-canvas: var(--pf-panel-bgcolor) !important;
   --urlbar-box-bgcolor: transparent !important;
   --urlbar-box-focus-bgcolor: transparent !important;
-  --urlbarView-separator-color: light-dark(rgba(0, 0, 0, 0.075), rgba(255, 255, 255, 0.1)) !important;
-  --urlbarView-hover-background: var(--pf-toolbar-bgcolor-hover) !important;
+  --urlbarview-separator-color: light-dark(rgba(0, 0, 0, 0.075), rgba(255, 255, 255, 0.1)) !important;
+  --urlbarview-hover-background: var(--pf-toolbar-bgcolor-hover) !important;
   --tab-hover-background-color: var(--pf-toolbar-bgcolor-hover) !important;
   --toolbar-field-focus-background-color: var(--pf-toolbar-bgcolor) !important;
   --button-background-color: var(--pf-toolbar-bgcolor) !important;

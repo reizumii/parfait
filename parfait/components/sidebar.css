@@ -159,12 +159,10 @@
 /* bottom strip */
 .tools-and-extensions.actions-list.overflow-button {
   display: none !important;
+  overflow: unset !important;
 }
 .buttons-wrapper {
   height: unset !important;
-}
-.tools-and-extensions {
-  overflow: unset !important;
 }
 @media -moz-pref("sidebar.verticalTabs") {
   .tools-and-extensions {
@@ -188,7 +186,7 @@
 .actions-list > moz-button:not([type~="ghost"]):not(:hover) {
   --toolbarbutton-active-background: var(--pf-toolbar-bgcolor-hover);
 }
-.button-background {
+.button-background[type="icon ghost"] {
   --button-size-icon: var(--pf-toolbaritem-size);
   --button-border-radius: var(--pf-border-radius-sm);
 }

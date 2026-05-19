@@ -198,25 +198,22 @@
 #pageAction-urlbar-_testpilot-containers {
   --pageAction-image: var(--pf-icon-container-open) !important;
 }
-.searchmode-switcher-icon[style*="tabs.svg"] {
-  list-style-image: var(--pf-icon-tabs) !important;
+.search-button-history {
+  --icon-url: url("chrome://browser/skin/bookmark-hollow.svg") !important;
 }
-.searchmode-switcher-icon[style*="bookmark.svg"] {
-  list-style-image: url("chrome://browser/skin/bookmark-hollow.svg") !important;
+.search-button-tabs {
+  --icon-url: var(--pf-icon-tabs) !important;
 }
-.searchmode-switcher-icon[style*="quickactions.svg"] {
-  list-style-image: url("chrome://browser/skin/trending.svg") !important;
+.search-button-actions {
+  --icon-url: url("chrome://browser/skin/trending.svg") !important;
 }
-.urlbarView-favicon[src="chrome://browser/skin/bookmark.svg"],
-#search-button-bookmarks > .menu-icon {
+img[src="chrome://browser/skin/bookmark.svg"] {
   content: url("chrome://browser/skin/bookmark-hollow.svg") !important;
 }
-.urlbarView-favicon[src="chrome://browser/skin/tabs.svg"],
-#search-button-tabs > .menu-icon {
+img[src="chrome://browser/skin/tabs.svg"] {
   content: var(--pf-icon-tabs) !important;
 }
-.urlbarView-favicon[src="chrome://browser/skin/quickactions.svg"],
-#search-button-actions > .menu-icon {
+img[src="chrome://browser/skin/quickactions.svg"] {
   content: url("chrome://browser/skin/trending.svg") !important;
 }
 
