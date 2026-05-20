@@ -415,11 +415,13 @@
 .urlbar-page-action,
 .urlbar-revert-button,
 .urlbar-go-button,
-.search-go-button,
 #trust-icon-container,
 #tracking-protection-icon-container,
 #identity-box {
   margin-block: 2px;
+}
+.urlbar-go-button {
+  --urlbar-icon-padding: 6px !important;
 }
 /* ui: translations */
 #translations-button[translationsactive] {
@@ -453,24 +455,12 @@
   --button-background-color-hover: var(--pf-toolbar-bgcolor-hover) !important;
   --button-background-color: transparent !important;
   --button-min-height: calc(100% - 2px) !important;
-  --button-padding: 0 6px !important;
+  --button-padding: 0 calc((var(--urlbar-min-height) - 2 * var(--urlbar-container-inset) - var(--icon-size)) / 2) !important;
   --button-border-radius: var(--urlbar-inner-border-radius) !important;
   --space-small: 0 !important;
 
   &[open] {
     --button-background-color: var(--pf-toolbar-bgcolor-hover) !important;
-  }
-  #urlbar:not([searchmode]) & {
-    background: no-repeat center var(--pf-icon-search);
-    fill: var(--pf-icon-color);
-    fill-opacity: 0.5;
-    -moz-context-properties: fill, fill-opacity;
-    --button-padding: 0 14px !important;
-    --icon-size: 0;
-  }
-  #urlbar:not([open]):not([searchmode]) & {
-    --button-padding: 0 calc((var(--pf-urlbar-height) - var(--urlbar-container-border-width) - var(--urlbar-container-padding) - 6px) / 2) !important;
-    @media not -moz-pref("sidebar.verticalTabs") { margin-block: -1px 1px !important; }
   }
 }
 .searchmode-switcher-content {

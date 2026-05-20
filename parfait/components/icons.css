@@ -216,6 +216,10 @@ img[src="chrome://browser/skin/tabs.svg"] {
 img[src="chrome://browser/skin/quickactions.svg"] {
   content: url("chrome://browser/skin/trending.svg") !important;
 }
+.button-background > img[src="chrome://global/skin/icons/search-glass.svg"] {
+  content: var(--pf-icon-search);
+  fill-opacity: 0.75;
+}
 
 /* tabs */
 .tab-icon-image[src="chrome://browser/skin/controlcenter/dashboard.svg"] {
