@@ -202,7 +202,7 @@
 #pageAction-urlbar-_testpilot-containers {
   --pageAction-image: var(--pf-icon-container-open) !important;
 }
-.search-button-history {
+.search-button-bookmarks {
   --icon-url: url("chrome://browser/skin/bookmark-hollow.svg") !important;
 }
 .search-button-tabs {

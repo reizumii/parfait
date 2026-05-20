@@ -20,7 +20,7 @@
     border: none !important;
     outline: none !important;
     --toolbar-field-background-color: var(--pf-toolbar-bgcolor);
-    --toolbarbutton-border-radius: var(--pf-urlbar-radius);
+    --urlbar-border-radius: var(--pf-urlbar-radius);
 
     #urlbar:not([focused]) & {
       transition: background-color var(--pf-ts-25);
@@ -142,6 +142,9 @@
     }
     .searchmode-switcher {
       margin-inline: 0 9px !important;
+    }
+    .urlbarView[noresults] > .urlbarView-body-outer > .urlbarView-body-inner {
+      border-top-width: 0 !important;
     }
     #userContext-icons {
       background-color: color-mix(in srgb, var(--identity-tab-color), transparent 85%);
@@ -411,6 +414,8 @@
 }
 #identity-box[pageproxystate="valid"]:is(.notSecureText, .chromeUI, a.extensionPage) > .identity-box-button {
   padding-inline: var(--urlbar-icon-padding) !important;
+  --urlbar-box-background-color: transparent;
+  --urlbar-box-background-color-focus: transparent;
 }
 .urlbar-page-action,
 .urlbar-revert-button,

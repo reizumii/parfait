@@ -113,6 +113,7 @@ panel toolbarseparator {
     --background-color-canvas: var(--color-white) !important;
 
     @media (-moz-platform: macos) { --panel-background: transparent !important; }
+    @media (-moz-mac-tahoe-theme) { --panel-border-radius: 12px !important; }
   }
 }
 /* context menu: icons */
@@ -369,6 +370,7 @@ panel toolbarseparator {
 
 /* ai: opt-in message */
 .optin-wrapper {
+  --background-color-canvas: Canvas;
   --space-large: 12px;
 }
 .optin-heading {

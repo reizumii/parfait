@@ -74,6 +74,7 @@
     }
   }
   #sidebar-launcher-splitter { display: none !important; }
+  .wrapper:has(.tools-and-extensions) { width: 100% !important; }
   /* sidebar 2 */
   #sidebar-box,
   #sidebar-splitter {
@@ -182,13 +183,13 @@
 }
 .actions-list > moz-button {
   visibility: visible !important;
+  --button-border-radius: var(--pf-border-radius-sm);
 }
 .actions-list > moz-button:not([type~="ghost"]):not(:hover) {
   --toolbarbutton-active-background: var(--pf-toolbar-bgcolor-hover);
 }
 .button-background[type="icon ghost"] {
   --button-size-icon: var(--pf-toolbaritem-size);
-  --button-border-radius: var(--pf-border-radius-sm);
 }
 /* sidebar buttons animation */
 .button-background[type="icon ghost"] > img {

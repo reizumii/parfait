@@ -27,7 +27,7 @@
       --pf-bg-gradient-2: color-mix(in oklab, transparent, var(--pf-browser-bgcolor) var(--pf-browser-opacity));
       --toolbox-bgcolor: linear-gradient(var(--pf-bg-gradient-1), var(--pf-bg-gradient-2)) !important;
 
-      .browser-toolbox-background {
+      #navigator-toolbox {
         background: var(--pf-bg-gradient-1) !important;
       }
       #browser {
