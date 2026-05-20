@@ -242,7 +242,7 @@ panel toolbarseparator {
   border-color: var(--pf-border-color-light) !important;
   border-inline: 0 !important;
   outline: none !important;
-  margin-inline: calc(0px - var(--arrowpanel-padding)) !important;
+  margin-inline: calc(0px - var(--panel-padding)) !important;
   padding: 16px !important;
   font-size: calc(var(--pf-font-size-1) - 1px) !important;
   --border-radius-medium: 0;
