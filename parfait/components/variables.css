@@ -88,8 +88,8 @@
 
   /* calc */
   --pf-tl-width: calc((var(--pf-tl-size) * 3) + (var(--pf-tl-gap) * 2) + (var(--pf-tl-padding-left) + var(--pf-tl-padding-right)));
-  --pf-sidebar-min: calc((var(--pf-toolbaritem-size) * 4) + (var(--pf-toolbaritem-gap) * 3) + var(--pf-tl-width) + var(--pf-separation));
-  --pf-sidebar-gutter: calc(var(--pf-sidebar-width) - var(--pf-sidebar-min) - var(--pf-navbar-padding-left));
+  --pf-sidebar-min: calc((var(--pf-toolbaritem-size) * 4) + (var(--pf-toolbaritem-gap) * 3) + var(--pf-tl-width) + var(--pf-navbar-padding-left) + var(--pf-separation));
+  --pf-sidebar-gutter: calc(var(--pf-sidebar-width) - var(--pf-sidebar-min));
   --pf-sidebar-margin: calc(var(--pf-urlbar-height) + var(--pf-separation) - var(--tab-block-margin));
   --pf-navbar-height: calc(var(--pf-toolbaritem-size) + (var(--pf-navbar-padding-block) * 2));
   --pf-navbar-margin: calc(var(--pf-browser-separation) - var(--pf-navbar-height));

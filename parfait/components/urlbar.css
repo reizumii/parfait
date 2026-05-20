@@ -84,7 +84,7 @@
       }
     }
     /* input box */
-    .urlbar-input-container {
+    #navigator-toolbox[tabs-hidden] & .urlbar-input-container {
       padding-inline-end: 3px !important;
     }
     .urlbar-input-box {
@@ -467,6 +467,10 @@
     -moz-context-properties: fill, fill-opacity;
     --button-padding: 0 14px !important;
     --icon-size: 0;
+  }
+  #urlbar:not([open]):not([searchmode]) & {
+    --button-padding: 0 calc((var(--pf-urlbar-height) - var(--urlbar-container-border-width) - var(--urlbar-container-padding) - 6px) / 2) !important;
+    @media not -moz-pref("sidebar.verticalTabs") { margin-block: -1px 1px !important; }
   }
 }
 .searchmode-switcher-content {
