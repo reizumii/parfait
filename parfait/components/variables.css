@@ -100,7 +100,10 @@
   --pf-acrylic-filter: blur(72px) brightness(1.6) saturate(1.4);
 
   /* densities */
-  &[uidensity="compact"] { --pf-toolbaritem-size: 28px; }
+  &[uidensity="compact"] {
+    --pf-toolbaritem-size: 28px;
+    --pf-urlbar-input-height: 48px;
+  }
   &[uidensity="touch"] { --pf-toolbaritem-size: 34px; }
 
   @media -moz-pref("sidebar.verticalTabs") {

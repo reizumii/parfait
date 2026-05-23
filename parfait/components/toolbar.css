@@ -60,10 +60,13 @@ toolbar .toolbarbutton-1:not(#PlacesChevron, .toolbarbutton-combined-buttons-dro
 }
 #nav-bar {
   min-height: var(--pf-navbar-height) !important;
-  padding-inline-start: var(--pf-navbar-padding-left) !important;
   border-top: 0 !important;
   align-items: center;
   will-change: unset !important;
+
+  :root:not([chromehidden~="toolbar"]) & {
+    padding-inline-start: var(--pf-navbar-padding-left) !important;
+  }
 }
 #nav-bar-customization-target {
   align-items: center;
@@ -132,11 +135,10 @@ toolbar .toolbarbutton-1:not(#PlacesChevron, .toolbarbutton-combined-buttons-dro
   }
 
   /* menu bar */
-  #toolbar-menubar[inactive] {
+  #toolbar-menubar {
     position: fixed;
   }
   #toolbar-menubar:not([inactive]) {
-    position: fixed;
     top: var(--pf-separation);
     right: var(--pf-separation);
     z-index: 5;
@@ -312,5 +314,30 @@ toolbarbutton.bookmark-item:not(.subviewbutton) {
   }
   .urlbar-background {
     --pf-toolbar-bgcolor: transparent !important;
+  }
+}
+
+/* document picture-in-picture */
+@media (display-mode: picture-in-picture) {
+  :root {
+    --pf-urlbar-height: 24px;
+    --pf-toolbaritem-size: 24px;
+
+    @media (-moz-windows-mica) {
+      background: transparent !important;
+      --toolbox-bgcolor: transparent !important;
+    }
+  }
+  #nav-bar {
+    padding-right: var(--pf-navbar-padding-block) !important;
+  }
+  .urlbar-input-box {
+    padding-left: var(--pf-navbar-padding-block) !important;
+  }
+  #urlbar-input {
+    font-size: 1.075rem !important;
+  }
+  .urlbar-background {
+    background: transparent !important;
   }
 }

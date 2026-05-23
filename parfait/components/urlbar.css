@@ -130,7 +130,8 @@
       --pf-urlbar-bgcolor: var(--pf-urlbar-bgcolor-transparent);
     }
     & > .urlbar-input-container {
-      padding-inline: calc((var(--urlbar-container-height) - var(--urlbar-height)) / 2 + var(--urlbar-container-padding)) !important;
+      align-items: center;
+      padding-inline: 11px !important;
       --urlbar-container-height: var(--pf-urlbar-input-height);
     }
     #urlbar-input {
@@ -140,7 +141,11 @@
     &[pageproxystate="valid"] .urlbar-input-box {
       padding-left: 8px;
     }
+    #identity-box {
+      height: calc(var(--icon-size) + (2 * var(--urlbar-icon-padding)));
+    }
     .searchmode-switcher {
+      height: calc(var(--icon-size) + var(--urlbar-container-inset) + (2 * var(--urlbar-icon-padding))) !important;
       margin-inline: 0 9px !important;
     }
     .urlbarView[noresults] > .urlbarView-body-outer > .urlbarView-body-inner {
@@ -149,6 +154,7 @@
     #userContext-icons {
       background-color: color-mix(in srgb, var(--identity-tab-color), transparent 85%);
       color: color-mix(in srgb, var(--identity-icon-color), var(--pf-text-color));
+      height: calc(16px + (2 * var(--urlbar-icon-padding)));
       margin-inline-end: 0 !important;
       padding: 6px 10px;
       border-radius: var(--urlbar-inner-border-radius);
