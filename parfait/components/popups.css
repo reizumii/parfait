@@ -23,7 +23,7 @@
   display: none;
 }
 .unified-extensions-item-action-button {
-  --arrowpanel-menuitem-border-radius: var(--pf-border-radius-sm);
+  --panel-menuitem-border-radius: var(--pf-border-radius-sm);
   --uei-icon-size: var(--icon-size);
 }
 #unified-extensions-manage-extensions {
@@ -135,13 +135,13 @@ panel toolbarseparator {
 
 /* confirmation hint */
 #confirmation-hint {
-  --arrowpanel-color: var(--pf-text-color) !important;
+  --panel-color: var(--pf-text-color) !important;
 }
 
 /* manage tab group */
 .tab-group-editor-panel {
-  --arrowpanel-menuitem-margin: 0 12px;
-  --arrowpanel-menuitem-padding: 6px 8px;
+  --panel-menuitem-margin: 0 12px;
+  --panel-menuitem-padding: 6px 8px;
   --input-bgcolor: var(--pf-input-bgcolor);
   --input-border-color: var(--pf-border-color);
 
@@ -161,7 +161,7 @@ panel toolbarseparator {
     display: none;
   }
   .tab-group-editor-name {
-    --arrowpanel-menuitem-padding-block: 0;
+    --panel-menuitem-padding-block: 0;
 
     &  > label {
       font-weight: 600;
@@ -520,7 +520,7 @@ notification-message {
 
 /* tab switcher */
 #ctrlTab-panel {
-  --panel-background: var(--arrowpanel-background) !important;
+  --panel-background: var(--pf-panel-bgcolor) !important;
   --panel-color: var(--toolbox-color) !important;
   --panel-border-radius: var(--pf-border-radius-md) !important;
 }

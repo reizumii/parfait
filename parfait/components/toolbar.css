@@ -142,7 +142,7 @@ toolbar .toolbarbutton-1:not(#PlacesChevron, .toolbarbutton-combined-buttons-dro
     z-index: 5;
     min-height: 34px !important;
     border-radius: var(--pf-border-radius-sm);
-    background-color: var(--arrowpanel-background) !important;
+    background-color: var(--panel-background) !important;
     border: 1px solid var(--pf-border-color) !important;
     box-shadow: var(--pf-shadow-md);
     padding: 4px !important;
