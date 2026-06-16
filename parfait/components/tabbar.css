@@ -106,13 +106,13 @@ spacer:is([part="overflow-start-indicator"], [part="overflow-end-indicator"]) {
 }
 .tab-background {
   outline: none !important;
-  --tab-selected-bgcolor: var(--pf-tab-selected-bgcolor);
+  --tab-background-color-selected: var(--pf-tab-selected-bgcolor);
   --tab-selected-shadow: var(--pf-tab-selected-shadow);
   --focus-outline-color: transparent;
   --dragover-tab-group-color: transparent;
 
   &[multiselected]:not([selected]) {
-    --tab-selected-bgcolor: var(--pf-toolbar-bgcolor-hover);
+    --tab-background-color-selected: var(--pf-toolbar-bgcolor-hover);
     --tab-selected-shadow: none;
   }
   &:not([selected], [multiselected]) {
@@ -291,12 +291,12 @@ tab-split-view-wrapper {
   }
   &[hasactivetab] {
     box-shadow: var(--pf-tab-selected-shadow);
-    --tab-hover-background-color: var(--pf-tab-selected-bgcolor);
+    --tab-background-color-hover: var(--pf-tab-selected-bgcolor);
   }
   .tab-background {
     min-height: var(--tab-min-height) !important;
     background-color: transparent !important;
-    --tab-hover-background-color: transparent;
+    --tab-background-color-hover: transparent;
     --tab-selected-shadow: none;
   }
   .tab-content {
@@ -311,14 +311,14 @@ tab-split-view-wrapper {
 #tabbrowser-tabs[orient="vertical"] {
   tab-group {
     /* tg: colors */
-    --pf-folder-color-1: var(--toolbar-bgcolor);
-    --pf-folder-color-2: color-mix(in srgb, var(--toolbar-color), var(--toolbar-bgcolor) 50%);
+    --pf-folder-color-1: var(--toolbar-background-color);
+    --pf-folder-color-2: color-mix(in srgb, var(--toolbar-text-color), var(--toolbar-background-color) 50%);
     --pf-folder-color-bg: color-mix(in srgb, var(--pf-folder-color-1), light-dark(#fff, #000) 95%);
     --pf-folder-color-fg: color-mix(in srgb, var(--pf-folder-color-2), light-dark(#000, #fff) 40%);
-    --tab-group-line-color: color-mix(in srgb, var(--toolbar-color), var(--toolbar-bgcolor) 50%) !important;
+    --tab-group-line-color: color-mix(in srgb, var(--toolbar-text-color), var(--toolbar-background-color) 50%) !important;
 
     @media -moz-pref("parfait.bg.accent-color") {
-      --tab-group-line-color: color-mix(in srgb, var(--pf-accent-color), var(--toolbar-color) 30%) !important;
+      --tab-group-line-color: color-mix(in srgb, var(--pf-accent-color), var(--toolbar-text-color) 30%) !important;
       --pf-folder-color-1: var(--pf-accent-color);
       --pf-folder-color-2: light-dark(var(--pf-accent-color), color-mix(in srgb, var(--pf-accent-color), #fff 60%));
     }
@@ -474,7 +474,7 @@ tab-split-view-wrapper {
     --tab-group-line-toolbar-border-distance: 3px;
   }
   .tab-group-label-hover-highlight {
-    --tab-hover-background-color: transparent;
+    --tab-background-color-hover: transparent;
   }
   .tab-group-label {
     background-color: color-mix(in srgb, light-dark(var(--tab-group-color), var(--tab-group-color-invert)), transparent 87%) !important;

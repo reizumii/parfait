@@ -6,18 +6,18 @@
 /* window: background */
 :root:not([lwtheme]) {
   #browser:not(.browser-toolbox-background) {
-    --toolbar-bgcolor: transparent;
+    --toolbar-background-color: transparent;
 
     &:-moz-window-inactive {
-      --toolbar-bgcolor: var(--toolbox-bgcolor-inactive);
+      --toolbar-background-color: var(--toolbox-background-color-inactive);
     }
   }
   @media -moz-pref("parfait.bg.transparent") and (not (-moz-platform: windows)) {
-    --toolbox-bgcolor: var(--pf-browser-bgcolor-transparent) !important;
+    --toolbox-background-color: var(--pf-browser-bgcolor-transparent) !important;
   }
   @media -moz-pref("parfait.bg.accent-color") {
-    --toolbox-bgcolor: color-mix(in oklab, transparent, var(--pf-browser-bgcolor) var(--pf-browser-opacity)) !important;
-    --toolbox-bgcolor-inactive: color-mix(in oklab, var(--pf-browser-bgcolor), var(--color-gray-50) 30%) !important;
+    --toolbox-background-color: color-mix(in oklab, transparent, var(--pf-browser-bgcolor) var(--pf-browser-opacity)) !important;
+    --toolbox-background-color-inactive: color-mix(in oklab, var(--pf-browser-bgcolor), var(--color-gray-50) 30%) !important;
     --tabpanel-background-color: color-mix(in oklab, var(--pf-browser-bgcolor), light-dark(#fff, #000)) !important;
     --pf-sidebar-bgcolor: var(--pf-browser-bgcolor);
 
@@ -25,18 +25,18 @@
       --pf-bg-gradient-fade: color-mix(in oklab, var(--pf-browser-bgcolor), var(--pf-browser-bgcolor-mix) 50%);
       --pf-bg-gradient-1: color-mix(in oklab, transparent, var(--pf-bg-gradient-fade) var(--pf-browser-opacity));
       --pf-bg-gradient-2: color-mix(in oklab, transparent, var(--pf-browser-bgcolor) var(--pf-browser-opacity));
-      --toolbox-bgcolor: linear-gradient(var(--pf-bg-gradient-1), var(--pf-bg-gradient-2)) !important;
+      --toolbox-background-color: linear-gradient(var(--pf-bg-gradient-1), var(--pf-bg-gradient-2)) !important;
 
       #navigator-toolbox {
         background: var(--pf-bg-gradient-1) !important;
       }
       #browser {
-        background: var(--toolbox-bgcolor) !important;
+        background: var(--toolbox-background-color) !important;
       }
     }
     /* expand on hover */
     &[sidebar-expand-on-hover] #sidebar-main:is([sidebar-launcher-expanded], [sidebar-ongoing-animations]) {
-      background: var(--toolbox-bgcolor) !important;
+      background: var(--toolbox-background-color) !important;
     }
   }
   @media (-moz-platform: macos) and (not (prefers-reduced-transparency)) {
@@ -48,9 +48,9 @@
 :root[lwtheme] {
   --pf-text-color: var(--lwt-text-color);
   --pf-icon-color: var(--toolbarbutton-icon-fill);
-  --pf-sidebar-bgcolor: var(--toolbox-bgcolor);
+  --pf-sidebar-bgcolor: var(--toolbox-background-color);
   --pf-split-border-color: var(--lwt-tab-line-color, var(--pf-accent-color));
-  --focus-outline-color: var(--toolbar-field-focus-border-color) !important;
+  --focus-outline-color: var(--toolbar-field-border-color-focus) !important;
 }
 
 /* separation */

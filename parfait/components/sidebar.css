@@ -59,7 +59,6 @@
     }
     &:not([customizing]) #nav-bar-customization-target > #sidebar-button:first-child {
       margin-inline-end: var(--pf-sidebar-btn-margin, 0px) !important;
-      transition: margin-inline-end var(--pf-ts-25);
     }
   }
   /* main sidebar */
@@ -186,7 +185,7 @@
   --button-border-radius: var(--pf-border-radius-sm);
 }
 .actions-list > moz-button:not([type~="ghost"]):not(:hover) {
-  --toolbarbutton-active-background: var(--pf-toolbar-bgcolor-hover);
+  --toolbarbutton-background-color-active: var(--pf-toolbar-bgcolor-hover);
 }
 .button-background[type="icon ghost"] {
   --button-size-icon: var(--pf-toolbaritem-size);

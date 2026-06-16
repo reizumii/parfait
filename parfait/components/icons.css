@@ -202,6 +202,9 @@
 #pageAction-urlbar-_testpilot-containers {
   --pageAction-image: var(--pf-icon-container-open) !important;
 }
+img[src="chrome://global/skin/icons/search-glass.svg"] {
+  content: var(--pf-icon-search) !important;
+}
 .search-button-bookmarks {
   --icon-url: url("chrome://browser/skin/bookmark-hollow.svg") !important;
 }

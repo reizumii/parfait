@@ -106,13 +106,13 @@ panel toolbarseparator {
     transition: none !important;
     appearance: auto !important;
     -moz-default-appearance: menupopup;
-    --panel-background: var(--pf-panel-bgcolor-transparent) !important;
+    --panel-background-color: var(--pf-panel-bgcolor-transparent) !important;
     --panel-border-color: transparent !important;
-    --panel-shadow-margin: 0 !important;
+    --panel-box-shadow-margin: 0 !important;
     --panel-border-radius: 0 !important;
     --background-color-canvas: var(--color-white) !important;
 
-    @media (-moz-platform: macos) { --panel-background: transparent !important; }
+    @media (-moz-platform: macos) { --panel-background-color: transparent !important; }
     @media (-moz-mac-tahoe-theme) { --panel-border-radius: 12px !important; }
   }
 }
@@ -401,7 +401,7 @@ panel toolbarseparator {
       --menuitem-icon: url("chrome://global/skin/icons/folder.svg") !important;
     }
     @media not -moz-pref("parfait.tabs.groups.color") {
-      --menuitem-icon-fill: var(--toolbar-color) !important;
+      --menuitem-icon-fill: var(--pf-text-color) !important;
 
       &:where([_moz-menuactive]:not([disabled="true"])) { --menuitem-icon-fill: #fff !important; }
     }
@@ -419,6 +419,14 @@ panel toolbarseparator {
 /* tab note */
 .tab-note-preview-container {
   --tab-note-text-background: transparent;
+}
+.tab-note-editor-name {
+  padding-inline: var(--panel-subview-body-padding-block) !important;
+}
+#tab-note-text {
+  --input-bgcolor: var(--pf-input-bgcolor);
+  --input-border-color: var(--pf-border-color);
+  --border-radius-medium: var(--pf-border-radius-sm);
 }
 
 /* modal */
@@ -520,8 +528,8 @@ notification-message {
 
 /* tab switcher */
 #ctrlTab-panel {
-  --panel-background: var(--pf-panel-bgcolor) !important;
-  --panel-color: var(--toolbox-color) !important;
+  --panel-background-color: var(--pf-panel-bgcolor) !important;
+  --panel-text-color: var(--toolbox-color) !important;
   --panel-border-radius: var(--pf-border-radius-md) !important;
 }
 .ctrlTab-preview,

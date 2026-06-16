@@ -7,8 +7,8 @@
 toolbar .toolbarbutton-1,
 findbar toolbarbutton {
   border-radius: var(--pf-border-radius-sm);
-  --toolbarbutton-hover-background: var(--pf-toolbar-bgcolor-hover);
-  --toolbarbutton-active-background: var(--pf-toolbar-bgcolor-active);
+  --toolbarbutton-background-color-hover: var(--pf-toolbar-bgcolor-hover);
+  --toolbarbutton-background-color-active: var(--pf-toolbar-bgcolor-active);
 }
 toolbar .toolbarbutton-1:not(#PlacesChevron, .toolbarbutton-combined-buttons-dropmarker) {
   min-width: var(--pf-toolbaritem-size);
@@ -73,7 +73,7 @@ toolbar .toolbarbutton-1:not(#PlacesChevron, .toolbarbutton-combined-buttons-dro
   gap: var(--pf-toolbaritem-gap);
 }
 #PanelUI-menu-button {
-  margin-inline: var(--pf-toolbaritem-gap) var(--toolbar-start-end-padding) !important;
+  margin-inline: var(--pf-toolbaritem-gap) var(--pf-separation) !important;
 }
 
 /* hide sidebar active state */
@@ -200,7 +200,7 @@ toolbarbutton.bookmark-item:not(.subviewbutton) {
     #navigator-toolbox {
       display: grid;
       grid-template-columns: max-content 1fr;
-      --toolbar-bgcolor: transparent;
+      --toolbar-background-color: transparent;
     }
     #TabsToolbar {
       grid-area: 1 / 2;
@@ -325,7 +325,7 @@ toolbarbutton.bookmark-item:not(.subviewbutton) {
 
     @media (-moz-windows-mica) {
       background: transparent !important;
-      --toolbox-bgcolor: transparent !important;
+      --toolbox-background-color: transparent !important;
     }
   }
   #nav-bar {
