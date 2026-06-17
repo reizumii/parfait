@@ -76,22 +76,26 @@
   }
   @media not -moz-pref("parfait.new-tab.logo", 1) {
     .wordmark {
-      width: 200px !important;
-      height: 84px !important;
+      width: calc(var(--pf-logo-width) - (var(--pf-logo-width) / 3)) !important;
+      height: calc(var(--pf-logo-height) - (var(--pf-logo-height) / 3)) !important;
       margin-inline: auto;
       background-size: 100% !important;
       background-position: center;
 
       @media -moz-pref("parfait.new-tab.logo", 2) {
         background-image: url("../assets/logo/logo.png") !important;
+        --pf-logo-width: 300px;
+        --pf-logo-height: 127px;
       }
       @media -moz-pref("parfait.new-tab.logo", 3) {
         background-image: url("../assets/logo/logo-uwu.png") !important;
+        --pf-logo-width: 296px;
+        --pf-logo-height: 127px;
       }
     }
     .logo-in-content .wordmark {
-      width: 300px !important;
-      height: 126px !important;
+      width: var(--pf-logo-width) !important;
+      height: var(--pf-logo-height) !important;
     }
     .logo-and-wordmark > svg,
     .logo {
