@@ -499,7 +499,19 @@ button[part="dialog-button"] {
   }
 }
 #fullscreen-exit-button {
+  appearance: none;
+  background-color: var(--pf-toolbar-bgcolor);
+  border: none !important;
+  border-radius: var(--pf-border-radius-sm);
+  font-size: var(--pf-font-size-1) !important;
   padding: 6px 10px !important;
+
+  &:hover {
+    background-color: var(--pf-toolbar-bgcolor-hover);
+  }
+  &:hover:active {
+    background-color: var(--pf-toolbar-bgcolor-active);
+  }
 }
 
 /* notifications */
