@@ -51,7 +51,7 @@
 @media not (-moz-platform: macos) {
   menupopup {
     --panel-padding: 5px 4px !important;
-    color: var(--panel-color);
+    color: var(--panel-text-color);
   }
   menu, menuitem, menucaption {
     --menuitem-border-radius: 5px !important;
@@ -135,7 +135,7 @@ panel toolbarseparator {
 
 /* confirmation hint */
 #confirmation-hint {
-  --panel-color: var(--pf-text-color) !important;
+  --panel-text-color: var(--pf-text-color) !important;
 }
 
 /* manage tab group */
@@ -268,7 +268,7 @@ panel toolbarseparator {
 #link-preview-panel {
   width: var(--panel-width) !important;
   --panel-width: calc(320px + 2px) !important;
-  --panel-color: var(--pf-text-color) !important;
+  --panel-text-color: var(--pf-text-color) !important;
 }
 .og-card {
   background-color: var(--pf-input-bgcolor) !important;
@@ -301,7 +301,7 @@ panel toolbarseparator {
   --og-main-font-size: 16px;
 }
 .og-card-title > a {
-  color: var(--panel-color);
+  color: var(--panel-text-color);
   text-decoration: none;
 }
 .og-card-description {

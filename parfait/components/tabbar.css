@@ -300,7 +300,7 @@ tab-split-view-wrapper {
     --tab-selected-shadow: none;
   }
   .tab-content {
-    --space-medium: var(--tab-icon-end-margin);
+    --space-medium: calc((var(--tab-min-height) - var(--icon-size)) / 2);
   }
   .tabbrowser-tab {
     border: 0 !important;

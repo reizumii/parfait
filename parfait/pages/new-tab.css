@@ -416,11 +416,15 @@
     background-color: var(--button-background-color) !important;
     border: none !important;
   }
-  .widget-wrapper > article {
+  .widget-wrapper > article,
+  .weather-widget.small-widget {
     outline: none !important;
     box-shadow: var(--pf-glass-shadow) !important;
     backdrop-filter: blur(16px) brightness(1.075) saturate(1.025);
     transition: all var(--pf-ts-25) !important;
+  }
+  .weather-widget.small-widget {
+    right: 12px;
   }
   .clocks-panel {
     background-color: light-dark(rgb(248, 248, 248), rgb(21, 21, 21)) !important;
