@@ -1,4 +1,4 @@
-<p align="center"><img width="220" src="https://github.com/user-attachments/assets/7ed1e61c-beca-440f-818f-acb5f555dea2" alt="Parfait logo"></p>
+<p align="center"><img width="220" src="parfait/assets/logo/logo.png" alt="Parfait logo"></p>
 
 <p align="center">
   <a href="https://github.com/reizumii/parfait/releases/latest"><img src="https://img.shields.io/github/v/release/reizumii/parfait?style=for-the-badge&label=version&color=dcb9ff"></a>
