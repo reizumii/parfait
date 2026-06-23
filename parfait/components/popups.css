@@ -566,14 +566,21 @@ notification-message {
   justify-content: flex-start !important;
 }
 .ctrlTab-favicon {
-  width: 16px !important;
-  height: 16px !important;
+  width: var(--icon-size) !important;
+  height: var(--icon-size) !important;
   margin-inline: 0 !important;
   margin-block: 8px 0 !important;
   padding: 0 !important;
   border: 0 !important;
   box-shadow: none !important;
   background: transparent !important;
+
+  &:not([src]) {
+    content: var(--pf-icon-square);
+    fill: var(--pf-favicon-bgcolor);
+    border-radius: var(--pf-favicon-radius);
+    -moz-context-properties: fill;
+  }
 }
 .ctrlTab-label {
   justify-content: start !important;
