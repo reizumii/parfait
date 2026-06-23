@@ -204,7 +204,8 @@
   transform: rotate(45deg);
 }
 img[src="chrome://browser/skin/synced-tabs.svg"] {
-  content: var(--pf-icon-devices);
+  content: var(--button-icon-content);
+  --button-icon-content: var(--pf-icon-devices);
 }
 img[src="chrome://browser/skin/sidebar-collapsed.svg"] {
   content: var(--pf-icon-sidebar);
