@@ -335,8 +335,12 @@ moz-button[view="viewCustomizeSidebar"] { order: 99; }
         }
       }
     }
+    tab-split-view-wrapper {
+      grid-template-columns: 1fr 1fr !important;
+    }
     tab-split-view-wrapper .tab-content {
-      padding-inline: var(--tab-icon-end-margin) !important;
+      width: unset !important;
+      padding-inline: var(--pf-tab-icon-end-margin) !important;
     }
     tab-group {
       --pf-tab-group-indent-1: var(--pf-tab-group-indent);

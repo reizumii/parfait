@@ -5,8 +5,9 @@
 
 /* tabs: layout */
 #tabbrowser-tabs {
+  --pf-tab-icon-end-margin: calc((var(--tab-min-height) - var(--icon-size)) / 2);
   --tab-min-height: var(--pf-tab-height);
-  --tab-icon-end-margin: calc((var(--tab-min-height) - var(--icon-size)) / 2) !important;
+  --tab-icon-end-margin: var(--pf-tab-icon-end-margin) !important;
 
   /* tabs: horizontal layout */
   &[orient="horizontal"] {
@@ -279,6 +280,9 @@ tab-split-view-wrapper {
   }
   #tabbrowser-tabs[orient="vertical"] & {
     margin-inline: var(--pf-separation) !important;
+  }
+  #tabbrowser-tabs[orient="vertical"][expanded] & {
+    grid-template-columns: 1fr 1fr !important;
   }
   @media not -moz-pref("sidebar.visibility", "hide-sidebar") {
     #tabbrowser-tabs[orient="vertical"]:not([expanded]) &::before {
