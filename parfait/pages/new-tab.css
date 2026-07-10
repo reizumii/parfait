@@ -76,9 +76,10 @@
   }
   @media not -moz-pref("parfait.new-tab.logo", 1) {
     .wordmark {
+      display: inline-block !important;
       width: calc(var(--pf-logo-width) - (var(--pf-logo-width) / 3)) !important;
       height: calc(var(--pf-logo-height) - (var(--pf-logo-height) / 3)) !important;
-      margin-inline: auto;
+      margin-inline: auto !important;
       background-size: 100% !important;
       background-position: center;
 
@@ -92,10 +93,16 @@
         --pf-logo-width: 296px;
         --pf-logo-height: 127px;
       }
+      @media -moz-pref("parfait.new-tab.logo", 4) {
+        background-image: url("../assets/logo/logo-mono.svg") !important;
+        --pf-logo-width: 240px;
+        --pf-logo-height: 59px;
+      }
     }
     .logo-in-content .wordmark {
       width: var(--pf-logo-width) !important;
       height: var(--pf-logo-height) !important;
+      margin-block-start: var(--space-xxlarge) !important;
     }
     .logo-and-wordmark > svg,
     .logo {
@@ -114,6 +121,7 @@
     box-shadow: none !important;
     backdrop-filter: blur(12px) brightness(1.175) saturate(1.075);
     border: none !important;
+    border-radius: var(--border-radius-medium) !important;
     color-scheme: revert !important;
 
     .icon-wrapper {
