@@ -319,6 +319,7 @@ tab-split-view-wrapper {
     --pf-folder-color-2: color-mix(in srgb, var(--toolbar-text-color), var(--toolbar-background-color) 50%);
     --pf-folder-color-bg: color-mix(in srgb, var(--pf-folder-color-1), light-dark(#fff, #000) 95%);
     --pf-folder-color-fg: color-mix(in srgb, var(--pf-folder-color-2), light-dark(#000, #fff) 40%);
+    --pf-folder-drag-bg: color-mix(in srgb, var(--pf-accent-primary-color), transparent 75%);
     --tab-group-line-color: color-mix(in srgb, var(--toolbar-text-color), var(--toolbar-background-color) 50%) !important;
 
     @media -moz-pref("parfait.bg.accent-color") {
@@ -330,6 +331,7 @@ tab-split-view-wrapper {
       --tab-group-line-color:  var(--tab-group-color) !important;
       --pf-folder-color-1: var(--tab-group-color);
       --pf-folder-color-2: var(--tab-group-color);
+      --pf-folder-drag-bg: color-mix(in srgb, var(--tab-group-color), transparent 87%);
     }
     /* tg: tabs */
     & > .tabbrowser-tab {
@@ -389,11 +391,15 @@ tab-split-view-wrapper {
     }
   }
   .tab-group-label-container {
-    margin: var(--tab-block-margin) var(--tab-inner-inline-margin) !important;
-    padding-block-end: 0 !important;
+    margin: 0 !important;
+    padding: var(--tab-block-margin) var(--tab-inner-inline-margin) !important;
 
     #tabbrowser-tabs[orient="vertical"] tab-group > &::after {
       inset-inline-start: calc(var(--tab-group-line-thickness) - var(--tab-inner-inline-margin)) !important;
+    }
+    &:has(.tab-group-label[dragover-groupTarget]) {
+      background-color: var(--pf-folder-drag-bg);
+      --pf-toolbar-bgcolor-hover: transparent;
     }
   }
   .tab-group-label-hover-highlight {
@@ -402,8 +408,7 @@ tab-split-view-wrapper {
     border-radius: var(--tab-border-radius) !important;
     box-shadow: none !important;
 
-    &:hover,
-    &:has(.tab-group-label[dragover-groupTarget]) {
+    &:hover {
       background-color: var(--pf-toolbar-bgcolor-hover);
     }
   }
@@ -444,11 +449,11 @@ tab-split-view-wrapper {
       left: calc((var(--tab-min-height) - 18px) / 2);
       margin-block-start: 4px;
       border-radius: 3px;
-      background: center no-repeat var(--pf-folder-color-bg);
+      background: var(--pf-folder-color-bg) var(--pf-icon-folder-dots) center no-repeat;
       box-shadow: inset 0 0 0 1.5px var(--pf-folder-color-fg);
       fill: var(--pf-folder-color-fg);
       fill-opacity: 0;
-      transition: transform var(--pf-ts-25) var(--pf-fx-folder), fill-opacity var(--pf-ts-25);
+      transition: transform var(--pf-ts-25) var(--pf-fx-folder), fill-opacity var(--pf-ts-15);
       -moz-context-properties: fill, fill-opacity;
     }
     &:is([aria-expanded="true"], [dragover-groupTarget]) {
@@ -457,7 +462,6 @@ tab-split-view-wrapper {
     }
     /* tg: mini icons */
     tab-group[collapsed][hasactivetab] &::after {
-      background-image: var(--pf-icon-folder-dots);
       fill-opacity: 1;
     }
     tab-group[collapsed]:not([hasactivetab]):has(> .tabbrowser-tab[soundplaying]) &::after {
