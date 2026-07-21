@@ -21,7 +21,7 @@
     outline: none !important;
     --toolbar-field-background-color: var(--pf-toolbar-bgcolor);
     --toolbar-field-background-color-focus: var(--pf-toolbar-bgcolor);
-    --urlbar-border-radius: var(--pf-urlbar-radius);
+    --urlbar-background-border-radius: var(--pf-urlbar-radius);
 
     #urlbar:not([focused]) & {
       transition: background-color var(--pf-ts-25);
@@ -124,7 +124,7 @@
       box-shadow: var(--pf-urlbar-border), var(--pf-shadow-lg) !important;
       border: none !important;
       transition: none !important;
-      --toolbar-field-background-color-focus: var(--pf-urlbar-bgcolor);
+      --urlbar-background-background-color-focused: var(--pf-urlbar-bgcolor);
     }
     @media -moz-pref("parfait.blur.enabled") {
       --pf-urlbar-fl-blur: var(--pf-acrylic-filter);
@@ -462,15 +462,15 @@
 }
 /* search mode switcher */
 .searchmode-switcher {
-  margin-left: 1px;
+  margin-left: 2px;
+  --urlbar-input-gap: 0;
   --button-icon-fill: color-mix(in srgb, currentColor, transparent 50%) !important;
   --button-background-color-active: var(--pf-toolbar-bgcolor-active) !important;
   --button-background-color-hover: var(--pf-toolbar-bgcolor-hover) !important;
   --button-background-color: transparent !important;
-  --button-min-height: calc(100% - 2px) !important;
-  --button-padding: 0 calc((var(--urlbar-min-height) - 2 * var(--urlbar-container-inset) - var(--icon-size)) / 2) !important;
   --button-border-radius: var(--urlbar-inner-border-radius) !important;
-  --space-small: 0 !important;
+  --button-padding: calc((var(--urlbar-min-height) - 2 * (var(--urlbar-input-container-border-width) + var(--urlbar-input-container-padding)) - var(--icon-size)) / 2) !important;
+  --space-small: 0;
 
   &[open] {
     --button-background-color: var(--pf-toolbar-bgcolor-hover) !important;

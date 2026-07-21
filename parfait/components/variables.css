@@ -97,7 +97,7 @@
 
   /* other */
   --pf-background-filter: blur(8px);
-  --pf-acrylic-filter: blur(72px) brightness(1.6) saturate(1.4);
+  --pf-acrylic-filter: blur(72px) brightness(1.375) saturate(1.175);
 
   /* densities */
   &[uidensity="compact"] {

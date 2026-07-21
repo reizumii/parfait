@@ -369,7 +369,7 @@ tab-split-view-wrapper {
       & > .tab-stack { opacity: 1; }
     }
   }
-  #sidebar-main[hidden] &,
+  #sidebar-container[hidden] &,
   &[expanded] {
     --pf-tab-group-padding-right: var(--tab-inner-inline-margin);
     --pf-tab-group-overflow-mask: linear-gradient(to left, transparent, #000 1em);

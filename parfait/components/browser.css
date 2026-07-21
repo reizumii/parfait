@@ -35,7 +35,7 @@
       }
     }
     /* expand on hover */
-    &[sidebar-expand-on-hover] #sidebar-main:is([sidebar-launcher-expanded], [sidebar-ongoing-animations]) {
+    &[sidebar-expand-on-hover] #sidebar-container:is([sidebar-launcher-expanded], [sidebar-ongoing-animations]) {
       background: var(--toolbox-background-color) !important;
     }
   }

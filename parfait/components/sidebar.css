@@ -62,7 +62,7 @@
     }
   }
   /* main sidebar */
-  #sidebar-main[sidebar-launcher-expanded] {
+  #sidebar-container[sidebar-launcher-expanded] {
     width: var(--pf-sidebar-width) !important;
     margin-top: var(--pf-sidebar-margin);
     transition: width var(--pf-ts-25), transform var(--pf-ts-25) !important;
@@ -222,7 +222,7 @@ moz-button[view="viewCustomizeSidebar"] { order: 99; }
     --pf-fl-sidebar-width: calc(var(--pf-sidebar-width) * (1 - var(--pf-fl-hover, 0)));
 
     /* sidebar */
-    #sidebar-main {
+    #sidebar-container {
       display: flex !important;
       overflow: unset !important;
       position: fixed;
@@ -267,7 +267,7 @@ moz-button[view="viewCustomizeSidebar"] { order: 99; }
       &::before { left: calc(0px - var(--pf-fl-trigger-width)); }
       &::after { right: calc(0px - var(--pf-fl-trigger-width)); }
     }
-    &:has(#sidebar-main:hover, .tabbrowser-tab[multiselected]:not([selected]), #tabContextMenu:hover, :is(.tab-group-editor-panel, #tabgroup-preview-panel[animate="open"])[panelopen="true"]) {
+    &:has(#sidebar-container:hover, .tabbrowser-tab[multiselected]:not([selected]), #tabContextMenu:hover, :is(.tab-group-editor-panel, #tabgroup-preview-panel[animate="open"])[panelopen="true"]) {
       --pf-fl-hover: 1;
     }
     /* fs: separation */
@@ -382,7 +382,7 @@ moz-button[view="viewCustomizeSidebar"] { order: 99; }
     --pf-fl-navbar-y: calc(var(--pf-browser-separation) - var(--pf-navbar-height));
 
     /* fus: sidebar */
-    #sidebar-main {
+    #sidebar-container {
       height: calc(100% - (var(--pf-separation) * 2));
       padding-top: calc(var(--pf-navbar-height) + var(--pf-sidebar-margin));
       top: var(--pf-separation);
