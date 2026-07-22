@@ -453,6 +453,7 @@ tab-split-view-wrapper {
       box-shadow: inset 0 0 0 1.5px var(--pf-folder-color-fg);
       fill: var(--pf-folder-color-fg);
       fill-opacity: 0;
+      transform: rotate(0.1deg);
       transition: transform var(--pf-ts-25) var(--pf-fx-folder), fill-opacity var(--pf-ts-15);
       -moz-context-properties: fill, fill-opacity;
     }
