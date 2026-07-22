@@ -396,7 +396,7 @@
       fill-opacity: 0.5;
     }
     &[src="chrome://global/skin/icons/edit-copy.svg"] {
-      content: var(--pf-icon-copy);
+      content: var(--pf-icon-edit-copy);
     }
   }
   .urlbarView-button {

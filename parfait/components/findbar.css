@@ -82,13 +82,13 @@
         content: var(--pf-icon-search-highlight);
       }
       .findbar-case-sensitive & {
-        content: var(--pf-icon-search-matchcase);
+        content: var(--pf-icon-search-case);
       }
       .findbar-match-diacritics & {
-        content: var(--pf-icon-search-matchdiacritics);
+        content: var(--pf-icon-search-diacritics);
       }
       .findbar-entire-word & {
-        content: var(--pf-icon-search-matchwholeword);
+        content: var(--pf-icon-search-word);
       }
     }
     &.findbar-highlight {

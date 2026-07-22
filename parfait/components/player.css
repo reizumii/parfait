@@ -162,25 +162,25 @@
   }
   /* icons */
   #seekBackward {
-    background-image: url("../assets/icons/seek-backward.svg") !important;
+    background-image: url("../icons/custom/seek-5-backward.svg") !important;
   }
   #seekForward {
-    background-image: url("../assets/icons/seek-forward.svg") !important;
+    background-image: url("../icons/custom/seek-5-forward.svg") !important;
   }
   #controls:not(.muted) #audio {
-    background-image: url("../assets/icons/audio.svg") !important;
+    background-image: url("../icons/custom/audio.svg") !important;
   }
   #controls.muted #audio {
-    background-image: url("../assets/icons/audio-mute.svg") !important;
+    background-image: url("../icons/custom/audio-mute.svg") !important;
   }
   #closed-caption {
-    background-image: url("../assets/icons/captions.svg") !important;
+    background-image: url("../icons/custom/captions.svg") !important;
   }
   body:not(:fullscreen) #fullscreen {
-    background-image: url("../assets/icons/fullscreen.svg") !important;
+    background-image: url("../icons/custom/fullscreen.svg") !important;
   }
   body:fullscreen #fullscreen {
-    background-image: url("../assets/icons/fullscreen-exit.svg") !important;
+    background-image: url("../icons/custom/fullscreen-exit.svg") !important;
   }
   /* breakpoints */
   @media (width <= 300px) {

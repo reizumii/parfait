@@ -208,7 +208,7 @@ img[src="chrome://browser/skin/synced-tabs.svg"] {
   --button-icon-content: var(--pf-icon-devices);
 }
 img[src="chrome://browser/skin/sidebar-collapsed.svg"] {
-  content: var(--pf-icon-sidebar);
+  content: var(--pf-icon-sidebar-left);
 }
 /* bottom strip: icon alignment */
 moz-button[view="viewCustomizeSidebar"] { order: 99; }

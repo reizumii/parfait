@@ -149,23 +149,23 @@ spacer:is([part="overflow-start-indicator"], [part="overflow-end-indicator"]) {
   border-radius: var(--pf-border-radius-sm) !important;
 }
 .tab-audio-button {
-  background: no-repeat center var(--pf-icon-audio-12);
+  background: no-repeat center var(--pf-icon-audio-fill-12);
   fill: currentColor;
   -moz-context-properties: fill;
   --button-icon-fill: transparent;
 
   &[muted] {
-    background-image: var(--pf-icon-audio-mute-12);
+    background-image: var(--pf-icon-audio-mute-fill-12);
   }
   &[activemedia-blocked] {
     background-image: url("chrome://browser/skin/tabbrowser/tab-audio-blocked-circle-12.svg");
   }
 }
 .tab-icon-overlay[soundplaying] {
-  list-style-image: var(--pf-icon-audio-12) !important;
+  list-style-image: var(--pf-icon-audio-fill-12) !important;
 }
 .tab-icon-overlay[muted] {
-  list-style-image: var(--pf-icon-audio-mute-12) !important;
+  list-style-image: var(--pf-icon-audio-mute-fill-12) !important;
 }
 .tabbrowser-tab:not([pinned]) {
   .tab-label-container {
@@ -465,7 +465,7 @@ tab-split-view-wrapper {
       fill-opacity: 1;
     }
     tab-group[collapsed]:not([hasactivetab]):has(> .tabbrowser-tab[soundplaying]) &::after {
-      background-image: var(--pf-icon-audio-12);
+      background-image: var(--pf-icon-audio-fill-12);
       background-size: 8px;
       fill-opacity: 1;
     }

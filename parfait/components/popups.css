@@ -71,7 +71,7 @@
     padding-inline: 10px !important;
   }
   menupopup > menu::after {
-    background-image: var(--pf-icon-chevron-right-small) !important;
+    background-image: var(--pf-icon-chevron-right-12) !important;
     --menu-arrow-opacity: 0.75;
     --menu-arrow-size: 12px;
   }
@@ -121,7 +121,7 @@ panel toolbarseparator {
 .widget-overflow-list .subviewbutton-nav,
 .PanelUI-subView .subviewbutton-nav {
   &::after {
-    content: var(--pf-icon-chevron-right-small) !important;
+    content: var(--pf-icon-chevron-right-12) !important;
     fill-opacity: 0.4 !important;
   }
 }
@@ -229,7 +229,7 @@ panel toolbarseparator {
   --heading-font-size-xlarge: var(--pf-font-size-1);
 
   &::before {
-    content: var(--pf-icon-translate);
+    content: var(--pf-icon-text-translate);
     fill: var(--pf-accent-text-color);
     -moz-context-properties: fill;
   }
@@ -382,19 +382,19 @@ panel toolbarseparator {
 
 /* tabs list */
 .all-tabs-mute-button[soundplaying] {
-  list-style-image: var(--pf-icon-audio-12) !important;
+  list-style-image: var(--pf-icon-audio-fill-12) !important;
 }
 .all-tabs-mute-button[muted] {
-  list-style-image: var(--pf-icon-audio-mute-12) !important;
+  list-style-image: var(--pf-icon-audio-mute-fill-12) !important;
 }
 @media -moz-pref("sidebar.verticalTabs") {
   .tab-group-icon {
-    list-style-image: var(--pf-icon-folder) !important;
-    --menuitem-icon: var(--pf-icon-folder) !important;
+    list-style-image: var(--pf-icon-folder-closed-duo) !important;
+    --menuitem-icon: var(--pf-icon-folder-closed-duo) !important;
     --menuitem-icon-fill: light-dark(var(--tab-group-color), var(--tab-group-color-invert)) !important;
 
     &:not([class~="all-tabs-group-action-button"], .tab-group-icon-collapsed) {
-      list-style-image: var(--pf-icon-folder-open) !important;
+      list-style-image: var(--pf-icon-folder-open-duo) !important;
     }
     &.tab-group-icon-closed {
       list-style-image: var(--menuitem-icon) !important;
@@ -462,7 +462,7 @@ button[part="dialog-button"] {
     color: color-mix(in srgb, currentColor, transparent 40%);
   }
   &[default="true"] .button-text::after {
-    content: url("../assets/icons/enter-12.svg");
+    content: url("../icons/custom/enter-12.svg");
     background: color-mix(in srgb, currentColor, transparent 85%);
     border: 2px solid color-mix(in srgb, currentColor, transparent 75%);
   }
