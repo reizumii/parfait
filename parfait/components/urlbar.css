@@ -6,6 +6,7 @@
 /* urlbar */
 :root {
   --pf-urlbar-radius: var(--pf-border-radius-md);
+  --pf-urlbar-container-inset: calc(var(--urlbar-input-container-border-width) + var(--urlbar-input-container-padding));
 
   @media not -moz-pref("sidebar.verticalTabs") {
     --pf-urlbar-radius: var(--pf-border-radius-hl);
@@ -15,12 +16,12 @@
   height: var(--urlbar-height) !important;
   min-height: unset !important;
   --urlbar-height: var(--pf-urlbar-height) !important;
+  --toolbar-field-background-color: var(--pf-toolbar-bgcolor);
+  --toolbar-field-background-color-focus: var(--pf-toolbar-bgcolor);
 
   .urlbar-background {
     border: none !important;
     outline: none !important;
-    --toolbar-field-background-color: var(--pf-toolbar-bgcolor);
-    --toolbar-field-background-color-focus: var(--pf-toolbar-bgcolor);
     --urlbar-background-border-radius: var(--pf-urlbar-radius);
 
     #urlbar:not([focused]) & {
@@ -78,7 +79,7 @@
       transition-duration: var(--pf-ts-15) !important;
 
       #urlbar:hover & {
-        width: calc(var(--urlbar-min-height) - 2px - 2 * var(--urlbar-container-padding)) !important;
+        width: calc(var(--urlbar-min-height) - 2px - 2 * var(--urlbar-input-container-padding)) !important;
         padding-inline: var(--urlbar-icon-padding) !important;
         opacity: 1;
         transition-delay: var(--pf-ts-15) !important;
@@ -146,7 +147,7 @@
       height: calc(var(--icon-size) + (2 * var(--urlbar-icon-padding)));
     }
     .searchmode-switcher {
-      height: calc(var(--icon-size) + var(--urlbar-container-inset) + (2 * var(--urlbar-icon-padding))) !important;
+      height: calc(var(--icon-size) + var(--pf-urlbar-container-inset) + (2 * var(--urlbar-icon-padding))) !important;
       margin-inline: 0 9px !important;
     }
     .urlbarView[noresults] > .urlbarView-body-outer > .urlbarView-body-inner {
@@ -469,7 +470,7 @@
   --button-background-color-hover: var(--pf-toolbar-bgcolor-hover) !important;
   --button-background-color: transparent !important;
   --button-border-radius: var(--urlbar-inner-border-radius) !important;
-  --button-padding: calc((var(--urlbar-min-height) - 2 * (var(--urlbar-input-container-border-width) + var(--urlbar-input-container-padding)) - var(--icon-size)) / 2) !important;
+  --button-padding: 0 calc((var(--urlbar-min-height) - 2 * var(--pf-urlbar-container-inset) - var(--icon-size)) / 2) !important;
   --space-small: 0;
 
   &[open] {

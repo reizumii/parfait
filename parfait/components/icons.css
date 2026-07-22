@@ -192,7 +192,7 @@ img[src="chrome://browser/skin/quickactions.svg"] {
 
 /* tabs */
 .tab-icon-image[src="chrome://browser/skin/controlcenter/dashboard.svg"] {
-  content: url("chrome://browser/skin/tracking-protection.svg");
+  content: var(--pf-icon-statistics);
 }
 .tab-note-icon-overlay {
   list-style-image: var(--pf-icon-note-fill-12) !important;
