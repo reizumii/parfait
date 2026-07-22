@@ -543,13 +543,35 @@ notification-message {
   --panel-background-color: var(--pf-panel-bgcolor) !important;
   --panel-text-color: var(--toolbox-color) !important;
   --panel-border-radius: var(--pf-border-radius-md) !important;
+
+  @media not (-moz-platform: linux) {
+    transition: none !important;
+    appearance: auto !important;
+    -moz-default-appearance: menupopup;
+    --panel-background-color: var(--pf-panel-bgcolor-transparent) !important;
+    --panel-border-color: transparent !important;
+    --panel-box-shadow: none !important;
+    --panel-box-shadow-margin: 0 !important;
+    --panel-border-radius: 0 !important;
+    --panel-padding: 0 !important;
+  }
+}
+.ctrlTab-preview {
+  padding-block: 11px !important;
 }
 .ctrlTab-preview,
 #ctrlTab-showAll {
   text-shadow: none !important;
 }
 .ctrlTab-preview-inner {
+  display: grid !important;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  row-gap: 4px;
+  column-gap: 8px;
+  margin: 0 !important;
   border: 0 !important;
+  padding-block-end: 10px !important;
   border-radius: var(--pf-border-radius-md) !important;
 
   .ctrlTab-preview:focus & {
@@ -557,23 +579,21 @@ notification-message {
   }
 }
 .ctrlTab-canvas {
-  border: 1px solid var(--pf-border-color);
+  grid-column: 1 / -1;
+  outline: 1px solid var(--pf-border-color-light) !important;
   border-radius: var(--pf-border-radius-sm);
-  box-shadow: var(--pf-shadow-md) !important;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04) !important;
   overflow: hidden;
 }
-.ctrlTab-favicon-container {
-  justify-content: flex-start !important;
-}
 .ctrlTab-favicon {
-  width: var(--icon-size) !important;
-  height: var(--icon-size) !important;
-  margin-inline: 0 !important;
-  margin-block: 8px 0 !important;
-  padding: 0 !important;
-  border: 0 !important;
+  width: calc(var(--icon-size) + (var(--pf-ctrl-tab-padding) * 2)) !important;
+  height: calc(var(--icon-size) + (var(--pf-ctrl-tab-padding) * 2)) !important;
+  margin: 0 !important;
+  padding: var(--pf-ctrl-tab-padding) !important;
   box-shadow: none !important;
   background: transparent !important;
+  border-radius: var(--pf-border-radius-sm) !important;
+  --pf-ctrl-tab-padding: 2px;
 
   &:not([src]) {
     content: var(--pf-icon-square);
@@ -583,13 +603,12 @@ notification-message {
   }
 }
 .ctrlTab-label {
+  margin: 0 !important;
   justify-content: start !important;
-  margin-left: 26px !important;
-  margin-top: -18px !important;
   font-size: var(--pf-font-size-1);
   font-weight: 500;
 }
 #ctrlTab-showAll-container {
-  opacity: 0;
   height: 0 !important;
+  opacity: 0;
 }
