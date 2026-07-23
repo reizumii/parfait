@@ -27,9 +27,9 @@
     #urlbar:not([focused]) & {
       transition: background-color var(--pf-ts-25);
     }
-    #urlbar:hover & {
-      --toolbar-field-background-color: var(--pf-toolbar-bgcolor-hover);
-    }
+  }
+  &:hover {
+    --toolbar-field-background-color: var(--pf-toolbar-bgcolor-hover);
   }
 }
 :root:not([customizing]) {
