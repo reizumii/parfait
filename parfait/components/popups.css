@@ -559,6 +559,9 @@ notification-message {
     --panel-border-radius: 0 !important;
   }
 }
+#ctrlTab-previews {
+  margin-inline: 6px;
+}
 .ctrlTab-preview {
   padding-block: 12px !important;
 }
@@ -574,7 +577,7 @@ notification-message {
   column-gap: 8px;
   margin: 0 !important;
   border: 0 !important;
-  padding-block-end: 10px !important;
+  padding: 12px !important;
   border-radius: var(--pf-border-radius-md) !important;
 
   .ctrlTab-preview:focus & {
@@ -589,7 +592,7 @@ notification-message {
   overflow: clip;
 
   &:has(> .ctrlTab-placeholder) {
-    background: url(chrome://global/skin/icons/defaultFavicon.svg) center/32px no-repeat;
+    background: url(chrome://global/skin/icons/defaultFavicon.svg) center/48px no-repeat;
     fill : color-mix(in srgb, var(--pf-icon-color), transparent 75%) !important;
     -moz-context-properties: fill;
   }
@@ -613,6 +616,7 @@ notification-message {
 }
 .ctrlTab-label {
   margin: 0 !important;
+  padding-right: 4px;
   justify-content: start !important;
   font-size: var(--pf-font-size-1);
   font-weight: 500;
