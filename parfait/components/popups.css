@@ -586,7 +586,13 @@ notification-message {
   outline: 1px solid var(--pf-border-color-light) !important;
   border-radius: var(--pf-border-radius-sm);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04) !important;
-  overflow: hidden;
+  overflow: clip;
+
+  &:has(> .ctrlTab-placeholder) {
+    background: url(chrome://global/skin/icons/defaultFavicon.svg) center/32px no-repeat;
+    fill : color-mix(in srgb, var(--pf-icon-color), transparent 75%) !important;
+    -moz-context-properties: fill;
+  }
 }
 .ctrlTab-favicon {
   width: calc(var(--icon-size) + (var(--pf-ctrl-tab-padding) * 2)) !important;
