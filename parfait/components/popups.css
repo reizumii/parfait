@@ -540,19 +540,17 @@ notification-message {
 
 /* tab switcher */
 #ctrlTab-panel {
+  transition: none !important;
+  appearance: auto !important;
+  -moz-default-appearance: menupopup;
   --panel-background-color: var(--pf-panel-bgcolor) !important;
   --panel-text-color: var(--toolbox-color) !important;
   --panel-border-color: var(--pf-border-color) !important;
   --panel-border-radius: calc(var(--pf-border-radius-md) + 8px) !important;
+  --panel-box-shadow: none !important;
+  --panel-box-shadow-margin: 0 !important;
+  --panel-padding: 0 !important;
 
-  @media not (-moz-platform: linux) {
-    transition: none !important;
-    appearance: auto !important;
-    -moz-default-appearance: menupopup;
-    --panel-box-shadow: none !important;
-    --panel-box-shadow-margin: 0 !important;
-    --panel-padding: 0 !important;
-  }
   @media (-moz-platform: windows) and (-moz-windows-mica-popups) {
     --panel-background-color: var(--pf-panel-bgcolor-transparent) !important;
     --panel-border-color: transparent !important;
