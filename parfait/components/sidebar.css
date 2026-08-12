@@ -267,7 +267,7 @@ moz-button[view="viewCustomizeSidebar"] { order: 99; }
       &::before { left: calc(0px - var(--pf-fl-trigger-width)); }
       &::after { right: calc(0px - var(--pf-fl-trigger-width)); }
     }
-    &:has(#sidebar-container:hover, .tabbrowser-tab[multiselected]:not([selected]), #tabbrowser-tabs[movingtab], #tabs-newtab-button[open], :is(#new-tab-button-popup, #tabContextMenu):hover, :is(#tabNotePanel, #tab-note-preview-panel, .tab-group-editor-panel, #tabgroup-preview-panel[animate="open"])[panelopen]) {
+    &:has(#sidebar-container:hover, .tabbrowser-tab[multiselected]:not([selected]), #tabbrowser-tabs[movingtab], #tabs-newtab-button[open], :is(#new-tab-button-popup, #tabContextMenu):hover, :is(#tabNotePanel, .tab-group-editor-panel, :is(#tab-note-preview-panel, #tabgroup-preview-panel)[animate="open"])[panelopen]) {
       --pf-fl-hover: 1;
     }
     /* fs: separation */
@@ -309,7 +309,7 @@ moz-button[view="viewCustomizeSidebar"] { order: 99; }
           display: flex !important;
         }
         .tab-throbber,
-        &:not([soundplaying]) .tab-icon-image {
+        &:not([soundplaying], [muted], [activemedia-blocked]) .tab-icon-image {
           margin-inline-end: var(--tab-icon-end-margin);
         }
         .tab-close-button {
@@ -327,10 +327,10 @@ moz-button[view="viewCustomizeSidebar"] { order: 99; }
             background-color: var(--pf-toolbar-bgcolor-hover) !important;
           }
         }
-        .tab-icon-overlay[soundplaying] {
+        .tab-icon-overlay:is([soundplaying], [muted], [activemedia-blocked]) {
           display: none;
         }
-        .tab-audio-button[soundplaying] {
+        .tab-audio-button:is([soundplaying], [muted], [activemedia-blocked]) {
           display: flex !important;
           margin-left: 2px;
         }
