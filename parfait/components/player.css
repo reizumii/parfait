@@ -43,7 +43,7 @@
     max-height: 24px !important;
     background-size: 16px !important;
     transition: var(--pf-ts-15) !important;
-    --border-radius-small: 999px;
+    --border-radius-small: var(--border-radius-circle);
 
     &:hover:active {
       background-size: 14px !important;
@@ -63,7 +63,7 @@
       background: rgba(255, 255, 255, 0.2);
       position: absolute;
       transform: scale(0.8);
-      border-radius: 999px;
+      border-radius: var(--border-radius-circle);
       inset: 0;
     }
   }
@@ -77,7 +77,7 @@
     justify-content: center;
     padding: 4px;
     background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 999px;
+    border-radius: var(--border-radius-circle);
     box-sizing: border-box;
     gap: 4px !important;
   }

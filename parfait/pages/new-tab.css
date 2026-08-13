@@ -334,7 +334,7 @@
   }
   .wallpapers-arrow-button {
     margin-block-end: 16px !important;
-    --button-border-radius: 99px;
+    --button-border-radius: var(--border-radius-circle);
   }
   /* cnt: widgets */
   #widgets-management-panel > moz-box-button {

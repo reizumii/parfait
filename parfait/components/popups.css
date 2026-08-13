@@ -80,7 +80,7 @@
     color: currentColor !important;
     border: 0 !important;
     --space-xxsmall: 1px;
-    --border-radius-small: 999px;
+    --border-radius-small: var(--border-radius-circle);
   }
   #context-navigation {
     flex-direction: column;
@@ -169,7 +169,7 @@ panel toolbarseparator {
     }
   }
   .tab-group-editor-swatches {
-    --border-radius-medium: 99px;
+    --border-radius-medium: var(--border-radius-circle);
 
     @media -moz-pref("sidebar.verticalTabs") and (not -moz-pref("parfait.tabs.groups.color")) { display: none !important; }
   }
@@ -311,7 +311,7 @@ panel toolbarseparator {
   position: absolute;
   top: 8px;
   right: 8px;
-  border-radius: 999px;
+  border-radius: var(--border-radius-circle);
 
   .og-card-content:has(> .og-card-img) & {
     background-color: rgba(0, 0, 0, 0.2);
