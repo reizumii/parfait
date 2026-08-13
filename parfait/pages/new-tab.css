@@ -6,13 +6,15 @@
 @-moz-document url(about:newtab), url(about:home) {
   :root {
     --pf-accent-color: #b8e;
-    --pf-border-color: light-dark(rgba(21, 21, 21, 0.15), rgba(255, 255, 255, 0.125)) !important;
-    --pf-border-color-alt: light-dark(rgba(21, 21, 21, 0.075), rgba(255, 255, 255, 0.075)) !important;
-    --pf-glass-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.125), inset 0 -1px 0 rgba(34, 34, 34, 0.075), inset 0 0 0 1px rgba(255, 255, 255, 0.05);
-    --pf-bg-blur: blur(64px);
-    --pf-searchbox-bg-blur: blur(16px) brightness(1.175) saturate(1.075);
+    --pf-border-color: light-dark(rgba(21, 21, 21, 0.15), rgba(255, 255, 255, 0.125));
+    --pf-border-color-alt: light-dark(rgba(21, 21, 21, 0.075), rgba(255, 255, 255, 0.075));
+    --pf-background-blur: blur(64px);
     --pf-ts-25: 0.25s;
     --pf-fx-bounce: cubic-bezier(0.125, 1.125, 0.25, 1.0125);
+
+    --pf-element-background-color: light-dark(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.1));
+    --pf-element-shadow: 0 0 0 1px light-dark(rgba(0, 0, 0, 0.06), rgba(255, 255, 255, 0.125)), 0 2px 6px rgba(0, 0, 0, 0.04);
+    --pf-element-filter: none;
 
     --newtab-background-card: light-dark(rgba(255, 255, 255, 0.4), rgba(21, 21, 21, 0.375)) !important;
     --newtab-background-color-secondary: light-dark(rgba(255, 255, 255, 0.75), rgba(21, 21, 21, 0.625)) !important;
@@ -34,6 +36,9 @@
     --button-border: none !important;
     --button-border-radius: calc(var(--border-radius-small) - 2px) !important;
 
+    &:not([style^="--newtab-background-color:"]) {
+      --newtab-background-color: light-dark(#f8f8f8, #161616) !important;
+    }
     @media -moz-pref("parfait.animations.enabled", false) or (prefers-reduced-motion: reduce) { --pf-ts-25: 0s; }
   }
   @media (-moz-platform: windows) {
@@ -49,20 +54,27 @@
     }
   }
   /* as shrimple as that */
+  body:is(.lightWallpaper, .darkWallpaper):not([style~="url();"]) {
+    --pf-element-background-color: light-dark(rgba(255, 255, 255, 0.175), rgba(96, 96, 96, 0.2));
+    --pf-element-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.125), inset 0 -1px 0 rgba(34, 34, 34, 0.075), inset 0 0 0 1px rgba(255, 255, 255, 0.0625), 0 2px 6px rgba(0, 0, 0, 0.04);
+    --pf-element-filter: blur(12px) brightness(var(--pf-ef-brg, 1.125)) saturate(var(--pf-ef-sat, 1.075));
+  }
   body.lightWallpaper {
     color-scheme: light;
   }
   body.darkWallpaper {
     color-scheme: dark;
-    --pf-searchbox-bg-blur: blur(16px) brightness(0.9375) saturate(0.925);
+    --pf-ef-brg: 0.84;
+    --pf-ef-sat: 0.92;
   }
   /* search box */
   .search-handoff-button {
-    background-color: light-dark(rgba(248, 248, 248, 0.125), rgba(21, 21, 21, 0.125)) !important;
+    background-color: var(--pf-element-background-color) !important;
     background-size: 20px !important;
     border: none !important;
-    box-shadow: var(--pf-glass-shadow) !important;
-    backdrop-filter: var(--pf-searchbox-bg-blur);
+    font-weight: var(--font-weight);
+    box-shadow: var(--pf-element-shadow) !important;
+    backdrop-filter: var(--pf-element-filter);
     fill-opacity: 0.5;
     -moz-context-properties: fill, fill-opacity !important;
     --content-search-handoff-ui-engine-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='context-fill' fill-opacity='context-fill-opacity' viewBox='0 0 16 16'%3E%3Cpath d='M7.625 2a5.5 5.5 0 0 1 4.382 8.821l1.648 1.649a.75.75 0 1 1-1.06 1.06l-1.649-1.648A5.5 5.5 0 1 1 7.625 2m0 1.5a4 4 0 1 0 0 8 4 4 0 0 0 0-8'/%3E%3C/svg%3E") !important;
@@ -82,6 +94,7 @@
       margin-inline: auto !important;
       background-size: 100% !important;
       background-position: center;
+      fill: var(--newtab-text-primary-color) !important;
 
       @media -moz-pref("parfait.new-tab.logo", 2) {
         background-image: url("../assets/logo/logo.png") !important;
@@ -117,9 +130,9 @@
   .top-site-outer .tile {
     width: 72px !important;
     height: 72px !important;
-    background-color: rgba(255, 255, 255, 0.125) !important;
+    background-color: var(--pf-element-background-color) !important;
     box-shadow: none !important;
-    backdrop-filter: blur(12px) brightness(1.175) saturate(1.075);
+    backdrop-filter: var(--pf-element-filter);
     border: none !important;
     border-radius: var(--border-radius-medium) !important;
     color-scheme: revert !important;
@@ -132,7 +145,6 @@
     }
   }
   .top-site-outer .tile:hover {
-    box-shadow: none !important;
     outline: 4px solid var(--pf-border-color) !important;
     transition: transform var(--pf-ts-25) !important;
   }
@@ -144,7 +156,10 @@
     position: absolute;
     inset: 0;
     border-radius: var(--border-radius-medium);
-    box-shadow: var(--pf-glass-shadow);
+    box-shadow: var(--pf-element-shadow);
+  }
+  .top-site-outer .tile .icon-wrapper.letter-fallback {
+    background-color: transparent !important;
   }
   .top-site-outer .icon-pin-small {
     visibility: hidden;
@@ -152,16 +167,17 @@
   .top-site-outer .context-menu-button {
     top: -4px !important;
     right: -4px !important;
-    background-color: rgba(255, 255, 255, 0.125) !important;
-    backdrop-filter: blur(8px);
-    box-shadow: var(--pf-glass-shadow) !important;
+    background-color: var(--pf-element-background-color) !important;
+    box-shadow: var(--pf-element-shadow) !important;
+    backdrop-filter: var(--pf-element-filter);
     border: none !important;
     color-scheme: revert !important;
   }
   /* context menu */
   .context-menu {
     padding: 4px;
-    backdrop-filter: var(--pf-bg-blur);
+    backdrop-filter: var(--pf-background-blur);
+    box-shadow: var(--pf-element-shadow) !important;
     color-scheme: revert !important;
   }
   .context-menu > ul {
@@ -181,19 +197,17 @@
   /* customize new tab */
   .button-background:has(img[src="chrome://global/skin/icons/edit-outline.svg"]) {
     padding: 0.5rem !important;
-    border-radius: 99px !important;
-    backdrop-filter: var(--pf-bg-blur);
-    box-shadow: var(--pf-glass-shadow) !important;
-    opacity: 0.5;
+    border-radius: var(--border-radius-circle) !important;
+    box-shadow: var(--pf-element-shadow) !important;
+    backdrop-filter: var(--pf-element-filter);
     transition: all var(--pf-ts-25) var(--pf-fx-bounce) !important;
-    --button-background-color: light-dark(rgba(0, 0, 0, 0.25), rgba(255, 255, 255, 0.125));
+    --button-background-color: var(--pf-element-background-color);
     --button-background-color-hover: var(--button-background-color);
     --button-background-color-active: var(--button-background-color);
-    --button-icon-fill: #fff;
+    --button-icon-fill: currentColor;
     --button-border: none;
 
     &:hover {
-      opacity: 1;
       transform: scale(1.1);
     }
     &  > label { display: none; }
@@ -205,10 +219,9 @@
     inset-block: auto 20px !important;
     inset-inline: auto 20px !important;
     padding-block-end: 0 !important;
-    border: 1px solid var(--pf-border-color) !important;
     border-radius: var(--border-radius-medium) !important;
-    box-shadow: none !important;
-    backdrop-filter: var(--pf-bg-blur);
+    box-shadow: var(--pf-element-shadow) !important;
+    backdrop-filter: var(--pf-background-blur);
     transition: transform var(--pf-ts-25);
     transition-timing-function: var(--pf-fx-bounce) !important;
     transform: scale(0) !important;
@@ -229,6 +242,21 @@
   }
   .close-button-wrapper {
     display: none;
+  }
+  .button-background:has(img[src="chrome://global/skin/icons/shaft-arrow-left.svg"]) {
+    background-color: transparent !important;
+    gap: 1rem !important;
+    --button-padding: 0;
+    
+    & > img {
+      background-color: var(--button-background-color-ghost);
+      border-radius: var(--border-radius-circle);
+      padding: 0.5rem;
+    }
+    & > label {
+      font-size: 20px;
+      font-weight: 600;
+    }
   }
   /* cnt: sections */
   #wallpapers-section,
@@ -353,6 +381,12 @@
     --toggle-dot-height: 12px;
     --toggle-dot-margin: 3px;
   }
+  .toggle-button::before {
+    transition: var(--pf-ts-25) !important;
+  }
+  .toggle-button:active::before {
+    transform: scale(1.25);
+  }
   .settings-toggles moz-toggle {
     --input-space-offset: calc(var(--toggle-width) + 12px) !important;
   }
@@ -427,23 +461,17 @@
   .widget-wrapper > article,
   .weather-widget.small-widget {
     outline: none !important;
-    box-shadow: var(--pf-glass-shadow) !important;
-    backdrop-filter: blur(16px) brightness(1.075) saturate(1.025);
+    box-shadow: var(--pf-element-shadow) !important;
+    backdrop-filter: var(--pf-element-filter);
     transition: all var(--pf-ts-25) !important;
   }
   .weather-widget.small-widget {
     right: 12px;
-  }
-  .clocks-panel {
-    background-color: light-dark(rgb(248, 248, 248), rgb(21, 21, 21)) !important;
   }
   .clocks-widget .clocks-row-action-button {
     --border-width: 0;
   }
   .lists .lists-add-button {
     border-radius: var(--button-border-radius) !important;
-  }
-  .watch-live-modal-content {
-    backdrop-filter: var(--pf-bg-blur);
   }
 }
