@@ -295,6 +295,13 @@ moz-button[view="viewCustomizeSidebar"] { order: 99; }
         --tab-inner-inline-margin: var(--tab-pinned-margin-inline-expanded);
       }
     }
+    #pinned-drop-indicator[visible] {
+      width: calc(100% - 2 * var(--tab-inner-inline-margin)) !important;
+      height: 70px !important;
+    }
+    #pinned-drop-indicator-text {
+      display: flex !important;
+    }
     .tab-background {
       width: unset !important;
     }
@@ -468,7 +475,7 @@ moz-button[view="viewCustomizeSidebar"] { order: 99; }
       --pf-urlbar-y: calc(var(--pf-navbar-height) + var(--pf-separation));
     }
     /* fus: hover state */
-    &:has(:is(#vertical-spacer, #sidebar-button, #back-button, #forward-button, #stop-reload-button, #backForwardMenu):hover,
+    &:has(:is(#vertical-spacer, #sidebar-button, #back-button, #forward-button, #stop-reload-button, #backForwardMenu, #split-view-menu):hover,
     #urlbar:not([open]) :is(:hover, :is(#tracking-protection-icon-container, .identity-box-button, .urlbar-page-action, #notification-popup-box, .searchmode-switcher)[open])) {
       --pf-fl-hover: 1;
     }

@@ -226,6 +226,35 @@ spacer:is([part="overflow-start-indicator"], [part="overflow-end-indicator"]) {
     background-color: var(--pf-toolbar-bgcolor) !important;
   }
 }
+#tabbrowser-tabs[orient="vertical"] #pinned-drop-indicator {
+  display: flex !important;
+  opacity: 0;
+  margin-bottom: calc(0px - var(--tab-block-margin));
+  transition: height var(--pf-ts-15) var(--pf-fx-sidebar) !important;
+  pointer-events: none;
+
+  &:not([visible]) {
+    height: 0 !important;
+  }
+  &[visible] {
+    opacity: 1;
+    pointer-events: unset;
+  }
+}
+.promo-card:has(> .promo-text[data-l10n-id="sidebar-pins-promo-text"]) {
+  margin: 0 var(--tab-inner-inline-margin) !important;
+  background-color: color-mix(in srgb, light-dark(var(--promo-light-background), var(--promo-dark-background)), transparent) !important;
+  border-radius: var(--border-radius-medium) !important;
+  outline: none !important;
+
+  & + .close-button {
+    inset-block-start: calc(2px + var(--tab-inner-inline-margin) / 2) !important;
+    inset-inline-end: calc(var(--space-medium) + (var(--tab-inner-inline-margin) / 2)) !important;
+  }
+  .icon-cell:is(.icon-firefox, .icon-slack, .icon-gmail) > img {
+    width: var(--icon-size);
+  }
+}
 
 /* tabs: containers */
 .tab-context-line {

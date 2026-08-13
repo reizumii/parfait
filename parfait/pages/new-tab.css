@@ -247,7 +247,7 @@
     background-color: transparent !important;
     gap: 1rem !important;
     --button-padding: 0;
-    
+
     & > img {
       background-color: var(--button-background-color-ghost);
       border-radius: var(--border-radius-circle);

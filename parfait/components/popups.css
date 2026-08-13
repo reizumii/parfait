@@ -133,6 +133,26 @@ panel toolbarseparator {
   }
 }
 
+/* firefox account */
+#appMenu-fxa-status2[fxastatus="signedin"] > #appMenu-fxa-label2 {
+  margin-bottom: calc(var(--toolbarbutton-padding-inner) / 2) !important;
+
+  &:not(:hover) {
+    background-color: var(--pf-toolbar-bgcolor-inactive) !important;
+  }
+  &::before {
+    content: "";
+    width: calc(var(--icon-size) + 4px) !important;
+    height: calc(var(--icon-size) + 4px) !important;
+    margin-right: var(--pf-separation);
+    background: var(--avatar-image-url) center / 100%;
+    border-radius: var(--border-radius-circle);
+  }
+}
+:root[fxastatus="signedin"] :is(#appMenu-empty-profiles-button, #appMenu-fxa-separator) {
+  display: none;
+}
+
 /* confirmation hint */
 #confirmation-hint {
   --panel-text-color: var(--pf-text-color) !important;
