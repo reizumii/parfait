@@ -1,0 +1,61 @@
+/*
+  Parfait Pages - screenshot.css
+  https://github.com/reizumii/parfait
+*/
+
+#screenshots-component {
+  opacity: 1;
+  transition: var(--pf-ts-10);
+  --pf-ts-10: 0.1s;
+
+  @starting-style {
+    opacity: 0;
+  }
+  @media -moz-pref("parfait.animations.enabled", false) or (prefers-reduced-motion: reduce) {
+    --pf-ts-10: 0s;
+  }
+  &:has(#buttons-container[hidden]) {
+    --pf-selection-size-opacity: 1;
+  }
+  /* blinky! */
+  #leftEye,
+  #rightEye {
+    animation: pf-blink 5s infinite;
+    transform-origin: center;
+  }
+  .preview-instructions {
+    font-size: 14px !important;
+  }
+  #screenshots-cancel-button {
+    margin-top: 0 !important;
+  }
+  #hover-highlight {
+    border-style: solid !important;
+    transition: var(--pf-ts-10);
+  }
+  #selection-size-container {
+    padding: 4px !important;
+    align-items: flex-start !important;
+    justify-content: flex-start !important;
+  }
+  #selection-size {
+    font-family: monospace;
+    white-space: nowrap;
+    opacity: var(--pf-selection-size-opacity, 0);
+    background-color: var(--color-black-alpha-50) !important;
+    color: var(--color-white) !important;
+    border: none !important;
+    outline: 1px solid var(--color-white-alpha-10);
+  }
+  .highlight {
+    border: 2px solid var(--color-white-alpha-60) !important;
+  }
+  .mover {
+    width: 12px !important;
+    height: 12px !important;
+  }
+}
+@keyframes pf-blink {
+  0%, 97%, 100% { transform: scaleY(1); }
+  98% { transform: scaleY(0); }
+}

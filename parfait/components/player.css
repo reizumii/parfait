@@ -54,13 +54,13 @@
   .center-controls .control-button {
     min-width: 36px !important;
     min-height: 36px !important;
-    background-color: rgba(0, 0, 0, 0.5) !important;
+    background-color: var(--color-black-alpha-50) !important;
     position: relative;
     --close-btn-fill-color: #fff;
 
     &:hover::before {
       content: "";
-      background: rgba(255, 255, 255, 0.2);
+      background: var(--color-white-alpha-20);
       position: absolute;
       transform: scale(0.8);
       border-radius: var(--border-radius-circle);
@@ -76,7 +76,7 @@
     align-items: center;
     justify-content: center;
     padding: 4px;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: var(--color-black-alpha-50);
     border-radius: var(--border-radius-circle);
     box-sizing: border-box;
     gap: 4px !important;
@@ -137,7 +137,7 @@
   .control-item:hover::after {
     font-size: 0.75rem;
     padding: 6px 12px !important;
-    background-color: rgba(0, 0, 0, 0.5) !important;
+    background-color: var(--color-black-alpha-50) !important;
   }
   .center-tooltip:focus-visible::after,
   .center-tooltip:hover::after {

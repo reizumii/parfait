@@ -555,6 +555,69 @@ notification-message {
   padding-block: 4px 12px !important;
 }
 
+/* screenshot ui */
+screenshots-buttons {
+  top: -2px !important;
+  right: -2px !important;
+  padding: 8px !important;
+  border: 1px solid var(--pf-border-color);
+  box-shadow: var(--pf-shadow-md);
+  translate: none;
+  opacity: 1;
+  transition: var(--pf-ts-25) cubic-bezier(0.42, 0, 0, 1);
+  --panel-background-color: light-dark(var(--color-white), var(--color-gray-90));
+
+  @starting-style {
+    translate: 0 -8px;
+    opacity: 0;
+  }
+}
+.screenshot-button {
+  min-width: 128px !important;
+  min-height: 96px !important;
+  background-color: transparent !important;
+  background-position: center 12px !important;
+  background-size: 48px 48px !important;
+  border: 1px solid var(--pf-border-color) !important;
+  fill: var(--panel-background-color) !important;
+  stroke: var(--toolbar-text-color) !important;
+  color: var(--pf-text-color) !important;
+  padding: 56px 0 0 0 !important;
+  transition: background-color var(--pf-ts-15);
+  --button-border-radius: var(--border-radius-small);
+
+  &:hover {
+    background-color: var(--pf-toolbar-bgcolor-hover) !important;
+  }
+  &:hover:active {
+    background-color: var(--pf-toolbar-bgcolor-active) !important;
+  }
+}
+#full-page.screenshot-button {
+  background-image: var(--pf-icon-screenshot-fullpage) !important;
+}
+#visible-page.screenshot-button {
+  background-image: var(--pf-icon-screenshot-visible) !important;
+}
+screenshots-preview {
+  --button-font-size: var(--pf-font-size-1);
+  --button-font-weight: normal;
+}
+#preview-image-container {
+  padding: 2% !important;
+  background-color: var(--pf-toolbar-bgcolor) !important;
+}
+#preview-image {
+  box-shadow: 0 0 0 1px var(--pf-border-color-light), var(--pf-shadow-md);
+}
+.preview-buttons {
+  border-top: 1px solid var(--pf-border-color);
+  width: 100% !important;
+  padding: var(--space-large) 0 !important;
+  justify-content: center !important;
+  order: 1;
+}
+
 /* tab switcher */
 #ctrlTab-panel {
   transition: none !important;
