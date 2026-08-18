@@ -309,7 +309,7 @@ toolbarbutton.bookmark-item:not(.subviewbutton) {
 
 /* horizontal toolbar autohide */
 @media -moz-pref("browser.fullscreen.autohide") and (not -moz-pref("sidebar.verticalTabs")) {
-  :root[inFullscreen] > body > #navigator-toolbox[style^="margin-top"] {
+  :root[inFullscreen]:not([inDOMFullscreen]) > body > #navigator-toolbox[style^="margin-top"] {
     margin-top: calc(var(--pf-navbar-margin) - var(--pf-browser-separation)) !important;
     padding-bottom: var(--pf-browser-separation) !important;
     transition: none !important;

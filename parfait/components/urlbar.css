@@ -112,6 +112,7 @@
     transition: none !important;
     --pf-urlbar-offset-x: calc(50% - (var(--pf-urlbar-width-max) / 2));
     --urlbar-height: 36px !important;
+    --urlbar-input-gap: 0;
     --urlbar-inner-border-radius: calc(var(--pf-urlbar-sr-radius) - 2px);
     --inactive-titlebar-opacity: 1;
 
