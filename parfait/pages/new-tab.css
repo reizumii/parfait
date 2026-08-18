@@ -451,8 +451,7 @@
   }
   /* widgets */
   .widgets-expand-button {
-    background-color: var(--button-background-color) !important;
-    border: none !important;
+    --button-border-radius: var(--border-radius-circle);
   }
   .widget-wrapper > article,
   .weather-widget.small-widget {

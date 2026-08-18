@@ -16,8 +16,7 @@
   height: var(--urlbar-height) !important;
   min-height: unset !important;
   --urlbar-height: var(--pf-urlbar-height) !important;
-  --toolbar-field-background-color: var(--pf-toolbar-bgcolor);
-  --toolbar-field-background-color-focus: var(--pf-toolbar-bgcolor);
+  --urlbar-background-color: var(--pf-toolbar-bgcolor);
 
   .urlbar-background {
     border: none !important;
@@ -29,7 +28,7 @@
     }
   }
   &:hover {
-    --toolbar-field-background-color: var(--pf-toolbar-bgcolor-hover);
+    --urlbar-background-color: var(--pf-toolbar-bgcolor-hover);
   }
 }
 :root:not([customizing]) {
@@ -90,6 +89,7 @@
       padding-inline-end: 3px !important;
     }
     .urlbar-input-box {
+      margin-inline: 0 !important;
       padding-left: 10px;
     }
     &[pageproxystate="invalid"] .urlbar-input-box {
@@ -125,7 +125,7 @@
       box-shadow: var(--pf-urlbar-border), var(--pf-shadow-lg) !important;
       border: none !important;
       transition: none !important;
-      --urlbar-background-background-color-focused: var(--pf-urlbar-bgcolor);
+      --urlbar-background-color-focus: var(--pf-urlbar-bgcolor);
     }
     @media -moz-pref("parfait.blur.enabled") {
       --pf-urlbar-fl-blur: var(--pf-acrylic-filter);

@@ -11,9 +11,9 @@
 
   /* tabs: horizontal layout */
   &[orient="horizontal"] {
-    --tabstrip-min-height: calc(var(--pf-tab-height) + 2 * var(--tab-block-margin));
+    --tabstrip-min-height: calc(var(--pf-tab-height) + 2 * var(--tab-margin-block));
     --tab-border-radius: var(--pf-border-radius-hl);
-    --tab-block-margin: var(--pf-navbar-padding-block);
+    --tab-margin-block: var(--pf-navbar-padding-block);
     --tab-inline-padding: var(--tab-icon-end-margin) !important;
 
     .tabbrowser-tab[selected] {
@@ -37,7 +37,7 @@
   /* tabs: vertical layout */
   &[orient="vertical"] {
     width: 100%;
-    grid-gap: var(--tab-block-margin) !important;
+    grid-gap: var(--tab-margin-block) !important;
     --tab-collapsed-background-width: var(--pf-tab-height);
     --tab-inner-inline-margin: var(--pf-separation) !important;
     --tab-collapsed-width: calc(var(--tab-collapsed-background-width) + 2 * var(--tab-inner-inline-margin));
@@ -52,24 +52,24 @@
       --toolbarbutton-icon-fill: color-mix(in srgb, var(--pf-text-color), transparent 50%);
     }
     #tabbrowser-arrowscrollbox-periphery {
-      margin-top: var(--tab-block-margin);
-      padding-top: calc(var(--tab-block-margin) + 1px);
+      margin-top: var(--tab-margin-block);
+      padding-top: calc(var(--tab-margin-block) + 1px);
     }
     &:not([overflow]) #tabs-newtab-button::before {
       content: "";
       width: var(--tab-new-tab-border-width);
       border-top: 1px solid var(--pf-border-color-light);
       position: absolute;
-      top: calc(-1px - (var(--tab-block-margin) * 2));
+      top: calc(-1px - (var(--tab-margin-block) * 2));
     }
     #vertical-tabs-newtab-button {
-      margin-top: calc(var(--tab-block-margin) * 2) !important;
+      margin-top: calc(var(--tab-margin-block) * 2) !important;
 
       &::before {
         content: "";
         width: calc(100% + (var(--tab-inner-inline-margin) * 2));
         position: absolute;
-        top: calc(0px - (var(--tab-block-margin) * 3));
+        top: calc(0px - (var(--tab-margin-block) * 3));
         border-top: 1px solid var(--pf-border-color-light);
         transition: width var(--pf-ts-15);
       }
@@ -108,13 +108,13 @@ spacer:is([part="overflow-start-indicator"], [part="overflow-end-indicator"]) {
 .tab-background {
   outline: none !important;
   --tab-background-color-selected: var(--pf-tab-selected-bgcolor);
-  --tab-selected-shadow: var(--pf-tab-selected-shadow);
+  --tab-box-shadow-selected: var(--pf-tab-selected-shadow);
   --focus-outline-color: transparent;
   --dragover-tab-group-color: transparent;
 
   &[multiselected]:not([selected]) {
     --tab-background-color-selected: var(--pf-toolbar-bgcolor-hover);
-    --tab-selected-shadow: none;
+    --tab-box-shadow-selected: none;
   }
   &:not([selected], [multiselected]) {
     transition: var(--pf-ts-15);
@@ -207,17 +207,17 @@ spacer:is([part="overflow-start-indicator"], [part="overflow-end-indicator"]) {
 
 /* tabs: pins */
 #pinned-tabs-container[orient="vertical"] {
-  --tab-pinned-margin-inline-expanded: calc(var(--tab-block-margin) * 2);
+  --tab-pinned-margin-inline-expanded: calc(var(--tab-margin-block) * 2);
   --tab-pinned-min-width-expanded: 56px;
 
   @media not -moz-pref("sidebar.visibility", "expand-on-hover") {
     #tabbrowser-tabs[expanded] & {
-      margin: calc(0px - var(--tab-block-margin));
+      margin: calc(0px - var(--tab-margin-block));
       --tab-min-height: var(--pf-pinned-height);
-      --tab-height-with-margin-padding: calc(var(--pf-pinned-height) + (var(--tab-block-margin) * 4));
+      --tab-height-with-margin-padding: calc(var(--pf-pinned-height) + (var(--tab-margin-block) * 4));
 
       .tab-background {
-        --tab-block-margin: var(--tab-pinned-margin-inline-expanded);
+        --tab-margin-block: var(--tab-pinned-margin-inline-expanded);
         --tab-inner-inline-margin: var(--tab-pinned-margin-inline-expanded);
       }
     }
@@ -229,7 +229,7 @@ spacer:is([part="overflow-start-indicator"], [part="overflow-end-indicator"]) {
 #tabbrowser-tabs[orient="vertical"] #pinned-drop-indicator {
   display: flex !important;
   opacity: 0;
-  margin-bottom: calc(0px - var(--tab-block-margin));
+  margin-bottom: calc(0px - var(--tab-margin-block));
   transition: height var(--pf-ts-15) var(--pf-fx-sidebar) !important;
   pointer-events: none;
 
@@ -293,7 +293,7 @@ spacer:is([part="overflow-start-indicator"], [part="overflow-end-indicator"]) {
 /* tabs: split view */
 tab-split-view-wrapper {
   margin-inline: var(--tab-overflow-clip-margin) !important;
-  margin-block: var(--tab-block-margin);
+  margin-block: var(--tab-margin-block);
   padding: 0 !important;
   gap: 3px !important;
   transition: max-height var(--pf-ts-15), opacity var(--pf-ts-15), margin-left var(--pf-ts-15);
@@ -332,7 +332,7 @@ tab-split-view-wrapper {
     min-height: var(--tab-min-height) !important;
     background-color: transparent !important;
     --tab-background-color-hover: transparent;
-    --tab-selected-shadow: none;
+    --tab-box-shadow-selected: none;
   }
   .tab-content {
     --space-medium: calc((var(--tab-min-height) - var(--icon-size)) / 2);
@@ -369,7 +369,7 @@ tab-split-view-wrapper {
       margin-inline-start: 0 !important;
 
       & > .tab-stack {
-        max-height: calc(var(--tab-min-height) + (var(--tab-block-margin) * 2));
+        max-height: calc(var(--tab-min-height) + (var(--tab-margin-block) * 2));
         margin-inline-start: var(--pf-tab-group-indent-1, 0px);
         transition: all var(--pf-ts-15) !important;
       }
@@ -423,7 +423,7 @@ tab-split-view-wrapper {
   }
   .tab-group-label-container {
     margin: 0 !important;
-    padding: var(--tab-block-margin) var(--tab-inner-inline-margin) !important;
+    padding: var(--tab-margin-block) var(--tab-inner-inline-margin) !important;
 
     #tabbrowser-tabs[orient="vertical"] tab-group > &::after {
       inset-inline-start: calc(var(--tab-group-line-thickness) - var(--tab-inner-inline-margin)) !important;
@@ -533,7 +533,7 @@ tab-split-view-wrapper {
     --dragover-tab-group-color: var(--tab-group-line-color);
   }
   tab-split-view-wrapper .tab-group-line {
-    inset-block-end: calc((var(--tab-block-margin) / 2) * -1) !important;
+    inset-block-end: calc((var(--tab-margin-block) / 2) * -1) !important;
   }
 }
 .tab-group-overflow-count-container { display: none !important }

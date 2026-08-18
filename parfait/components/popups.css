@@ -468,6 +468,7 @@ button[part="dialog-button"] {
   --button-border-radius: var(--pf-border-radius-sm);
 
   .button-text {
+    display: flex;
     align-items: center;
   }
   &:is([dlgtype="cancel"], [default="true"]) {
@@ -695,7 +696,7 @@ screenshots-preview {
 .ctrlTab-label {
   margin: 0 !important;
   padding-right: 4px;
-  justify-content: start !important;
+  text-align: left !important;
   font-size: var(--pf-font-size-1);
   font-weight: 500;
 }

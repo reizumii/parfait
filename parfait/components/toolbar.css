@@ -43,7 +43,7 @@ toolbar .toolbarbutton-1:not(#PlacesChevron, .toolbarbutton-combined-buttons-dro
     }
   }
 }
-#fxa-avatar-image {
+:root[fxastatus="signedin"] #fxa-avatar-image {
   width: calc(var(--icon-size) + 4px) !important;
   height: calc(var(--icon-size) + 4px) !important;
 }
