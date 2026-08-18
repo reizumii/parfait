@@ -15,11 +15,13 @@
   border-radius: var(--pf-border-radius-md);
   box-shadow: var(--pf-shadow-md) !important;
   transition: top var(--pf-ts-25) !important;
-  animation: pf-findbar-show var(--pf-ts-25);
   visibility: visible !important;
 
   &[hidden] {
     display: flex !important;
+    top: -100px;
+  }
+  @starting-style {
     top: -100px;
   }
   @media -moz-pref("parfait.blur.enabled") {
@@ -103,8 +105,4 @@
   .findbar-find-status[data-l10n-id="findbar-wrapped-to-top"] {
     display: none;
   }
-}
-@keyframes pf-findbar-show {
-  0% { top: -100px; }
-  100% { top: 16px; }
 }

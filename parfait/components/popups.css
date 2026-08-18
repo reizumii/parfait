@@ -451,9 +451,16 @@ panel toolbarseparator {
 
 /* modal */
 #window-modal-dialog {
-  animation: pf-dialog var(--pf-ts-25);
+  transform: none;
+  opacity: 1;
+  transition: var(--pf-ts-25);
   --chrome-offset: 24px !important;
   --box-shadow-popup: var(--pf-shadow-md);
+
+  @starting-style {
+    transform: scale(0.95) translateY(-4px);
+    opacity: 0;
+  }
 }
 button[part="dialog-button"] {
   border: 1px solid var(--pf-border-color) !important;
@@ -489,16 +496,6 @@ button[part="dialog-button"] {
 }
 #titleContainer[noicon="true"] #titleText {
   font-size: var(--pf-font-size-1) !important;
-}
-@keyframes pf-dialog {
-  0% {
-    transform: scale(0.95) translateY(-4px);
-    opacity: 0;
-  }
-  100% {
-    transform: scale(1) translateY(0);
-    opacity: 1;
-  }
 }
 
 /* fullscreen */

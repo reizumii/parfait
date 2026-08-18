@@ -405,18 +405,14 @@
     width: fit-content !important;
   }
   .edit-topsites-wrapper dialog {
+    transform: none;
+    filter: none;
     transform-origin: top center;
-    animation: pf-modal var(--pf-ts-25);
-    animation-timing-function: cubic-bezier(0.42, 0, 0, 1);
-  }
-  @keyframes pf-modal {
-    0% {
+    transition: var(--pf-ts-25) cubic-bezier(0.42, 0, 0, 1);
+
+    @starting-style {
       transform: scale(0.75);
       filter: blur(8px) opacity(0);
-    }
-    100% {
-      transform: scale(1);
-      filter: blur(0px) opacity(1);
     }
   }
   .topsite-form .form-input-container {
