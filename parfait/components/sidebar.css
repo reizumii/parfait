@@ -91,6 +91,13 @@
   margin-bottom: var(--pf-browser-separation) !important;
 }
 
+/* disable sidebar autohide in fullscreen */
+:root[fullscreenNavToolboxHidden]:not([inDOMFullscreen]) #sidebar-container {
+  content-visibility: unset !important;
+  flex-basis: unset !important;
+  min-width: unset !important;
+}
+
 /* customize sidebar */
 @-moz-document url("chrome://browser/content/sidebar/sidebar-customize.html") {
   .extensions,
@@ -376,6 +383,29 @@ moz-button[view="viewCustomizeSidebar"] { order: 99; }
   .actions-list[orientation="vertical"] {
     flex-direction: row !important;
     align-items: center !important;
+  }
+  /* 154+ sidebar regression >.< */
+  :root:has(#tabbrowser-tabs[expanded], sidebar-main:not([expanded])):has(#sidebar-container[hidden]) {
+    #browser::before {
+      content: var(--pf-icon-miitan) "\A Please toggle the sidebar twice to re-enable the floating sidebar.\A\A Firefox 154+ seem to have broken it on startup and on new windows :(";
+      white-space: pre-line;
+      pointer-events: none;
+      display: flex;
+      flex-direction: column;
+      width: var(--pf-sidebar-width);
+      height: 100%;
+      padding: calc(var(--pf-separation) * 2);
+      box-sizing: border-box;
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+      color: color-mix(in srgb, currentColor, transparent 50%);
+      fill: currentColor;
+      -moz-context-properties: fill;
+    }
+    #tabbrowser-tabbox {
+      margin-left: 0 !important;
+    }
   }
 }
 /* floating unified sidebar */
