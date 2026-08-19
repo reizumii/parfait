@@ -331,6 +331,7 @@ tab-split-view-wrapper {
   .tab-background {
     min-height: var(--tab-min-height) !important;
     background-color: transparent !important;
+    --tab-min-height: var(--pf-tab-height) !important;
     --tab-background-color-hover: transparent;
     --tab-box-shadow-selected: none;
   }

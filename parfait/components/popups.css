@@ -149,8 +149,8 @@ panel toolbarseparator {
     border-radius: var(--border-radius-circle);
   }
 }
-:root[fxastatus="signedin"] :is(#appMenu-empty-profiles-button, #appMenu-fxa-separator) {
-  display: none;
+toolbarseparator.proton-zap::before {
+  border-image: none !important;
 }
 
 /* confirmation hint */

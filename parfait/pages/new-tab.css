@@ -445,10 +445,6 @@
     text-decoration: none !important;
     color-scheme: revert;
   }
-  .topsite-form .actions > moz-button-group {
-    width: 100%;
-    justify-content: space-between !important;
-  }
   /* widgets */
   .widgets-expand-button {
     --button-border-radius: var(--border-radius-circle);
