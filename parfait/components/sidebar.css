@@ -61,6 +61,9 @@
       margin-inline-end: var(--pf-sidebar-btn-margin, 0px) !important;
     }
   }
+  &:not([customizing]) toolbarspring:not(#vertical-spacer) {
+    display: none;
+  }
   /* main sidebar */
   #sidebar-container[sidebar-launcher-expanded] {
     width: var(--pf-sidebar-width) !important;
@@ -384,24 +387,39 @@ moz-button[view="viewCustomizeSidebar"] { order: 99; }
     flex-direction: row !important;
     align-items: center !important;
   }
-  /* 154+ sidebar regression >.< */
-  :root:has(#tabbrowser-tabs[expanded], sidebar-main:not([expanded])):has(#sidebar-container[hidden]) {
+  /* 154+ floating sidebar note >.< */
+  :root:not([customizing]):has(#tabbrowser-tabs[expanded], sidebar-main:not([expanded])):has(#sidebar-container[hidden]) {
+    --pf-fl-hover: 0 !important;
+
     #browser::before {
-      content: var(--pf-icon-miitan) "\A Please toggle the sidebar twice to re-enable the floating sidebar.\A\A Firefox 154+ seem to have broken it on startup and on new windows :(";
-      white-space: pre-line;
+      content: "";
       pointer-events: none;
       display: flex;
+      width: var(--pf-sidebar-width);
+    }
+    &:not(:has(#sidebar-button)) #browser::before,
+    #sidebar-button::before {
+      content: var(--pf-icon-miitan) "\A Please press Ctrl+Alt+Z / ^Z to load the sidebar.\A\A Firefox 154+ does not load the sidebar on startup and new windows.";
+      white-space: pre-line;
+      display: flex;
+      text-align: center;
+      align-items: center;
+      justify-content: center;
       flex-direction: column;
       width: var(--pf-sidebar-width);
       height: 100%;
       padding: calc(var(--pf-separation) * 2);
       box-sizing: border-box;
-      text-align: center;
-      align-items: center;
-      justify-content: center;
       color: color-mix(in srgb, currentColor, transparent 50%);
       fill: currentColor;
       -moz-context-properties: fill;
+    }
+    #sidebar-button::before {
+      content: var(--pf-icon-miitan) "\A Please click this area, or press Ctrl+Alt+Z / ^Z to load the sidebar.\A\A Firefox 154+ does not load the sidebar on startup and new windows.";
+      height: calc(100% - var(--pf-sidebar-margin) - var(--pf-navbar-height));
+      position: fixed;
+      bottom: 0;
+      left: 0;
     }
     #tabbrowser-tabbox {
       margin-left: 0 !important;
