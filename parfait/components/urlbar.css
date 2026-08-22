@@ -408,6 +408,14 @@
     border: none !important;
   }
 }
+/* searchmode switcher workaround */
+#searchmode-switcher-panel-list-urlbar[open] {
+  pointer-events: none;
+  animation: pf-search-switcher-delay 0s 0.1s forwards;
+}
+@keyframes pf-search-switcher-delay {
+  to { pointer-events: auto; }
+}
 /* urlbar icons */
 .urlbar-icon,
 #identity-box,
