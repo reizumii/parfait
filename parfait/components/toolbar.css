@@ -143,7 +143,7 @@ toolbar .toolbarbutton-1:not(#PlacesChevron, .toolbarbutton-combined-buttons-dro
     position: fixed;
   }
   #toolbar-menubar:not([inactive]) {
-    top: var(--pf-separation);
+    top: var(--pf-menubar-top, var(--pf-menubar-y));
     right: var(--pf-separation);
     z-index: 5;
     min-height: 34px !important;

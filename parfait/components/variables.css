@@ -96,6 +96,7 @@
   --pf-bookmarks-margin: calc(var(--pf-sidebar-width) + (var(--pf-separation) * var(--pf-bookmarks-sm, 1)));
 
   /* other */
+  --pf-menubar-y: var(--pf-separation);
   --pf-background-filter: blur(8px);
   --pf-acrylic-filter: blur(72px) brightness(1.375) saturate(1.175);
 
@@ -107,6 +108,8 @@
   &[uidensity="touch"] { --pf-toolbaritem-size: 34px; }
 
   @media -moz-pref("sidebar.verticalTabs") {
+    --pf-menubar-y: calc(var(--pf-toolbaritem-size) + (var(--pf-navbar-padding-block) * 1.5));
+
     &[uidensity="compact"] {
       --pf-tab-height: 32px;
       --pf-pinned-height: 40px;
