@@ -6,6 +6,8 @@
 /* unified sidebar layout */
 @media -moz-pref("sidebar.verticalTabs") and -moz-pref("parfait.toolbar.unified-sidebar") {
   :root:not([chromehidden~="toolbar"], [taskbartab]) {
+    --pf-menubar-top: var(--pf-separation);
+
     &:not([inDOMFullscreen]) :is(#tabbrowser-tabbox, #sidebar-box, #sidebar-splitter, .browserStack) {
       transition: margin-top var(--pf-ts-25);
       transition-delay: var(--pf-navbar-delay) !important;
@@ -15,6 +17,7 @@
       @media not -moz-pref("sidebar.visibility", "hide-sidebar") {
         --pf-navbar-margin: 0;
         --pf-navbar-delay: 0s;
+        --pf-menubar-top: var(--pf-menubar-y);
         --pf-bookmarks-margin: calc((var(--pf-tab-height) + (var(--pf-separation) * 2)) + (var(--pf-separation) *  var(--pf-bookmarks-sm, 1)));
       }
       @media -moz-pref("sidebar.visibility", "hide-sidebar") {
@@ -25,6 +28,7 @@
       --pf-navbar-margin: 0;
       --pf-sidebar-margin: 0;
       --pf-sidebar-gutter: 0px;
+      --pf-menubar-top: var(--pf-menubar-y);
     }
     @media (not (-moz-platform: macos)) and (not -moz-pref("parfait.traffic-lights.enabled")) {
       &:has(.titlebar-buttonbox-container:hover) :is(#tabbrowser-tabbox, #sidebar-box, #sidebar-splitter) {
