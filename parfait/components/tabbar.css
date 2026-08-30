@@ -347,23 +347,22 @@ tab-split-view-wrapper {
 #tabbrowser-tabs[orient="vertical"] {
   tab-group {
     /* tg: colors */
-    --pf-folder-color-1: var(--toolbar-background-color);
-    --pf-folder-color-2: color-mix(in srgb, var(--toolbar-text-color), var(--toolbar-background-color) 50%);
-    --pf-folder-color-bg: color-mix(in srgb, var(--pf-folder-color-1), light-dark(#fff, #000) 95%);
-    --pf-folder-color-fg: color-mix(in srgb, var(--pf-folder-color-2), light-dark(#000, #fff) 40%);
+    --pf-folder-color: color-mix(in srgb, var(--toolbar-text-color), var(--toolbar-background-color) 50%);
+    --pf-folder-color-bg: color-mix(in srgb, var(--toolbar-background-color), light-dark(#fff, #000) 95%);
+    --pf-folder-color-fg: color-mix(in srgb, var(--pf-folder-color), light-dark(#000, #fff) 40%);
     --pf-folder-drag-bg: color-mix(in srgb, var(--pf-accent-primary-color), transparent 75%);
     --tab-group-line-color: color-mix(in srgb, var(--toolbar-text-color), var(--toolbar-background-color) 50%) !important;
 
     @media -moz-pref("parfait.bg.accent-color") {
       --tab-group-line-color: color-mix(in srgb, var(--pf-accent-color), var(--toolbar-text-color) 30%) !important;
-      --pf-folder-color-1: var(--pf-accent-color);
-      --pf-folder-color-2: light-dark(var(--pf-accent-color), color-mix(in srgb, var(--pf-accent-color), #fff 60%));
+      --pf-folder-color: light-dark(var(--pf-accent-color), color-mix(in srgb, var(--pf-accent-color), #fff 60%));
     }
     @media -moz-pref("parfait.tabs.groups.color") {
       --tab-group-line-color:  var(--tab-group-color) !important;
-      --pf-folder-color-1: var(--tab-group-color);
-      --pf-folder-color-2: var(--tab-group-color);
-      --pf-folder-drag-bg: color-mix(in srgb, var(--tab-group-color), transparent 87%);
+      --pf-text-color: var(--pf-folder-color-fg);
+      --pf-folder-color: var(--tab-group-color);
+      --pf-folder-color-bg: color-mix(in srgb, light-dark(var(--tab-group-color-pale), var(--tab-group-color)), light-dark(#fff, #000) 70%);
+      --pf-folder-drag-bg: color-mix(in srgb, var(--tab-group-color), transparent 80%);
     }
     /* tg: tabs */
     & > .tabbrowser-tab {
@@ -509,7 +508,6 @@ tab-split-view-wrapper {
 }
 #tabbrowser-tabs[orient="horizontal"] {
   tab-group {
-    --tab-group-line-color: light-dark(var(--tab-group-color), var(--tab-group-color-invert)) !important;
     --tab-group-line-thickness: 1px;
     --tab-group-line-toolbar-border-distance: 3px;
   }
@@ -517,8 +515,8 @@ tab-split-view-wrapper {
     --tab-background-color-hover: transparent;
   }
   .tab-group-label {
-    background-color: color-mix(in srgb, light-dark(var(--tab-group-color), var(--tab-group-color-invert)), transparent 87%) !important;
-    color: light-dark(var(--tab-group-color), var(--tab-group-color-invert)) !important;
+    background-color: color-mix(in srgb, var(--tab-group-color), transparent 87%) !important;
+    color: var(--tab-group-color) !important;
     outline: none !important;
     transition: all var(--pf-ts-15) !important;
     --tab-border-radius: var(--pf-border-radius-hl);
@@ -526,7 +524,7 @@ tab-split-view-wrapper {
     --tab-group-label-height: calc(var(--tab-min-height) - var(--pf-navbar-padding-block));
 
     &:hover {
-      background-color: color-mix(in srgb, light-dark(var(--tab-group-color), var(--tab-group-color-invert)), transparent 80%) !important;
+      background-color: color-mix(in srgb, var(--tab-group-color), transparent 80%) !important;
     }
   }
   .tab-group-line {
