@@ -55,9 +55,9 @@
   }
   /* as shrimple as that */
   body:is(.lightWallpaper, .darkWallpaper):not([style~="url();"]) {
-    --pf-element-background-color: light-dark(rgba(255, 255, 255, 0.175), rgba(96, 96, 96, 0.2));
-    --pf-element-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.125), inset 0 -1px 0 rgba(34, 34, 34, 0.075), inset 0 0 0 1px rgba(255, 255, 255, 0.0625), 0 2px 6px rgba(0, 0, 0, 0.04);
-    --pf-element-filter: blur(12px) brightness(var(--pf-ef-brg, 1.125)) saturate(var(--pf-ef-sat, 1.075));
+    --pf-element-background-color: light-dark(rgba(255, 255, 255, 0.375), rgba(96, 96, 96, 0.325));
+    --pf-element-shadow: 0 0 0 1px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.125), inset 0 -1px 0 rgba(34, 34, 34, 0.075), inset 0 0 0 1px rgba(255, 255, 255, 0.0625), 0 2px 6px rgba(0, 0, 0, 0.04);
+    --pf-element-filter: blur(12px) brightness(var(--pf-ef-brg, 1.06)) saturate(var(--pf-ef-sat, 1.05));
   }
   body.lightWallpaper {
     color-scheme: light;
@@ -196,15 +196,13 @@
   }
   /* customize new tab */
   .button-background:has(img[src="chrome://global/skin/icons/edit-outline.svg"]) {
+    background-color: var(--pf-element-background-color) !important;
     padding: 0.5rem !important;
     border-radius: var(--border-radius-circle) !important;
     box-shadow: var(--pf-element-shadow) !important;
     backdrop-filter: var(--pf-element-filter);
     transition: all var(--pf-ts-25) var(--pf-fx-bounce) !important;
-    --button-background-color: var(--pf-element-background-color);
-    --button-background-color-hover: var(--button-background-color);
-    --button-background-color-active: var(--button-background-color);
-    --button-icon-fill: currentColor;
+    --button-icon-fill: var(--newtab-text-primary-color);
     --button-border: none;
 
     &:hover {
