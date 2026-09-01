@@ -8,6 +8,7 @@
   position: absolute;
   top: 16px;
   right: 16px;
+  grid-area: unset !important;
   width: var(--pf-findbar-width);
   padding-block: 0 !important;
   background: var(--pf-panel-bgcolor) !important;
@@ -20,6 +21,11 @@
   &[hidden] {
     display: flex !important;
     top: -100px;
+
+    .findbar-container,
+    .findbar-closebutton {
+      opacity: 1 !important;
+    }
   }
   @starting-style {
     top: -100px;

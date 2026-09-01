@@ -57,24 +57,21 @@
     }
     &:not([overflow]) #tabs-newtab-button::before {
       content: "";
-      width: var(--tab-new-tab-border-width);
       border-top: 1px solid var(--pf-border-color-light);
-      position: absolute;
       top: calc(-1px - (var(--tab-margin-block) * 2));
+      inset-inline: calc(var(--tab-inner-inline-margin)) !important;
     }
     #vertical-tabs-newtab-button {
       margin-top: calc(var(--tab-margin-block) * 2) !important;
 
       &::before {
         content: "";
-        width: calc(100% + (var(--tab-inner-inline-margin) * 2));
-        position: absolute;
         top: calc(0px - (var(--tab-margin-block) * 3));
         border-top: 1px solid var(--pf-border-color-light);
-        transition: width var(--pf-ts-15);
+        transition: inset-inline var(--pf-ts-15);
       }
       #tabbrowser-arrowscrollbox[overflowing][scrolledtoend] + &::before {
-        width: var(--tab-new-tab-border-width);
+        inset-inline: calc(var(--tab-inner-inline-margin)) !important;
       }
     }
   }

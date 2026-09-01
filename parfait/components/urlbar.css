@@ -78,7 +78,7 @@
       transition-duration: var(--pf-ts-15) !important;
 
       #urlbar:hover & {
-        width: calc(var(--urlbar-min-height) - 2px - 2 * var(--urlbar-input-container-padding)) !important;
+        width: var(--urlbar-basic-component-size) !important;
         padding-inline: var(--urlbar-icon-padding) !important;
         opacity: 1;
         transition-delay: var(--pf-ts-15) !important;
@@ -479,7 +479,7 @@
   --button-background-color-hover: var(--pf-toolbar-bgcolor-hover) !important;
   --button-background-color: transparent !important;
   --button-border-radius: var(--urlbar-inner-border-radius) !important;
-  --button-padding: 0 calc((var(--urlbar-min-height) - 2 * var(--pf-urlbar-container-inset) - var(--icon-size)) / 2) !important;
+  --button-padding: 0 calc((var(--urlbar-height) - 2 * var(--pf-urlbar-container-inset) - var(--icon-size)) / 2) !important;
   --space-small: 0;
 
   &[open] {
