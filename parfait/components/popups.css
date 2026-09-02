@@ -501,7 +501,7 @@ button[part="dialog-button"] {
 
 /* fullscreen */
 .pointerlockfswarning {
-  background-color: rgba(0, 0, 0, 0.75) !important;
+  background-color: var(--color-gray-90) !important;
   padding: 14px 20px !important;
   box-shadow: var(--pf-shadow-md) !important;
   border: none !important;

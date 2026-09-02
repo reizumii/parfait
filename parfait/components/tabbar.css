@@ -295,13 +295,14 @@ tab-split-view-wrapper {
   gap: 3px !important;
   transition: max-height var(--pf-ts-15), opacity var(--pf-ts-15), margin-left var(--pf-ts-15);
   --pf-split-divider-border-color: var(--pf-border-color);
+  --split-view-tab-padding-inline: 0;
 
-  &::before {
+  &:not([multiselected]:not([hasactivetab]))::before {
     content: "";
     width: 1px;
     height: calc(var(--tab-min-height) - var(--icon-size));
     position: absolute;
-    left: calc(50% - 1px);
+    left: 50%;
     top: calc(var(--icon-size) / 2);
     background-color: var(--pf-split-divider-border-color);
   }
@@ -327,10 +328,14 @@ tab-split-view-wrapper {
   }
   .tab-background {
     min-height: var(--tab-min-height) !important;
-    background-color: transparent !important;
+    margin-inline: 0 !important;
     --tab-min-height: var(--pf-tab-height) !important;
     --tab-background-color-hover: transparent;
     --tab-box-shadow-selected: none;
+
+    &:not([multiselected]) {
+      background-color: transparent !important;
+    }
   }
   .tab-content {
     --space-medium: calc((var(--tab-min-height) - var(--icon-size)) / 2);
