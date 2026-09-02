@@ -198,43 +198,38 @@ toolbarbutton.bookmark-item:not(.subviewbutton) {
 /* horizontal layout */
 @media not -moz-pref("sidebar.verticalTabs") {
   :root:not([chromehidden~="toolbar"], [taskbartab]) {
-    --pf-tabbar-margin: calc((var(--pf-toolbaritem-size) + var(--pf-toolbaritem-gap)) * var(--pf-navbar-items, 2) + var(--pf-separation) + var(--pf-wc-linux, 0px));
-    --pf-extensions-x: calc((var(--pf-toolbaritem-size) + var(--pf-toolbaritem-gap)) * var(--pf-extensions-multi, 1) + var(--pf-separation) + var(--pf-wc-width));
-
     #navigator-toolbox {
-      display: grid;
-      grid-template-columns: max-content 1fr;
       --toolbar-background-color: transparent;
     }
-    #TabsToolbar {
-      grid-area: 1 / 2;
-    }
     #nav-bar {
-      width: fit-content;
-      grid-area: 1 / 1;
+      order: -1;
 
-      &:-moz-window-inactive {
-        opacity: var(--inactive-titlebar-opacity);
-      }
-    }
-    #PersonalToolbar {
-      grid-row: 2;
-      grid-column: 1 / -1;
+      &:-moz-window-inactive { opacity: var(--inactive-titlebar-opacity); }
     }
     #TabsToolbar-customization-target {
       align-items: center;
+      margin-right: var(--pf-toolbaritem-gap);
       gap: var(--pf-toolbaritem-gap);
     }
     #tabs-newtab-button {
       list-style-image: var(--pf-icon-plus-square) !important;
     }
     #urlbar-container {
-      --urlbar-container-min-width: 200px;
-      --urlbar-margin-inline: 4px;
+      max-width: var(--urlbar-container-min-width);
+      margin-right: auto !important;
+      anchor-name: --pf-urlbar;
+      --urlbar-container-min-width: 240px;
     }
-    #urlbar-container + #downloads-button,
-    #urlbar-container + toolbarspring + #downloads-button {
-      margin-right: calc(var(--pf-separation) - var(--pf-toolbaritem-gap)) !important;
+    #wrapper-urlbar-container ~ :not(toolbarspring, [hidden]):not(#wrapper-urlbar-container ~ :not(toolbarspring, [hidden]) ~ :not(toolbarspring, [hidden])),
+    &:not([customizing]) #urlbar-container ~ :not(toolbarspring, [hidden]):not(#urlbar-container ~ :not(toolbarspring, [hidden]) ~ :not(toolbarspring, [hidden])) {
+      anchor-name: --pf-navbar-trailing;
+    }
+    #TabsToolbar {
+      position: absolute;
+      position-anchor: --pf-urlbar;
+      left: calc(anchor(right) + var(--urlbar-margin-inline));
+      right: anchor(--pf-navbar-trailing left);
+      width: auto !important;
     }
     .titlebar-spacer,
     &:not([customizing]) toolbarspring {
@@ -245,47 +240,11 @@ toolbarbutton.bookmark-item:not(.subviewbutton) {
       padding-inline-start: 0 !important;
       margin-inline-start: 0 !important;
     }
-    /* linux moment */
-    @media (-moz-platform: linux) and (not (-moz-gtk-csd-reversed-placement)) and (not -moz-pref("parfait.traffic-lights.enabled")) {
-      --pf-wc-linux: var(--pf-wc-width);
-
-      #TabsToolbar > .titlebar-buttonbox-container {
-        position: absolute;
-        right: 0;
-        min-height: var(--pf-navbar-height);
-      }
+    &[customtitlebar]:not([macOSNativeFullscreen]) #nav-bar > .titlebar-buttonbox-container {
+      display: flex !important;
     }
-    /* hl: toolbar item positioning */
-    @media -moz-pref("parfait.traffic-lights.enabled") or (-moz-platform: macos) or ((-moz-platform: linux) and (-moz-gtk-csd-reversed-placement)) {
-      &[customtitlebar]:not([macOSNativeFullscreen]) #nav-bar > .titlebar-buttonbox-container {
-        display: flex !important;
-      }
-      #TabsToolbar > .titlebar-buttonbox-container {
-        display: none !important;
-      }
-    }
-    #TabsToolbar > .toolbar-items {
-      margin-right: var(--pf-tabbar-margin) !important;
-    }
-    #PanelUI-button {
-      position: fixed;
-      right: var(--pf-wc-width);
-    }
-    &:not([customizing]) #unified-extensions-button,
-    #wrapper-unified-extensions-button {
-      position: fixed;
-      right: var(--pf-extensions-x);
-    }
-    #nav-bar-overflow-button {
-      position: fixed;
-      right: calc(var(--pf-toolbaritem-size) + var(--pf-toolbaritem-gap) + var(--pf-separation) + var(--pf-wc-width));
-    }
-    &:has(#nav-bar:not([overflowing], [nonemptyoverflow], [customizing]) #unified-extensions-button[hidden]) {
-      --pf-navbar-items: 1;
-    }
-    &:has(#nav-bar:is([overflowing], [nonemptyoverflow], [customizing]) #unified-extensions-button:not([hidden])) {
-      --pf-navbar-items: 3;
-      --pf-extensions-multi: 2;
+    #TabsToolbar > .titlebar-buttonbox-container {
+      display: none !important;
     }
     /* hl: breakpoints */
     @media (max-width: 600px) {
@@ -293,9 +252,7 @@ toolbarbutton.bookmark-item:not(.subviewbutton) {
         display: none;
       }
     }
-    @media (max-width: 768px) {
-      --pf-tabbar-margin: 0px;
-
+    @media (max-width: 800px) {
       #TabsToolbar-customization-target { visibility: collapse; }
     }
   }
