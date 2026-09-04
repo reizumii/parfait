@@ -124,7 +124,7 @@
     #navigator-toolbox[tabs-hidden] > #nav-bar::before {
       content: "";
       width: calc(100% - var(--pf-sidebar-width));
-      height: var(--pf-browser-separation);
+      height: var(--pf-navbar-trigger-height);
       position: absolute;
       top: 0;
       right: 0;
