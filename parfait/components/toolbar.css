@@ -203,7 +203,6 @@ toolbarbutton.bookmark-item:not(.subviewbutton) {
     }
     #nav-bar {
       order: -1;
-
       &:-moz-window-inactive { opacity: var(--inactive-titlebar-opacity); }
     }
     #TabsToolbar-customization-target {
@@ -220,20 +219,22 @@ toolbarbutton.bookmark-item:not(.subviewbutton) {
       anchor-name: --pf-urlbar;
       --urlbar-container-min-width: 240px;
     }
-    #wrapper-urlbar-container ~ :not(toolbarspring, [hidden]):not(#wrapper-urlbar-container ~ :not(toolbarspring, [hidden]) ~ :not(toolbarspring, [hidden])),
-    &:not([customizing]) #urlbar-container ~ :not(toolbarspring, [hidden]):not(#urlbar-container ~ :not(toolbarspring, [hidden]) ~ :not(toolbarspring, [hidden])) {
-      anchor-name: --pf-navbar-trailing;
+    #wrapper-urlbar-container ~ :not(#wrapper-urlbar-container ~ :not([hidden]) ~ :not([hidden])),
+    #urlbar-container ~ :not(#urlbar-container ~ :not([hidden]) ~ :not([hidden])) {
+      anchor-name: --pf-navbar;
     }
     #TabsToolbar {
       position: absolute;
       position-anchor: --pf-urlbar;
       left: calc(anchor(right) + var(--urlbar-margin-inline));
-      right: anchor(--pf-navbar-trailing left);
+      right: anchor(--pf-navbar left);
       width: auto !important;
     }
     .titlebar-spacer,
     &:not([customizing]) toolbarspring {
-      display: none;
+      min-width: 0 !important;
+      max-width: 0 !important;
+      margin-inline-end: calc(var(--pf-toolbaritem-gap) * -1);
     }
     :is(toolbarbutton, toolbarpaletteitem) ~ #tabbrowser-tabs {
       border-inline-start: 0 !important;
