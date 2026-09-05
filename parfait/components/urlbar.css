@@ -71,7 +71,7 @@
     }
     /* page actions */
     .urlbar-page-action:not([open], #translations-button[translationsactive], #reader-mode-button[readeractive]) {
-      width: 0 !important;
+      width: 0.1px !important;
       padding-inline: 0 !important;
       opacity: 0;
       transition-property: width, padding, opacity !important;
