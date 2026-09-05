@@ -94,7 +94,6 @@
   --pf-sidebar-margin: calc(var(--pf-urlbar-height) + var(--pf-separation) - var(--tab-margin-block));
   --pf-navbar-height: calc(var(--pf-toolbaritem-size) + (var(--pf-navbar-padding-block) * 2));
   --pf-navbar-margin: calc(var(--pf-browser-separation) - var(--pf-navbar-height));
-  --pf-bookmarks-margin: calc(var(--pf-sidebar-width) + (var(--pf-separation) * var(--pf-bookmarks-sm, 1)));
 
   /* other */
   --pf-menubar-y: var(--pf-separation);
@@ -217,7 +216,6 @@
   /* borderless */
   @media -moz-pref("parfait.window.borderless") {
     --pf-navbar-margin: calc(0px - var(--pf-navbar-height));
-    --pf-bookmarks-sm: 2;
   }
 
   /* animation */

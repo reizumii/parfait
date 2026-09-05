@@ -75,6 +75,8 @@
     }
   }
   @media -moz-pref("parfait.window.borderless") {
+    --pf-borderless: 1;
+
     #tabbrowser-tabbox,
     #sidebar-splitter,
     #sidebar-box {

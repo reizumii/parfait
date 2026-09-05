@@ -20,7 +20,6 @@
         --pf-navbar-delay: 0s;
         --pf-menubar-top: var(--pf-menubar-y);
         --pf-urlbar-container-width: unset;
-        --pf-bookmarks-margin: calc((var(--pf-tab-height) + (var(--pf-separation) * 2)) + (var(--pf-separation) *  var(--pf-bookmarks-sm, 1)));
       }
       @media -moz-pref("sidebar.visibility", "hide-sidebar") {
         .browserStack { margin-top: var(--pf-navbar-margin-reverse); }
@@ -75,7 +74,11 @@
     #urlbar-container ~ :not(#urlbar-container ~ :not([hidden]) ~ :not([hidden])) {
       margin-inline-start: auto !important;
     }
-    toolbarspring:not(#vertical-spacer) { display: none; }
+    :is(#nav-bar, #TabsToolbar) toolbarspring:not(#vertical-spacer) {
+      min-width: 0 !important;
+      max-width: 0 !important;
+      margin-inline-end: calc(var(--pf-toolbaritem-gap) * -1);
+    }
   }
   /* main sidebar */
   #sidebar-container[sidebar-launcher-expanded] {
@@ -239,7 +242,6 @@ moz-button[view="viewCustomizeSidebar"] { order: 99; }
 /* floating sidebar */
 @media -moz-pref("sidebar.verticalTabs") and -moz-pref("sidebar.visibility", "hide-sidebar") {
   :root:not([chromehidden~="toolbar"], [taskbartab]):has(#tabbrowser-tabs:not([expanded])) {
-    --pf-bookmarks-margin: calc(var(--pf-separation) * 2);
     --pf-fl-sidebar-shadow: 0 0 0 calc(1px * var(--pf-fl-hover, 0)) var(--pf-border-color-light), 0 4px 16px rgba(0, 0, 0, calc(0.1 * var(--pf-fl-hover, 0)));
     --pf-fl-separation: calc(var(--pf-separation) * var(--pf-fl-hover, 0));
     --pf-fl-sidebar-width: calc(var(--pf-sidebar-width) * (1 - var(--pf-fl-hover, 0)));

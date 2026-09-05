@@ -158,10 +158,11 @@ toolbar .toolbarbutton-1:not(#PlacesChevron, .toolbarbutton-combined-buttons-dro
   @media -moz-pref("sidebar.verticalTabs") {
     #PersonalToolbar {
       position: fixed;
+      position-anchor: --pf-browser;
       bottom: calc(0px - var(--pf-bookmarks-height));
-      right: var(--pf-separation);
+      left: calc(anchor(--pf-browser left) + var(--pf-bookmarks-margin));
+      right: calc(anchor(--pf-browser right) + var(--pf-bookmarks-margin));
       z-index: 3;
-      width: calc(100% - var(--pf-bookmarks-margin));
       height: var(--pf-bookmarks-height);
       padding: 4px !important;
       background-color: var(--pf-panel-bgcolor) !important;
@@ -172,7 +173,11 @@ toolbar .toolbarbutton-1:not(#PlacesChevron, .toolbarbutton-combined-buttons-dro
       opacity: 0;
       transition: var(--pf-ts-25) !important;
       transition-delay: var(--pf-ts-25) !important;
+      --pf-bookmarks-margin: calc(var(--pf-separation) * (0 + var(--pf-borderless, 0)));
 
+      &:has(#personal-toolbar-empty:not([hidden])) {
+        display: none;
+      }
       &:hover,
       &:has(.bookmark-item[open]) {
         opacity: 1;
@@ -230,7 +235,7 @@ toolbarbutton.bookmark-item:not(.subviewbutton) {
       right: anchor(--pf-navbar left);
     }
     .titlebar-spacer,
-    &:not([customizing]) toolbarspring {
+    &:not([customizing]) :is(#nav-bar, #TabsToolbar) toolbarspring {
       min-width: 0 !important;
       max-width: 0 !important;
       margin-inline-end: calc(var(--pf-toolbaritem-gap) * -1);
