@@ -228,7 +228,6 @@ toolbarbutton.bookmark-item:not(.subviewbutton) {
       position-anchor: --pf-urlbar;
       left: calc(anchor(right) + var(--urlbar-margin-inline));
       right: anchor(--pf-navbar left);
-      width: auto !important;
     }
     .titlebar-spacer,
     &:not([customizing]) toolbarspring {

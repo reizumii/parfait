@@ -84,6 +84,7 @@
     }
   }
   .browserContainer {
+    anchor-name: --pf-browser;
     border-radius: var(--pf-browser-radius) !important;
     overflow: clip;
     -moz-window-dragging: no-drag;
@@ -123,11 +124,12 @@
   @media -moz-pref("parfait.toolbar.unified-sidebar") and -moz-pref("parfait.window.borderless") {
     #navigator-toolbox[tabs-hidden] > #nav-bar::before {
       content: "";
-      width: calc(100% - var(--pf-sidebar-width));
       height: var(--pf-navbar-trigger-height);
-      position: absolute;
-      top: 0;
-      right: 0;
+      position: fixed;
+      position-anchor: --pf-browser;
+      top: anchor(--pf-browser top);
+      left: anchor(--pf-browser left);
+      right: anchor(--pf-browser right);
       z-index: 3;
     }
   }
