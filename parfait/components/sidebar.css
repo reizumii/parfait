@@ -7,6 +7,7 @@
 @media -moz-pref("sidebar.verticalTabs") and -moz-pref("parfait.toolbar.unified-sidebar") {
   :root:not([chromehidden~="toolbar"], [taskbartab]) {
     --pf-menubar-top: var(--pf-separation);
+    --pf-urlbar-container-width: 0;
 
     &:not([inDOMFullscreen]) :is(#tabbrowser-tabbox, #sidebar-box, #sidebar-splitter, .browserStack) {
       transition: margin-top var(--pf-ts-25);
@@ -18,6 +19,7 @@
         --pf-navbar-margin: 0;
         --pf-navbar-delay: 0s;
         --pf-menubar-top: var(--pf-menubar-y);
+        --pf-urlbar-container-width: unset;
         --pf-bookmarks-margin: calc((var(--pf-tab-height) + (var(--pf-separation) * 2)) + (var(--pf-separation) *  var(--pf-bookmarks-sm, 1)));
       }
       @media -moz-pref("sidebar.visibility", "hide-sidebar") {
@@ -29,6 +31,7 @@
       --pf-sidebar-margin: 0;
       --pf-sidebar-gutter: 0px;
       --pf-menubar-top: var(--pf-menubar-y);
+      --pf-urlbar-container-width: unset;
     }
     @media (not (-moz-platform: macos)) and (not -moz-pref("parfait.traffic-lights.enabled")) {
       &:has(.titlebar-buttonbox-container:hover) :is(#tabbrowser-tabbox, #sidebar-box, #sidebar-splitter) {
@@ -65,8 +68,14 @@
       margin-inline-end: var(--pf-sidebar-btn-margin, 0px) !important;
     }
   }
-  &:not([customizing]) toolbarspring:not(#vertical-spacer) {
-    display: none;
+  &:not([customizing]) {
+    #urlbar-container {
+      max-width: var(--pf-urlbar-container-width) !important;
+    }
+    #urlbar-container ~ :not(#urlbar-container ~ :not([hidden]) ~ :not([hidden])) {
+      margin-inline-start: auto !important;
+    }
+    toolbarspring:not(#vertical-spacer) { display: none; }
   }
   /* main sidebar */
   #sidebar-container[sidebar-launcher-expanded] {
