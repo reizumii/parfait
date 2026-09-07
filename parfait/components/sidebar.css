@@ -403,7 +403,7 @@ moz-button[view="viewCustomizeSidebar"] { order: 99; }
     align-items: center !important;
   }
   /* 154+ floating sidebar note >.< */
-  :root:not([customizing]):has(#tabbrowser-tabs[expanded], sidebar-main:not([expanded])):has(#sidebar-container[hidden]) {
+  :root:not([customizing], [chromehidden~="toolbar"], [taskbartab]):has(#tabbrowser-tabs[expanded], sidebar-main:not([expanded])):has(#sidebar-container[hidden]) {
     --pf-fl-hover: 0 !important;
 
     #browser::before {
