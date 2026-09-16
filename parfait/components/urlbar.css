@@ -36,7 +36,7 @@
   --pf-urlbar-y: var(--pf-navbar-height);
 
   /* mini urlbar */
-  &:not([chromehidden~="toolbar"], [taskbartab]) {
+  &:not([popup-window], [taskbartab]) {
     @media -moz-pref("sidebar.verticalTabs") and -moz-pref("parfait.toolbar.unified-sidebar") and (not -moz-pref("sidebar.visibility", "expand-on-hover")) {
       #urlbar,
       #vertical-spacer::after {
@@ -477,9 +477,9 @@
   --button-icon-fill: color-mix(in srgb, currentColor, transparent 50%) !important;
   --button-background-color-active: var(--pf-toolbar-bgcolor-active) !important;
   --button-background-color-hover: var(--pf-toolbar-bgcolor-hover) !important;
-  --button-background-color: transparent !important;
+  --button-background-color-muted: transparent !important;
   --button-border-radius: var(--urlbar-inner-border-radius) !important;
-  --button-padding: 0 calc((var(--urlbar-height) - 2 * var(--pf-urlbar-container-inset) - var(--icon-size)) / 2) !important;
+  --button-padding: 0 calc((var(--urlbar-height) - 4 * var(--pf-urlbar-container-inset) - var(--icon-size)) / 2) !important;
   --space-small: 0;
 
   &[open] {

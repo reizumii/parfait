@@ -411,7 +411,7 @@ toolbarseparator.proton-zap::before {
   .tab-group-icon {
     list-style-image: var(--pf-icon-folder-closed-duo) !important;
     --menuitem-icon: var(--pf-icon-folder-closed-duo) !important;
-    --menuitem-icon-fill: light-dark(var(--tab-group-color), var(--tab-group-color-invert)) !important;
+    --menuitem-icon-fill: var(--tab-group-color) !important;
 
     &:not([class~="all-tabs-group-action-button"], .tab-group-icon-collapsed) {
       list-style-image: var(--pf-icon-folder-open-duo) !important;

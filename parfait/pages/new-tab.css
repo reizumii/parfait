@@ -372,7 +372,10 @@
     --toggle-height: 20px;
     --toggle-background-color: light-dark(rgba(0, 0, 0, 0.04), rgba(255, 255, 255, 0.04));
     --toggle-background-color-hover: light-dark(rgba(0, 0, 0, 0.08), rgba(255, 255, 255, 0.08));
+    --toggle-background-color-active: light-dark(rgba(0, 0, 0, 0.08), rgba(255, 255, 255, 0.08));
     --toggle-border-color: light-dark(rgba(0, 0, 0, 0.08), rgba(255, 255, 255, 0.15));
+    --toggle-border-color-hover: light-dark(rgba(0, 0, 0, 0.15), rgba(255, 255, 255, 0.2));
+    --toggle-border-color-active: light-dark(rgba(0, 0, 0, 0.15), rgba(255, 255, 255, 0.2));
 
     /* dot */
     --toggle-dot-width: 12px;

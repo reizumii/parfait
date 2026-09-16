@@ -131,7 +131,7 @@
   }
 
   /* popup windows and taskbar tabs */
-  &:is([chromehidden~="toolbar"], [taskbartab]) {
+  &:is([popup-window], [taskbartab]) {
     --pf-tl-padding-left: 16px;
     --pf-tl-padding-right: 10px;
     --pf-navbar-padding-block: 6px;

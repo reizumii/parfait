@@ -71,7 +71,7 @@ toolbar .toolbarbutton-1:not(#PlacesChevron, .toolbarbutton-combined-buttons-dro
   align-items: center;
   will-change: unset !important;
 
-  :root:not([chromehidden~="toolbar"]) & {
+  :root:not([popup-window]) & {
     padding-inline-start: var(--pf-navbar-padding-left) !important;
   }
 }
@@ -205,7 +205,7 @@ toolbarbutton.bookmark-item:not(.subviewbutton) {
 
 /* horizontal layout */
 @media not -moz-pref("sidebar.verticalTabs") {
-  :root:not([chromehidden~="toolbar"], [taskbartab]) {
+  :root:not([popup-window], [taskbartab]) {
     #navigator-toolbox {
       --toolbar-background-color: transparent;
     }
