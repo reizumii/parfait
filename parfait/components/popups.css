@@ -434,6 +434,22 @@ toolbarseparator.proton-zap::before {
 }
 
 /* tab preview */
+.tab-preview-content-main {
+  padding: 0 !important;
+  gap: 0 !important;
+}
+.tab-preview-thumbnail-container {
+  width: unset !important;
+
+  & > canvas {
+    border-width: 0 0 1px !important;
+    border-color: var(--pf-border-color-light) !important;
+    border-radius: 0 !important;
+  }
+}
+.tab-preview-text-container {
+  padding: var(--space-medium);
+}
 .tab-preview-content-interactive { display: none !important; }
 
 /* tab note */
