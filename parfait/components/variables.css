@@ -9,16 +9,15 @@
 :root {
   /* sizes */
   --pf-tab-height: 36px;
-  --pf-pinned-height: 48px;
-  --pf-sidebar-width: 240px;
+  --pf-tab-pinned-height: 48px;
+  --pf-unified-sidebar-width: 240px;
   --pf-navbar-padding-block: 7px;
   --pf-navbar-padding-left: 0px;
-  --pf-toolbaritem-size: 32px;
-  --pf-toolbaritem-gap: 2px;
+  --pf-toolbarbutton-width: 32px;
+  --pf-toolbarbutton-gap: 2px;
   --pf-urlbar-height: 36px;
-  --pf-urlbar-width-max: 720px;
-  --pf-urlbar-input-height: 56px;
-  --pf-urlbar-sr-height: 48px;
+  --pf-urlbar-max-width: 720px;
+  --pf-urlbar-row-height: 48px;
   --pf-bookmarks-height: 40px;
   --pf-tab-group-indent: 18px;
   --pf-separation: 8px;
@@ -27,143 +26,144 @@
   --pf-fl-trigger-width: 12px;
   --pf-navbar-trigger-height: 10px;
   --pf-findbar-width: 320px;
-  --pf-extensions-width: 300px;
+  --pf-extensions-container-width: 300px;
   --pf-tab-group-preview-width: 260px;
-  --pf-wc-width: 0px;
 
   /* corner radii */
   --pf-border-radius-md: 12px;
   --pf-border-radius-sm: 6px;
   --pf-border-radius-hl: 8px;
-  --pf-urlbar-fl-radius: 12px;
-  --pf-urlbar-sr-radius: 8px;
-  --pf-favicon-radius: 4px;
-  --pf-window-radius: 12px;
-  --pf-browser-radius: max(4px, calc(var(--pf-window-radius) - (var(--pf-browser-separation) / 1.5)));
+  --pf-urlbar-open-border-radius: 12px;
+  --pf-favicon-border-radius: 4px;
+  --pf-window-border-radius: 12px;
+  --pf-browser-border-radius: max(4px, calc(var(--pf-window-border-radius) - (var(--pf-browser-separation) / 1.5)));
 
   /* colors */
   --pf-accent-color: AccentColor;
   --pf-accent-text-color: color-mix(in srgb, var(--pf-accent-color), var(--pf-text-color) 30%);
-  --pf-accent-primary-color: color-mix(in srgb, var(--pf-accent-color), light-dark(rgb(96, 96, 96), rgb(34, 34, 34)) 50%);
-  --pf-browser-bgcolor-mix: light-dark(#fff, #000);
-  --pf-browser-bgcolor: color-mix(in oklab, var(--pf-accent-color), var(--pf-browser-bgcolor-mix) var(--pf-browser-contrast));
-  --pf-browser-bgcolor-transparent: light-dark(var(--color-white-alpha-30), var(--color-black-alpha-30));
-  --pf-browser-opacity: 50%;
-  --pf-browser-contrast: 25%;
-  --pf-sidebar-bgcolor: light-dark(rgb(248, 248, 248), rgb(21, 21, 21));
-  --pf-panel-bgcolor: light-dark(rgb(255, 255, 255), rgb(21, 21, 21));
-  --pf-panel-bgcolor-transparent: light-dark(var(--color-white-alpha-60), var(--color-black-alpha-60));
+  --pf-accent-primary-color: color-mix(in srgb, var(--pf-accent-color), light-dark(var(--color-gray-70), var(--color-gray-80)));
+  --pf-contrast-color: light-dark(var(--color-black), var(--color-white));
+  --pf-contrast-color-invert: light-dark(var(--color-white), var(--color-black));
+  --pf-sidebar-background-color: light-dark(var(--color-gray-05), var(--color-gray-100));
+  --pf-sidebar-background-color-alpha: color-mix(in srgb, var(--pf-sidebar-background-color), transparent 12%);
+  --pf-panel-background-color: light-dark(var(--color-white), var(--color-gray-100));
+  --pf-panel-background-color-alpha: light-dark(var(--color-white-alpha-60), var(--color-black-alpha-60));
+  --pf-urlbar-open-background-color: light-dark(var(--color-white), var(--color-gray-90));
   --pf-text-color: color-mix(in srgb, var(--toolbar-text-color), transparent 10%);
   --pf-text-color-inactive: color-mix(in srgb, var(--pf-text-color), transparent 30%);
   --pf-icon-color: light-dark(rgba(91, 91, 102, 0.9), rgba(251, 251, 254, 0.8));
   --pf-icon-color-active: color-mix(in srgb, var(--pf-icon-color), var(--toolbar-text-color) 60%);
-  --pf-favicon-bgcolor: light-dark(color-mix(in srgb, currentColor 15%, transparent), color-mix(in srgb, currentColor 35%, transparent));
-  --pf-tab-selected-bgcolor: light-dark(rgba(255, 255, 255, 0.8), rgba(238, 239, 243, 0.2));
-  --pf-input-bgcolor: light-dark(rgba(0, 0, 0, 0.02), rgba(248, 248, 248, 0.04));
-  --pf-toolbar-bgcolor: light-dark(rgba(0, 0, 0, 0.06), rgba(248, 248, 248, 0.1));
-  --pf-toolbar-bgcolor-hover: light-dark(rgba(0, 0, 0, 0.08), rgba(248, 248, 248, 0.125));
-  --pf-toolbar-bgcolor-active: light-dark(rgba(0, 0, 0, 0.1), rgba(248, 248, 248, 0.175));
-  --pf-toolbar-bgcolor-inactive: light-dark(rgba(0, 0, 0, 0.04), rgba(248, 248, 248, 0.075));
-  --pf-urlbar-bgcolor: light-dark(#fff, #191a1a);
-  --pf-urlbar-bgcolor-transparent: light-dark(rgba(255, 255, 255, 0.875), rgba(25, 26, 26, 0.875));
-  --pf-border-color: color-mix(in srgb, light-dark(#000, #fff), transparent 87%);
-  --pf-border-color-light: color-mix(in srgb, light-dark(#000, #fff), transparent 92%);
+  --pf-favicon-background-color: light-dark(color-mix(in srgb, currentColor 15%, transparent), color-mix(in srgb, currentColor 35%, transparent));
+  --pf-tab-selected-background-color: light-dark(var(--color-white-alpha-80), rgba(238, 239, 243, 0.2));
+  --pf-input-background-color: light-dark(rgba(0, 0, 0, 0.02), rgba(248, 248, 248, 0.04));
+  --pf-toolbarbutton-background-color: light-dark(rgba(0, 0, 0, 0.06), rgba(248, 248, 248, 0.1));
+  --pf-toolbarbutton-background-color-hover: light-dark(rgba(0, 0, 0, 0.08), rgba(248, 248, 248, 0.125));
+  --pf-toolbarbutton-background-color-active: light-dark(rgba(0, 0, 0, 0.1), rgba(248, 248, 248, 0.175));
+  --pf-toolbarbutton-background-color-inactive: light-dark(rgba(0, 0, 0, 0.04), rgba(248, 248, 248, 0.075));
+  --pf-border-color: color-mix(in srgb, var(--pf-contrast-color), transparent 87%);
+  --pf-border-color-light: color-mix(in srgb, var(--pf-contrast-color), transparent 92%);
 
   /* shadows */
-  --pf-tab-selected-shadow: 0 0 1px rgba(0, 0, 0, 0.075), 0 1px 1px 1px rgba(0, 0, 0, 0.09);
-  --pf-browser-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
-  --pf-urlbar-border: inset 0 0 0 1px light-dark(rgba(0, 0, 0, 0.15), rgba(255, 255, 255, 0.15)), 0 0 0 1px light-dark(rgba(0, 0, 0, 0.0125), #000);
-  --pf-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.1);
-  --pf-shadow-lg: 0 4px 8px rgba(0, 0, 0, 0.075), 0 24px 48px rgba(0, 0, 0, 0.175);
+  --pf-box-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.1);
+  --pf-box-shadow-lg: 0 4px 8px rgba(0, 0, 0, 0.075), 0 24px 48px rgba(0, 0, 0, 0.175);
+  --pf-tab-selected-box-shadow: 0 0 1px rgba(0, 0, 0, 0.075), 0 1px 1px 1px rgba(0, 0, 0, 0.09), 0 0 0 1px rgba(0, 0, 0, 0.035);
+  --pf-browser-box-shadow: 0 2px 6px rgba(0, 0, 0, calc(0.06 * (1 - var(--pf-borderless, 0))));
+  --pf-urlbar-border: inset 0 0 0 1px light-dark(rgba(0, 0, 0, 0.15), rgba(255, 255, 255, 0.15)), 0 0 0 1px light-dark(rgba(0, 0, 0, 0.0125), var(--color-black));
 
   /* traffic lights */
-  --pf-tl-size: 12px;
-  --pf-tl-padding-left: 14px;
-  --pf-tl-padding-right: 4px;
-  --pf-tl-gap: 8px;
-  --pf-tl-min-color: #febc2e;
-  --pf-tl-max-color: #19c332;
-  --pf-tl-close-color: #ff736a;
-  --pf-tl-border: rgba(0, 0, 0, 0.1);
-  --pf-tl-mono: light-dark(rgba(0, 0, 0, 0.1), rgba(255, 255, 255, 0.15));
+  --pf-tl-container-padding-left: 14px;
+  --pf-tl-container-padding-right: 4px;
+  --pf-tl-button-width: 12px;
+  --pf-tl-button-gap: 8px;
+  --pf-tl-button-min-background-color: #febc2e;
+  --pf-tl-button-max-background-color: #19c332;
+  --pf-tl-button-close-background-color: #ff736a;
+  --pf-tl-button-mono-background-color: light-dark(var(--color-black-alpha-10), rgba(255, 255, 255, 0.15));
+  --pf-tl-button-border-color: var(--color-black-alpha-10);
 
   /* calc */
-  --pf-tl-width: calc((var(--pf-tl-size) * 3) + (var(--pf-tl-gap) * 2) + (var(--pf-tl-padding-left) + var(--pf-tl-padding-right)));
-  --pf-sidebar-min: calc((var(--pf-toolbaritem-size) * 4) + (var(--pf-toolbaritem-gap) * 3) + var(--pf-tl-width) + var(--pf-navbar-padding-left) + var(--pf-separation));
-  --pf-sidebar-gutter: calc(var(--pf-sidebar-width) - var(--pf-sidebar-min));
+  --pf-tl-container-width: calc((var(--pf-tl-button-width) * 3) + (var(--pf-tl-button-gap) * 2) + (var(--pf-tl-container-padding-left) + var(--pf-tl-container-padding-right)));
+  --pf-sidebar-min-width: calc((var(--pf-toolbarbutton-width) * 4) + (var(--pf-toolbarbutton-gap) * 3) + var(--pf-tl-container-width) + var(--pf-navbar-padding-left) + var(--pf-separation));
+  --pf-sidebar-gutter: calc(var(--pf-unified-sidebar-width) - var(--pf-sidebar-min-width));
   --pf-sidebar-margin: calc(var(--pf-urlbar-height) + var(--pf-separation) - var(--tab-margin-block));
-  --pf-navbar-height: calc(var(--pf-toolbaritem-size) + (var(--pf-navbar-padding-block) * 2));
-  --pf-navbar-margin: calc(var(--pf-browser-separation) - var(--pf-navbar-height));
+  --pf-navbar-height: calc(var(--pf-toolbarbutton-width) + (var(--pf-navbar-padding-block) * 2));
+  --pf-navbar-margin: calc(var(--pf-browser-padding) - var(--pf-navbar-height));
+  --pf-browser-padding: calc(var(--pf-browser-separation) * (1 - var(--pf-borderless, 0)));
 
   /* other */
-  --pf-menubar-y: var(--pf-separation);
   --pf-background-filter: blur(8px);
   --pf-acrylic-filter: blur(72px) brightness(1.375) saturate(1.175);
 
   /* densities */
   &[uidensity="compact"] {
-    --pf-toolbaritem-size: 28px;
+    --pf-toolbarbutton-width: 28px;
     --pf-urlbar-input-height: 48px;
   }
-  &[uidensity="touch"] { --pf-toolbaritem-size: 34px; }
+  &[uidensity="touch"] { --pf-toolbarbutton-width: 34px; }
 
   @media -moz-pref("sidebar.verticalTabs") {
-    --pf-menubar-y: calc(var(--pf-toolbaritem-size) + (var(--pf-navbar-padding-block) * 1.5));
-
     &[uidensity="compact"] {
       --pf-tab-height: 32px;
-      --pf-pinned-height: 40px;
+      --pf-tab-pinned-height: 40px;
       --pf-urlbar-height: 32px;
     }
     &[uidensity="touch"] { --pf-tab-height: 40px; }
   }
   /* horizontal layout */
   @media not -moz-pref("sidebar.verticalTabs") {
-    --pf-tl-padding-left: 16px;
-    --pf-tl-padding-right: 10px;
-    --pf-tab-height: var(--pf-toolbaritem-size);
-    --pf-urlbar-height: var(--pf-toolbaritem-size);
+    --pf-tl-container-padding-left: 16px;
+    --pf-tl-container-padding-right: 10px;
+    --pf-tab-height: var(--pf-toolbarbutton-width);
+    --pf-urlbar-height: var(--pf-toolbarbutton-width);
 
     &:not([customtitlebar]) {
-      --pf-tl-padding-left: var(--pf-separation);
-      --pf-tl-padding-right: 0px;
+      --pf-tl-container-padding-left: var(--pf-separation);
+      --pf-tl-container-padding-right: 0px;
     }
   }
 
   /* popup windows and taskbar tabs */
   &:is([popup-window], [taskbartab]) {
-    --pf-tl-padding-left: 16px;
-    --pf-tl-padding-right: 10px;
+    --pf-tl-container-padding-left: 16px;
+    --pf-tl-container-padding-right: 10px;
     --pf-navbar-padding-block: 6px;
-    --pf-urlbar-height: var(--pf-toolbaritem-size);
+    --pf-urlbar-height: var(--pf-toolbarbutton-width);
   }
 
-  /* bg: transparency */
-  @media (-moz-platform: linux) { --pf-browser-bgcolor-transparent: light-dark(var(--color-white-alpha-60), var(--color-black-alpha-60)); }
+  /* background */
+  --pf-browser-background-color: color-mix(in oklch, var(--pf-accent-color), var(--pf-contrast-color-invert) var(--pf-accent-color-background-contrast));
+  --pf-browser-background-color-alpha: light-dark(var(--color-white-alpha-30), var(--color-black-alpha-30));
+  --pf-accent-color-background-opacity: 50%;
+  --pf-accent-color-background-contrast: 25%;
 
-  /* bg: opacity */
-  @media -moz-pref("parfait.bg.opacity", 1) { --pf-browser-opacity: 25%; }
-  @media -moz-pref("parfait.bg.opacity", 2) { --pf-browser-opacity: 50%; }
-  @media -moz-pref("parfait.bg.opacity", 3) { --pf-browser-opacity: 75%; }
-  @media -moz-pref("parfait.bg.opacity", 4) { --pf-browser-opacity: 100%; }
+  /* background: transparency */
+  @media (-moz-platform: linux) {
+    --pf-browser-background-color-alpha: light-dark(var(--color-white-alpha-60), var(--color-black-alpha-60));
+  }
 
-  /* bg: contrast */
-  @media -moz-pref("parfait.bg.contrast", 1) { --pf-browser-contrast: 75%; }
-  @media -moz-pref("parfait.bg.contrast", 2) { --pf-browser-contrast: 50%; }
-  @media -moz-pref("parfait.bg.contrast", 3) { --pf-browser-contrast: 25%; }
-  @media -moz-pref("parfait.bg.contrast", 4) { --pf-browser-contrast: 0%; }
+  /* background: opacity */
+  @media -moz-pref("parfait.background.accent-color.opacity", 1) { --pf-accent-color-background-opacity: 25%; }
+  @media -moz-pref("parfait.background.accent-color.opacity", 2) { --pf-accent-color-background-opacity: 50%; }
+  @media -moz-pref("parfait.background.accent-color.opacity", 3) { --pf-accent-color-background-opacity: 75%; }
+  @media -moz-pref("parfait.background.accent-color.opacity", 4) { --pf-accent-color-background-opacity: 100%; }
+
+  /* background: contrast */
+  @media -moz-pref("parfait.background.accent-color.contrast", 1) { --pf-accent-color-background-contrast: 75%; }
+  @media -moz-pref("parfait.background.accent-color.contrast", 2) { --pf-accent-color-background-contrast: 50%; }
+  @media -moz-pref("parfait.background.accent-color.contrast", 3) { --pf-accent-color-background-contrast: 25%; }
+  @media -moz-pref("parfait.background.accent-color.contrast", 4) { --pf-accent-color-background-contrast: 0%; }
 
   /* preset: sidebar width */
-  @media -moz-pref("parfait.sidebar.width.preset", 1) { --pf-sidebar-width: 220px; }
-  @media -moz-pref("parfait.sidebar.width.preset", 2) { --pf-sidebar-width: 240px; }
-  @media -moz-pref("parfait.sidebar.width.preset", 3) { --pf-sidebar-width: 260px; }
-  @media -moz-pref("parfait.sidebar.width.preset", 4) { --pf-sidebar-width: 280px; }
-  @media -moz-pref("parfait.sidebar.width.preset", 5) { --pf-sidebar-width: 300px; }
+  @media -moz-pref("parfait.layout.unified-sidebar.width.preset", 1) { --pf-unified-sidebar-width: 220px; }
+  @media -moz-pref("parfait.layout.unified-sidebar.width.preset", 2) { --pf-unified-sidebar-width: 240px; }
+  @media -moz-pref("parfait.layout.unified-sidebar.width.preset", 3) { --pf-unified-sidebar-width: 260px; }
+  @media -moz-pref("parfait.layout.unified-sidebar.width.preset", 4) { --pf-unified-sidebar-width: 280px; }
+  @media -moz-pref("parfait.layout.unified-sidebar.width.preset", 5) { --pf-unified-sidebar-width: 300px; }
 
   /* browser radius */
-  @media (-moz-platform: windows) { --pf-window-radius: 8px; }
-  @media (-moz-platform: macos) { --pf-window-radius: 12px; }
-  @media (-moz-mac-tahoe-theme) { --pf-window-radius: 16px; }
+  @media (-moz-platform: windows) { --pf-window-border-radius: 8px; }
+  @media (-moz-platform: macos) { --pf-window-border-radius: 12px; }
+  @media (-moz-mac-tahoe-theme) { --pf-window-border-radius: 16px; }
 
   /* preset: roundness */
   @media -moz-pref("parfait.theme.roundness.preset", 2) or ((-moz-platform: windows) and (not -moz-pref("parfait.theme.roundness.preset", 1))) {
@@ -173,57 +173,34 @@
   }
 
   /* csd */
-  @media (-moz-platform: windows) and (not -moz-pref("parfait.traffic-lights.enabled")) {
-    --pf-wc-width: 138px;
-  }
-  @media (not -moz-pref("parfait.traffic-lights.enabled")) and (not (-moz-platform: macos)) {
-    --pf-tl-width: 0px;
+  @media not ((-moz-platform: macos) or -moz-pref("parfait.traffic-lights.enabled")) {
+    --pf-tl-container-width: 0px;
     --pf-navbar-padding-left: var(--pf-separation);
   }
   @media (-moz-mac-tahoe-theme) {
-    --pf-tl-size: 14px;
-    --pf-tl-gap: 9px;
-  }
-  /* csd: linux */
-  @media (-moz-platform: linux) and (-moz-gtk-csd-close-button) and (not -moz-pref("parfait.traffic-lights.enabled")) {
-    --pf-wc-close-width: 40px;
-    --pf-wc-minmax-width: 37px;
-    --pf-wc-minmax-num: 0;
-    --pf-wc-width: calc(var(--pf-wc-close-width) + (var(--pf-wc-minmax-width) * var(--pf-wc-minmax-num)));
-
-    @media (-moz-gtk-csd-maximize-button) or (-moz-gtk-csd-minimize-button) {
-      --pf-wc-minmax-num: 1;
-    }
-    @media (-moz-gtk-csd-maximize-button) and (-moz-gtk-csd-minimize-button) {
-      --pf-wc-minmax-num: 2;
-    }
-    @media (-moz-gtk-csd-reversed-placement) {
-      --pf-wc-width: 0px;
-    }
-    @media (-moz-gtk-theme-family: breeze) {
-      --pf-wc-close-width: 30px;
-      --pf-wc-minmax-width: 27px;
-    }
+    --pf-tl-button-width: 14px;
+    --pf-tl-button-gap: 9px;
   }
   /* system titlebar */
   &[macOSNativeFullscreen],
   &:not([customtitlebar]) {
-    --pf-wc-width: 0px;
-    --pf-tl-width: 0px;
+    --pf-tl-container-width: 0px;
     --pf-navbar-padding-left: var(--pf-separation);
   }
 
   /* borderless */
-  @media -moz-pref("parfait.window.borderless") {
-    --pf-navbar-margin: calc(0px - var(--pf-navbar-height));
+  @media -moz-pref("parfait.theme.borderless") {
+    --pf-borderless: 1;
   }
 
-  /* animation */
+  /* timings */
   --pf-ts-15: 0.15s;
   --pf-ts-25: 0.25s;
   --pf-ts-50: 0.50s;
   --pf-ts-75: 0.75s;
+
   --pf-ts-fs: 0.25s;
+  --pf-navbar-delay: 0.15s;
 
   @media -moz-pref("parfait.animations.enabled", false) or (prefers-reduced-motion: reduce) {
     --pf-ts-15: 0s;
@@ -235,50 +212,8 @@
     @media (-moz-platform: windows) and -moz-pref("parfait.traffic-lights.enabled") { --pf-ts-fs: 1ms; }
   }
 
-  /* effects */
-  --pf-fx-bounce: cubic-bezier(0.47, 1.84 , 0.41, 0.8);
-  --pf-fx-sidebar: cubic-bezier(0.125, 1.125, 0.25, 1.0125);
-  --pf-fx-folder: cubic-bezier(0.42, 0, 0, 1);
-
-  /* timings */
-  --pf-navbar-delay: 0.15s;
-
-  /* firefox */
-  --border-radius-small: var(--pf-border-radius-sm) !important;
-  --border-radius-medium: var(--pf-border-radius-md) !important;
-  --urlbar-icon-border-radius: var(--pf-border-radius-sm) !important;
-
-  --content-area-shadow: var(--pf-browser-shadow) !important;
-  --chrome-content-separator-color: var(--pf-toolbar-bgcolor) !important;
-  --sidebar-border-color: var(--pf-toolbar-bgcolor) !important;
-  --background-color-overlay: transparent !important;
-  --background-color-canvas: var(--pf-panel-bgcolor) !important;
-  --urlbar-box-background-color: transparent !important;
-  --urlbar-box-background-color-focus: transparent !important;
-  --urlbarview-separator-color: light-dark(rgba(0, 0, 0, 0.075), rgba(255, 255, 255, 0.1)) !important;
-  --urlbarview-background-color-hover: var(--pf-toolbar-bgcolor-hover) !important;
-  --tab-background-color-hover: var(--pf-toolbar-bgcolor-hover) !important;
-  --toolbar-field-background-color-focus: var(--pf-toolbar-bgcolor) !important;
-  --button-background-color: var(--pf-toolbar-bgcolor) !important;
-  --button-background-color-hover: var(--pf-toolbar-bgcolor-hover) !important;
-  --button-background-color-active: var(--pf-toolbar-bgcolor-active) !important;
-  --button-background-color-ghost-hover: var(--pf-toolbar-bgcolor) !important;
-  --button-background-color-ghost-active: var(--pf-toolbar-bgcolor-active) !important;
-  --toolbox-text-color: var(--pf-text-color) !important;
-  --toolbox-text-color-inactive: var(--pf-text-color-inactive) !important;
-  --toolbar-field-text-color: var(--pf-text-color) !important;
-  --toolbar-field-text-color-focus: var(--pf-text-color) !important;
-  --sidebar-box-color: var(--pf-text-color) !important;
-
-  &:not([lwtheme]) {
-    --color-accent-primary: var(--pf-accent-primary-color) !important;
-    --color-accent-primary-hover: color-mix(in srgb, var(--pf-accent-primary-color), #000 8%) !important;
-    --color-accent-primary-active: color-mix(in srgb, var(--pf-accent-primary-color), #000 16%) !important;
-    --button-text-color-primary: var(--color-white) !important;
-    --link-color: var(--pf-accent-text-color) !important;
-    --tab-loading-fill: var(--pf-accent-text-color) !important;
-    --focus-outline-color: color-mix(in srgb, var(--pf-accent-color), transparent 40%) !important;
-    --toolbarbutton-icon-fill: var(--pf-icon-color) !important;
-    --toolbarbutton-icon-fill-attention: var(--pf-accent-text-color) !important;
-  }
+  /* easings */
+  --pf-easing-bounce: cubic-bezier(0.47, 1.84, 0.41, 0.8);
+  --pf-easing-sidebar: cubic-bezier(0.125, 1.125, 0.25, 1.0125);
+  --pf-easing-folder: cubic-bezier(0.42, 0, 0, 1);
 }

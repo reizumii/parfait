@@ -3,112 +3,96 @@
   https://github.com/reizumii/parfait
 */
 
-/* window: background */
+/* browser background */
 :root:not([lwtheme]) {
-  #browser:not(.browser-toolbox-background) {
+  /* nova browser background */
+  --toolbox-background-image: none !important;
+
+  #browser {
     --toolbar-background-color: transparent;
-
-    &:-moz-window-inactive {
-      --toolbar-background-color: var(--toolbox-background-color-inactive);
-    }
   }
-  @media -moz-pref("parfait.bg.transparent") and (not (-moz-platform: windows)) {
-    --toolbox-background-color: var(--pf-browser-bgcolor-transparent) !important;
+  /* default background colors */
+  @media not ((forced-colors) or (-moz-native-theme) or (-moz-windows-mica) or -moz-pref("parfait.background.transparent")) {
+    --toolbox-background-color: light-dark(var(--color-gray-10), var(--color-gray-80)) !important;
   }
-  @media -moz-pref("parfait.bg.accent-color") {
-    --toolbox-background-color: color-mix(in oklab, transparent, var(--pf-browser-bgcolor) var(--pf-browser-opacity)) !important;
-    --toolbox-background-color-inactive: color-mix(in oklab, var(--pf-browser-bgcolor), var(--color-gray-50) 30%) !important;
-    --tabpanel-background-color: color-mix(in oklab, var(--pf-browser-bgcolor), light-dark(#fff, #000)) !important;
-    --pf-sidebar-bgcolor: var(--pf-browser-bgcolor);
+  /* accent color browser background */
+  @media -moz-pref("parfait.background.transparent") and (not (-moz-platform: windows)) {
+    --toolbox-background-color: var(--pf-browser-background-color-alpha) !important;
+  }
+  @media -moz-pref("parfait.background.accent-color") {
+    --toolbox-background-color: color-mix(in oklch, var(--pf-browser-background-color) var(--pf-accent-color-background-opacity), transparent) !important;
+    --toolbox-background-color-inactive: color-mix(in oklch, var(--pf-browser-background-color), var(--color-gray-50) 10%) !important;
+    --pf-sidebar-background-color: var(--pf-browser-background-color);
 
-    @media -moz-pref("parfait.bg.gradient") {
-      --pf-bg-gradient-fade: color-mix(in oklab, var(--pf-browser-bgcolor), var(--pf-browser-bgcolor-mix) 50%);
-      --pf-bg-gradient-1: color-mix(in oklab, transparent, var(--pf-bg-gradient-fade) var(--pf-browser-opacity));
-      --pf-bg-gradient-2: color-mix(in oklab, transparent, var(--pf-browser-bgcolor) var(--pf-browser-opacity));
-      --toolbox-background-color: linear-gradient(var(--pf-bg-gradient-1), var(--pf-bg-gradient-2)) !important;
-
-      #navigator-toolbox {
-        background: var(--pf-bg-gradient-1) !important;
-      }
-      #browser {
-        background: var(--toolbox-background-color) !important;
-      }
+    @media -moz-pref("parfait.background.accent-color.gradient") {
+      --pf-accent-color-background-gradient-fade: color-mix(in oklch, var(--pf-browser-background-color), var(--pf-contrast-color-invert) 50%);
+      --pf-accent-color-background-gradient-1: color-mix(in oklch, var(--pf-accent-color-background-gradient-fade) var(--pf-accent-color-background-opacity), transparent);
+      --pf-accent-color-background-gradient-2: color-mix(in oklch, var(--pf-browser-background-color) var(--pf-accent-color-background-opacity), transparent);
+      --toolbox-background-image: linear-gradient(var(--pf-accent-color-background-gradient-1), var(--pf-accent-color-background-gradient-2)) !important;
     }
     /* expand on hover */
     &[sidebar-expand-on-hover] #sidebar-container:is([sidebar-launcher-expanded], [sidebar-ongoing-animations]) {
       background: var(--toolbox-background-color) !important;
     }
   }
+  /* macos: window material */
   @media (-moz-platform: macos) and (not (prefers-reduced-transparency)) {
     appearance: -moz-sidebar !important;
   }
 }
 
-/* lwt theming */
+/* lwt theme */
 :root[lwtheme] {
-  --pf-text-color: var(--lwt-text-color);
-  --pf-icon-color: var(--toolbarbutton-icon-fill);
-  --pf-sidebar-bgcolor: var(--toolbox-background-color);
+  --pf-sidebar-background-color: var(--toolbox-background-color);
   --pf-split-border-color: var(--lwt-tab-line-color, var(--pf-accent-color));
   --focus-outline-color: var(--toolbar-field-border-color-focus) !important;
 }
 
-/* separation */
 :root:not([inDOMFullscreen], [popup-window], [taskbartab]) {
+  /* browser separation */
   #tabbrowser-tabbox {
-    margin-inline-end: var(--pf-browser-separation) !important;
-    margin-bottom: var(--pf-browser-separation) !important;
+    anchor-name: --pf-browser;
+    margin-inline-end: var(--pf-browser-padding) !important;
+    margin-block-end: var(--pf-browser-padding) !important;
 
-    @media not -moz-pref("sidebar.visibility", "expand-on-hover") {
-      margin-inline: 0 var(--pf-browser-separation) !important;
-    }
-    @media not -moz-pref("sidebar.verticalTabs") {
-      &:not([sidebar-shown]) {
-        margin-inline: var(--pf-browser-separation) !important;
-      }
-    }
-    @media -moz-pref("parfait.blur.enabled") {
-      browser:not(.devtools-toolbox-bottom-iframe, .devtools-toolbox-side-iframe) {
+    /* force enable background blur */
+    @media -moz-pref("parfait.theme.blur.enabled") {
+      browser:not(.devtools-toolbox-iframe.docked-right) {
         backface-visibility: hidden;
         translate: 0;
       }
     }
   }
-  @media -moz-pref("parfait.window.borderless") {
-    --pf-borderless: 1;
-
-    #tabbrowser-tabbox,
-    #sidebar-splitter,
-    #sidebar-box {
-      --content-area-shadow: none;
-      --pf-browser-radius: 0;
-      --pf-browser-separation: 0px;
-    }
+  #navigator-toolbox:not([tabs-hidden]) ~ #browser > #tabbrowser-tabbox:not([sidebar-shown]) {
+    margin-inline: var(--pf-browser-padding) !important;
   }
   .browserContainer {
-    anchor-name: --pf-browser;
-    border-radius: var(--pf-browser-radius) !important;
-    overflow: clip;
+    border-radius: calc(var(--pf-browser-border-radius) * (1 - var(--pf-borderless, 0))) !important;
+    box-shadow: var(--pf-browser-box-shadow) !important;
+    border: 0 !important;
+    outline-offset: 0 !important;
     -moz-window-dragging: no-drag;
+
+    .browserSidebarContainer:not(.split-view-panel.deck-selected) & {
+      outline: 0.5px solid var(--chrome-content-separator-color) !important;
+    }
   }
   /* split view */
   #tabbrowser-tabpanels[splitview] {
     .split-view-splitter {
       background-color: transparent !important;
-      border: none !important;
       min-width: var(--pf-split-resize-padding) !important;
+      margin: 0 !important;
     }
     .split-view-panel {
       margin: 0 !important;
       overflow: unset !important;
-      --border-width: 0.5px;
-      --border-color: var(--chrome-content-separator-color);
 
       &[column="1"]::after {
         content: "";
         width: 2px;
         height: 96px;
-        background-color: var(--pf-split-indicator-bg, transparent);
+        background-color: var(--pf-split-resize-background-color, transparent);
         border-radius: 4px;
         position: absolute;
         left: calc(-1px - (var(--pf-split-resize-padding) / 2));
@@ -116,36 +100,37 @@
         pointer-events: none;
         transition: background-color var(--pf-ts-15);
       }
-      &.deck-selected > .browserContainer { outline-color: var(--pf-split-border-color, var(--pf-accent-color)) !important; }
+      &.deck-selected > .browserContainer {
+        outline-color: var(--pf-split-border-color, var(--pf-accent-color)) !important;
+      }
     }
     &:has(.split-view-splitter:hover) {
-      --pf-split-indicator-bg: light-dark(rgba(0, 0, 0, 0.25), rgba(255, 255, 255, 0.175));
+      --pf-split-resize-background-color: light-dark(rgba(0, 0, 0, 0.25), rgba(255, 255, 255, 0.175));
     }
     split-view-footer { display: none !important; }
-  }
-  @media -moz-pref("parfait.toolbar.unified-sidebar") and -moz-pref("parfait.window.borderless") {
-    #navigator-toolbox[tabs-hidden] > #nav-bar::before {
-      content: "";
-      height: var(--pf-navbar-trigger-height);
-      position: fixed;
-      position-anchor: --pf-browser;
-      top: anchor(--pf-browser top);
-      left: anchor(--pf-browser left);
-      right: anchor(--pf-browser right);
-      z-index: 3;
-    }
   }
 }
 
 /* customize menu */
 #customization-panel-container {
-  padding-top: var(--pf-separation) !important;
-  padding-right: var(--pf-separation) !important;
+  padding-block-start: var(--pf-separation) !important;
+  padding-inline-end: var(--pf-separation) !important;
 }
 .panel-arrowbox {
   display: none !important;
 }
 .panel-arrowcontent {
   border-radius: var(--pf-border-radius-sm) !important;
-  box-shadow: var(--pf-shadow-md) !important;
+  box-shadow: var(--pf-box-shadow-md) !important;
+}
+
+/* undo some nova stuff */
+button:not([part]),
+moz-button {
+  --button-background-color: var(--pf-toolbarbutton-background-color);
+  --button-border: none;
+}
+menulist {
+  --button-background-color: var(--pf-toolbarbutton-background-color);
+  --border-width: 0;
 }

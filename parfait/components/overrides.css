@@ -1,0 +1,45 @@
+/*
+  Parfait - overrides.css
+  https://github.com/reizumii/parfait
+*/
+
+:root {
+  /* corner radii */
+  --border-radius-small: var(--pf-border-radius-sm) !important;
+  --border-radius-medium: var(--pf-border-radius-md) !important;
+  --border-radius-large: var(--pf-border-radius-md) !important;
+  --border-radius-xlarge: var(--pf-border-radius-md) !important;
+
+  --button-border-radius: var(--pf-border-radius-sm) !important;
+  --panel-menuitem-border-radius: var(--pf-border-radius-sm) !important;
+
+  /* colors */
+  --toolbarbutton-background-color-hover: var(--pf-toolbarbutton-background-color-hover) !important;
+  --toolbarbutton-background-color-active: var(--pf-toolbarbutton-background-color-active) !important;
+  --button-background-color-hover: var(--pf-toolbarbutton-background-color-hover) !important;
+  --button-background-color-active: var(--pf-toolbarbutton-background-color-active) !important;
+  --button-background-color-ghost-hover: var(--pf-toolbarbutton-background-color-hover) !important;
+  --button-background-color-ghost-active: var(--pf-toolbarbutton-background-color-active) !important;
+  --button-background-color-menu-hover: var(--pf-toolbarbutton-background-color-hover) !important;
+  --button-background-color-menu-active: var(--pf-toolbarbutton-background-color-active) !important;
+  --button-background-color-muted-hover: var(--pf-toolbarbutton-background-color-hover) !important;
+  --button-background-color-muted-active: var(--pf-toolbarbutton-background-color-active) !important;
+  --urlbar-box-background-color-hover: var(--pf-toolbarbutton-background-color-hover) !important;
+  --urlbar-box-background-color-active: var(--pf-toolbarbutton-background-color-active) !important;
+  --background-color-overlay: var(--color-black-alpha-20) !important;
+
+  /* no theme */
+  &:not([lwtheme]) {
+    --color-accent-primary: var(--pf-accent-primary-color) !important;
+    --color-accent-primary-hover: color-mix(in srgb, var(--color-accent-primary), var(--pf-contrast-color) 8%) !important;
+    --color-accent-primary-active: color-mix(in srgb, var(--color-accent-primary), var(--pf-contrast-color) 16%) !important;
+    --toolbarbutton-icon-fill: var(--pf-icon-color) !important;
+    --toolbarbutton-icon-fill-attention: var(--pf-accent-text-color) !important;
+    --toolbox-text-color: var(--pf-text-color) !important;
+    --toolbox-text-color-inactive: var(--pf-text-color-inactive) !important;
+    --toolbar-field-text-color: var(--pf-text-color) !important;
+    --toolbar-field-text-color-focus: var(--pf-text-color) !important;
+    --sidebar-text-color: var(--toolbox-text-color) !important;
+    --button-text-color-primary: var(--color-white) !important;
+  }
+}

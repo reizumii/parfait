@@ -47,7 +47,7 @@
       font-family: "Segoe UI Variable", "Segoe UI", system-ui, sans-serif !important;
     }
   }
-  @media -moz-pref("parfait.new-tab.bg.pattern") {
+  @media -moz-pref("parfait.new-tab.background.pattern") {
     body {
       background-size: unset !important;
       background-repeat: repeat !important;
@@ -83,10 +83,10 @@
     content: none !important;
   }
   /* logo */
-  @media -moz-pref("parfait.new-tab.logo", 0) {
+  @media -moz-pref("parfait.new-tab.logo.preset", 0) {
     .logo-and-wordmark-wrapper { display: none !important; }
   }
-  @media not -moz-pref("parfait.new-tab.logo", 1) {
+  @media not -moz-pref("parfait.new-tab.logo.preset", 1) {
     .wordmark {
       display: inline-block !important;
       width: calc(var(--pf-logo-width) - (var(--pf-logo-width) / 3)) !important;
@@ -96,17 +96,17 @@
       background-position: center;
       fill: var(--newtab-text-primary-color) !important;
 
-      @media -moz-pref("parfait.new-tab.logo", 2) {
+      @media -moz-pref("parfait.new-tab.logo.preset", 2) {
         background-image: url("../assets/logo/logo.png") !important;
         --pf-logo-width: 300px;
         --pf-logo-height: 127px;
       }
-      @media -moz-pref("parfait.new-tab.logo", 3) {
+      @media -moz-pref("parfait.new-tab.logo.preset", 3) {
         background-image: url("../assets/logo/logo-uwu.png") !important;
         --pf-logo-width: 296px;
         --pf-logo-height: 127px;
       }
-      @media -moz-pref("parfait.new-tab.logo", 4) {
+      @media -moz-pref("parfait.new-tab.logo.preset", 4) {
         background-image: url("../assets/logo/logo-mono.svg") !important;
         --pf-logo-width: 240px;
         --pf-logo-height: 59px;
@@ -262,6 +262,9 @@
   #widgets-section {
     margin-block: 0 !important;
   }
+  .appearance-section {
+    display: none !important;
+  }
   .customize-menu-content {
     padding-block-end: 20px;
     overflow-x: visible !important;
@@ -292,6 +295,19 @@
   .category-list > div {
     position: relative;
     height: 100px;
+  }
+  .wallpaper-list.category .wallpaper-grid {
+    row-gap: var(--space-medium) !important;
+  }
+  .wallpaper-grid-row {
+    grid-auto-rows: 100px !important;
+
+    .wallpaper-list.category .wallpaper-grid & {
+      column-gap: var(--space-medium) !important;
+    }
+    & > div {
+      position: relative;
+    }
   }
   .wallpaper-input {
     height: 100px !important;
@@ -392,7 +408,7 @@
     --input-space-offset: calc(var(--toggle-width) + 12px) !important;
   }
   .toggle-button + .text-container {
-    margin-left: 6px;
+    margin-inline-start: 6px;
   }
   /* selectors */
   .select-wrapper > select {

@@ -24,47 +24,48 @@
   #controls-bottom-gradient {
     background-image: none !important;
   }
-  .control-item {
-    font-family: system-ui, sans-serif;
-    opacity: 1 !important;
+  .controls-bottom-upper {
+    width: auto !important;
+    margin: 0 12px !important;
   }
   .controls-bottom-lower {
     grid-template-columns: repeat(2, 1fr) !important;
     margin: 0 12px !important;
   }
-  .controls-bottom-upper {
-    width: auto !important;
-    margin: 0 12px !important;
+  .control-item {
+    font-family: system-ui, sans-serif;
+    opacity: 1 !important;
   }
   .control-button {
-    min-width: 28px !important;
-    min-height: 24px !important;
-    max-width: 28px !important;
-    max-height: 24px !important;
-    background-size: 16px !important;
-    transition: var(--pf-ts-15) !important;
-    --border-radius-small: var(--border-radius-circle);
+    width: 28px !important;
+    height: 24px !important;
+    padding: 0 !important;
+    background-size: var(--icon-size) !important;
+    border-radius: var(--border-radius-circle) !important;
+    transition: background-size var(--pf-ts-15) !important;
 
-    &:hover:active {
-      background-size: 14px !important;
+    &:not(:disabled):hover:active {
+      background-size: calc(var(--icon-size) - 2px) !important;
+    }
+    &:disabled {
+      fill-opacity: 0.4;
     }
   }
-  #close,
-  #unpip,
+  #controls > .control-button,
   .center-controls .control-button {
     min-width: 36px !important;
     min-height: 36px !important;
     background-color: var(--color-black-alpha-50) !important;
+    outline: 1px solid var(--color-white-alpha-20);
     position: relative;
-    --close-btn-fill-color: #fff;
+    --close-btn-fill-color: var(--color-white);
 
     &:hover::before {
       content: "";
-      background: var(--color-white-alpha-20);
       position: absolute;
-      transform: scale(0.8);
+      inset: 4px;
+      background: var(--color-white-alpha-20);
       border-radius: var(--border-radius-circle);
-      inset: 0;
     }
   }
   #playpause {
@@ -73,12 +74,10 @@
   }
   .start-controls,
   .end-controls {
-    align-items: center;
-    justify-content: center;
     padding: 4px;
     background-color: var(--color-black-alpha-50);
     border-radius: var(--border-radius-circle);
-    box-sizing: border-box;
+    outline: 1px solid var(--color-white-alpha-20);
     gap: 4px !important;
   }
   .start-controls:has(#timestamp[hidden]) {
@@ -88,8 +87,10 @@
     position: fixed;
     display: flex !important;
     align-items: center;
-    top: 50%;
-    transform: translateY(-50%);
+    top: calc(50% - 24px);
+  }
+  .end-controls {
+    display: flex !important;
   }
   #timestamp {
     font-size: 0.825rem !important;
@@ -98,10 +99,10 @@
     grid-area: unset !important;
   }
   /* yabai */
-  @media -moz-pref("parfait.blur.enabled") {
-    #close, #unpip,
+  @media -moz-pref("parfait.theme.blur.enabled") {
+    #controls > .control-button,
     .center-controls .control-button,
-    .start-controls, .end-controls {
+    .controls-bottom-lower > :not(.center-controls) {
       backdrop-filter: var(--pf-background-filter);
     }
     .player-holder > #browser {
@@ -111,7 +112,8 @@
   }
   /* scrubbers */
   #scrubber,
-  #audio-scrubber {
+  #audio-scrubber,
+  #playback-rate-slider {
     &::-moz-range-thumb {
       width: 4px !important;
       height: 16px !important;
@@ -132,7 +134,7 @@
   #scrubber::-moz-range-thumb {
     background-color: var(--pf-accent-color) !important;
   }
-  /* toolips */
+  /* tooltips */
   .control-item:focus-visible::after,
   .control-item:hover::after {
     font-size: 0.75rem;
@@ -145,20 +147,38 @@
     bottom: 3.5em !important;
   }
   /* popup */
-  .arrow { display: none; }
+  .arrow {
+    display: none;
+  }
   .box {
     font-size: 0.825rem !important;
-    padding: 0 !important;
   }
   .panel-legend,
+  .playback-rate-header,
   .box label:not(.switch) {
     font-family: system-ui, sans-serif !important;
   }
   input:checked + .slider {
     background-color: var(--pf-accent-color) !important;
   }
-  .font-size-selection-radio > input[type="radio"]:checked {
+  input[type="radio"]:checked {
     border-color: var(--pf-accent-color) !important;
+  }
+  /* playback speed */
+  .playback-rate-presets {
+    gap: 4px !important;
+  }
+  .playback-rate-preset {
+    padding: 4px 8px !important;
+    font-family: inherit;
+    font-variant-numeric: unset !important;
+  }
+  #playback-rate-slider::-moz-range-progress,
+  .playback-rate-preset[aria-pressed="true"] {
+    background-color: var(--pf-accent-color) !important;
+  }
+  #playback-rate-value {
+    color: var(--pf-accent-color) !important;
   }
   /* icons */
   #seekBackward {
@@ -173,14 +193,17 @@
   #controls.muted #audio {
     background-image: url("../icons/custom/audio-mute.svg") !important;
   }
+  #playbackRate {
+    background-image: url("../icons/custom/gauge.svg") !important;
+  }
   #closed-caption {
     background-image: url("../icons/custom/captions.svg") !important;
   }
   body:not(:fullscreen) #fullscreen {
-    background-image: url("../icons/custom/fullscreen.svg") !important;
+    background-image: url("chrome://browser/skin/fullscreen.svg") !important;
   }
   body:fullscreen #fullscreen {
-    background-image: url("../icons/custom/fullscreen-exit.svg") !important;
+    background-image: url("chrome://browser/skin/fullscreen-exit.svg") !important;
   }
   /* breakpoints */
   @media (width <= 300px) {

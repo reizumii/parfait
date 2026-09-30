@@ -23,5 +23,5 @@
 
 ## Acknowledgements
 
-- [GWfox](https://github.com/akkva/gwfox) by [akkva](https://github.com/akkva) – inspiration and sidebar logic
+- [GWfox](https://github.com/akkva/gwfox) by [akkva](https://github.com/akkva) – inspiration and initial sidebar logic
 - [firefox-compact-theme](https://github.com/mary-ext/firefox-compact-theme) by [mary-ext](https://github.com/mary-ext) – one-line horizontal layout logic

@@ -10,10 +10,10 @@
   --pf-icon-square: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='context-fill' fill-opacity='context-fill-opacity' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='16' height='16'/%3E%3C/svg%3E");
 
   /* traffic lights */
-  --pf-tl-min-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='context-fill' fill-opacity='context-fill-opacity' viewBox='0 0 16 16'%3E%3Cpath d='M11.37 6.88H4.64a1.122 1.122 0 0 0 0 2.244h6.73a1.122 1.122 0 1 0 0-2.243'/%3E%3C/svg%3E");
-  --pf-tl-max-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='context-fill' fill-opacity='context-fill-opacity' viewBox='0 0 16 16'%3E%3Cpath d='M4.64 9.784 9.783 4.64H5.761c-.466 0-1.122.656-1.122 1.122zm1.586 1.587h4.023c.466 0 1.122-.656 1.122-1.122V6.226z'/%3E%3C/svg%3E");
-  --pf-tl-close-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='context-fill' fill-opacity='context-fill-opacity' viewBox='0 0 16 16'%3E%3Cpath d='M4.832 4.832a1.12 1.12 0 0 0 0 1.587l1.586 1.586-1.586 1.587a1.12 1.12 0 0 0 0 1.586c.44.44 1.147.44 1.586 0l1.587-1.586 1.587 1.586c.439.44 1.147.44 1.586 0a1.12 1.12 0 0 0 0-1.586L9.592 8.005l1.586-1.586a1.12 1.12 0 0 0 0-1.587 1.12 1.12 0 0 0-1.586 0L8.005 6.419 6.418 4.832a1.12 1.12 0 0 0-1.586 0'/%3E%3C/svg%3E");
-  --pf-tl-restore-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='context-fill' fill-opacity='context-fill-opacity' viewBox='0 0 16 16'%3E%3Cpath d='M7.72984 12.8744V8.85191C7.72984 8.38577 8.38577 7.72984 8.85191 7.72984H12.8744L7.72984 12.8744Z'/%3E%3Cpath d='M8.28453 7.16344C8.2841 7.62955 7.62844 8.28453 7.16246 8.28453H3.14L8.28453 3.14V7.16344Z'/%3E%3C/svg%3E");
+  --pf-icon-tl-min: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='context-fill' fill-opacity='context-fill-opacity' viewBox='0 0 16 16'%3E%3Cpath d='M11.37 6.88H4.64a1.122 1.122 0 0 0 0 2.244h6.73a1.122 1.122 0 1 0 0-2.243'/%3E%3C/svg%3E");
+  --pf-icon-tl-max: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='context-fill' fill-opacity='context-fill-opacity' viewBox='0 0 16 16'%3E%3Cpath d='M4.64 9.784 9.783 4.64H5.761c-.466 0-1.122.656-1.122 1.122zm1.586 1.587h4.023c.466 0 1.122-.656 1.122-1.122V6.226z'/%3E%3C/svg%3E");
+  --pf-icon-tl-close: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='context-fill' fill-opacity='context-fill-opacity' viewBox='0 0 16 16'%3E%3Cpath d='M4.832 4.832a1.12 1.12 0 0 0 0 1.587l1.586 1.586-1.586 1.587a1.12 1.12 0 0 0 0 1.586c.44.44 1.147.44 1.586 0l1.587-1.586 1.587 1.586c.439.44 1.147.44 1.586 0a1.12 1.12 0 0 0 0-1.586L9.592 8.005l1.586-1.586a1.12 1.12 0 0 0 0-1.587 1.12 1.12 0 0 0-1.586 0L8.005 6.419 6.418 4.832a1.12 1.12 0 0 0-1.586 0'/%3E%3C/svg%3E");
+  --pf-icon-tl-restore: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='context-fill' fill-opacity='context-fill-opacity' viewBox='0 0 16 16'%3E%3Cpath d='M7.72984 12.8744V8.85191C7.72984 8.38577 8.38577 7.72984 8.85191 7.72984H12.8744L7.72984 12.8744Z'/%3E%3Cpath d='M8.28453 7.16344C8.2841 7.62955 7.62844 8.28453 7.16246 8.28453H3.14L8.28453 3.14V7.16344Z'/%3E%3C/svg%3E");
 
   /* folder */
   --pf-icon-folder-out: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22' fill='context-fill' fill-opacity='context-fill-opacity' stroke='context-fill' stroke-opacity='context-fill-opacity' viewBox='0 0 22 22'%3E%3Cpath fill-opacity='0.25' stroke-width='1.5' d='M2.75 5A2.25 2.25 0 0 1 5 2.75h3.948c.51 0 1.006.174 1.405.493l.857.685a3.75 3.75 0 0 0 2.342.822H17A2.25 2.25 0 0 1 19.25 7v10A2.25 2.25 0 0 1 17 19.25H5A2.25 2.25 0 0 1 2.75 17z'/%3E%3C/svg%3E");
@@ -24,43 +24,26 @@
   --pf-icon-screenshot-visible: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 48 48'%3E%3Cpath fill='context-fill %23fff' d='M4 11h40v26H4z'/%3E%3Cpath fill='context-stroke %235b5b66' fill-opacity='.5' d='M5 36v1H4v-1zm4 0v1H7v-1zm4 0v1h-2v-1zm4 0v1h-2v-1zm4 0v1h-2v-1zm4 0v1h-2v-1zm4 0v1h-2v-1zm4 0v1h-2v-1zm4 0v1h-2v-1zm4 0v1h-2v-1zm3 0v1h-1v-1zM5 32.357v1.857H4v-1.857zm39 0v1.857h-1v-1.857zM5 28.643V30.5H4v-1.857zm39 0V30.5h-1v-1.857zM5 24.929v1.857H4V24.93zm39 0v1.857h-1V24.93zM5 21.214v1.857H4v-1.857zm39 0v1.857h-1v-1.857zM5 17.5v1.857H4V17.5zm39 0v1.857h-1V17.5zM5 13.786v1.857H4v-1.857zm39 0v1.857h-1v-1.857zM5 11v1H4v-1zm4 0v1H7v-1zm4 0v1h-2v-1zm4 0v1h-2v-1zm4 0v1h-2v-1zm4 0v1h-2v-1zm4 0v1h-2v-1zm4 0v1h-2v-1zm4 0v1h-2v-1zm4 0v1h-2v-1zm3 0v1h-1v-1z'/%3E%3Cg fill='context-stroke %235b5b66' fill-opacity='.3'%3E%3Crect width='28' height='10' x='10' y='17' rx='2'/%3E%3Crect width='28' height='2' x='10' y='30' rx='1'/%3E%3C/g%3E%3Crect width='44' height='30' x='2' y='9' fill='context-stroke %235b5b66' fill-opacity='.05' stroke='context-stroke %235b5b66' stroke-width='2' rx='1'/%3E%3C/svg%3E");
 
   /* firefox */
-  --pf-browser-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='context-fill' fill-opacity='context-fill-opacity' viewBox='0 0 24 24'%3E%3Cpath d='M8.824 7.287c.008 0 .004 0 0 0m-2.8-1.4c.006 0 .003 0 0 0m16.754 2.161c-.505-1.215-1.53-2.528-2.333-2.943.654 1.283 1.033 2.57 1.177 3.53l.002.02c-1.314-3.278-3.544-4.6-5.366-7.477-.091-.147-.184-.292-.273-.446a4 4 0 0 1-.13-.24 2 2 0 0 1-.172-.46.03.03 0 0 0-.027-.03.04.04 0 0 0-.021 0l-.006.001-.01.005.005-.008c-2.585 1.515-3.657 4.168-3.932 5.856a6.2 6.2 0 0 0-2.305.587.297.297 0 0 0-.147.37c.057.162.24.24.396.17a5.6 5.6 0 0 1 2.008-.523l.067-.005a5.9 5.9 0 0 1 1.957.222l.095.03a6 6 0 0 1 .616.228q.12.054.238.112l.107.055a6 6 0 0 1 .368.211 5.95 5.95 0 0 1 2.034 2.104c-.62-.437-1.733-.868-2.803-.681 4.183 2.09 3.06 9.292-2.737 9.02a5.2 5.2 0 0 1-1.513-.292 4 4 0 0 1-.538-.232c-1.42-.735-2.593-2.121-2.74-3.806 0 0 .537-2 3.845-2 .357 0 1.38-.998 1.398-1.287-.005-.095-2.029-.9-2.817-1.677-.422-.416-.622-.616-.8-.767a4 4 0 0 0-.301-.227 5.4 5.4 0 0 1-.032-2.842c-1.195.544-2.124 1.403-2.8 2.163h-.006c-.46-.584-.428-2.51-.402-2.913-.006-.025-.343.176-.389.206a8.4 8.4 0 0 0-1.136.974q-.596.606-1.085 1.303a9.8 9.8 0 0 0-1.562 3.52c-.003.013-.11.487-.19 1.073q-.02.135-.037.272a8 8 0 0 0-.069.667l-.002.034-.023.387-.001.06C.386 18.795 5.593 24 12.016 24c5.752 0 10.527-4.176 11.463-9.661q.028-.223.052-.448c.232-1.994-.025-4.09-.753-5.844z'/%3E%3C/svg%3E");
-
-  /* other */
-  --pf-icon-arrow-left-hl: url(chrome://global/skin/icons/arrow-left.svg);
-  --pf-icon-arrow-right-hl: url(chrome://global/skin/icons/arrow-right.svg);
-  --pf-icon-chevron-left-12: url(chrome://global/skin/icons/arrow-left-12.svg);
+  --pf-icon-firefox: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='context-fill' fill-opacity='context-fill-opacity' viewBox='0 0 24 24'%3E%3Cpath d='M8.824 7.287c.008 0 .004 0 0 0m-2.8-1.4c.006 0 .003 0 0 0m16.754 2.161c-.505-1.215-1.53-2.528-2.333-2.943.654 1.283 1.033 2.57 1.177 3.53l.002.02c-1.314-3.278-3.544-4.6-5.366-7.477-.091-.147-.184-.292-.273-.446a4 4 0 0 1-.13-.24 2 2 0 0 1-.172-.46.03.03 0 0 0-.027-.03.04.04 0 0 0-.021 0l-.006.001-.01.005.005-.008c-2.585 1.515-3.657 4.168-3.932 5.856a6.2 6.2 0 0 0-2.305.587.297.297 0 0 0-.147.37c.057.162.24.24.396.17a5.6 5.6 0 0 1 2.008-.523l.067-.005a5.9 5.9 0 0 1 1.957.222l.095.03a6 6 0 0 1 .616.228q.12.054.238.112l.107.055a6 6 0 0 1 .368.211 5.95 5.95 0 0 1 2.034 2.104c-.62-.437-1.733-.868-2.803-.681 4.183 2.09 3.06 9.292-2.737 9.02a5.2 5.2 0 0 1-1.513-.292 4 4 0 0 1-.538-.232c-1.42-.735-2.593-2.121-2.74-3.806 0 0 .537-2 3.845-2 .357 0 1.38-.998 1.398-1.287-.005-.095-2.029-.9-2.817-1.677-.422-.416-.622-.616-.8-.767a4 4 0 0 0-.301-.227 5.4 5.4 0 0 1-.032-2.842c-1.195.544-2.124 1.403-2.8 2.163h-.006c-.46-.584-.428-2.51-.402-2.913-.006-.025-.343.176-.389.206a8.4 8.4 0 0 0-1.136.974q-.596.606-1.085 1.303a9.8 9.8 0 0 0-1.562 3.52c-.003.013-.11.487-.19 1.073q-.02.135-.037.272a8 8 0 0 0-.069.667l-.002.034-.023.387-.001.06C.386 18.795 5.593 24 12.016 24c5.752 0 10.527-4.176 11.463-9.661q.028-.223.052-.448c.232-1.994-.025-4.09-.753-5.844z'/%3E%3C/svg%3E");
 
   /* ^^ */
   --pf-icon-miitan: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='38' height='43' fill='context-fill' fill-opacity='context-fill-opacity' viewBox='0 0 38 43'%3E%3Cpath d='M8.594 0a5.415 5.415 0 0 1 5.119 3.651l3.919 11.376Q18.31 15.001 19 15q.418.001.832.01l1.783-8.548a5.61 5.61 0 0 1 5.93-4.443q.222-.02.451-.019c1.288 0 2.529.487 3.473 1.363l3.008 2.794c3.328 3.09 1.256 8.605-3.185 8.834l-.503 2.407C35.182 19.608 38 23.398 38 29c0 7.732-4.507 14-19 14S0 36.732 0 29c0-5.523 2.74-9.286 7.026-11.508L3.474 7.18C2.262 3.663 4.874 0 8.594 0M19 24c-8.284 0-15 2.591-15 8.5C4 37.194 7.558 41 19 41s15-3.806 15-8.5c0-5.909-6.716-8.5-15-8.5' clip-rule='evenodd'/%3E%3Cpath d='M21.031 32.414a.751.751 0 0 1 .938 1.172L20.2 35l1.768 1.414a.75.75 0 0 1-.938 1.172L19 35.961l-2.032 1.625a.75.75 0 0 1-.938-1.172L17.8 35l-1.768-1.414a.751.751 0 0 1 .938-1.172L19 34.04zM11 28.5c.333 0 .696.203.998.656.3.45.502 1.1.502 1.844 0 .743-.202 1.394-.502 1.844-.302.453-.665.656-.998.656s-.696-.203-.998-.656c-.3-.45-.502-1.1-.502-1.844 0-.743.202-1.394.502-1.844.302-.453.665-.656.998-.656m16 0c.333 0 .696.203.998.656.3.45.502 1.1.502 1.844 0 .743-.202 1.394-.502 1.844-.302.453-.665.656-.998.656s-.696-.203-.998-.656c-.3-.45-.502-1.1-.502-1.844 0-.743.202-1.394.502-1.844.302-.453.665-.656.998-.656'/%3E%3C/svg%3E");
-
-  /* account */
-  &[fxastatus="not_configured"] {
-    --avatar-image-url: var(--pf-icon-user) !important;
-  }
-  /* horizontal layout & taskbar tabs */
-  #navigator-toolbox:not([tabs-hidden]),
-  &[taskbartab] {
-    #back-button {
-      list-style-image: var(--pf-icon-arrow-left-hl) !important;
-    }
-    #forward-button {
-      list-style-image: var(--pf-icon-arrow-right-hl) !important;
-    }
-  }
 }
 /* browser icon */
 .tab-icon-image[src="chrome://branding/content/icon32.png"] {
-  content: var(--pf-browser-icon);
+  content: var(--pf-icon-firefox);
 }
 .site-information-popup[connection="chrome"] .identity-popup-security-connection,
 #identity-box[pageproxystate="valid"].chromeUI #identity-icon {
-  list-style-image: var(--pf-browser-icon) !important;
+  list-style-image: var(--pf-icon-firefox) !important;
 }
 
-/* icons: toolbar icons */
+/* toolbar icons */
 #PanelUI-menu-button {
-  list-style-image: var(--pf-icon-menu-horizontal) !important;
+  list-style-image: url("chrome://global/skin/icons/more.svg") !important;
+}
+#reload-button {
+  list-style-image: var(--pf-icon-reload) !important;
 }
 #sidebar-button {
   list-style-image: var(--pf-icon-sidebar-left) !important;
@@ -68,20 +51,14 @@
 #alltabs-button {
   list-style-image: var(--pf-icon-tabs) !important;
 }
-#firefox-view-button {
-  list-style-image: var(--pf-icon-archive) !important;
-}
-#print-button {
-  list-style-image: var(--pf-icon-print) !important;
-}
-#sync-button {
-  list-style-image: var(--pf-icon-devices) !important;
+#send-tab-button {
+  list-style-image: var(--pf-icon-send-tab) !important;
 }
 #panic-button {
   list-style-image: var(--pf-icon-forget) !important;
 }
 #open-file-button {
-  list-style-image: var(--pf-icon-open) !important;
+  list-style-image: var(--pf-icon-folder-open) !important;
 }
 #save-page-button {
   list-style-image: var(--pf-icon-save) !important;
@@ -104,59 +81,42 @@
 #paste-button {
   list-style-image: var(--pf-icon-edit-paste) !important;
 }
-#screenshot-button {
-  list-style-image: var(--pf-icon-screenshot) !important;
-}
 #new-tab-button {
   list-style-image: var(--pf-icon-plus-square) !important;
-}
-#fullscreen-button {
-  list-style-image: var(--pf-icon-fullscreen) !important;
-}
-#reset-pbm-toolbar-button {
-  list-style-image: var(--pf-icon-flame) !important;
 }
 #bookmarks-toolbar-button,
 #bookmarks-toolbar-placeholder {
   list-style-image: var(--pf-icon-bookmarks-square) !important;
 }
-#taskbar-tabs-audio {
-  &[soundplaying] {
-    list-style-image: url(../icons/custom/audio.svg) !important;
-  }
-  &[muted] {
-    list-style-image: url(../icons/custom/audio-mute.svg) !important;
-  }
+#taskbar-tabs-audio[soundplaying] {
+  list-style-image: url("../icons/custom/audio.svg") !important;
+}
+#taskbar-tabs-audio[muted] {
+  list-style-image: url("../icons/custom/audio-mute.svg") !important;
 }
 #scrollbutton-up,
 #scrollbutton-down {
-  list-style-image: var(--pf-icon-chevron-left-12) !important;
+  list-style-image: url("chrome://global/skin/icons/arrow-left-12.svg") !important;
 }
 
-/* icons: urlbar */
-#trust-icon-container.insecure,
-#identity-box[pageproxystate="valid"]:is(.notSecure, .mixedActiveContent, .httpsOnlyErrorPage) #identity-icon {
+/* horizontal layout and taskbar tabs */
+#navigator-toolbox:not([tabs-hidden]) #back-button {
+  list-style-image: url("chrome://global/skin/icons/arrow-left.svg") !important;
+}
+#navigator-toolbox:not([tabs-hidden]) #forward-button {
+  list-style-image: url("chrome://global/skin/icons/arrow-right.svg") !important;
+}
+#tabbrowser-tabs[orient="horizontal"] #tabs-newtab-button {
+  list-style-image: var(--pf-icon-plus-square) !important;
+}
+
+/* urlbar icons */
+#trust-icon-container.insecure {
   list-style-image: url("chrome://devtools/skin/images/alert.svg") !important;
   fill: light-dark(var(--color-red-50), var(--color-red-30)) !important;
 }
-#trust-icon-container.secure {
-  list-style-image: var(--pf-icon-trust-secure) !important;
-}
-#trust-icon-container.inactive:not(.insecure) {
-  list-style-image: var(--pf-icon-trust-disabled) !important;
-}
-#permissions-granted-icon {
-  list-style-image: var(--pf-icon-permissions) !important;
-}
-.urlbar-go-button,
-.search-go-button {
-  list-style-image: var(--pf-icon-arrow-right-short) !important;
-}
 #reader-mode-button[readeractive] > .urlbar-icon {
   list-style-image: var(--pf-icon-reader-fill) !important;
-}
-#translations-button-icon {
-  list-style-image: var(--pf-icon-text-translate) !important;
 }
 #taskbar-tabs-button > .urlbar-icon {
   list-style-image: var(--pf-icon-install) !important;
@@ -165,45 +125,35 @@
     list-style-image: var(--pf-icon-uninstall) !important;
   }
 }
-#split-view-button-icon {
-  list-style-image: var(--pf-icon-split-horizontal) !important;
-}
 #pageAction-urlbar-_testpilot-containers {
   --pageAction-image: var(--pf-icon-container-open) !important;
 }
-img[src="chrome://global/skin/icons/search-glass.svg"] {
-  content: var(--pf-icon-search) !important;
-}
-.search-button-bookmarks {
-  --icon-url: url("chrome://browser/skin/bookmark-hollow.svg") !important;
+.urlbar-go-button {
+  content: var(--pf-icon-arrow-right-short) !important;
 }
 .search-button-tabs {
   --icon-url: var(--pf-icon-tabs) !important;
 }
-.search-button-actions {
-  --icon-url: url("chrome://browser/skin/trending.svg") !important;
-}
-img[src="chrome://browser/skin/bookmark.svg"] {
-  content: url("chrome://browser/skin/bookmark-hollow.svg") !important;
-}
-img[src="chrome://browser/skin/tabs.svg"] {
+.urlbarView-favicon[src="chrome://browser/skin/open-tabs.svg"],
+.button-background[type="muted"] > img[src="chrome://browser/skin/open-tabs.svg"] {
   content: var(--pf-icon-tabs) !important;
 }
-img[src="chrome://browser/skin/quickactions.svg"] {
-  content: url("chrome://browser/skin/trending.svg") !important;
+.search-button-bookmarks {
+  --icon-url: url("chrome://browser/skin/bookmark-hollow.svg") !important;
 }
-.button-background > img[src="chrome://global/skin/icons/search-glass.svg"] {
-  content: var(--pf-icon-search);
-  fill-opacity: 0.75;
+.urlbarView-favicon[src="chrome://browser/skin/bookmark.svg"],
+.button-background[type="muted"] > img[src="chrome://browser/skin/bookmark.svg"] {
+  content: url("chrome://browser/skin/bookmark-hollow.svg") !important;
+}
+
+/* extensions */
+#_testpilot-containers-BAP {
+  --webextension-toolbar-image: var(--pf-icon-container-add) !important;
 }
 
 /* tabs */
-.tab-icon-image[src="chrome://browser/skin/controlcenter/dashboard.svg"] {
-  content: var(--pf-icon-statistics);
-}
 .tab-note-icon-overlay {
   list-style-image: var(--pf-icon-note-fill-12) !important;
-  --icon-color: currentColor;
 }
 
 /* context menu */
