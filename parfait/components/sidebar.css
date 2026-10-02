@@ -237,17 +237,14 @@ moz-button[view="viewCustomizeSidebar"] { order: 1; }
         }
       }
       /* fs: sidebar trigger point */
-      &::before,
-      &::after {
+      #tabbrowser-tabs[orient="vertical"]::before {
         content: "";
-        width: var(--pf-fl-trigger-width);
         position: absolute;
-        inset-block: 0;
+        inset-block: var(--pf-fl-trigger-margin-top, calc(var(--pf-separation) * -1)) 0;
+        inset-inline: calc(var(--pf-fl-trigger-width) * -1);
       }
-      &::before { left: calc(var(--pf-fl-trigger-width) * -1); }
-      &::after { right: calc(var(--pf-fl-trigger-width) * -1); }
     }
-    &:has(#sidebar-container:hover, .tabbrowser-tab[multiselected]:not([selected]), #tabbrowser-tabs[movingtab], #tabs-newtab-button[open], :is(#new-tab-button-popup, #tabContextMenu):hover, :is(#tabNotePanel, .tab-group-editor-panel, :is(#tab-note-preview-panel, #tabgroup-preview-panel)[animate="open"])[panelopen]) {
+    &:has(#sidebar-container:hover, .tabbrowser-tab[multiselected]:not([selected]), .tab-drop-indicator:not([hidden]), #tabbrowser-tabs[movingtab], #tabs-newtab-button[open], :is(#new-tab-button-popup, #tabContextMenu):hover, :is(#tabNotePanel, .tab-group-editor-panel, :is(#tab-note-preview-panel, #tabgroup-preview-panel)[animate="open"])[panelopen]) {
       --pf-fl-hover: 1;
     }
     /* fs: separation */
@@ -389,6 +386,7 @@ moz-button[view="viewCustomizeSidebar"] { order: 1; }
     #sidebar-container {
       inset-block: var(--pf-separation);
       padding-block-start: calc(var(--pf-navbar-height) + var(--pf-sidebar-margin));
+      --pf-fl-trigger-margin-top: calc((var(--pf-navbar-height) + var(--pf-sidebar-margin)) * -1);
     }
     /* fus: traffic lights */
     @media -moz-pref("parfait.traffic-lights.enabled") or (-moz-platform: macos) {
