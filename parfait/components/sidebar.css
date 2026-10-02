@@ -346,7 +346,7 @@ moz-button[view="viewCustomizeSidebar"] { order: 1; }
     align-items: center !important;
   }
   /* 154+ floating sidebar note >.< */
-  :root:not([customizing], [popup-window], [taskbartab]):has(#sidebar-container[hidden] > sidebar-main:not([expanded])) {
+  :root:not([customizing], [popup-window], [taskbartab]):has(#sidebar-container[hidden] > sidebar-main:not([expanded]) #tabbrowser-tabs[closebuttons="activetab"]) {
     --pf-fl-warning: 1;
     --pf-fl-hover: 0 !important;
 
