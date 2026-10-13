@@ -77,6 +77,9 @@
       }
     }
     /* input box */
+    &[pageproxystate="valid"] .urlbar-input-container {
+      padding-inline-start: calc(var(--urlbar-input-container-padding) * 2) !important;
+    }
     &[pageproxystate="invalid"] .urlbar-input-box {
       mask-image: linear-gradient(to left, transparent, var(--color-black) 1em);
     }

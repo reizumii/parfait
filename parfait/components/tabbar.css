@@ -8,9 +8,9 @@
   --tab-margin-block: 2px !important;
 }
 #tabbrowser-tabs {
-  --pf-tab-icon-end-margin: calc((var(--tab-min-height) - var(--icon-size)) / 2);
+  --pf-tab-icon-margin-inline-end: calc((var(--tab-min-height) - var(--icon-size)) / 2);
   --tab-min-height: var(--pf-tab-height);
-  --tab-icon-end-margin: var(--pf-tab-icon-end-margin) !important;
+  --tab-icon-margin-inline-end: var(--pf-tab-icon-margin-inline-end) !important;
   --tab-background-color-selected: var(--pf-tab-selected-background-color);
   --tab-box-shadow-selected: var(--pf-tab-selected-box-shadow);
 
@@ -18,7 +18,7 @@
   &[orient="horizontal"] {
     --tabstrip-min-height: calc(var(--tab-min-height) + (var(--tab-margin-block) * 2));
     --tab-margin-block: var(--pf-navbar-padding-block);
-    --tab-inline-padding: var(--tab-icon-end-margin) !important;
+    --tab-padding-inline: var(--tab-icon-margin-inline-end) !important;
     --tab-border-radius: var(--pf-border-radius-hl);
 
     .tabbrowser-tab[selected] {
@@ -42,8 +42,8 @@
     width: 100%;
     grid-gap: var(--tab-margin-block) !important;
     --tab-collapsed-background-width: var(--pf-tab-height);
-    --tab-inner-inline-margin: var(--pf-separation) !important;
-    --tab-inline-padding: calc(var(--tab-icon-end-margin) + var(--pf-separation)) !important;
+    --tab-margin-inline-inner: var(--pf-separation) !important;
+    --tab-padding-inline: calc(var(--tab-icon-margin-inline-end) + var(--pf-separation)) !important;
     --tab-border-radius: var(--pf-border-radius-md);
 
     /* vl: new tab button */
@@ -53,7 +53,7 @@
     &:not([overflow]) #tabs-newtab-button::before {
       border-top: 1px solid var(--pf-border-color-light);
       top: calc(-1px - (var(--tab-margin-block) * 2));
-      inset-inline: var(--tab-inner-inline-margin) !important;
+      inset-inline: var(--tab-margin-inline-inner) !important;
       pointer-events: none;
     }
     #vertical-tabs-newtab-button {
@@ -65,7 +65,7 @@
         transition: inset-inline var(--pf-ts-15);
       }
       #tabbrowser-arrowscrollbox[overflowing][scrolledtoend] + &::before {
-        inset-inline: var(--tab-inner-inline-margin) !important;
+        inset-inline: var(--tab-margin-inline-inner) !important;
       }
     }
     &::after { visibility: collapse; }
@@ -184,18 +184,18 @@ spacer:is([part="overflow-start-indicator"], [part="overflow-end-indicator"]) {
 
 /* pinned tabs */
 #pinned-tabs-container[orient="vertical"] {
-  --tab-pinned-margin-inline-expanded: calc(var(--tab-margin-block) * 2);
-  --tab-pinned-min-width-expanded: calc(56px + var(--tab-pinned-margin-inline-expanded));
+  --tab-margin-inline-pinned-expanded: calc(var(--tab-margin-block) * 2);
+  --tab-pinned-min-width-expanded: calc(56px + var(--tab-margin-inline-pinned-expanded));
 
   @media not -moz-pref("sidebar.visibility", "expand-on-hover") {
     #tabbrowser-tabs[expanded] & {
-      margin: calc(var(--tab-margin-block) * -1);
+      margin-block: calc(var(--tab-margin-block) * -1);
       --tab-min-height: var(--pf-tab-pinned-height);
-      --tab-height-with-margin-padding: calc(var(--tab-min-height) + (var(--tab-pinned-margin-inline-expanded) * 2));
+      --tab-height-with-margin-padding: calc(var(--tab-min-height) + (var(--tab-margin-inline-pinned-expanded) * 2));
 
       .tab-background {
-        --tab-margin-block: var(--tab-pinned-margin-inline-expanded);
-        --tab-inner-inline-margin: var(--tab-pinned-margin-inline-expanded);
+        --tab-margin-block: var(--tab-margin-inline-pinned-expanded);
+        --tab-margin-inline-inner: var(--tab-margin-inline-pinned-expanded);
       }
     }
   }
@@ -245,7 +245,7 @@ spacer:is([part="overflow-start-indicator"], [part="overflow-end-indicator"]) {
 
 /* split tabs */
 tab-split-view-wrapper {
-  margin-inline: var(--tab-overflow-clip-margin) !important;
+  margin-inline: var(--tab-margin-overflow-clip) !important;
   margin-block: var(--tab-margin-block);
   padding: 0 !important;
   gap: 3px !important;
@@ -270,11 +270,14 @@ tab-split-view-wrapper {
       inset-inline: calc(var(--icon-size) / 2) 0;
     }
   }
+  #tabbrowser-tabs[orient="horizontal"] & {
+    align-items: unset !important;
+  }
   #tabbrowser-tabs[orient="horizontal"] tab-group[collapsed] &:not([hasactivetab]) {
     margin-inline: 0 !important;
   }
   #tabbrowser-tabs[orient="vertical"] & {
-    margin-inline: var(--tab-inner-inline-margin) !important;
+    margin-inline: var(--tab-margin-inline-inner) !important;
   }
   #tabbrowser-tabs[orient="vertical"][expanded] & {
     grid-template-columns: 1fr 1fr !important;
@@ -293,11 +296,12 @@ tab-split-view-wrapper {
       background-color: transparent !important;
     }
   }
-  .tab-content {
-    --space-medium: var(--pf-tab-icon-end-margin);
+  .tab-stack {
+    border-inline-start: 0 !important;
+    border-block-end: 0 !important;
   }
-  .tabbrowser-tab {
-    border: 0 !important;
+  .tab-content {
+    --space-medium: var(--pf-tab-icon-margin-inline-end);
   }
 }
 
@@ -335,7 +339,7 @@ tab-split-view-wrapper {
     }
     tab-split-view-wrapper {
       max-height: calc((var(--tab-min-height) + (var(--tab-margin-block) * 2)) * 2);
-      margin-inline-start: calc(var(--pf-tab-group-indent-1, 0px) + var(--tab-inner-inline-margin)) !important;
+      margin-inline-start: calc(var(--pf-tab-group-indent-1, 0px) + var(--tab-margin-inline-inner)) !important;
     }
     &[collapsed] > .tabbrowser-tab:not([selected]) {
       display: unset !important;
@@ -358,14 +362,14 @@ tab-split-view-wrapper {
   }
   #sidebar-container[hidden] &,
   &[expanded] {
-    --pf-tab-group-padding-right: var(--tab-inner-inline-margin);
+    --pf-tab-group-padding-right: var(--tab-margin-inline-inner);
     --pf-tab-group-overflow-mask: linear-gradient(to left, transparent, var(--color-black) 1em);
     --pf-tab-group-indent-1: var(--pf-tab-group-indent);
     --tab-group-line-thickness: 0;
   }
   .tab-group-label-container {
     margin: 0 !important;
-    padding: var(--tab-margin-block) var(--tab-inner-inline-margin) !important;
+    padding: var(--tab-margin-block) var(--tab-margin-inline-inner) !important;
 
     tab-group:not([collapsed]) > &::after {
       inset-block-start: var(--tab-margin-block) !important;
@@ -464,7 +468,7 @@ tab-split-view-wrapper {
     height: var(--tab-group-line-thickness);
     position: absolute;
     border-bottom: 1px solid var(--tab-group-line-color);
-    inset-inline: calc(var(--tab-overflow-clip-margin) * -1);
+    inset-inline: calc(var(--tab-margin-overflow-clip) * -1);
     inset-block-end: calc((var(--tab-group-line-thickness) + var(--tab-group-line-toolbar-border-distance)) * -1) !important;
   }
   tab-split-view-wrapper .tab-group-line { display: none !important; }

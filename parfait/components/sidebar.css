@@ -263,11 +263,11 @@ moz-button[view="viewCustomizeSidebar"] { order: 1; }
       margin: calc(var(--tab-margin-block) * -1);
       padding-inline: calc(var(--pf-separation) - var(--tab-margin-block)) !important;
       --tab-min-height: var(--pf-tab-pinned-height);
-      --tab-height-with-margin-padding: calc(var(--pf-tab-pinned-height) + (var(--tab-pinned-margin-inline-expanded) * 2));
+      --tab-height-with-margin-padding: calc(var(--pf-tab-pinned-height) + (var(--tab-margin-inline-pinned-expanded) * 2));
 
       .tab-background {
-        --tab-margin-block: var(--tab-pinned-margin-inline-expanded);
-        --tab-inner-inline-margin: var(--tab-pinned-margin-inline-expanded);
+        --tab-margin-block: var(--tab-margin-inline-pinned-expanded);
+        --tab-margin-inline-inner: var(--tab-margin-inline-pinned-expanded);
       }
     }
     #pinned-drop-indicator[visible] {
@@ -293,7 +293,7 @@ moz-button[view="viewCustomizeSidebar"] { order: 1; }
         .tab-throbber,
         .tab-icon-pending,
         &:not([soundplaying], [muted], [activemedia-blocked]) .tab-icon-image {
-          margin-inline-end: var(--tab-icon-end-margin);
+          margin-inline-end: var(--tab-icon-margin-inline-end);
         }
         .tab-close-button {
           width: var(--tab-content-button-size) !important;
@@ -315,16 +315,20 @@ moz-button[view="viewCustomizeSidebar"] { order: 1; }
         }
         .tab-audio-button:is([soundplaying], [muted], [activemedia-blocked]) {
           display: flex !important;
-          margin-inline-end: var(--tab-icon-end-margin);
+          margin-inline-end: var(--tab-icon-margin-inline-end);
+        }
+        .tab-label-container {
+          contain: unset !important;
         }
       }
     }
     tab-split-view-wrapper {
+      align-self: unset !important;
       grid-template-columns: 1fr 1fr !important;
 
       .tab-content {
         width: unset !important;
-        padding-inline: var(--pf-tab-icon-end-margin) !important;
+        padding-inline: var(--pf-tab-icon-margin-inline-end) !important;
       }
     }
     tab-group {
