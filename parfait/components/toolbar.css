@@ -154,45 +154,42 @@ toolbar .toolbaritem-combined-buttons {
     --inactive-titlebar-opacity: 1;
   }
 
-  /* floating bookmarks toolbar */
-  #navigator-toolbox[tabs-hidden] > #PersonalToolbar {
-    position: fixed;
-    position-anchor: --pf-browser;
-    inset-inline-start: calc(anchor(left) + var(--pf-bookmarks-margin));
-    inset-inline-end: calc(anchor(right) + var(--pf-bookmarks-margin));
-    inset-block-end: calc(var(--pf-bookmarks-height) * -1);
-    height: var(--pf-bookmarks-height);
-    padding: 4px !important;
-    background-color: var(--pf-panel-background-color) !important;
-    border: 1px solid var(--pf-border-color) !important;
-    border-radius: var(--pf-border-radius-md);
-    box-shadow: var(--pf-box-shadow-md);
-    overflow: unset !important;
-    opacity: 0;
-    z-index: 3;
-    transition: var(--pf-ts-25) var(--pf-ts-25) !important;
-    --pf-bookmarks-margin: calc(var(--pf-separation) * var(--pf-borderless, 0));
+  /* unified sidebar: floating bookmarks toolbar */
+  @media -moz-pref("parfait.layout.unified-sidebar") {
+    #navigator-toolbox[tabs-hidden] > #PersonalToolbar {
+      position: fixed;
+      position-anchor: --pf-browser;
+      left: calc(anchor(left) + var(--pf-bookmarks-margin));
+      right: calc(anchor(right) + var(--pf-bookmarks-margin));
+      bottom: var(--pf-separation);
+      transform: translateY(calc(100% + var(--pf-separation)));
+      height: calc(var(--pf-toolbarbutton-width) + 8px);
+      padding: 4px !important;
+      background-color: var(--pf-panel-background-color) !important;
+      border-radius: var(--pf-browser-border-radius);
+      outline: 1px solid var(--pf-border-color-light);
+      box-shadow: var(--pf-box-shadow-md);
+      overflow: unset !important;
+      opacity: 0 !important;
+      z-index: 3;
+      transition: transform var(--pf-ts-25) var(--pf-ts-25), opacity var(--pf-ts-25) var(--pf-ts-25) !important;
+      --pf-bookmarks-margin: calc(var(--pf-separation) * var(--pf-borderless, 0));
 
-    &:has(#personal-toolbar-empty:not([hidden])) {
-      pointer-events: none;
-    }
-    &:hover,
-    &:has(:is(.bookmark-item, #PlacesChevron)[open]) {
-      opacity: 1;
-      inset-block-end: var(--pf-separation);
-    }
-    &::before,
-    &::after {
-      content: "";
-      position: absolute;
-      inset-inline: 0;
-      height: var(--pf-browser-separation);
-    }
-    &::before {
-      inset-block-start: calc(var(--pf-browser-separation) * -1);
-    }
-    &::after {
-      inset-block-end: calc(var(--pf-browser-separation) * -1);
+      &:has(#personal-toolbar-empty:not([hidden])) {
+        visibility: hidden;
+      }
+      &:hover,
+      &:has(.bookmark-item:active, :is(.bookmark-item[type="menu"], #PlacesChevron)[open]) {
+        opacity: 1 !important;
+        transform: translateY(0%);
+      }
+      &::before {
+        content: "";
+        position: absolute;
+        inset-inline: 0;
+        inset-block: calc(var(--pf-browser-separation) * -1);
+        z-index: -1;
+      }
     }
   }
 }
