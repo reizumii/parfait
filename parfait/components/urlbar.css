@@ -11,6 +11,8 @@
   --urlbar-basic-component-size: calc(var(--urlbar-height) - (var(--urlbar-input-container-padding) * 2)) !important;
   --urlbar-input-container-padding: 4px !important;
   --urlbar-icon-padding: calc((var(--urlbar-basic-component-size) - var(--icon-size)) / 2) !important;
+  --urlbar-input-gap: var(--urlbar-input-container-padding);
+  --urlbar-component-gap: 0px !important;
   --urlbar-inner-border-radius: calc(var(--urlbar-border-radius) - (var(--urlbar-input-container-padding) / 2)) !important;
   --urlbar-background-border-top-radius-open: var(--pf-urlbar-open-border-radius) !important;
   --urlbar-joint-background-shadow-margin: 72px;
@@ -76,8 +78,8 @@
       }
     }
     /* input box */
-    &[pageproxystate="valid"] .urlbar-input-container {
-      padding-inline-start: calc(var(--urlbar-input-container-padding) * 2) !important;
+    &[pageproxystate="valid"] .urlbar-input-box {
+      margin-inline: calc(var(--urlbar-input-container-padding) * 2) !important;
     }
     &[pageproxystate="invalid"] .urlbar-input-box {
       mask-image: linear-gradient(to left, transparent, var(--color-black) 1em);

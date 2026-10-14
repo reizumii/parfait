@@ -33,6 +33,7 @@
     --color-accent-primary: var(--pf-accent-primary-color) !important;
     --color-accent-primary-hover: color-mix(in srgb, var(--color-accent-primary), var(--pf-contrast-color) 8%) !important;
     --color-accent-primary-active: color-mix(in srgb, var(--color-accent-primary), var(--pf-contrast-color) 16%) !important;
+    --button-background-color-primary-disabled: var(--color-accent-primary) !important;
     --toolbarbutton-icon-fill: var(--pf-icon-color) !important;
     --toolbarbutton-icon-fill-attention: var(--pf-accent-text-color) !important;
     --toolbox-text-color: var(--pf-text-color) !important;

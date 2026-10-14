@@ -50,7 +50,6 @@
 @media not (-moz-platform: macos) {
   menupopup {
     --panel-padding: 5px 4px !important;
-    --panel-text-color: var(--pf-text-color) !important;
   }
   menu,
   menuitem,

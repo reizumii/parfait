@@ -311,22 +311,22 @@ tab-split-view-wrapper {
 #tabbrowser-tabs[orient="vertical"] {
   tab-group {
     /* tg: colors */
-    --pf-tab-group-icon-background-color: color-mix(in srgb, var(--toolbar-background-color), var(--pf-contrast-color-invert) 95%);
-    --pf-tab-group-icon-stroke-color: color-mix(in srgb, currentColor, var(--pf-contrast-color-invert) 10%);
+    --pf-tab-group-folder-icon-background-color: color-mix(in srgb, var(--toolbar-background-color), var(--pf-contrast-color-invert) 95%);
+    --pf-tab-group-folder-icon-stroke-color: color-mix(in srgb, currentColor, var(--pf-contrast-color-invert) 10%);
     --pf-tab-group-drag-background-color: color-mix(in srgb, var(--pf-accent-primary-color), transparent 80%);
-    --tab-group-line-color: var(--pf-tab-group-icon-stroke-color) !important;
+    --tab-group-line-color: var(--pf-tab-group-folder-icon-stroke-color) !important;
 
     @media -moz-pref("parfait.background.accent-color") {
-      --pf-tab-group-icon-background-color: color-mix(in srgb, var(--pf-accent-color), var(--pf-contrast-color-invert) 92%);
-      --pf-tab-group-icon-stroke-color: color-mix(in srgb, var(--pf-accent-color), var(--pf-contrast-color));
+      --pf-tab-group-folder-icon-background-color: color-mix(in srgb, var(--pf-accent-color), var(--pf-contrast-color-invert) 92%);
+      --pf-tab-group-folder-icon-stroke-color: color-mix(in srgb, var(--pf-accent-color), var(--pf-contrast-color));
       --pf-tab-group-drag-background-color: color-mix(in srgb, var(--pf-accent-color), transparent 70%);
-      --tab-group-line-color: color-mix(in srgb, var(--pf-accent-color), var(--pf-tab-group-icon-stroke-color) 60%) !important;
+      --tab-group-line-color: color-mix(in srgb, var(--pf-accent-color), var(--pf-tab-group-folder-icon-stroke-color) 60%) !important;
     }
     @media -moz-pref("parfait.tabs.groups.fx-colors-on-folders") {
-      --pf-tab-group-icon-background-color: color-mix(in srgb, var(--tab-group-color), var(--pf-contrast-color-invert) 92%);
-      --pf-tab-group-icon-stroke-color: color-mix(in srgb, var(--tab-group-color), var(--pf-contrast-color) 25%);
+      --pf-tab-group-folder-icon-background-color: color-mix(in srgb, var(--tab-group-color), var(--pf-contrast-color-invert) 92%);
+      --pf-tab-group-folder-icon-stroke-color: color-mix(in srgb, var(--tab-group-color), var(--pf-contrast-color) 25%);
       --pf-tab-group-drag-background-color: color-mix(in srgb, var(--tab-group-background-color), transparent 80%);
-      --pf-tab-group-text-color: var(--pf-tab-group-icon-stroke-color);
+      --pf-tab-group-text-color: var(--pf-tab-group-folder-icon-stroke-color);
       --tab-group-line-color: var(--tab-group-background-color) !important;
     }
     /* tg: tabs */
@@ -413,8 +413,8 @@ tab-split-view-wrapper {
       min-width: 22px;
       height: 22px;
       margin-inline: calc((var(--tab-min-height) - 22px) / 2);
-      background: no-repeat 0 0 / 22px var(--pf-icon-folder-out);
-      fill: var(--pf-tab-group-icon-stroke-color);
+      background: no-repeat 0 0 / 22px var(--pf-icon-tab-group-folder-back);
+      fill: var(--pf-tab-group-folder-icon-stroke-color);
       transition: transform var(--pf-ts-25) var(--pf-easing-folder);
       -moz-context-properties: fill;
     }
@@ -426,9 +426,9 @@ tab-split-view-wrapper {
       left: calc((var(--tab-min-height) - 18px) / 2);
       margin-block-start: 4px;
       border-radius: 3px;
-      background: var(--pf-tab-group-icon-background-color) var(--pf-icon-folder-dots) center no-repeat;
-      box-shadow: inset 0 0 0 1.5px var(--pf-tab-group-icon-stroke-color);
-      fill: var(--pf-tab-group-icon-stroke-color);
+      background: var(--pf-tab-group-folder-icon-background-color) var(--pf-icon-tab-group-folder-dots) center no-repeat;
+      box-shadow: inset 0 0 0 1.5px var(--pf-tab-group-folder-icon-stroke-color);
+      fill: var(--pf-tab-group-folder-icon-stroke-color);
       fill-opacity: 0;
       transition: transform var(--pf-ts-25) var(--pf-easing-folder), fill-opacity var(--pf-ts-15);
       -moz-context-properties: fill, fill-opacity;
