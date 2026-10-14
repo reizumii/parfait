@@ -92,7 +92,7 @@
         content: "";
         width: 2px;
         height: 96px;
-        background-color: var(--pf-split-resize-background-color, transparent);
+        background-color: transparent;
         border-radius: 4px;
         position: absolute;
         left: calc(-1px - (var(--pf-split-resize-padding) / 2));
@@ -104,8 +104,8 @@
         outline-color: var(--pf-split-border-color, var(--pf-accent-color)) !important;
       }
     }
-    &:has(.split-view-splitter:hover) {
-      --pf-split-resize-background-color: light-dark(rgba(0, 0, 0, 0.25), rgba(255, 255, 255, 0.175));
+    .split-view-splitter:hover + .split-view-panel[column="1"]::after {
+      background-color: light-dark(rgba(0, 0, 0, 0.25), rgba(255, 255, 255, 0.175));
     }
     split-view-footer { display: none !important; }
   }

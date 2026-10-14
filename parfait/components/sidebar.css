@@ -9,7 +9,7 @@
     --pf-browser-margin-top: var(--pf-navbar-margin);
 
     &:not([inDOMFullscreen]) :is(#tabbrowser-tabbox, #sidebar-box, #sidebar-splitter, .browserStack) {
-      transition: margin-block-start var(--pf-ts-25);
+      transition: margin-top var(--pf-ts-25);
       transition-delay: var(--pf-navbar-delay) !important;
     }
     /* auto hide navbar */
@@ -39,7 +39,7 @@
     }
     &:has(#nav-bar toolbarbutton[open]:not(.searchmode-switcher), #nav-bar:hover,
     #downloads-button[notification]:not([hidden])) :where(#tabbrowser-tabbox, #sidebar-box, #sidebar-splitter) {
-      margin-block-start: 0 !important;
+      margin-top: 0 !important;
       --pf-navbar-delay: 0s;
       --pf-browser-invert-margin-top: var(--pf-navbar-margin);
     }
@@ -47,7 +47,7 @@
       &:not([inDOMFullscreen]):has(:is(.titlebar-buttonbox-container, #urlbar, #sidebar-button, #back-button, #forward-button,
         #stop-reload-button, #vertical-spacer):hover) :is(#tabbrowser-tabbox, #sidebar-box, #sidebar-splitter),
       &:not([inDOMFullscreen]) :is(#tabbrowser-tabbox, #sidebar-box, #sidebar-splitter) {
-        margin-block-start: var(--pf-browser-margin-top) !important;
+        margin-top: var(--pf-browser-margin-top) !important;
         --pf-browser-invert-margin-top: 0;
       }
       &:has(#sidebar-container[sidebar-launcher-expanded]) {
@@ -78,7 +78,7 @@
   /* main sidebar */
   #sidebar-container[sidebar-launcher-expanded] {
     width: var(--pf-unified-sidebar-width) !important;
-    margin-block-start: var(--pf-sidebar-margin);
+    margin-top: var(--pf-sidebar-margin);
     transition: width var(--pf-ts-25), transform var(--pf-ts-25) !important;
 
     #vertical-tabs {

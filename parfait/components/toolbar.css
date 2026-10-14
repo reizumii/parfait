@@ -94,12 +94,8 @@ toolbar .toolbaritem-combined-buttons {
   #forward-button:not([disabled]):hover:active .toolbarbutton-icon {
     transform: translateX(2px);
   }
-  #reload-button:not([disabled]) {
-    transition: all var(--pf-ts-15) var(--pf-easing-bounce);
-
-    &:hover:active .toolbarbutton-icon {
-      transform: rotate(90deg);
-    }
+  #reload-button:not([disabled]):hover:active .toolbarbutton-icon {
+    transform: rotate(90deg);
   }
   #reload-button,
   #stop-button {

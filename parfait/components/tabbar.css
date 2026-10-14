@@ -110,7 +110,7 @@ spacer:is([part="overflow-start-indicator"], [part="overflow-end-indicator"]) {
       top: 1px !important;
       outline: none !important;
     }
-    &:not(:hover) .tab-close-button { display: none !important; }
+    &:not(:hover) .tab-close-button { visibility: collapse !important; }
   }
   &[titlechanged] {
     .tab-icon-image {

@@ -65,15 +65,14 @@
     .urlbar-page-action:not([open], #translations-button[translationsactive], #reader-mode-button[readeractive]) {
       margin-inline-start: calc(var(--urlbar-basic-component-size) * -1) !important;
       opacity: 0;
-      transition-property: margin, opacity !important;
-      transition-duration: var(--pf-ts-15) !important;
-      pointer-events: none;
+      visibility: hidden;
+      transition: margin var(--pf-ts-15), opacity var(--pf-ts-15), visibility 0s var(--pf-ts-15) !important;
 
       #urlbar:hover & {
         margin-inline-start: 0 !important;
         opacity: 1;
+        visibility: visible;
         transition-delay: var(--pf-ts-15) !important;
-        pointer-events: unset;
       }
     }
     /* input box */
@@ -148,7 +147,7 @@
     }
   }
   /* fub: urlbar skeleton */
-  &:has(#urlbar[open]) #urlbar-container::before {
+  #urlbar-container:has(> #urlbar[open])::before {
     content: "";
     position: var(--pf-urlbar-reset-position, fixed);
     inset-inline-start: var(--pf-urlbar-x);
