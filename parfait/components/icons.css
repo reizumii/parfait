@@ -8,6 +8,7 @@
 
 :root {
   --pf-icon-square: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='context-fill' fill-opacity='context-fill-opacity' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='16' height='16'/%3E%3C/svg%3E");
+  --pf-icon-hl-tab-group: url("data:image/svg+xml,%3Csvg width='16' height='16' viewBox='0 0 16 16' fill='context-fill' fill-opacity='context-fill-opacity' xmlns='http://www.w3.org/2000/svg'%3E%3Crect x='1' y='1' width='14' height='14' rx='2' stroke='context-stroke' stroke-width='1.5' stroke-linejoin='round'/%3E%3C/svg%3E");
 
   /* traffic lights */
   --pf-icon-tl-min: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='context-fill' fill-opacity='context-fill-opacity' viewBox='0 0 16 16'%3E%3Cpath d='M11.37 6.88H4.64a1.122 1.122 0 0 0 0 2.244h6.73a1.122 1.122 0 1 0 0-2.243'/%3E%3C/svg%3E");

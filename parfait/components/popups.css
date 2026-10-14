@@ -356,10 +356,14 @@ toolbarseparator.proton-zap::before {
 .all-tabs-mute-button[muted] {
   list-style-image: var(--pf-icon-audio-mute-fill-12) !important;
 }
+.tab-group-icon {
+  list-style-image: var(--menuitem-icon) !important;
+  --menuitem-icon: var(--pf-icon-hl-tab-group) !important;
+}
 @media -moz-pref("sidebar.verticalTabs") {
   .tab-group-icon {
     list-style-image: var(--menuitem-icon) !important;
-    --menuitem-icon: url("chrome://global/skin/icons/folder.svg") !important;
+    --menuitem-icon: var(--pf-icon-folder) !important;
     --menuitem-icon-fill: var(--tab-group-color) !important;
 
     &:not([class~="all-tabs-group-action-button"], .tab-group-icon-collapsed) {
@@ -367,9 +371,7 @@ toolbarseparator.proton-zap::before {
     }
     &.tab-group-icon-closed {
       list-style-image: var(--menuitem-icon) !important;
-      --menuitem-icon: var(--pf-icon-folder-fill) !important;
-
-      & > .toolbarbutton-icon { opacity: 0.25; }
+      --menuitem-icon: url("chrome://global/skin/icons/folder.svg") !important;
     }
     @media not -moz-pref("parfait.tabs.groups.fx-colors-on-folders") {
       --menuitem-icon-fill: currentColor !important;
