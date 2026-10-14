@@ -3,7 +3,7 @@
   https://github.com/reizumii/parfait
 */
 
-#screenshots-component {
+link[href="chrome://browser/content/screenshots/overlay/overlay.css"] + #screenshots-component {
   opacity: 1;
   transition: var(--pf-ts-10);
   --pf-ts-10: 0.1s;
@@ -16,6 +16,9 @@
   }
   &:has(#buttons-container[hidden]) {
     --pf-selection-size-opacity: 1;
+  }
+  button {
+    --button-border-radius: 6px;
   }
   /* blinky! */
   #leftEye,
