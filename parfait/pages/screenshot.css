@@ -11,7 +11,7 @@
   @starting-style {
     opacity: 0;
   }
-  @media -moz-pref("parfait.animations.enabled", false) or (prefers-reduced-motion: reduce) {
+  @media (prefers-reduced-motion: reduce) {
     --pf-ts-10: 0s;
   }
   &:has(#buttons-container[hidden]) {

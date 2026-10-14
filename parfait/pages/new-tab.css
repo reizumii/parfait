@@ -39,7 +39,7 @@
     &:not([style^="--newtab-background-color:"]) {
       --newtab-background-color: light-dark(#f8f8f8, #161616) !important;
     }
-    @media -moz-pref("parfait.animations.enabled", false) or (prefers-reduced-motion: reduce) { --pf-ts-25: 0s; }
+    @media (prefers-reduced-motion: reduce) { --pf-ts-25: 0s; }
   }
   @media (-moz-platform: windows) {
     body,

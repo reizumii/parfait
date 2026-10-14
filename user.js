@@ -9,9 +9,6 @@ user_pref("svg.context-properties.content.enabled", true);
 
 /* --- set default parfait preferences --- */
 
-/* general */
-user_pref("parfait.animations.enabled", true);
-
 /* theme */
 user_pref("parfait.theme.borderless", false);
 user_pref("parfait.theme.blur.enabled", false);

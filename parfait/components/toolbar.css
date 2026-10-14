@@ -87,7 +87,7 @@ toolbar .toolbaritem-combined-buttons {
 }
 
 /* toolbar buttons: animations */
-@media not -moz-pref("parfait.animations.enabled", false) {
+@media (prefers-reduced-motion: no-preference) {
   #back-button:not([disabled]):hover:active .toolbarbutton-icon {
     transform: translateX(-2px);
   }

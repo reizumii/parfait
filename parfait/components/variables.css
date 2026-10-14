@@ -194,20 +194,17 @@
   }
 
   /* timings */
-  --pf-ts-15: 0.15s;
-  --pf-ts-25: 0.25s;
-  --pf-ts-50: 0.50s;
-  --pf-ts-75: 0.75s;
+  --pf-ts-on: 1;
+  --pf-ts-15: calc(0.15s * var(--pf-ts-on));
+  --pf-ts-25: calc(0.25s * var(--pf-ts-on));
+  --pf-ts-50: calc(0.50s * var(--pf-ts-on));
+  --pf-ts-75: calc(0.75s * var(--pf-ts-on));
 
-  --pf-ts-fs: 0.25s;
+  --pf-ts-fs: calc(0.25s * var(--pf-ts-on));
   --pf-navbar-delay: 0.15s;
 
-  @media -moz-pref("parfait.animations.enabled", false) or (prefers-reduced-motion: reduce) {
-    --pf-ts-15: 0s;
-    --pf-ts-25: 0s;
-    --pf-ts-50: 0s;
-    --pf-ts-75: 0s;
-    --pf-ts-fs: 0s;
+  @media (prefers-reduced-motion: reduce) {
+    --pf-ts-on: 0;
 
     @media (-moz-platform: windows) and -moz-pref("parfait.traffic-lights.enabled") { --pf-ts-fs: 1ms; }
   }

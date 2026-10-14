@@ -94,14 +94,16 @@ spacer:is([part="overflow-start-indicator"], [part="overflow-end-indicator"]) {
     &[pending] .tab-content {
       opacity: 0.5;
     }
-    #tabbrowser-tabs[orient="vertical"] & {
-      .tab-background[selected] {
-        animation: pf-tab-select var(--pf-ts-25) var(--pf-easing-bounce);
-      }
-      .tab-stack {
-        transition: scale var(--pf-ts-15);
+    @media (prefers-reduced-motion: no-preference) {
+      #tabbrowser-tabs[orient="vertical"] & {
+        .tab-background[selected] {
+          animation: pf-tab-select var(--pf-ts-25) var(--pf-easing-bounce);
+        }
+        .tab-stack {
+          transition: scale var(--pf-ts-15);
 
-        &:hover:active:not(:has(.tab-audio-button:active, .tab-close-button:active)) { scale: 0.985; }
+          &:hover:active:not(:has(.tab-audio-button:active, .tab-close-button:active)) { scale: 0.985; }
+        }
       }
     }
     #tabbrowser-tabs[orient="vertical"]:not([expanded]) & .tab-close-button {
