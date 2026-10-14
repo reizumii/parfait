@@ -140,6 +140,7 @@ spacer:is([part="overflow-start-indicator"], [part="overflow-end-indicator"]) {
 }
 .tab-icon-image {
   border-radius: var(--pf-favicon-border-radius);
+  transition: scale var(--pf-ts-15) !important;
 
   &:not([src]),
   &:-moz-broken {
@@ -174,6 +175,28 @@ spacer:is([part="overflow-start-indicator"], [part="overflow-end-indicator"]) {
 }
 .tab-icon-overlay[muted] {
   list-style-image: var(--pf-icon-audio-mute-fill-12) !important;
+}
+/* tab loading spinner */
+@media (prefers-reduced-motion: no-preference) {
+  .tab-throbber[busy] ~ .tab-icon-image[src]:not(:-moz-broken) {
+    display: flex !important;
+    border-radius: var(--border-radius-circle);
+    scale: 0.5;
+  }
+  .tab-throbber {
+    animation: pf-tab-spinner-spin 1.3333s linear infinite;
+  }
+  .tab-throbber::before {
+    background-image: url("../icons/custom/spinner.svg") !important;
+    width: 2560px !important;
+    animation: tab-throbber-animation 5.3332s steps(160) infinite !important;
+    stroke: var(--pf-accent-primary-color);
+    opacity: 1 !important;
+    -moz-context-properties: stroke !important;
+  }
+}
+@keyframes pf-tab-spinner-spin {
+  to { rotate: 360deg; }
 }
 @keyframes pf-tab-icon-bounce {
   0%, 100% { transform: translateY(0px) scale(1); }
