@@ -242,6 +242,7 @@ moz-button[view="viewCustomizeSidebar"] { order: 1; }
         position: absolute;
         inset-block: var(--pf-fl-trigger-margin-top, calc(var(--pf-separation) * -1)) 0;
         inset-inline: calc(var(--pf-fl-trigger-width) * -1);
+        z-index: -1;
       }
     }
     &:has(#sidebar-container:hover, .tabbrowser-tab[multiselected]:not([selected]), .tab-drop-indicator:not([hidden]), #tabbrowser-tabs[movingtab], #tabs-newtab-button[open], :is(#new-tab-button-popup, #tabContextMenu):hover, :is(#tabNotePanel, .tab-group-editor-panel, :is(#tab-note-preview-panel, #tabgroup-preview-panel)[animate="open"])[panelopen]) {
