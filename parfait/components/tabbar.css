@@ -130,7 +130,7 @@ spacer:is([part="overflow-start-indicator"], [part="overflow-end-indicator"]) {
     --tab-box-shadow-selected: none;
   }
   &:not([selected], [multiselected]) {
-    transition: var(--pf-ts-15);
+    transition: background-color var(--pf-ts-15);
   }
   @media not -moz-pref("parfait.tabs.groups.fx-colors-on-folders") {
     --dragover-tab-group-color: var(--pf-toolbarbutton-background-color-hover) !important;
@@ -263,7 +263,7 @@ spacer:is([part="overflow-start-indicator"], [part="overflow-end-indicator"]) {
   }
 }
 #tabbrowser-tabs[orient="horizontal"] .tab-context-line {
-  border-block-end: 0 !important;
+  border-block-end: none !important;
   --tab-context-line-inline-offset: var(--tab-border-radius);
   --tab-context-line-block-offset: 0;
 }
@@ -322,8 +322,8 @@ tab-split-view-wrapper {
     }
   }
   .tab-stack {
-    border-inline-start: 0 !important;
-    border-block-end: 0 !important;
+    border-inline-start: none !important;
+    border-block-end: none !important;
   }
   .tab-content {
     --space-medium: var(--pf-tab-icon-margin-inline-end);
@@ -407,7 +407,7 @@ tab-split-view-wrapper {
     margin: 0 !important;
     padding-inline: 0 var(--pf-tab-group-padding-right, 0) !important;
     border-radius: var(--tab-border-radius) !important;
-    transition: var(--pf-ts-15);
+    transition: background-color var(--pf-ts-15);
 
     &:hover {
       background-color: var(--pf-toolbarbutton-background-color-hover);

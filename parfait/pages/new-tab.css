@@ -398,12 +398,6 @@
     --toggle-dot-height: 12px;
     --toggle-dot-margin: 3px;
   }
-  .toggle-button::before {
-    transition: var(--pf-ts-25) !important;
-  }
-  .toggle-button:active::before {
-    transform: scale(1.25);
-  }
   .settings-toggles moz-toggle {
     --input-space-offset: calc(var(--toggle-width) + 12px) !important;
   }
@@ -422,14 +416,12 @@
     width: fit-content !important;
   }
   .edit-topsites-wrapper dialog {
-    transform: none;
-    filter: none;
     transform-origin: top center;
-    transition: var(--pf-ts-25) cubic-bezier(0.42, 0, 0, 1);
+    transition: scale var(--pf-ts-25), opacity var(--pf-ts-25);
 
     @starting-style {
-      transform: scale(0.75);
-      filter: blur(8px) opacity(0);
+      scale: 0.875;
+      opacity: 0;
     }
   }
   .topsite-form .form-input-container {

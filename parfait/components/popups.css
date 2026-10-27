@@ -71,7 +71,7 @@
     background-color: color-mix(in srgb, currentColor 12%, transparent) !important;
     color: currentColor !important;
     border-radius: var(--border-radius-circle) !important;
-    border: 0 !important;
+    border: none !important;
     padding-block: 0 !important;
   }
   #context-navigation {
@@ -427,9 +427,7 @@ toolbarseparator.proton-zap::before {
 
 /* modal */
 #window-modal-dialog {
-  transform: none;
-  opacity: 1;
-  transition: var(--pf-ts-25);
+  transition: transform var(--pf-ts-25), opacity var(--pf-ts-25);
   --chrome-offset: 24px !important;
   --box-shadow-popup: var(--pf-box-shadow-md);
 
@@ -540,9 +538,7 @@ screenshots-buttons {
   padding: 8px !important;
   outline: 0.5px solid var(--pf-border-color);
   box-shadow: var(--pf-box-shadow-md);
-  translate: none;
-  opacity: 1;
-  transition: var(--pf-ts-25) cubic-bezier(0.42, 0, 0, 1);
+  transition: translate var(--pf-ts-15), opacity var(--pf-ts-15);
   --panel-background-color: light-dark(var(--color-white), var(--color-gray-90));
 
   @starting-style {
@@ -630,7 +626,7 @@ screenshots-preview {
   row-gap: 4px;
   column-gap: 8px;
   margin: 0 !important;
-  border: 0 !important;
+  border: none !important;
   padding: 12px !important;
   border-radius: var(--pf-border-radius-md) !important;
 

@@ -11,19 +11,18 @@
   width: var(--pf-findbar-width);
   padding-block: 0 !important;
   background: var(--pf-panel-background-color) !important;
-  border: 1px solid var(--pf-border-color) !important;
+  border: none !important;
+  outline: 1px solid var(--pf-border-color-light) !important;
   border-radius: var(--pf-border-radius-md);
   box-shadow: var(--pf-box-shadow-md);
-  transition: top var(--pf-ts-25) !important;
-  visibility: visible !important;
+  transition: translate var(--pf-ts-25), visibility var(--pf-ts-25) !important;
   --findbar-height: 40px !important;
 
   &[hidden] {
-    display: flex !important;
-    top: -100px;
+    translate: 0 calc(-100% - 36px);
   }
   @starting-style {
-    top: -100px;
+    translate: 0 calc(-100% - 36px);
   }
   @media -moz-pref("parfait.theme.blur.enabled") {
     backdrop-filter: var(--pf-acrylic-filter);
@@ -45,7 +44,7 @@
     border: none !important;
   }
   hbox[anonid="findbar-textbox-wrapper"] {
-    width: var(--pf-findbar-width) !important;
+    width: 100%;
     padding: 8px 36px 8px 4px;
     border-bottom: 1px solid var(--pf-border-color-light);
     gap: 4px;
@@ -106,6 +105,10 @@
     .split-view-panel .findbar-container > &:not([hidden]) {
       display: flex !important;
     }
+  }
+  .findbar-label {
+    color: color-mix(in srgb, currentColor, transparent);
+    font-weight: 500 !important;
   }
   .checkbox-check,
   .checkbox-label,

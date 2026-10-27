@@ -94,10 +94,7 @@
   --pf-acrylic-filter: blur(72px) brightness(1.375) saturate(1.175);
 
   /* densities */
-  &[uidensity="compact"] {
-    --pf-toolbarbutton-width: 28px;
-    --pf-urlbar-input-height: 48px;
-  }
+  &[uidensity="compact"] { --pf-toolbarbutton-width: 28px; }
   &[uidensity="touch"] { --pf-toolbarbutton-width: 34px; }
 
   @media -moz-pref("sidebar.verticalTabs") {

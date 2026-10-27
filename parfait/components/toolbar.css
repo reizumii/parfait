@@ -16,8 +16,8 @@ toolbar .toolbarbutton-1:not(#PlacesChevron, .toolbarbutton-combined-buttons-dro
   padding: 0 !important;
 
   .toolbarbutton-icon {
-    transition: var(--pf-ts-25);
-    transition-timing-function: var(--pf-easing-bounce) !important;
+    transition: transform var(--pf-ts-25), fill var(--pf-ts-25);
+    transition-timing-function: var(--pf-easing-bounce);
     background-color: transparent !important;
     outline: none !important;
   }
@@ -56,7 +56,7 @@ toolbar .toolbaritem-combined-buttons {
 
 /* toolbar */
 #navigator-toolbox {
-  border-bottom: 0 !important;
+  border-bottom: none !important;
   margin-top: 0 !important;
 
   &:not(.fullscreen-floating-toolbox) {
@@ -65,7 +65,7 @@ toolbar .toolbaritem-combined-buttons {
 }
 #nav-bar {
   min-height: var(--pf-navbar-height) !important;
-  border-top: 0 !important;
+  border-top: none !important;
   align-items: center;
   will-change: unset !important;
 

@@ -4,8 +4,7 @@
 */
 
 link[href="chrome://browser/content/screenshots/overlay/overlay.css"] + #screenshots-component {
-  opacity: 1;
-  transition: var(--pf-ts-10);
+  transition: opacity var(--pf-ts-10);
   --pf-ts-10: 0.1s;
 
   @starting-style {
@@ -34,7 +33,8 @@ link[href="chrome://browser/content/screenshots/overlay/overlay.css"] + #screens
   }
   #hover-highlight {
     border-style: solid !important;
-    transition: var(--pf-ts-10);
+    transition-property: top, left, width, height;
+    transition-duration: var(--pf-ts-10);
   }
   #selection-size-container {
     padding: 4px !important;

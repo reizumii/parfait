@@ -7,6 +7,7 @@
 :root:not([lwtheme]) {
   /* nova browser background */
   --toolbox-background-image: none !important;
+  --toolbox-background-gradient: none !important;
 
   #browser {
     --toolbar-background-color: transparent;
@@ -30,9 +31,8 @@
       --pf-accent-color-background-gradient-2: color-mix(in oklch, var(--pf-browser-background-color) var(--pf-accent-color-background-opacity), transparent);
       --toolbox-background-image: linear-gradient(var(--pf-accent-color-background-gradient-1), var(--pf-accent-color-background-gradient-2)) !important;
     }
-    /* expand on hover */
     &[sidebar-expand-on-hover] #sidebar-container:is([sidebar-launcher-expanded], [sidebar-ongoing-animations]) {
-      background: var(--toolbox-background-color) !important;
+      background: var(--pf-browser-background-color) !important;
     }
   }
   /* macos: window material */
@@ -69,7 +69,7 @@
   .browserContainer {
     border-radius: calc(var(--pf-browser-border-radius) * (1 - var(--pf-borderless, 0))) !important;
     box-shadow: var(--pf-browser-box-shadow) !important;
-    border: 0 !important;
+    border: none !important;
     outline-offset: 0 !important;
     -moz-window-dragging: no-drag;
 
