@@ -374,7 +374,7 @@
 }
 /* search mode switcher */
 .searchmode-switcher {
-  --button-background-color-muted: transparent;
+  --button-background-color-muted: transparent !important;
   --button-icon-fill: var(--toolbarbutton-icon-fill);
   --button-padding: var(--urlbar-icon-padding) !important;
   --space-small: 0;

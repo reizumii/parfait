@@ -12,6 +12,9 @@
   #browser {
     --toolbar-background-color: transparent;
   }
+  &[sidebar-expand-on-hover] #sidebar-container:not([sidebar-launcher-expanded], [sidebar-ongoing-animations]) {
+    background: none !important;
+  }
   /* default background colors */
   @media not ((forced-colors) or (-moz-native-theme) or (-moz-windows-mica) or -moz-pref("parfait.background.transparent")) {
     --toolbox-background-color: light-dark(var(--color-gray-10), var(--color-gray-80)) !important;
@@ -93,7 +96,7 @@
         width: 2px;
         height: 96px;
         background-color: transparent;
-        border-radius: 4px;
+        border-radius: var(--border-radius-circle);
         position: absolute;
         left: calc(-1px - (var(--pf-split-resize-padding) / 2));
         top: calc(50% - (96px / 2));
@@ -101,11 +104,11 @@
         transition: background-color var(--pf-ts-15);
       }
       &.deck-selected > .browserContainer {
-        outline-color: var(--pf-split-border-color, var(--pf-accent-color)) !important;
+        outline: 2px solid var(--pf-split-border-color, var(--pf-accent-color)) !important;
       }
     }
-    .split-view-splitter:hover + .split-view-panel[column="1"]::after {
-      background-color: light-dark(rgba(0, 0, 0, 0.25), rgba(255, 255, 255, 0.175));
+    .split-view-splitter:hover ~ .split-view-panel[column="1"]::after {
+      background-color: light-dark(var(--color-black-alpha-30), var(--color-white-alpha-20));
     }
     split-view-footer { display: none !important; }
   }
