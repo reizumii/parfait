@@ -25,6 +25,14 @@
 .unified-extensions-item-action-button {
   --uei-icon-size: var(--icon-size);
 }
+.unified-extensions-item-contents {
+  min-width: 0;
+}
+.unified-extensions-item-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 #unified-extensions-manage-extensions {
   border: 1px solid var(--pf-border-color);
 
