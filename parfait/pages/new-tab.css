@@ -350,6 +350,16 @@
     margin-block-end: 16px !important;
     --button-border-radius: var(--border-radius-circle);
   }
+  .category-list .wallpaper-input.your-images-folder.selected::after {
+    box-shadow: none !important;
+  }
+  .wallpaper-list.category fieldset.your-images .your-images-preview,
+  .category-list .wallpaper-input.your-images-folder .your-images-preview {
+    border-radius: var(--border-radius-small) !important;
+  }
+  .wallpaper-list.category fieldset.your-images .your-images-preview {
+    block-size: 100px !important;
+  }
   /* cnt: widgets */
   #widgets-management-panel > moz-box-button {
     border: none !important;
