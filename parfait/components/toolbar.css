@@ -247,6 +247,9 @@ toolbar .toolbaritem-combined-buttons {
       padding-inline: calc(var(--pf-browser-separation) / 2);
       padding-block: 0 calc(var(--pf-browser-separation) / 2);
     }
+    #search-container {
+      max-width: 320px;
+    }
     /* hl: breakpoints */
     @media (max-width: 600px) {
       #nav-bar-customization-target > :is(toolbarbutton, toolbaritem):not(#urlbar-container, #unified-extensions-button, #nav-bar-overflow-button) {

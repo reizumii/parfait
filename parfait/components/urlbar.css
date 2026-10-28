@@ -4,10 +4,10 @@
 */
 
 /* urlbar variables */
-#urlbar {
+.urlbar {
   --urlbar-height: var(--pf-urlbar-height) !important;
   --urlbar-background-color: var(--pf-toolbarbutton-background-color);
-  --urlbar-background-color-focus: var(--pf-toolbarbutton-background-color);
+  --urlbar-background-border: none !important;
   --urlbar-basic-component-size: calc(var(--urlbar-height) - (var(--urlbar-input-container-padding) * 2)) !important;
   --urlbar-input-container-padding: 4px !important;
   --urlbar-icon-padding: calc((var(--urlbar-basic-component-size) - var(--icon-size)) / 2) !important;
@@ -17,6 +17,10 @@
   --urlbar-background-border-top-radius-open: var(--pf-urlbar-open-border-radius) !important;
   --urlbar-joint-background-shadow-margin: 72px;
 }
+#urlbar {
+  --urlbar-background-color-focus: var(--pf-toolbarbutton-background-color);
+}
+
 :root[uidensity="compact"] {
   --urlbar-background-overhang-open: 4px !important;
   --urlbarView-padding: 2px !important;
@@ -37,12 +41,14 @@
   @media not -moz-pref("sidebar.verticalTabs") {
     --urlbar-border-radius: var(--pf-border-radius-hl) !important;
   }
-  /* mini urlbar */
-  &:not([popup-window], [taskbartab]) #navigator-toolbox[tabs-hidden] #urlbar:not([open]) {
-    position: var(--pf-urlbar-reset-position, fixed) !important;
-    left: var(--pf-urlbar-x) !important;
-    top: var(--pf-urlbar-y) !important;
-    width: calc(var(--pf-unified-sidebar-width) - (var(--pf-separation) * 2));
+  /* unified sidebar: mini urlbar */
+  @media -moz-pref("parfait.layout.unified-sidebar") {
+    &:not([popup-window], [taskbartab]) #navigator-toolbox[tabs-hidden] #urlbar:not([open]) {
+      position: var(--pf-urlbar-reset-position, fixed) !important;
+      left: var(--pf-urlbar-x) !important;
+      top: var(--pf-urlbar-y) !important;
+      width: calc(var(--pf-unified-sidebar-width) - (var(--pf-separation) * 2));
+    }
   }
   /* urlbar: normal state */
   #urlbar:not([open]) {
@@ -183,7 +189,7 @@
   --urlbarView-separator-margin-inline: 6px;
 
   @media -moz-pref("browser.urlbar.maxRichResults", 5) {
-    :root:not([uidensity="compact"]) &:not([type="tip"], [type="dynamic"]) {
+    :root:not([uidensity="compact"]) #urlbar &:not([type="tip"], [type="dynamic"]) {
       --urlbarview-row-min-height: var(--pf-urlbar-row-height);
     }
   }

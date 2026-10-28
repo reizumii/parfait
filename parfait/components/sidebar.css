@@ -37,7 +37,7 @@
         --pf-browser-invert-margin-top: var(--pf-navbar-margin) !important;
       }
     }
-    &:has(#nav-bar toolbarbutton[open]:not(.searchmode-switcher), #nav-bar:hover,
+    &:has(#nav-bar toolbarbutton[open]:not(.searchmode-switcher), #searchbar-new[focused], #searchmode-switcher-panel-list-searchbar[open], #nav-bar:hover,
     #downloads-button[notification]:not([hidden])) :where(#tabbrowser-tabbox, #sidebar-box, #sidebar-splitter) {
       margin-top: 0 !important;
       --pf-navbar-delay: 0s;
