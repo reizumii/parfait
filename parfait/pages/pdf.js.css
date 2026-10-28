@@ -1,0 +1,393 @@
+/*
+  Parfait Pages - pdf.js.css
+  https://github.com/reizumii/parfait
+*/
+
+html[mozdisallowselectionprint]:has(head link[href^="resource://pdf.js"]) {
+  /* variables */
+  --pf-background-blur: blur(16px);
+
+  --pf-ts-15: 0.15s;
+  --pf-ts-25: 0.25s;
+
+  /* overrides */
+  --font-size-root: unset !important;
+  --font-size-small: 12px !important;
+
+  --border-radius-small: 6px !important;
+  --border-radius-medium: var(--border-radius-small) !important;
+  --border-radius-large: var(--border-radius-small) !important;
+  --border-radius-xlarge: var(--border-radius-small) !important;
+
+  --color-accent-primary: #b8e !important;
+  --color-accent-primary-hover: color-mix(in srgb, var(--color-accent-primary), currentColor 10%) !important;
+  --color-accent-primary-active: color-mix(in srgb, var(--color-accent-primary), currentColor 15%) !important;
+
+  --body-bg-color: light-dark(#ededed, #272727) !important;
+  --background-color-canvas: light-dark(var(--color-white), var(--color-gray-70)) !important;
+  --toolbar-background-color: light-dark(var(--color-white-alpha-90), color-mix(in srgb, var(--color-gray-70) 80%, transparent)) !important;
+  --toolbar-border-color: color-mix(in srgb, currentColor, transparent 92%) !important;
+  --toolbarbutton-icon-fill: light-dark(var(--color-black-alpha-80), var(--color-white-alpha-80)) !important;
+  --toolbarbutton-background-color-hover: light-dark(rgba(0, 0, 0, 0.08), rgba(248, 248, 248, 0.125)) !important;
+  --toolbarbutton-background-color-active: light-dark(rgba(0, 0, 0, 0.1), rgba(248, 248, 248, 0.175)) !important;
+  --button-background-color-hover: var(--toolbarbutton-background-color-hover) !important;
+  --button-background-color-active: var(--toolbarbutton-background-color-active) !important;
+  --button-border-color: color-mix(in srgb, currentColor, transparent 88%) !important;
+  --separator-color: color-mix(in srgb, currentColor, transparent 88%) !important;
+  --field-border-color: var(--button-border-color) !important;
+  --border-color: var(--toolbar-border-color) !important;
+  --border-color-interactive-hover: var(--button-border-color) !important;
+
+  --button-font-weight: normal !important;
+
+  @media -moz-pref("parfait.theme.roundness.preset", 2) or ((-moz-platform: windows) and (not -moz-pref("parfait.theme.roundness.preset", 1))) {
+    --border-radius-small: 4px !important;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    --pf-ts-15: 0s;
+    --pf-ts-25: 0s;
+  }
+
+  .newBadge { display: none; }
+
+  /* toolbar */
+  #toolbarContainer {
+    position: absolute !important;
+    padding-inline: var(--toolbar-vertical-padding) !important;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      backdrop-filter: var(--pf-background-blur);
+      z-index: -1;
+    }
+  }
+  .toolbarHorizontalGroup {
+    gap: 2px !important;
+  }
+  .verticalToolbarSeparator,
+  .splitToolbarButtonSeparator {
+    height: 50% !important;
+  }
+  .toolbarField {
+    min-height: var(--button-min-height);
+    box-sizing: border-box;
+  }
+  .dropdownToolbarButton {
+    max-height: var(--button-min-height);
+  }
+  .dropdownToolbarButton::after {
+    inset-inline-end: 8px !important;
+    mask-image: url("chrome://global/skin/icons/arrow-down-12.svg") !important;
+    opacity: 0.5;
+    --icon-size: 12px;
+  }
+  #scaleSelect {
+    padding-inline-start: 12px !important;
+  }
+  .pdfSidebarNotification::after {
+    background-color: var(--color-accent-primary) !important;
+    width: 6px !important;
+    height: 6px !important;
+  }
+  #editorCommentParamsToolbar {
+    inset-inline-start: unset !important;
+    inset-inline-end: calc(var(--space-small) * -1);
+  }
+  .loadingInput::after {
+    content: none !important;
+  }
+  #loadingBar {
+    border-bottom: 0 !important;
+    z-index: -1;
+  }
+  /* toolbar: rearrange items logically */
+  #editorInk        { order: 0; }
+  #editorHighlight  { order: 1; }
+  #editorFreeText   { order: 2; }
+  #editorStamp      { order: 3; }
+  #editorComment    { order: 4; }
+  #editorSignature  { order: 5; }
+
+  /* toolbar: overflow */
+  #secondaryToolbar {
+    padding: 5px !important;
+    --doorhanger-height: 12px;
+  }
+  #secondaryToolbar .toolbarButton {
+    --menuitem-height: 26px;
+
+    &.toggled:not(:hover),
+    &:not(.toggled)::before {
+      background-color: transparent !important;
+    }
+    &.toggled::before {
+      mask-image: url("chrome://global/skin/icons/check.svg") !important;
+      margin-inline-end: 4px;
+      --icon-size: 12px;
+    }
+  }
+  .horizontalToolbarSeparator {
+    border-color: var(--separator-color) !important;
+  }
+  /* viewer */
+  #viewerContainer:not(.pdfPresentationMode) {
+    padding-block-start: var(--toolbar-height);
+    inset-inline-start: 0 !important;
+    inset-block-start: 0 !important;
+  }
+  .page > .canvasWrapper {
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.04), 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+  /* sidebar */
+  #viewsManager {
+    position: fixed !important;
+    inset-block: var(--toolbar-height) 0 !important;
+    inset-inline-start: 0 !important;
+    height: calc(100vh - var(--toolbar-height)) !important;
+    padding-block-end: 0 !important;
+    background-color: var(--toolbar-background-color) !important;
+    border-radius: 0 !important;
+    box-shadow: 1px 0 var(--toolbar-border-color) !important;
+    border: none !important;
+    min-width: 240px !important;
+    visibility: visible;
+    transition: translate var(--pf-ts-25) cubic-bezier(0.42, 0, 0, 1), visibility 0s !important;
+    z-index: -1;
+
+    &[hidden] {
+      display: flex !important;
+      translate: -100%;
+      visibility: hidden;
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      backdrop-filter: var(--pf-background-blur);
+      z-index: -1;
+    }
+  }
+  #viewsManagerHeader {
+    background-color: transparent !important;
+    box-shadow: none !important;
+  }
+  #viewsManagerTitle {
+    padding: 10px !important;
+    border-bottom: 1px solid var(--toolbar-border-color);
+
+    .viewsManagerButton {
+      border: none !important;
+    }
+  }
+  #viewsManagerHeaderLabel {
+    display: flex !important;
+    align-items: center;
+    flex-grow: 0 !important;
+    padding-inline: 8px 28px !important;
+    font-size: 0.875rem !important;
+    font-weight: 600 !important;
+    text-align: left !important;
+    order: -1;
+    anchor-name: --pf-pdf-sidebar-header;
+
+    &::before {
+      content: "";
+      width: var(--icon-size);
+      height: var(--icon-size);
+      margin-inline-end: 8px;
+      display: flex;
+      background-color: var(--toolbarbutton-icon-fill);
+    }
+  }
+  #viewsManagerSelector {
+    position: absolute !important;
+    position-anchor: --pf-pdf-sidebar-header;
+    left: anchor(left);
+    right: anchor(right);
+    width: unset !important;
+    height: var(--button-min-height) !important;
+  }
+  #viewsManagerSelectorButton::before {
+    display: none !important;
+  }
+  #viewsManagerSelectorButton::after {
+    margin-inline-start: auto !important;
+    margin-inline-end: 8px;
+    opacity: 0.5;
+  }
+  #viewsManagerStatus {
+    border: none !important;
+  }
+  #viewsManagerStatus > div {
+    min-height: 48px !important;
+    padding-inline: 16px 12px !important;
+    background-color: transparent !important;
+    border-bottom: 1px solid var(--toolbar-border-color);
+  }
+  #viewsManagerStatusActionLabelContainer {
+    width: 100% !important;
+  }
+  #viewsManagerStatusActionLabel {
+    font-weight: 600 !important;
+    opacity: 0.5;
+  }
+  #viewsManagerStatusActionButton {
+    width: auto !important;
+    margin-inline-start: auto;
+    padding-inline: 12px 8px !important;
+    font-family: inherit;
+    font-size: inherit;
+  }
+  #viewsManagerStatusActionButton::after {
+    mask-image: url("chrome://global/skin/icons/arrow-down-12.svg") !important;
+    opacity: 0.5;
+    --icon-size: 12px;
+  }
+  .popupMenu > button > span {
+    font-size: var(--font-size-small) !important;
+    font-weight: normal !important;
+  }
+  .popupMenu > button:not(.noIcon)::before {
+    content: none !important;
+  }
+  .popupMenu > button::after {
+    mask-image: url("chrome://global/skin/icons/check.svg") !important;
+    width: var(--icon-size) !important;
+    height: var(--icon-size) !important;
+  }
+  /* sidebar: pages */
+  #thumbnailsView {
+    padding-block: 32px !important;
+  }
+  .thumbnail {
+    justify-content: center !important;
+    width: calc(var(--thumbnail-width) + (var(--gap-between-input-and-thumbnail) * 2)) !important;
+  }
+  .thumbnail > .thumbnailImageContainer {
+    border-radius: 2px !important;
+    box-shadow: 0 0 0 1px var(--toolbar-border-color), 0 2px 6px rgba(0, 0, 0, 0.08) !important;
+
+    &[aria-current="page"] {
+      outline: 3px solid var(--image-current-border-color) !important;
+    }
+    & > img {
+      border-radius: inherit !important;
+    }
+  }
+  .thumbnail > input {
+    position: absolute;
+    top: 4px;
+    left: calc(var(--gap-between-input-and-thumbnail) + 4px);
+
+    &:not(:checked, .thumbnail:hover &) {
+      opacity: 0;
+    }
+  }
+  .thumbnailImageContainer::after {
+    min-width: unset !important;
+    padding-inline: 6px !important;
+    inset-inline-end: unset !important;
+    inset-inline-start: 4px !important;
+    translate: none !important;
+    border-radius: 2px !important;
+  }
+  /* sidebar: outline */
+  .treeView {
+    padding-block: var(--panel-menuitem-margin-inline);
+  }
+  .treeItem > a {
+    margin-bottom: 2px !important;
+    padding: 8px 12px !important;
+    border-radius: var(--border-radius-small) !important;
+  }
+  .treeView.withNesting > .treeItem {
+    margin-inline-start: 0px !important;
+  }
+  .treeItemToggler + a {
+    padding-inline-start: 28px !important;
+  }
+  .treeItemToggler:hover ~ .treeItems {
+    background-color: transparent !important;
+  }
+  .treeItemToggler::before {
+    top: 10px;
+    left: 8px;
+    width: 12px !important;
+    height: 12px !important;
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='context-fill' fill-opacity='context-fill-opacity' viewBox='0 0 12 12'%3E%3Cpath d='M4 9V3c0-.89 1.076-1.334 1.705-.706l3.002 3a.997.997 0 0 1 0 1.412l-3.002 3C5.075 10.334 4 9.889 4 9'/%3E%3C/svg%3E") !important;
+    transition: rotate var(--pf-ts-15);
+  }
+  .treeItemToggler:not(.treeItemsHidden)::before {
+    rotate: 90deg;
+  }
+  /* icons */
+  #viewsManagerToggleButton::before {
+    mask-image: url("chrome://browser/skin/sidebar-collapsed.svg") !important;
+  }
+  #viewsManagerToggleButton.toggled::before {
+    mask-image: url("chrome://browser/skin/sidebar-expanded.svg") !important;
+  }
+  #previous::before {
+    mask-image: url("chrome://global/skin/icons/arrow-up.svg") !important;
+  }
+  #next::before {
+    mask-image: url("chrome://global/skin/icons/arrow-down.svg") !important;
+  }
+  #zoomOutButton::before {
+    mask-image: url("chrome://global/skin/icons/minus.svg") !important;
+  }
+  #viewsManagerAddFileButton::before,
+  #zoomInButton::before {
+    mask-image: url("chrome://global/skin/icons/plus.svg") !important;
+  }
+  .comment::before,
+  #editorCommentButton::before {
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='context-fill' fill-opacity='context-fill-opacity' viewBox='0 0 16 16'%3E%3Cpath d='M4 5a1 1 0 1 1 0 2 1 1 0 0 1 0-2m4 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2m4 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2'/%3E%3Cpath d='M8 0c1.455 0 3.056.059 4.777.213l.746.072.258.04A2.76 2.76 0 0 1 16 3.025v5.948c0 1.4-1.049 2.59-2.454 2.737q-.27.026-.546.05v1.486c0 1.533-1.83 2.324-2.947 1.276l-2.699-2.534a53 53 0 0 1-4.876-.275A2.76 2.76 0 0 1 0 8.974V3.025C0 1.625 1.049.435 2.454.288A54 54 0 0 1 8 0m0 1.5c-1.946 0-3.75.11-5.39.28A1.246 1.246 0 0 0 1.5 3.025v5.949c0 .639.49 1.181 1.133 1.248 1.363.14 2.648.219 3.852.253l1.176.02.14.014a.75.75 0 0 1 .369.19l2.91 2.73a.25.25 0 0 0 .42-.182v-2.17c0-.391.3-.717.69-.748q.614-.049 1.2-.11l.116-.018c.57-.115.994-.623.994-1.227V3.026c0-.64-.49-1.182-1.133-1.249A52 52 0 0 0 8 1.5'/%3E%3C/svg%3E") !important;
+  }
+  #editorSignatureButton::before {
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='context-fill' fill-opacity='context-fill-opacity' viewBox='0 0 16 16'%3E%3Cpath d='M3.75 11a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5zM9 11a.75.75 0 0 1 0 1.5H7A.75.75 0 0 1 7 11zm5.25 0a.75.75 0 0 1 0 1.5h-2a.75.75 0 0 1 0-1.5zM4.498 3.59c.537-1.414 2.525-1.168 2.83.201l.025.137.144 1.005q.184 1.175.37 1.892c.67-1.437 2.694-1.684 3.656-.34l.405.566.08.1c.202.219.493.349.803.35h1.439a.75.75 0 0 1 0 1.5h-1.44a2.59 2.59 0 0 1-2.102-1.077l-.404-.565a.632.632 0 0 0-1.065.075l-.037.085a8 8 0 0 1-.372.893c-.062.12-.142.26-.242.378-.05.06-.126.138-.228.205a.86.86 0 0 1-.495.146c-.527-.014-.829-.42-.963-.64-.16-.267-.291-.614-.404-1-.225-.772-.432-1.884-.624-3.311l-1.2 3.157A2.58 2.58 0 0 1 2.263 9h-.51a.75.75 0 0 1 0-1.5h.51c.455 0 .855-.278 1.01-.687z'/%3E%3C/svg%3E") !important;
+  }
+  #editorHighlightButton::before {
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='context-fill' fill-opacity='context-fill-opacity' viewBox='0 0 16 16'%3E%3Cpath d='M14.75 13.5a1.25 1.25 0 1 1 0 2.5H2.25a1.25 1.25 0 0 1 0-2.5zM11.027.44a2.256 2.256 0 0 1 2.93.22l1.384 1.386a2.26 2.26 0 0 1 .22 2.934 29 29 0 0 1-2.68 3.098c-.015.015-1.548 1.57-2.64 2.664-.425.426-.99.66-1.59.661h-.003c-.392 0-.768-.103-1.101-.292l-.718.738a.5.5 0 0 1-.358.151H3.015a.5.5 0 0 1-.358-.85l2.397-2.457a2.23 2.23 0 0 1-.433-1.324c0-.6.234-1.166.66-1.591l2.65-2.655A29 29 0 0 1 11.027.441M6.34 6.838a.75.75 0 0 0-.22.531c0 .201.078.39.22.53l1.778 1.78a.746.746 0 0 0 1.06 0c.438-.438.943-.952 1.396-1.41l-2.799-2.87zM12.36 1.5a.73.73 0 0 0-.435.142A27 27 0 0 0 8.99 4.183l-.154.153 2.794 2.866.184-.185a27 27 0 0 0 2.544-2.939.75.75 0 0 0-.08-.971L12.895 1.72a.76.76 0 0 0-.537-.223z'/%3E%3C/svg%3E") !important;
+  }
+  #editorFreeTextButton::before {
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='context-fill' fill-opacity='context-fill-opacity' viewBox='0 0 16 16'%3E%3Cpath d='M8 1c1.354 0 2.888.068 4.562.26A2.76 2.76 0 0 1 15 3.998V4.5a.75.75 0 0 1-1.5 0v-.503c0-.635-.48-1.174-1.11-1.246a39 39 0 0 0-3.64-.242V13.5h1.5a.75.75 0 0 1 0 1.5h-4.5a.75.75 0 0 1 0-1.5h1.5V2.508a38 38 0 0 0-3.664.245A1.24 1.24 0 0 0 2.5 3.994V4.5a.75.75 0 0 1-1.5 0v-.506c0-1.38 1.024-2.57 2.414-2.731A40 40 0 0 1 8 1'/%3E%3C/svg%3E") !important;
+  }
+  #editorInkButton::before {
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='context-fill' fill-opacity='context-fill-opacity' viewBox='0 0 16 16'%3E%3Cpath d='M8.24 13.25a4.1 4.1 0 0 1 2.392.763 2.6 2.6 0 0 0 1.521.486h.26a2.6 2.6 0 0 0 1.522-.486l.88-.625a.75.75 0 0 1 .868 1.223l-.878.625a4.1 4.1 0 0 1-2.393.764l.001-.001h-.26c-.862 0-1.69-.264-2.391-.764a2.6 2.6 0 0 0-1.523-.486h-.478a2.6 2.6 0 0 0-1.523.486c-.702.5-1.53.764-2.392.764h-.26a4.1 4.1 0 0 1-2.392-.764l-.878-.624a.75.75 0 0 1 .869-1.223l.879.625a2.6 2.6 0 0 0 1.522.486h.26a2.6 2.6 0 0 0 1.522-.486 4.1 4.1 0 0 1 2.393-.764zM9.533.552a2.31 2.31 0 0 1 3.133.125l.656.657a2.31 2.31 0 0 1 .263 2.956l-.138.176a58 58 0 0 1-3.825 4.067 58 58 0 0 1-3.52 3.127l-.001.001a1.5 1.5 0 0 1-.95.337h-2.4a.75.75 0 0 1-.75-.75V8.85c0-.339.112-.678.34-.954A58 58 0 0 1 9.532.552m-.866 2.785a56 56 0 0 0-1.615 1.566l-.505.516a56 56 0 0 0-3.045 3.424v1.655h1.653a56 56 0 0 0 5.507-5.166zm2.938-1.599a.81.81 0 0 0-.971-.134l-.127.09a56 56 0 0 0-.729.633l1.893 1.892q.326-.365.636-.726l.088-.127a.81.81 0 0 0-.133-.972z'/%3E%3C/svg%3E") !important;
+  }
+  #editorStampButton::before {
+    mask-image: url("chrome://browser/skin/canvas.svg") !important;
+  }
+  #printButton::before {
+    mask-image: url("chrome://global/skin/icons/print.svg") !important;
+  }
+  #downloadButton::before {
+    mask-image: url("chrome://browser/skin/downloads/downloads.svg") !important;
+  }
+  #secondaryToolbarToggleButton::before {
+    mask-image: url("chrome://global/skin/icons/more.svg") !important;
+  }
+  .deleteButton::before {
+    mask-image: url("chrome://global/skin/icons/delete.svg") !important;
+  }
+  /* icons: sidebar */
+  #viewsManagerCurrentOutlineButton::before {
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='context-fill' fill-opacity='context-fill-opacity' viewBox='0 0 16 16'%3E%3Cpath d='M2 12.75a1 1 0 1 1 0 2 1 1 0 0 1 0-2m12.25.25a.75.75 0 0 1 0 1.5h-9.5a.75.75 0 0 1 0-1.5zM5 8.75a1 1 0 1 1 0 2 1 1 0 0 1 0-2m9.25.25a.75.75 0 0 1 0 1.5h-6.5a.75.75 0 0 1 0-1.5zM2 4.75a1 1 0 1 1 0 2 1 1 0 0 1 0-2M7.21 5l1.5 1.5H4.75a.75.75 0 0 1 0-1.5zm3.095-3.973a.407.407 0 0 1 .695.288V2.75h3.25a.75.75 0 0 1 0 1.5H11v1.435c0 .363-.44.545-.695.288L8.12 3.788a.41.41 0 0 1 0-.576zM2 .75a1 1 0 1 1 0 2 1 1 0 0 1 0-2m5.059 1.401a2 2 0 0 0-.27.349H4.75a.75.75 0 0 1 0-1.5h3.46z'/%3E%3C/svg%3E") !important;
+  }
+  #viewsManagerHeaderLabel[data-l10n-id="pdfjs-views-manager-pages-title"]::before {
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='context-fill' fill-opacity='context-fill-opacity' viewBox='0 0 16 16'%3E%3Cpath d='M4.125 8.75c.324 0 .686.013 1.081.048A2.253 2.253 0 0 1 7.25 11.04v1.666a2.25 2.25 0 0 1-1.831 2.216l-.216.03a12 12 0 0 1-2.159 0A2.25 2.25 0 0 1 1 12.708v-1.666a2.25 2.25 0 0 1 2.047-2.245l.522-.035q.27-.013.556-.013m0 1.5q-.5.002-.945.042a.75.75 0 0 0-.68.751v1.666c0 .39.299.715.677.749l.497.032a11 11 0 0 0 1.396-.032l.14-.026a.75.75 0 0 0 .54-.725V11.04a.754.754 0 0 0-.54-.723l-.137-.026a11 11 0 0 0-.948-.042m7.75-1.499c.324 0 .686.013 1.081.048A2.253 2.253 0 0 1 15 11.04v1.666a2.25 2.25 0 0 1-1.831 2.216l-.216.03a12 12 0 0 1-2.159 0 2.25 2.25 0 0 1-2.044-2.244v-1.666a2.25 2.25 0 0 1 2.047-2.245l.522-.035q.27-.013.556-.013m0 1.5q-.5.002-.945.042a.75.75 0 0 0-.68.751v1.666c0 .39.299.715.677.749l.497.032a11 11 0 0 0 1.396-.032l.14-.026a.75.75 0 0 0 .54-.725V11.04a.754.754 0 0 0-.54-.723l-.137-.026a11 11 0 0 0-.948-.042M4.125 1c.324 0 .686.013 1.081.048A2.253 2.253 0 0 1 7.25 3.29v1.666a2.25 2.25 0 0 1-1.831 2.216l-.216.03a12 12 0 0 1-2.159 0A2.253 2.253 0 0 1 1 4.958V3.293a2.25 2.25 0 0 1 2.047-2.245l.522-.035Q3.84 1 4.125 1m0 1.5q-.5.002-.945.042a.75.75 0 0 0-.68.751v1.666c0 .39.299.715.677.749l.497.032a11 11 0 0 0 1.396-.032l.14-.026a.75.75 0 0 0 .54-.725V3.291a.754.754 0 0 0-.54-.723l-.137-.026q-.52-.043-.948-.042m7.75-1.5c.324 0 .686.013 1.081.048A2.253 2.253 0 0 1 15 3.29v1.666a2.25 2.25 0 0 1-1.831 2.216l-.216.03a12 12 0 0 1-2.16 0A2.253 2.253 0 0 1 8.75 4.958V3.293a2.25 2.25 0 0 1 2.047-2.245l.522-.035Q11.59 1 11.875 1m0 1.5q-.5.002-.945.042a.75.75 0 0 0-.68.751v1.666c0 .39.299.715.677.749l.497.032a11 11 0 0 0 1.396-.032l.14-.026a.75.75 0 0 0 .54-.725V3.291a.754.754 0 0 0-.54-.723l-.137-.026q-.52-.043-.948-.042'/%3E%3C/svg%3E") !important;
+  }
+  #viewsManagerHeaderLabel[data-l10n-id="pdfjs-views-manager-outlines-title1"]::before {
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='context-fill' fill-opacity='context-fill-opacity' viewBox='0 0 16 16'%3E%3Cpath d='M2 12.75a1 1 0 1 1 0 2 1 1 0 0 1 0-2m12.25.25a.75.75 0 0 1 0 1.5h-9.5a.75.75 0 0 1 0-1.5zM5 8.75a1 1 0 1 1 0 2 1 1 0 0 1 0-2m9.25.25a.75.75 0 0 1 0 1.5h-6.5a.75.75 0 0 1 0-1.5zM2 4.75a1 1 0 1 1 0 2 1 1 0 0 1 0-2M14.25 5a.75.75 0 0 1 0 1.5h-9.5a.75.75 0 0 1 0-1.5zM2 .75a1 1 0 1 1 0 2 1 1 0 0 1 0-2M14.25 1a.75.75 0 0 1 0 1.5h-9.5a.75.75 0 0 1 0-1.5z'/%3E%3C/svg%3E");
+  }
+  #viewsManagerHeaderLabel[data-l10n-id="pdfjs-views-manager-layers-title1"]::before {
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='context-fill' fill-opacity='context-fill-opacity' viewBox='0 0 16 16'%3E%3Cpath d='M1.077 10.383a.75.75 0 0 1 1.02-.288l5.29 2.962a1.26 1.26 0 0 0 1.223 0l5.256-2.941a.75.75 0 1 1 .732 1.308l-5.255 2.942a2.75 2.75 0 0 1-1.344.348 2.74 2.74 0 0 1-1.344-.348l-5.29-2.963a.75.75 0 0 1-.288-1.02'/%3E%3Cpath d='M6.656 2.348a2.76 2.76 0 0 1 2.688 0l4.632 2.595A1.98 1.98 0 0 1 15 6.688c0 .734-.384 1.387-1.024 1.745l-4.632 2.595A2.75 2.75 0 0 1 8 11.376a2.74 2.74 0 0 1-1.344-.348L2.022 8.433A1.98 1.98 0 0 1 1 6.688c0-.734.382-1.387 1.022-1.745zM8 3.499a1.26 1.26 0 0 0-.612.158L2.756 6.252a.5.5 0 0 0-.256.437c0 .088.025.307.256.437l4.632 2.595c.377.21.847.21 1.224 0l4.633-2.595c.23-.13.256-.35.256-.437a.49.49 0 0 0-.256-.437L8.612 3.657A1.26 1.26 0 0 0 8 3.5'/%3E%3C/svg%3E");
+  }
+  #viewsManagerHeaderLabel[data-l10n-id="pdfjs-views-manager-attachments-title"]::before {
+    mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='context-fill' fill-opacity='context-fill-opacity' viewBox='0 0 16 16'%3E%3Cpath d='M6.462.08A3.757 3.757 0 0 1 11 3.75v6.366c0 1.177-.844 2.252-2.014 2.372A2.254 2.254 0 0 1 6.5 10.25v-6a.75.75 0 0 1 1.5 0v6c0 .413.337.75.75.75s.75-.337.75-.75V3.884c0-1.177-.844-2.252-2.014-2.373A2.254 2.254 0 0 0 5 3.75v6.891c0 1.79 1.209 3.419 2.962 3.778a3.757 3.757 0 0 0 4.538-3.67v-6.5a.75.75 0 0 1 1.5 0v6.5a5.256 5.256 0 0 1-5.775 5.224C5.498 15.707 3.5 13.255 3.5 10.514V3.857C3.5 2.068 4.71.44 6.462.081'/%3E%3C/svg%3E");
+  }
+}
