@@ -26,6 +26,8 @@
   --button-background-color-muted-active: var(--pf-toolbarbutton-background-color-active) !important;
   --urlbar-box-background-color-hover: var(--pf-toolbarbutton-background-color-hover) !important;
   --urlbar-box-background-color-active: var(--pf-toolbarbutton-background-color-active) !important;
+  --urlbarview-background-color-hover: var(--pf-toolbarbutton-background-color-hover) !important;
+  --urlbarview-background-color-selected: var(--pf-toolbarbutton-background-color-active) !important;
   --background-color-overlay: var(--color-black-alpha-20) !important;
 
   /* no theme */

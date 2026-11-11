@@ -36,6 +36,7 @@ html[mozdisallowselectionprint]:has(head link[href^="resource://pdf.js"]) {
   --separator-color: color-mix(in srgb, currentColor, transparent 88%) !important;
   --field-border-color: var(--button-border-color) !important;
   --border-color: var(--toolbar-border-color) !important;
+  --border-color-interactive: var(--button-border-color) !important;
   --border-color-interactive-hover: var(--button-border-color) !important;
 
   --button-font-weight: normal !important;
@@ -102,6 +103,11 @@ html[mozdisallowselectionprint]:has(head link[href^="resource://pdf.js"]) {
   #loadingBar {
     border-bottom: 0 !important;
     z-index: -1;
+  }
+  #pdfFeaturesNotification {
+    font-size: var(--font-size-small) !important;
+    margin-top: var(--toolbar-height);
+    z-index: 1;
   }
   /* toolbar: rearrange items logically */
   #editorInk        { order: 0; }
