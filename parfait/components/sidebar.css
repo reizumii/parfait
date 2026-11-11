@@ -6,69 +6,75 @@
 /* unified sidebar */
 @media -moz-pref("sidebar.verticalTabs") and -moz-pref("parfait.layout.unified-sidebar") {
   :root:not([popup-window], [taskbartab]) {
-    --pf-browser-margin-top: var(--pf-navbar-margin);
+    --pf-unified-sidebar: 1;
 
     &:not([inDOMFullscreen]) :is(#tabbrowser-tabbox, #sidebar-box, #sidebar-splitter, .browserStack) {
       transition: margin-top var(--pf-ts-25);
-      transition-delay: var(--pf-navbar-delay) !important;
+      transition-delay: calc((var(--pf-navbar-delay) * (1 - var(--pf-navbar-hover, 0))) * var(--pf-unified-sidebar)) !important;
     }
-    /* auto hide navbar */
     &:has(#sidebar-container:not([sidebar-launcher-expanded])) {
       @media not -moz-pref("sidebar.visibility", "hide-sidebar") {
-        --pf-browser-margin-top: 0;
-        --pf-navbar-delay: 0s;
-        --pf-urlbar-reset-position: static;
-        --pf-urlbar-reset-width: 100%;
-      }
-      @media -moz-pref("sidebar.visibility", "hide-sidebar") {
-        .browserStack { margin-top: var(--pf-browser-invert-margin-top); }
+        --pf-unified-sidebar: 0;
       }
     }
     @media -moz-pref("sidebar.visibility", "expand-on-hover") {
-      --pf-browser-margin-top: 0;
-      --pf-sidebar-margin: 0;
-      --pf-sidebar-button-margin: 0px;
-      --pf-urlbar-reset-position: static;
-      --pf-urlbar-reset-width: 100%;
+      --pf-unified-sidebar: 0;
     }
-    @media not ((-moz-platform: macos) or -moz-pref("parfait.traffic-lights.enabled")) {
-      &:has(.titlebar-buttonbox-container:hover) :is(#tabbrowser-tabbox, #sidebar-box, #sidebar-splitter) {
-        --pf-browser-margin-top: 0;
-        --pf-browser-invert-margin-top: var(--pf-navbar-margin) !important;
+    /* us: auto hide navbar */
+    @container style(--pf-unified-sidebar: 1) {
+      :is(#tabbrowser-tabbox, #sidebar-box, #sidebar-splitter) {
+        margin-top: calc(var(--pf-navbar-margin) * (1 - var(--pf-navbar-hover, 1))) !important;
       }
-    }
-    &:has(#nav-bar toolbarbutton[open]:not(.searchmode-switcher), #searchbar-new[focused], #searchmode-switcher-panel-list-searchbar[open], #nav-bar:hover,
-    #downloads-button[notification]:not([hidden])) :where(#tabbrowser-tabbox, #sidebar-box, #sidebar-splitter) {
-      margin-top: 0 !important;
-      --pf-navbar-delay: 0s;
-      --pf-browser-invert-margin-top: var(--pf-navbar-margin);
-    }
-    @media not -moz-pref("sidebar.visibility", "expand-on-hover") {
-      &:not([inDOMFullscreen]):has(:is(.titlebar-buttonbox-container, #urlbar, #sidebar-button, #back-button, #forward-button,
-        #stop-reload-button, #vertical-spacer):hover) :is(#tabbrowser-tabbox, #sidebar-box, #sidebar-splitter),
-      &:not([inDOMFullscreen]) :is(#tabbrowser-tabbox, #sidebar-box, #sidebar-splitter) {
-        margin-top: var(--pf-browser-margin-top) !important;
-        --pf-browser-invert-margin-top: 0;
+      @media not ((-moz-platform: macos) or -moz-pref("parfait.traffic-lights.enabled")) {
+        &:has(#nav-bar > .titlebar-buttonbox-container:hover) :is(#nav-bar, #browser) {
+          --pf-navbar-hover: 1 !important;
+        }
+        /* windows: snap layout fix */
+        @media (-moz-platform: windows) {
+          #nav-bar:not(:hover) :is(.titlebar-max, .titlebar-restore) { translate: 0; }
+        }
       }
-      &:has(#sidebar-container[sidebar-launcher-expanded]) {
-        /* seamless top bar */
-        .browserStack {
-          margin-top: var(--pf-browser-invert-margin-top);
+      &:has(#nav-bar toolbarbutton:not(#back-button, #forward-button)[open], #searchbar-new .searchmode-switcher[open], #searchbar-new[focused], #nav-bar:hover,
+      #downloads-button[notification]:not([hidden])) :where(#nav-bar, #browser) {
+        --pf-navbar-hover: 1;
+      }
+      &:has(:is(#nav-bar > .titlebar-buttonbox-container, #urlbar, #sidebar-button, #back-button, #forward-button, #stop-reload-button,
+        #vertical-spacer):hover) :is(#nav-bar, #browser),
+      &:not([inDOMFullscreen]) :is(#nav-bar, #browser) {
+        --pf-navbar-hover: 0;
+      }
+      /* us: seamless top bar */
+      .browserStack {
+        margin-top: calc(var(--pf-navbar-margin) * var(--pf-navbar-hover, 0));
+      }
+      /* us: sidebar button gutter */
+      #nav-bar-customization-target > #sidebar-button:first-child {
+        margin-inline-end: calc(var(--pf-sidebar-gutter) * var(--pf-unified-sidebar)) !important;
+      }
+      #nav-bar:has(#sidebar-button:first-child + #back-button + #forward-button + #stop-reload-button) {
+        & > :not(#nav-bar-customization-target),
+        #stop-reload-button ~ :not(#urlbar-container) {
+          opacity: var(--pf-navbar-hover, 0);
+          transition: opacity var(--pf-ts-15) calc(var(--pf-navbar-delay) * (1 - var(--pf-navbar-hover, 0))) !important;
         }
-        /* sidebar button gutter */
-        @media -moz-pref("parfait.toolbar.sidebar-gutter") {
-          --pf-sidebar-button-margin: var(--pf-sidebar-gutter);
-        }
+      }
+      /* us: borderless navbar trigger area */
+      #nav-bar::before {
+        content: "";
+        height: calc(var(--pf-navbar-trigger-height) * var(--pf-borderless, 0));
+        position: fixed;
+        position-anchor: --pf-browser;
+        top: anchor(top);
+        left: anchor(left);
+        right: anchor(right);
+        z-index: 3;
       }
     }
     &:not([customizing]) #navigator-toolbox {
       --inactive-titlebar-opacity: 1;
 
-      #nav-bar-customization-target > #sidebar-button:first-child {
-        margin-inline-end: var(--pf-sidebar-button-margin, 0px) !important;
-      }
       #urlbar-container {
-        max-width: var(--pf-urlbar-reset-width, 0%) !important;
+        max-width: calc(100% * (1 - var(--pf-unified-sidebar))) !important;
       }
       #urlbar-container ~ :not(#urlbar-container ~ :not([hidden]) ~ :not([hidden])) {
         margin-inline-start: auto !important;
@@ -78,7 +84,7 @@
   /* main sidebar */
   #sidebar-container[sidebar-launcher-expanded] {
     width: var(--pf-unified-sidebar-width) !important;
-    margin-top: var(--pf-sidebar-margin);
+    margin-top: calc(var(--pf-sidebar-margin) * var(--pf-unified-sidebar));
     transition: width var(--pf-ts-25), transform var(--pf-ts-25) !important;
 
     #vertical-tabs {
@@ -91,17 +97,6 @@
   }
   .wrapper:has(.tools-and-extensions) {
     width: 100% !important;
-  }
-  /* borderless navbar trigger area */
-  #nav-bar::before {
-    content: "";
-    height: calc(var(--pf-navbar-trigger-height) * var(--pf-borderless, 0));
-    position: fixed;
-    position-anchor: --pf-browser;
-    top: anchor(top);
-    left: anchor(left);
-    right: anchor(right);
-    z-index: 3;
   }
 }
 

@@ -32,23 +32,9 @@
   --pf-urlbar-x: var(--pf-separation);
   --pf-urlbar-y: var(--pf-navbar-height);
 
-  /* reset urlbar position if not using the unified sidebar layout */
-  @media -moz-pref("sidebar.verticalTabs") and (not -moz-pref("parfait.layout.unified-sidebar")) {
-    --pf-urlbar-reset-position: static;
-    --pf-urlbar-reset-width: 100%;
-  }
   /* horizontal layout */
   @media not -moz-pref("sidebar.verticalTabs") {
     --urlbar-border-radius: var(--pf-border-radius-hl) !important;
-  }
-  /* unified sidebar: mini urlbar */
-  @media -moz-pref("parfait.layout.unified-sidebar") {
-    &:not([popup-window], [taskbartab]) #navigator-toolbox[tabs-hidden] #urlbar:not([open]) {
-      position: var(--pf-urlbar-reset-position, fixed) !important;
-      left: var(--pf-urlbar-x) !important;
-      top: var(--pf-urlbar-y) !important;
-      width: calc(var(--pf-unified-sidebar-width) - (var(--pf-separation) * 2));
-    }
   }
   /* urlbar: normal state */
   #urlbar:not([open]) {
@@ -60,6 +46,13 @@
     }
     .urlbar-background {
       border: 0 !important;
+    }
+    /* unified sidebar: side urlbar */
+    @container style(--pf-unified-sidebar: 1) {
+      position: fixed !important;
+      left: var(--pf-urlbar-x) !important;
+      top: var(--pf-urlbar-y) !important;
+      width: calc(var(--pf-unified-sidebar-width) - (var(--pf-separation) * 2));
     }
     /* urlbar items */
     .urlbar-go-button,
@@ -157,10 +150,7 @@
   /* fub: urlbar skeleton */
   #urlbar-container:has(> #urlbar[open])::before {
     content: "";
-    position: var(--pf-urlbar-reset-position, fixed);
-    inset-inline-start: var(--pf-urlbar-x);
-    inset-block-start: var(--pf-urlbar-y);
-    width: var(--pf-urlbar-reset-width, calc(var(--pf-unified-sidebar-width) - (var(--pf-separation) * 2)));
+    width: 100%;
     height: var(--pf-urlbar-height);
     background-color: var(--pf-toolbarbutton-background-color-inactive);
     border: 1px dashed var(--pf-border-color);
@@ -168,6 +158,13 @@
     box-sizing: border-box;
     pointer-events: none;
     z-index: 2;
+
+    @container style(--pf-unified-sidebar: 1) {
+      position: fixed;
+      inset-inline-start: var(--pf-urlbar-x);
+      inset-block-start: var(--pf-urlbar-y);
+      max-width: calc(var(--pf-unified-sidebar-width) - (var(--pf-separation) * 2));
+    }
   }
   /* move and hide stuff */
   #identity-box,

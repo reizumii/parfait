@@ -16,6 +16,7 @@
 @media -moz-pref("parfait.traffic-lights.enabled") or (-moz-platform: macos) {
   .titlebar-buttonbox-container {
     order: -1 !important;
+    opacity: 1 !important;
     padding-inline: var(--pf-tl-container-padding-left) var(--pf-tl-container-padding-right);
     z-index: 2;
   }
