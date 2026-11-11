@@ -51,7 +51,7 @@
   --focus-outline-color: var(--toolbar-field-border-color-focus) !important;
 }
 
-:root:not([inDOMFullscreen], [popup-window], [taskbartab]) {
+:root:not([inDOMFullscreen], [popup-window], [mini-window], [taskbartab]) {
   /* browser separation */
   #tabbrowser-tabbox {
     anchor-name: --pf-browser;

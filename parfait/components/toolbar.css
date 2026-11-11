@@ -197,9 +197,6 @@ toolbar .toolbaritem-combined-buttons {
 /* horizontal layout */
 @media not -moz-pref("sidebar.verticalTabs") {
   :root:not([popup-window], [taskbartab]) {
-    --pf-urlbar-reset-position: static;
-    --pf-urlbar-reset-width: 100%;
-
     #navigator-toolbox {
       --toolbar-background-color: transparent;
     }
@@ -308,5 +305,33 @@ toolbar .toolbaritem-combined-buttons {
   }
   .urlbar-background {
     background-color: transparent !important;
+  }
+}
+
+/* mini window */
+:root[mini-window] {
+  --pf-urlbar-height: 24px;
+  --pf-toolbarbutton-width: 24px;
+
+  #nav-bar {
+    padding-inline: var(--pf-navbar-padding-block) !important;
+  }
+  #nav-bar > .titlebar-spacer {
+    display: flex !important;
+  }
+  #mini-window-restore-button {
+    order: -1;
+  }
+  #mini-window-close-button {
+    order: 1;
+  }
+  #stop-reload-button {
+    display: none;
+  }
+  .urlbar-background {
+    background-color: transparent !important;
+  }
+  #urlbar-input {
+    text-align: center !important;
   }
 }
