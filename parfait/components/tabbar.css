@@ -75,15 +75,12 @@
 spacer:is([part="overflow-start-indicator"], [part="overflow-end-indicator"]) {
   background-image: none !important;
 }
-#tabbrowser-arrowscrollbox[orient="vertical"][overflowing]::before {
-  content: "";
-  position: absolute;
-  border-bottom: 1px solid var(--pf-border-color-light);
-  inset-inline: 0;
-  transition: border-bottom-color var(--pf-ts-25);
+#tabbrowser-arrowscrollbox[orient="vertical"][overflowing] {
+  box-shadow: inset 0 1px 0 var(--pf-border-color-light);
+  transition: box-shadow var(--pf-ts-25);
 }
-#tabbrowser-arrowscrollbox[orient="vertical"][overflowing][scrolledtostart]::before {
-  border-bottom-color: transparent;
+#tabbrowser-arrowscrollbox[orient="vertical"][overflowing][scrolledtostart] {
+  box-shadow: none;
 }
 
 /* tabs */
