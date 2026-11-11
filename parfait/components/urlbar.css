@@ -15,7 +15,7 @@
   --urlbar-component-gap: 0px !important;
   --urlbar-inner-border-radius: calc(var(--urlbar-border-radius) - (var(--urlbar-input-container-padding) / 2)) !important;
   --urlbar-background-border-top-radius-open: var(--pf-urlbar-open-border-radius) !important;
-  --urlbar-joint-background-shadow-margin: 72px;
+  --urlbar-joint-background-shadow-margin: 90px;
 }
 #urlbar {
   --urlbar-background-color-focus: var(--pf-toolbarbutton-background-color);
@@ -23,9 +23,6 @@
 
 :root[uidensity="compact"] {
   --urlbar-background-overhang-open: 4px !important;
-  --urlbarView-padding: 2px !important;
-
-  .urlbarView { padding-block-start: var(--urlbar-background-overhang-open) !important }
 }
 
 :root:not([customizing]) {
@@ -116,7 +113,7 @@
       content: "";
       position: absolute;
       inset-inline: var(--pf-separation);
-      border-bottom: 1px solid var(--pf-border-color-light) !important;
+      border-bottom: 0.5px solid var(--pf-border-color-light) !important;
       inset-block-end: var(--urlbar-joint-background-overlap);
     }
     .urlbarView-background {
@@ -193,7 +190,10 @@
   }
 }
 .urlbarView-row {
-  --urlbarView-icon-border-radius: var(--pf-favicon-border-radius) !important;
+  margin: calc(var(--urlbar-background-overhang-open) / 2) !important;
+  padding: 0 !important;
+  background-clip: unset !important;
+  --urlbarview-icon-border-radius: var(--pf-favicon-border-radius) !important;
 
   .urlbarView-title {
     max-width: fit-content !important;
@@ -323,8 +323,7 @@
 /* urlbar buttons */
 .urlbar-icon,
 #identity-box,
-#trust-icon-container,
-#tracking-protection-icon-container {
+#trust-icon-container {
   color: var(--toolbarbutton-icon-fill) !important;
 }
 .identity-box-button {
@@ -350,7 +349,7 @@
   --urlbar-box-background-color: transparent;
   --urlbar-box-background-color-focus: transparent;
 }
-#trust-icon-container.insecure:not(:hover) {
+#trust-icon-container.insecure:not(:hover, [open]) {
   background-color: transparent !important;
 }
 .button-background[type="muted"] > img[src="chrome://global/skin/icons/search-glass.svg"] {
