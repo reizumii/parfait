@@ -79,6 +79,10 @@
     .browserSidebarContainer:not(.split-view-panel.deck-selected) & {
       outline: 0.5px solid var(--chrome-content-separator-color) !important;
     }
+    /* make the web view transparent */
+    @media -moz-pref("browser.tabs.allow_transparent_browser") {
+      --tabpanel-background-color: var(--pf-tabpanel-background-color);
+    }
   }
   /* split view */
   #tabbrowser-tabpanels[splitview] {

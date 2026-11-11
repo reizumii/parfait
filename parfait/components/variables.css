@@ -48,6 +48,7 @@
   --pf-panel-background-color: light-dark(var(--color-white), var(--color-gray-100));
   --pf-panel-background-color-alpha: light-dark(var(--color-white-alpha-60), var(--color-black-alpha-60));
   --pf-urlbar-open-background-color: light-dark(var(--color-white), var(--color-gray-90));
+  --pf-tabpanel-background-color: light-dark(var(--color-white-alpha-30), var(--color-white-alpha-10));
   --pf-text-color: color-mix(in srgb, var(--toolbar-text-color), transparent 10%);
   --pf-text-color-inactive: color-mix(in srgb, var(--pf-text-color), transparent 30%);
   --pf-icon-color: light-dark(rgba(91, 91, 102, 0.9), rgba(251, 251, 254, 0.8));
