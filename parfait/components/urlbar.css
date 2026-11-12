@@ -109,6 +109,14 @@
       box-shadow: var(--pf-urlbar-border), var(--pf-box-shadow-lg) !important;
       border: none !important;
     }
+    .urlbarView-background {
+      --urlbar-joint-background-overlap: calc(var(--urlbar-height) + (var(--urlbar-background-overhang-open) * 2));
+
+      @media -moz-pref("parfait.theme.blur.enabled") {
+        backdrop-filter: var(--pf-acrylic-filter);
+        background: linear-gradient(var(--urlbar-background-color-focus) var(--urlbar-joint-background-overlap), color-mix(in srgb, var(--urlbar-background-color-focus) 87%, transparent)) !important;
+      }
+    }
     .urlbar-background::before {
       content: "";
       position: absolute;
