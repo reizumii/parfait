@@ -28,9 +28,6 @@ user_pref("parfait.tabs.groups.fx-colors-on-folders", false);
 user_pref("parfait.layout.unified-sidebar", true);
 user_pref("parfait.layout.unified-sidebar.width.preset", 2);
 
-/* toolbar */
-user_pref("parfait.toolbar.sidebar-gutter", true);
-
 /* traffic lights */
 user_pref("parfait.traffic-lights.enabled", false);
 user_pref("parfait.traffic-lights.mono", false);
