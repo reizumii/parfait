@@ -5,7 +5,7 @@
 
 /* unified sidebar */
 @media -moz-pref("sidebar.verticalTabs") and -moz-pref("parfait.layout.unified-sidebar") {
-  :root:not([popup-window], [taskbartab]) {
+  :root:not([popup-window], [mini-window], [taskbartab]) {
     --pf-unified-sidebar: 1;
 
     &:not([inDOMFullscreen]) :is(#tabbrowser-tabbox, #sidebar-box, #sidebar-splitter, .browserStack) {
@@ -189,7 +189,7 @@ moz-button[view="viewCustomizeSidebar"] { order: 1; }
 
 /* floating sidebar */
 @media -moz-pref("sidebar.verticalTabs") and -moz-pref("sidebar.visibility", "hide-sidebar") {
-  :root:not([popup-window], [taskbartab]):has(#sidebar-container:not([sidebar-launcher-expanded])) {
+  :root:not([popup-window], [mini-window], [taskbartab]):has(#sidebar-container:not([sidebar-launcher-expanded])) {
     --pf-fl-sidebar-box-shadow: 0 0 0 calc(1px * var(--pf-fl-hover, 0)) var(--pf-border-color-light), 0 4px 16px rgba(0, 0, 0, calc(0.1 * var(--pf-fl-hover, 0)));
     --pf-fl-separation: calc(var(--pf-separation) * var(--pf-fl-hover, 0));
     --pf-fl-sidebar-width: calc(var(--pf-unified-sidebar-width) * (1 - var(--pf-fl-hover, 0)));
@@ -343,7 +343,7 @@ moz-button[view="viewCustomizeSidebar"] { order: 1; }
     align-items: center !important;
   }
   /* 154+ floating sidebar note >.< */
-  :root:not([customizing], [popup-window], [taskbartab]):has(#sidebar-container[hidden] > sidebar-main:not([expanded]) #tabbrowser-tabs[closebuttons="activetab"]) {
+  :root:not([customizing], [popup-window], [mini-window], [taskbartab]):has(#sidebar-container[hidden] > sidebar-main:not([expanded]) #tabbrowser-tabs[closebuttons="activetab"]) {
     --pf-fl-warning: 1;
     --pf-fl-hover: 0 !important;
 
@@ -372,7 +372,7 @@ moz-button[view="viewCustomizeSidebar"] { order: 1; }
 }
 /* floating unified sidebar */
 @media -moz-pref("parfait.layout.unified-sidebar") and -moz-pref("sidebar.verticalTabs") and -moz-pref("sidebar.visibility", "hide-sidebar") {
-  :root:not([customizing], [popup-window], [taskbartab]):has(#sidebar-container:not([sidebar-launcher-expanded])) {
+  :root:not([customizing], [popup-window], [mini-window], [taskbartab]):has(#sidebar-container:not([sidebar-launcher-expanded])) {
     /* fus: toolbar item coordinates */
     --pf-fl-button-sidebar-x: calc(var(--pf-tl-container-width) + var(--pf-navbar-padding-left) + var(--pf-separation));
     --pf-fl-button-back-x: calc(var(--pf-unified-sidebar-width) - (var(--pf-toolbarbutton-width) * 3) - (var(--pf-toolbarbutton-gap) * 2));
