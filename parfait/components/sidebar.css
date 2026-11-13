@@ -29,10 +29,6 @@
         &:has(#nav-bar > .titlebar-buttonbox-container:hover) :is(#nav-bar, #browser) {
           --pf-navbar-hover: 1 !important;
         }
-        /* windows: snap layout fix */
-        @media (-moz-platform: windows) {
-          #nav-bar:not(:hover) :is(.titlebar-max, .titlebar-restore) { translate: 0; }
-        }
       }
       &:has(#nav-bar toolbarbutton:not(#back-button, #forward-button)[open], #searchbar-new .searchmode-switcher[open], #searchbar-new[focused], #nav-bar:hover,
       #downloads-button[notification]:not([hidden])) :where(#nav-bar, #browser) {
@@ -55,7 +51,7 @@
         & > :not(#nav-bar-customization-target),
         #stop-reload-button ~ :not(#urlbar-container) {
           opacity: var(--pf-navbar-hover, 0);
-          transition: opacity var(--pf-ts-15) calc(var(--pf-navbar-delay) * (1 - var(--pf-navbar-hover, 0))) !important;
+          transition: opacity var(--pf-ts-15) calc(var(--pf-navbar-delay) * (1 - var(--pf-navbar-hover, 0)));
         }
       }
       /* us: borderless navbar trigger area */
@@ -387,13 +383,14 @@ moz-button[view="viewCustomizeSidebar"] { order: 1; }
     }
     /* fus: traffic lights */
     @media -moz-pref("parfait.traffic-lights.enabled") or (-moz-platform: macos) {
-      .titlebar-buttonbox-container {
+      #nav-bar > .titlebar-buttonbox-container {
         position: fixed;
         top: var(--pf-separation);
         left: calc(var(--pf-fl-separation) - var(--pf-fl-sidebar-width));
         z-index: 4;
+        transition: left var(--pf-ts-fs) var(--pf-easing-sidebar) !important;
       }
-      &:has(.titlebar-buttonbox-container:hover) { --pf-fl-hover: 1; }
+      &:has(#nav-bar > .titlebar-buttonbox-container:hover) { --pf-fl-hover: 1; }
     }
     @media (-moz-platform: macos) {
       /* hide native csd */
@@ -410,7 +407,6 @@ moz-button[view="viewCustomizeSidebar"] { order: 1; }
       }
     }
     /* fus: move toolbar items */
-    .titlebar-buttonbox-container,
     #sidebar-button,
     #back-button,
     #forward-button,
