@@ -80,6 +80,9 @@ toolbar .toolbaritem-combined-buttons {
 #PanelUI-menu-button {
   margin-inline: var(--pf-toolbarbutton-gap) var(--pf-separation) !important;
 }
+#nav-bar-overflow-button {
+  margin-inline-start: var(--pf-toolbarbutton-gap) !important;
+}
 
 /* hide sidebar active state */
 #navigator-toolbox[tabs-hidden] #sidebar-button[checked]:not(:hover) {

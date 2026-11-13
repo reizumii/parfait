@@ -354,7 +354,6 @@ tab-split-view-wrapper {
       margin-inline-start: 0 !important;
 
       & > .tab-stack {
-        max-height: calc(var(--tab-min-height) + (var(--tab-margin-block) * 2));
         margin-inline-start: var(--pf-tab-group-indent-1, 0px);
         transition: all var(--pf-ts-15) !important;
       }
@@ -368,7 +367,7 @@ tab-split-view-wrapper {
       pointer-events: none;
 
       & > .tab-stack {
-        max-height: 0;
+        margin-top: calc((var(--tab-min-height) + (var(--tab-margin-block) * 2)) * -1);
         opacity: 0;
       }
     }

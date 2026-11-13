@@ -169,7 +169,7 @@
     box-sizing: border-box;
     gap: var(--pf-toolbarbutton-gap);
     padding-inline: var(--pf-browser-separation) !important;
-    padding-block-end: var(--pf-browser-separation) !important;
+    padding-bottom: var(--pf-browser-separation) !important;
   }
   button {
     --button-outer-padding-inline: 0;
@@ -361,7 +361,7 @@ moz-button[view="viewCustomizeSidebar"] { order: 1; }
       flex-direction: column;
       position: fixed;
       inset-block: var(--pf-navbar-height) 0;
-      inset-inline-start: 0;
+      left: 0;
       width: var(--pf-unified-sidebar-width);
       padding-inline: calc(var(--pf-separation) * 2);
       box-sizing: border-box;
@@ -370,7 +370,7 @@ moz-button[view="viewCustomizeSidebar"] { order: 1; }
       -moz-context-properties: fill;
     }
     #browser {
-      margin-inline-start: var(--pf-unified-sidebar-width) !important;
+      margin-left: var(--pf-unified-sidebar-width) !important;
     }
   }
 }
@@ -386,7 +386,7 @@ moz-button[view="viewCustomizeSidebar"] { order: 1; }
     /* fus: sidebar */
     #sidebar-container {
       inset-block: var(--pf-separation);
-      padding-block-start: calc(var(--pf-navbar-height) + var(--pf-sidebar-margin));
+      padding-top: calc(var(--pf-navbar-height) + var(--pf-sidebar-margin));
       --pf-fl-trigger-margin-top: calc((var(--pf-navbar-height) + var(--pf-sidebar-margin)) * -1);
     }
     /* fus: traffic lights */
@@ -454,11 +454,11 @@ moz-button[view="viewCustomizeSidebar"] { order: 1; }
       translate: calc(var(--pf-fl-sidebar-width) * -1) !important;
     }
     #vertical-spacer::before {
-      visibility: collapse;
+      visibility: hidden;
     }
     /* fus: hover state */
-    &:has(:is(#vertical-spacer, #sidebar-button, #back-button, #forward-button, #stop-reload-button, #backForwardMenu, #split-view-menu):hover,
-    #urlbar:not([open]) :is(:hover, :is(#tracking-protection-icon-container, .identity-box-button, .urlbar-page-action, #notification-popup-box, .searchmode-switcher)[open]),
+    &:has(:is(#sidebar-button, #back-button, #forward-button, #stop-reload-button, #backForwardMenu, #split-view-menu):hover, :is(#back-button, #forward-button)[open],
+    #urlbar:not([open]) :is(:hover, :is(#trust-icon-container, #notification-popup-box, .identity-box-button, .urlbar-page-action, .searchmode-switcher)[open]),
     #urlbar[noresults][usertyping]:not([open])) {
       --pf-fl-hover: 1;
     }
