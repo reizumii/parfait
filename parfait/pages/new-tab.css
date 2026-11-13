@@ -83,10 +83,7 @@
     content: none !important;
   }
   /* logo */
-  @media -moz-pref("parfait.new-tab.logo.preset", 0) {
-    .logo-and-wordmark-wrapper { display: none !important; }
-  }
-  @media not -moz-pref("parfait.new-tab.logo.preset", 1) {
+  @media not -moz-pref("parfait.new-tab.logo", "firefox") {
     .wordmark {
       display: inline-block !important;
       width: calc(var(--pf-logo-width) - (var(--pf-logo-width) / 3)) !important;
@@ -96,17 +93,22 @@
       background-position: center;
       fill: var(--newtab-text-primary-color) !important;
 
-      @media -moz-pref("parfait.new-tab.logo.preset", 2) {
+      @media -moz-pref("parfait.new-tab.logo", "firefox-logo-mono") {
+        background-image: url("chrome://browser/skin/sidebar/firefox.svg") !important;
+        --pf-logo-width: 84px;
+        --pf-logo-height:84px;
+      }
+      @media -moz-pref("parfait.new-tab.logo", "parfait") {
         background-image: url("../assets/logo/logo.png") !important;
         --pf-logo-width: 300px;
         --pf-logo-height: 127px;
       }
-      @media -moz-pref("parfait.new-tab.logo.preset", 3) {
+      @media -moz-pref("parfait.new-tab.logo", "parfait-uwu") {
         background-image: url("../assets/logo/logo-uwu.png") !important;
         --pf-logo-width: 296px;
         --pf-logo-height: 127px;
       }
-      @media -moz-pref("parfait.new-tab.logo.preset", 4) {
+      @media -moz-pref("parfait.new-tab.logo", "parfait-mono") {
         background-image: url("../assets/logo/logo-mono.svg") !important;
         --pf-logo-width: 240px;
         --pf-logo-height: 59px;

@@ -36,5 +36,5 @@ user_pref("parfait.traffic-lights.mono", false);
 user_pref("parfait.urlbar.center-url", false);
 
 /* new tab */
-user_pref("parfait.new-tab.logo.preset", 1);
+user_pref("parfait.new-tab.logo", "firefox");
 user_pref("parfait.new-tab.background.pattern", false);
