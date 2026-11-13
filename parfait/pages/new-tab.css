@@ -53,6 +53,12 @@
       background-repeat: repeat !important;
     }
   }
+  @media -moz-pref("browser.tabs.allow_transparent_browser") {
+    :root:not(.lightWallpaper, .darkWallpaper) > body {
+      background-color: revert !important;
+      --newtab-background-color-secondary: light-dark(var(--color-white), var(--color-gray-70)) !important;
+    }
+  }
   /* as shrimple as that */
   :root:is(.lightWallpaper, .darkWallpaper):not([style~="url();"]) {
     --pf-element-background-color: light-dark(rgba(255, 255, 255, 0.375), rgba(96, 96, 96, 0.325));
@@ -221,6 +227,7 @@
     padding-block-end: 0 !important;
     border-radius: var(--border-radius-medium) !important;
     box-shadow: var(--pf-element-shadow) !important;
+    background: var(--newtab-background-color-secondary) !important;
     backdrop-filter: var(--pf-background-blur);
     transition: transform var(--pf-ts-25);
     transition-timing-function: var(--pf-fx-bounce) !important;
