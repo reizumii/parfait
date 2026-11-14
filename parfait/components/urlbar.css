@@ -34,7 +34,7 @@
     --urlbar-border-radius: var(--pf-border-radius-hl) !important;
   }
   /* urlbar: normal state */
-  #urlbar:not([open]) {
+  #urlbar:not([popover-open]) {
     &:hover {
       --urlbar-background-color: var(--pf-toolbarbutton-background-color-hover);
     }
@@ -88,7 +88,7 @@
     }
   }
   /* floating urlbar */
-  #urlbar[open] {
+  #urlbar[popover-open] {
     position: fixed !important;
     left: var(--pf-urlbar-offset-x) !important;
     top: 25% !important;
@@ -141,7 +141,7 @@
     }
   }
   /* fub: no results */
-  #urlbar[open][noresults] {
+  #urlbar[popover-open][noresults] {
     .urlbar-background {
       border-radius: var(--pf-urlbar-open-border-radius) !important;
       inset-block-end: 0 !important;
@@ -153,7 +153,7 @@
     }
   }
   /* fub: urlbar skeleton */
-  #urlbar-container:has(> #urlbar[open])::before {
+  #urlbar-container:has(> #urlbar[popover-open])::before {
     content: "";
     width: 100%;
     height: var(--pf-urlbar-height);
@@ -166,8 +166,8 @@
 
     @container style(--pf-unified-sidebar: 1) {
       position: fixed;
-      inset-inline-start: var(--pf-urlbar-x);
-      inset-block-start: var(--pf-urlbar-y);
+      left: var(--pf-urlbar-x);
+      top: var(--pf-urlbar-y);
       max-width: calc(var(--pf-unified-sidebar-width) - (var(--pf-separation) * 2));
     }
   }

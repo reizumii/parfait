@@ -80,7 +80,9 @@
   /* main sidebar */
   #sidebar-container[sidebar-launcher-expanded] {
     width: var(--pf-unified-sidebar-width) !important;
-    margin-top: calc(var(--pf-sidebar-margin) * var(--pf-unified-sidebar));
+    height: calc(100% - (var(--pf-sidebar-margin) * var(--pf-unified-sidebar))) !important;
+    position: relative;
+    top: calc(var(--pf-sidebar-margin) * var(--pf-unified-sidebar));
     transition: width var(--pf-ts-25), transform var(--pf-ts-25) !important;
 
     #vertical-tabs {
@@ -98,6 +100,7 @@
 
 /* sidebar 2 */
 #sidebar-box {
+  view-transition-name: none !important;
   margin-block-end: var(--pf-browser-padding) !important;
   outline: 0.5px solid var(--chrome-content-separator-color) !important;
   box-shadow: var(--pf-browser-box-shadow);
@@ -111,7 +114,7 @@
   padding-inline-start: 1.25rem !important;
 }
 .sidebar-panel-heading > h4 {
-  font-size: 14px;
+  font-size: var(--pf-font-size-1);
   font-weight: 600;
   margin-block: 0 !important;
 }
@@ -193,55 +196,71 @@ moz-button[view="viewCustomizeSidebar"] { order: 1; }
 
 /* floating sidebar */
 @media -moz-pref("sidebar.verticalTabs") and -moz-pref("sidebar.visibility", "hide-sidebar") {
+  :root:active-view-transition-type(launcher-hide, launcher-enter) #sidebar-container {
+    transition: unset !important;
+    &::after { background: none !important; }
+  }
+  #sidebar-container:hover,
+  #sidebar-container:hover ~ #tabbrowser-tabbox {
+    view-transition-name: none !important;
+  }
+  :is(#nav-bar, #sidebar-container) {
+    --pf-fl-sidebar-width: calc((var(--pf-unified-sidebar-width) + var(--pf-separation)) * (1 - var(--pf-fl-hover, 0)));
+    --pf-fl-delay: 35ms;
+  }
   :root:not([popup-window], [mini-window], [taskbartab]):has(#sidebar-container:not([sidebar-launcher-expanded])) {
-    --pf-fl-sidebar-box-shadow: 0 0 0 calc(1px * var(--pf-fl-hover, 0)) var(--pf-border-color-light), 0 4px 16px rgba(0, 0, 0, calc(0.1 * var(--pf-fl-hover, 0)));
-    --pf-fl-separation: calc(var(--pf-separation) * var(--pf-fl-hover, 0));
-    --pf-fl-sidebar-width: calc(var(--pf-unified-sidebar-width) * (1 - var(--pf-fl-hover, 0)));
-
     /* sidebar */
     #sidebar-container {
       display: flex !important;
       overflow: unset !important;
       position: fixed;
-      inset-block-start: calc(var(--pf-navbar-height) - var(--pf-separation));
-      inset-block-end: var(--pf-separation);
-      inset-inline-start: calc(var(--pf-fl-separation) - var(--pf-fl-sidebar-width));
+      bottom: var(--pf-separation);
+      left: var(--pf-separation);
       z-index: 3;
+      transform: translateX(calc(var(--pf-fl-sidebar-width) * -1));
       width: var(--pf-unified-sidebar-width);
+      height: calc(100% - (var(--pf-navbar-height) + var(--tab-margin-block)));
       padding-block-start: var(--pf-separation);
-      background: var(--pf-sidebar-background-color-1, var(--pf-sidebar-background-color));
-      border-radius: var(--pf-browser-border-radius);
-      box-shadow: var(--pf-fl-sidebar-box-shadow);
-      transition-property: left, box-shadow;
-      transition-duration: var(--pf-ts-fs);
-      transition-timing-function: var(--pf-easing-sidebar);
+      transition: transform var(--pf-ts-fs) var(--pf-easing-sidebar) var(--pf-fl-delay);
 
-      /* fs: background */
-      @media -moz-pref("parfait.background.accent-color") {
-        --pf-sidebar-background-color: var(--pf-browser-background-color);
-
-        @media -moz-pref("parfait.background.accent-color.gradient") {
-          --pf-sidebar-background-color: linear-gradient(var(--pf-accent-color-background-gradient-fade), var(--pf-browser-background-color));
-        }
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        inset-block-start: calc(var(--pf-fl-sidebar-offset, 0px) * -1);
+        z-index: -1;
+        border-radius: var(--pf-browser-border-radius);
       }
-      @media -moz-pref("parfait.theme.blur.enabled") {
-        backdrop-filter: var(--pf-acrylic-filter);
-        --pf-sidebar-background-color-1: var(--pf-sidebar-background-color-alpha);
+      &::before {
+        outline: 0.5px solid var(--pf-border-color-light);
+        box-shadow: var(--pf-box-shadow-md);
+        opacity: var(--pf-fl-hover, 0);
+        transition: opacity var(--pf-ts-fs) var(--pf-easing-sidebar) var(--pf-fl-delay);
+      }
+      /* fs: background */
+      &::after {
+        background: var(--pf-sidebar-background-color);
 
-        @media -moz-pref("parfait.background.accent-color") and -moz-pref("parfait.background.accent-color.gradient") {
-          --pf-sidebar-background-color-1: linear-gradient(color-mix(in srgb, var(--pf-accent-color-background-gradient-fade), transparent 20%), color-mix(in srgb, var(--pf-browser-background-color), transparent 20%));
+        @media -moz-pref("parfait.theme.blur.enabled") {
+          backdrop-filter: var(--pf-acrylic-filter);
+          background: var(--pf-sidebar-background-color-alpha);
+
+          @media -moz-pref("parfait.background.accent-color") and -moz-pref("parfait.background.accent-color.gradient") {
+            background: linear-gradient(color-mix(in srgb, var(--pf-accent-color-background-gradient-fade), transparent 20%), color-mix(in srgb, var(--pf-browser-background-color), transparent 20%));
+          }
         }
       }
       /* fs: sidebar trigger point */
       #tabbrowser-tabs[orient="vertical"]::before {
         content: "";
         position: absolute;
-        inset-block: var(--pf-fl-trigger-margin-top, calc(var(--pf-separation) * -1)) 0;
+        inset-block: calc(var(--pf-fl-sidebar-offset, 0px) * -1) 0;
         inset-inline: calc(var(--pf-fl-trigger-width) * -1);
         z-index: -1;
       }
     }
-    &:has(#sidebar-container:hover, .tabbrowser-tab[multiselected]:not([selected]), .tab-drop-indicator:not([hidden]), #tabbrowser-tabs[movingtab], #tabs-newtab-button[open], :is(#new-tab-button-popup, #tabContextMenu):hover, :is(#tabNotePanel, .tab-group-editor-panel, :is(#tab-note-preview-panel, #tabgroup-preview-panel)[animate="open"])[panelopen]) {
+    &:has(#sidebar-container:hover, .tabbrowser-tab[multiselected]:not([selected]), .tab-drop-indicator:not([hidden]), #tabbrowser-tabs[movingtab], #tabs-newtab-button[open], :is(#new-tab-button-popup, #tabContextMenu):hover, :is(#tabNotePanel, .tab-group-editor-panel, :is(#tab-note-preview-panel, #tabgroup-preview-panel)[animate="open"])[panelopen]) :is(#nav-bar, #sidebar-container) {
       --pf-fl-hover: 1;
     }
     /* fs: separation */
@@ -349,8 +368,14 @@ moz-button[view="viewCustomizeSidebar"] { order: 1; }
   /* 154+ floating sidebar note >.< */
   :root:not([customizing], [popup-window], [mini-window], [taskbartab]):has(#sidebar-container[hidden] > sidebar-main:not([expanded]) #tabbrowser-tabs[closebuttons="activetab"]) {
     --pf-fl-warning: 1;
-    --pf-fl-hover: 0 !important;
 
+    :is(#nav-bar, #sidebar-container) {
+      --pf-fl-hover: 0 !important;
+    }
+    #sidebar-button {
+      position: static !important;
+      transform: none;
+    }
     #sidebar-button::before {
       content: var(--pf-icon-miitan) "\A Please click this area, or press Ctrl+Alt+Z / ^Z to load the sidebar.\A\A Firefox 154+ does not load the sidebar on startup and new windows.";
       white-space: pre-line;
@@ -377,52 +402,40 @@ moz-button[view="viewCustomizeSidebar"] { order: 1; }
 /* floating unified sidebar */
 @media -moz-pref("parfait.layout.unified-sidebar") and -moz-pref("sidebar.verticalTabs") and -moz-pref("sidebar.visibility", "hide-sidebar") {
   :root:not([customizing], [popup-window], [mini-window], [taskbartab]):has(#sidebar-container:not([sidebar-launcher-expanded])) {
-    /* fus: toolbar item coordinates */
-    --pf-fl-button-sidebar-x: calc(var(--pf-tl-container-width) + var(--pf-navbar-padding-left) + var(--pf-separation));
-    --pf-fl-button-back-x: calc(var(--pf-unified-sidebar-width) - (var(--pf-toolbarbutton-width) * 3) - (var(--pf-toolbarbutton-gap) * 2));
-    --pf-fl-button-forward-x: calc(var(--pf-unified-sidebar-width) - (var(--pf-toolbarbutton-width) * 2) - var(--pf-toolbarbutton-gap));
-    --pf-fl-button-reload-x: calc(var(--pf-unified-sidebar-width) - var(--pf-toolbarbutton-width));
-
     /* fus: sidebar */
     #sidebar-container {
-      inset-block: var(--pf-separation);
-      padding-top: calc(var(--pf-navbar-height) + var(--pf-sidebar-margin));
-      --pf-fl-trigger-margin-top: calc((var(--pf-navbar-height) + var(--pf-sidebar-margin)) * -1);
+      height: calc(100% - (var(--pf-navbar-height) + var(--pf-sidebar-margin) + var(--pf-separation)));
+      --pf-fl-sidebar-offset: calc(var(--pf-navbar-height) + var(--pf-sidebar-margin) - var(--pf-separation));
     }
     /* fus: traffic lights */
-    @media -moz-pref("parfait.traffic-lights.enabled") or (-moz-platform: macos) {
-      #nav-bar > .titlebar-buttonbox-container {
-        position: fixed;
-        top: var(--pf-separation);
-        left: calc(var(--pf-fl-separation) - var(--pf-fl-sidebar-width));
-        z-index: 4;
-        transition: left var(--pf-ts-fs) var(--pf-easing-sidebar) !important;
+    @container not style(--pf-fl-warning: 1) {
+      @media -moz-pref("parfait.traffic-lights.enabled") or (-moz-platform: macos) {
+        #nav-bar > .titlebar-buttonbox-container {
+          position: fixed;
+          top: var(--pf-separation);
+          left: var(--pf-separation);
+          transform: translateX(calc(var(--pf-fl-sidebar-width) * -1));
+          z-index: 4;
+          transition: transform var(--pf-ts-fs) var(--pf-easing-sidebar) var(--pf-fl-delay) !important;
+        }
+        &:has(#nav-bar > .titlebar-buttonbox-container:hover) :is(#nav-bar, #sidebar-container) { --pf-fl-hover: 1; }
       }
-      &:has(#nav-bar > .titlebar-buttonbox-container:hover) { --pf-fl-hover: 1; }
-    }
-    @media (-moz-platform: macos) {
-      /* hide native csd */
-      .titlebar-buttonbox {
-        appearance: none !important;
-      }
-      .titlebar-button {
-        display: flex !important;
-        appearance: none !important;
-      }
-      &[sizemode="normal"] .titlebar-restore,
-      &[sizemode="maximized"] .titlebar-max {
-        display: none !important;
+      @media (-moz-platform: macos) {
+        /* hide native csd */
+        .titlebar-buttonbox {
+          appearance: none !important;
+        }
+        .titlebar-button {
+          display: flex !important;
+          appearance: none !important;
+        }
+        &[sizemode="normal"] .titlebar-restore,
+        &[sizemode="maximized"] .titlebar-max {
+          display: none !important;
+        }
       }
     }
     /* fus: move toolbar items */
-    #sidebar-button,
-    #back-button,
-    #forward-button,
-    #stop-reload-button,
-    #urlbar-container::before,
-    #urlbar:not([open], [focused]) {
-      transition: all var(--pf-ts-fs) var(--pf-easing-sidebar) !important;
-    }
     #sidebar-button,
     #back-button,
     #forward-button,
@@ -430,39 +443,52 @@ moz-button[view="viewCustomizeSidebar"] { order: 1; }
       position: fixed;
       top: calc(var(--pf-separation) + var(--pf-navbar-padding-block));
       z-index: 4;
+      transform: translateX(calc(var(--pf-fl-sidebar-width) * -1));
+      transition: transform var(--pf-ts-fs) var(--pf-easing-sidebar) var(--pf-fl-delay);
     }
     #sidebar-button {
-      left: calc(var(--pf-fl-button-sidebar-x) - var(--pf-fl-sidebar-width));
+      left: calc(var(--pf-tl-container-width) + var(--pf-navbar-padding-left) + var(--pf-separation));
     }
     #back-button {
-      left: calc(var(--pf-fl-button-back-x) - var(--pf-fl-sidebar-width));
+      left: calc(var(--pf-unified-sidebar-width) - (var(--pf-toolbarbutton-width) * 3) - (var(--pf-toolbarbutton-gap) * 2));
     }
     #forward-button {
-      left: calc(var(--pf-fl-button-forward-x) - var(--pf-fl-sidebar-width));
+      left: calc(var(--pf-unified-sidebar-width) - (var(--pf-toolbarbutton-width) * 2) - var(--pf-toolbarbutton-gap));
     }
     #stop-reload-button {
-      left: calc(var(--pf-fl-button-reload-x) - var(--pf-fl-sidebar-width));
+      left: calc(var(--pf-unified-sidebar-width) - var(--pf-toolbarbutton-width));
     }
-    #urlbar:not([open]),
+    /* modern problems require modern solutions */
+    #urlbar:not([popover-open]),
     #urlbar-container::before {
-      z-index: 4;
-      --pf-urlbar-x: calc((var(--pf-separation) * 2) - var(--pf-fl-sidebar-width));
-      --pf-urlbar-y: calc(var(--pf-navbar-height) + var(--pf-separation));
+      transition: transform calc(var(--pf-ts-fs) * var(--pf-fl-ub)) var(--pf-easing-sidebar) calc(var(--pf-fl-delay) * var(--pf-fl-ub));
+      animation: pf-urlbar-skip 0.001s step-end forwards;
     }
-    #urlbar[focused]:not([open]) {
-      transition: translate var(--pf-ts-fs) var(--pf-easing-sidebar) !important;
-      translate: calc(var(--pf-fl-sidebar-width) * -1) !important;
+    #urlbar:not([popover-open]),
+    #urlbar-container::before {
+      transform: translateX(calc(var(--pf-fl-sidebar-width) * -1));
+      z-index: 4;
+      --pf-urlbar-x: calc(var(--pf-separation) * 2);
+      --pf-urlbar-y: calc(var(--pf-navbar-height) + var(--pf-separation));
     }
     #vertical-spacer::before {
       visibility: hidden;
     }
     /* fus: hover state */
     &:has(:is(#sidebar-button, #back-button, #forward-button, #stop-reload-button, #backForwardMenu, #split-view-menu):hover, :is(#back-button, #forward-button)[open],
-    #urlbar:not([open]) :is(:hover, :is(#trust-icon-container, #notification-popup-box, .identity-box-button, .urlbar-page-action, .searchmode-switcher)[open]),
-    #urlbar[noresults][usertyping]:not([open])) {
+    #urlbar:not([popover-open]) :is(:hover, :is(#trust-icon-container, #notification-popup-box, .identity-box-button, .urlbar-page-action, .searchmode-switcher)[open]),
+    #urlbar[noresults][usertyping]:not([open])) :is(#nav-bar, #sidebar-container) {
       --pf-fl-hover: 1;
     }
     /* reason for #urlbar[noresults][usertyping]:not([open]) hack
     inconsistent urlbar state when switching to @tabs/@history/@bookmarks/@actions search so show the sidebar instead ^^' */
   }
+}
+@property --pf-fl-ub {
+  syntax: "<number>";
+  inherits: false;
+  initial-value: 0;
+}
+@keyframes pf-urlbar-skip {
+  to { --pf-fl-ub: 1; }
 }

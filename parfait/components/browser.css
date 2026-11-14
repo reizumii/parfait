@@ -33,6 +33,7 @@
       --pf-accent-color-background-gradient-1: color-mix(in oklch, var(--pf-accent-color-background-gradient-fade) var(--pf-accent-color-background-opacity), transparent);
       --pf-accent-color-background-gradient-2: color-mix(in oklch, var(--pf-browser-background-color) var(--pf-accent-color-background-opacity), transparent);
       --toolbox-background-image: linear-gradient(var(--pf-accent-color-background-gradient-1), var(--pf-accent-color-background-gradient-2)) !important;
+      --pf-sidebar-background-color: linear-gradient(var(--pf-accent-color-background-gradient-fade), var(--pf-browser-background-color));
     }
     &[sidebar-expand-on-hover] #sidebar-container:is([sidebar-launcher-expanded], [sidebar-ongoing-animations]) {
       background: var(--pf-browser-background-color) !important;
