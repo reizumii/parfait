@@ -74,6 +74,9 @@
     --pf-ef-sat: 0.92;
   }
   /* search box */
+  .search-wrapper .search-inner-wrapper {
+    height: 56px !important;
+  }
   .search-handoff-button {
     background-color: var(--pf-element-background-color) !important;
     background-size: 20px !important;
@@ -88,6 +91,16 @@
   .stuck-search::before {
     content: none !important;
   }
+  .fake-textbox {
+    font-size: 18px !important;
+    font-weight: 600;
+    opacity: 0.4 !important;
+  }
+  .fake-caret {
+    background: var(--pf-accent-color) !important;
+    width: 2px !important;
+    translate: 2px -3px;
+  }
   /* logo */
   @media not -moz-pref("parfait.new-tab.logo", "firefox") {
     .wordmark {
@@ -101,6 +114,7 @@
 
       @media -moz-pref("parfait.new-tab.logo", "firefox-logo-mono") {
         background-image: url("chrome://browser/skin/sidebar/firefox.svg") !important;
+        opacity: 0.5;
         --pf-logo-width: 84px;
         --pf-logo-height:84px;
       }
@@ -209,12 +223,12 @@
     border-radius: var(--border-radius-circle) !important;
     box-shadow: var(--pf-element-shadow) !important;
     backdrop-filter: var(--pf-element-filter);
-    transition: all var(--pf-ts-25) var(--pf-fx-bounce) !important;
+    transition: scale var(--pf-ts-25) var(--pf-fx-bounce) !important;
     --button-icon-fill: var(--newtab-text-primary-color);
     --button-border: none;
 
     &:hover {
-      transform: scale(1.1);
+      scale: 1.1;
     }
     &  > label { display: none; }
   }
@@ -321,7 +335,7 @@
   .wallpaper-input {
     height: 100px !important;
     box-shadow: inset 0 0 0 1px var(--pf-border-color) !important;
-    transition: all var(--pf-ts-25);
+    transition: filter var(--pf-ts-25);
 
     &.selected {
       box-shadow: none !important;
@@ -479,10 +493,10 @@
   }
   .widget-wrapper > article,
   .weather-widget.small-widget {
-    outline: none !important;
+    border: none !important;
     box-shadow: var(--pf-element-shadow) !important;
     backdrop-filter: var(--pf-element-filter);
-    transition: all var(--pf-ts-25) !important;
+    transition: background-color var(--pf-ts-25) !important;
   }
   .weather-widget.small-widget {
     right: 12px;
