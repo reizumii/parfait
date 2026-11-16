@@ -95,10 +95,6 @@
 #taskbar-tabs-audio[muted] {
   list-style-image: url("../icons/custom/audio-mute.svg") !important;
 }
-#scrollbutton-up,
-#scrollbutton-down {
-  list-style-image: url("chrome://global/skin/icons/arrow-left-12.svg") !important;
-}
 
 /* horizontal layout and taskbar tabs */
 #navigator-toolbox:not([tabs-hidden]) #back-button {

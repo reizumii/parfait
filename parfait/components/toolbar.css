@@ -260,11 +260,16 @@ toolbar .toolbaritem-combined-buttons {
       #TabsToolbar-customization-target { visibility: collapse; }
     }
   }
-  #scrollbutton-up:not([disabled]) {
-    border-inline-end: 1px solid var(--pf-border-color-light) !important;
-  }
-  #scrollbutton-down:not([disabled]) {
-    border-inline-start: 1px solid var(--pf-border-color-light) !important;
+  #scrollbutton-up:has(~ scrollbox[orient="horizontal"][smoothscroll="true"]) {
+    &, ~ #scrollbutton-down {
+      list-style-image: url("chrome://global/skin/icons/arrow-left-12.svg") !important;
+    }
+    &:not([disabled]) {
+      border-inline-end: 1px solid var(--pf-border-color-light) !important;
+    }
+    & ~ #scrollbutton-down:not([disabled]) {
+      border-inline-start: 1px solid var(--pf-border-color-light) !important;
+    }
   }
   /* hl: toolbar autohide in fullscreen */
   :root[inFullscreen][fullscreenNavToolboxHidden]:not([inDOMFullscreen]) #navigator-toolbox[style^="margin-top"] {
