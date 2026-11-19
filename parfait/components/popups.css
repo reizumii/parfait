@@ -98,9 +98,10 @@
 }
 /* native panels */
 @media (-moz-platform: macos) or (-moz-windows-mica-popups) {
+  menupopup,
   panel[type="arrow"] {
-    transition: none !important;
     appearance: menupopup !important;
+    transition: none !important;
     --panel-background-color: var(--pf-panel-background-color-alpha) !important;
     --panel-border-color: transparent !important;
     --panel-box-shadow-margin: 0 !important;
