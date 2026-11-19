@@ -199,7 +199,7 @@ toolbar .toolbaritem-combined-buttons {
 
 /* horizontal layout */
 @media not -moz-pref("sidebar.verticalTabs") {
-  :root:not([popup-window], [taskbartab]) {
+  :root:not([popup-window], [mini-window], [taskbartab]) {
     #navigator-toolbox {
       --toolbar-background-color: transparent;
     }
@@ -324,14 +324,11 @@ toolbar .toolbaritem-combined-buttons {
   #nav-bar {
     padding-inline: var(--pf-navbar-padding-block) !important;
   }
-  #nav-bar > .titlebar-spacer {
-    display: flex !important;
-  }
   #mini-window-restore-button {
     order: -1;
   }
   #mini-window-close-button {
-    order: 1;
+    margin-inline-start: var(--pf-toolbarbutton-gap) !important;
   }
   #stop-reload-button {
     display: none;

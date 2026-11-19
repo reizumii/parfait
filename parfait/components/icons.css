@@ -89,9 +89,11 @@
 #bookmarks-toolbar-placeholder {
   list-style-image: var(--pf-icon-bookmarks-square) !important;
 }
+#mini-window-audio-button[soundplaying],
 #taskbar-tabs-audio[soundplaying] {
   list-style-image: url("../icons/custom/audio.svg") !important;
 }
+#mini-window-audio-button[muted],
 #taskbar-tabs-audio[muted] {
   list-style-image: url("../icons/custom/audio-mute.svg") !important;
 }
