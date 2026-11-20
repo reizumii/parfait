@@ -375,27 +375,32 @@ moz-button[view="viewCustomizeSidebar"] { order: 1; }
     #sidebar-button {
       position: static !important;
       transform: none;
+
+      &::before {
+        content: "";
+        position: fixed;
+        position-anchor: --pf-warning;
+        left: anchor(left);
+        right: anchor(right);
+        top: anchor(top);
+        bottom: anchor(bottom);
+      }
     }
-    #sidebar-button::before {
-      content: var(--pf-icon-miitan) "\A Please click this area, or press Ctrl+Alt+Z / ^Z to load the sidebar.\A\A Firefox 154+ does not load the sidebar on startup and new windows.";
+    #browser::before {
+      content: var(--pf-icon-miitan) "\A Please click the sidebar button, or press Ctrl+Alt+Z / ^Z to load the sidebar.\A\A Firefox 154+ does not load the sidebar on startup and new windows.";
       white-space: pre-line;
-      display: flex;
       text-align: center;
+      display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      flex-direction: column;
-      position: fixed;
-      inset-block: var(--pf-navbar-height) 0;
-      left: 0;
       width: var(--pf-unified-sidebar-width);
       padding-inline: calc(var(--pf-separation) * 2);
       box-sizing: border-box;
+      anchor-name: --pf-warning;
       color: color-mix(in srgb, currentColor, transparent);
       fill: currentColor;
       -moz-context-properties: fill;
-    }
-    #browser {
-      margin-left: var(--pf-unified-sidebar-width) !important;
     }
   }
 }
@@ -439,6 +444,9 @@ moz-button[view="viewCustomizeSidebar"] { order: 1; }
           display: none !important;
         }
       }
+      #vertical-spacer::before {
+        visibility: hidden;
+      }
     }
     /* fus: move toolbar items */
     #sidebar-button,
@@ -475,9 +483,6 @@ moz-button[view="viewCustomizeSidebar"] { order: 1; }
       z-index: 4;
       --pf-urlbar-x: calc(var(--pf-separation) * 2);
       --pf-urlbar-y: calc(var(--pf-navbar-height) + var(--pf-separation));
-    }
-    #vertical-spacer::before {
-      visibility: hidden;
     }
     /* fus: hover state */
     &:has(:is(#sidebar-button, #back-button, #forward-button, #stop-reload-button, #backForwardMenu, #split-view-menu):hover, :is(#back-button, #forward-button)[open],
