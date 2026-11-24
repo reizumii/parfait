@@ -243,7 +243,6 @@ scrollbox[orient="vertical"][smoothscroll="true"] {
 
 /* container tabs */
 .tab-context-line {
-  background: var(--identity-stroke-color) !important;
   opacity: 0.75;
 }
 #tabbrowser-tabs[orient="vertical"] .tabbrowser-tab {
