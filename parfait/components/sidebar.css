@@ -351,6 +351,9 @@ moz-button[view="viewCustomizeSidebar"] { order: 1; }
       --pf-tab-group-indent-1: var(--pf-tab-group-indent);
       --tab-group-line-thickness: 0;
     }
+    .tab-group-label {
+      font-size-adjust: unset !important;
+    }
     #tabs-newtab-button,
     #vertical-tabs-newtab-button {
       width: 100% !important;

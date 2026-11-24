@@ -75,6 +75,10 @@
 spacer:is([part="overflow-start-indicator"], [part="overflow-end-indicator"]) {
   background-image: none !important;
 }
+scrollbox[orient="vertical"][smoothscroll="true"] {
+  --tab-overflow-fade-start: 0 !important;
+  --tab-overflow-fade-end: 0 !important;
+}
 #tabbrowser-arrowscrollbox[orient="vertical"][overflowing] {
   box-shadow: inset 0 1px 0 var(--pf-border-color-light);
   transition: box-shadow var(--pf-ts-25);
@@ -417,7 +421,6 @@ tab-split-view-wrapper {
     max-width: 100% !important;
     height: var(--tab-min-height) !important;
     padding-inline: 0 !important;
-    font-size-adjust: unset !important;
     line-height: unset !important;
     background-color: transparent !important;
     color: var(--pf-tab-group-text-color, var(--toolbox-text-color)) !important;
