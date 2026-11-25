@@ -98,16 +98,12 @@
     padding: 0 10px !important;
     grid-area: unset !important;
   }
-  /* yabai */
+  /* pip: background blur */
   @media -moz-pref("parfait.theme.blur.enabled") {
     #controls > .control-button,
     .center-controls .control-button,
     .controls-bottom-lower > :not(.center-controls) {
       backdrop-filter: var(--pf-background-filter);
-    }
-    .player-holder > #browser {
-      backface-visibility: hidden;
-      translate: 0;
     }
   }
   /* scrubbers */

@@ -58,14 +58,6 @@
     anchor-name: --pf-browser;
     margin-inline-end: var(--pf-browser-padding) !important;
     margin-block-end: var(--pf-browser-padding) !important;
-
-    /* force enable background blur */
-    @media -moz-pref("parfait.theme.blur.enabled") {
-      browser:not(.devtools-toolbox-iframe.docked-right) {
-        backface-visibility: hidden;
-        translate: 0;
-      }
-    }
   }
   #navigator-toolbox:not([tabs-hidden]) ~ #browser > #tabbrowser-tabbox:not([sidebar-shown]) {
     margin-inline: var(--pf-browser-padding) !important;
