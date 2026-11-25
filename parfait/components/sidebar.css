@@ -177,6 +177,8 @@ sidebar-main {
   }
   button {
     --button-outer-padding-inline: 0;
+    --button-outer-padding-inline-start: 0;
+    --button-outer-padding-inline-end: 0;
     --button-outer-padding-block: 0;
     --button-outer-padding-block-start: 0;
     --button-outer-padding-block-end: 0;

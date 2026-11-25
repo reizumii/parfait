@@ -148,15 +148,6 @@ toolbarseparator.proton-zap::before {
   --panel-text-color: currentColor !important;
 }
 
-/* new tab menu */
-.menuitem-iconic[data-usercontextid] > .menu-icon {
-  width: var(--icon-size) !important;
-  height: var(--icon-size) !important;
-  padding: 0 !important;
-  background-color: transparent !important;
-  border-radius: 0 !important;
-}
-
 /* manage tab group */
 .tab-group-editor-panel {
   --panel-padding: 12px 0 0 !important;

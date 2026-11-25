@@ -264,12 +264,13 @@
   .urlbarView-user-context {
     width: auto !important;
     max-width: 100px !important;
+    background-color: color-mix(in srgb, var(--identity-color) 12%, transparent);
     background-position: 6px center !important;
 
     &::after {
       content: attr(title);
       margin-inline: 16px 4px;
-      color: var(--identity-fill-color);
+      color: var(--identity-color);
     }
   }
   /* sr: tab group */
@@ -349,7 +350,7 @@
   order: 99 !important;
 
   &:hover {
-    background-color: color-mix(in srgb, var(--identity-fill-color) 12%, transparent) !important;
+    background-color: color-mix(in srgb, var(--identity-color) 12%, transparent) !important;
   }
 }
 #identity-box[pageproxystate="valid"]:is(.notSecureText, .chromeUI, .extensionPage) > .identity-box-button,
