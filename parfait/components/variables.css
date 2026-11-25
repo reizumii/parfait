@@ -158,12 +158,13 @@
   @media -moz-pref("parfait.layout.unified-sidebar.width.preset", 5) { --pf-unified-sidebar-width: 300px; }
 
   /* browser radius */
+  @media (-moz-gtk-theme-family: breeze) { --pf-window-border-radius: 5px; }
   @media (-moz-platform: windows) { --pf-window-border-radius: 8px; }
   @media (-moz-platform: macos) { --pf-window-border-radius: 12px; }
   @media (-moz-mac-tahoe-theme) { --pf-window-border-radius: 16px; }
 
   /* preset: roundness */
-  @media -moz-pref("parfait.theme.roundness.preset", 2) or ((-moz-platform: windows) and (not -moz-pref("parfait.theme.roundness.preset", 1))) {
+  @media -moz-pref("parfait.theme.roundness.preset", 2) or (((-moz-platform: windows) or (-moz-gtk-theme-family: breeze)) and (not -moz-pref("parfait.theme.roundness.preset", 1))) {
     --pf-border-radius-md: 6px;
     --pf-border-radius-sm: 4px;
     --pf-border-radius-hl: 6px;
