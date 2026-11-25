@@ -80,9 +80,7 @@
   /* main sidebar */
   #sidebar-container[sidebar-launcher-expanded] {
     width: var(--pf-unified-sidebar-width) !important;
-    height: calc(100% - (var(--pf-sidebar-margin) * var(--pf-unified-sidebar))) !important;
-    position: relative;
-    top: calc(var(--pf-sidebar-margin) * var(--pf-unified-sidebar));
+    margin-top: calc(var(--pf-sidebar-margin) * var(--pf-unified-sidebar));
     transition: width var(--pf-ts-25), transform var(--pf-ts-25) !important;
 
     #vertical-tabs {
@@ -96,6 +94,9 @@
   .wrapper:has(.tools-and-extensions) {
     width: 100% !important;
   }
+}
+sidebar-main {
+  position: relative;
 }
 
 /* sidebar 2 */
@@ -220,6 +221,7 @@ moz-button[view="viewCustomizeSidebar"] { order: 1; }
       z-index: 3;
       transform: translateX(calc(var(--pf-fl-sidebar-width) * -1));
       width: var(--pf-unified-sidebar-width);
+      padding-top: var(--pf-fl-sidebar-offset);
       background: var(--pf-sidebar-background-color);
       border-radius: var(--pf-browser-border-radius);
       transition: transform var(--pf-ts-fs) var(--pf-easing-sidebar) var(--pf-fl-delay);
@@ -257,11 +259,10 @@ moz-button[view="viewCustomizeSidebar"] { order: 1; }
     &:has(#sidebar-container:hover, .tabbrowser-tab[multiselected]:not([selected]), .tab-drop-indicator:not([hidden]), #tabbrowser-tabs[movingtab], #tabs-newtab-button[open], :is(#new-tab-button-popup, #tabContextMenu):hover, :is(#tabNotePanel, .tab-group-editor-panel, :is(#tab-note-preview-panel, #tabgroup-preview-panel)[animate="open"])[panelopen]) :is(#nav-bar, #sidebar-container) {
       --pf-fl-hover: 1;
     }
-    /* fs: offset vertical tabs to fix tab dragging */
-    sidebar-main {
-      position: relative;
+    &:active-view-transition-type(launcher-hide) #sidebar-container {
       top: var(--pf-fl-sidebar-offset);
-      height: calc(100% - var(--pf-fl-sidebar-offset));
+      bottom: 0;
+      padding-top: 0;
     }
     /* fs: separation */
     &:not([inDOMFullscreen]) #tabbrowser-tabbox:not([sidebar-panel-open]) {
@@ -414,11 +415,6 @@ moz-button[view="viewCustomizeSidebar"] { order: 1; }
     #sidebar-container {
       top: var(--pf-separation);
       --pf-fl-sidebar-offset: calc(var(--pf-navbar-height) + var(--pf-sidebar-margin));
-    }
-    &:active-view-transition-type(launcher-hide) #sidebar-container {
-      top: calc(var(--pf-navbar-height) + var(--pf-sidebar-margin));
-      bottom: 0;
-      --pf-fl-sidebar-offset: 0px;
     }
     /* fus: traffic lights */
     @container not style(--pf-fl-warning: 1) {
