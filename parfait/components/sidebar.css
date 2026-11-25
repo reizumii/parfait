@@ -195,7 +195,6 @@ sidebar-main {
     fill: var(--pf-icon-color-active) !important;
   }
 }
-moz-button[view="viewCustomizeSidebar"] { order: 1; }
 
 /* floating sidebar */
 @media -moz-pref("sidebar.verticalTabs") and -moz-pref("sidebar.visibility", "hide-sidebar") {
@@ -385,7 +384,7 @@ moz-button[view="viewCustomizeSidebar"] { order: 1; }
       &::before {
         content: "";
         position: fixed;
-        position-anchor: --pf-warning;
+        position-anchor: --pf-fl-warning-area;
         left: anchor(left);
         right: anchor(right);
         top: anchor(top);
@@ -403,7 +402,7 @@ moz-button[view="viewCustomizeSidebar"] { order: 1; }
       width: var(--pf-unified-sidebar-width);
       padding-inline: calc(var(--pf-separation) * 2);
       box-sizing: border-box;
-      anchor-name: --pf-warning;
+      anchor-name: --pf-fl-warning-area;
       color: color-mix(in srgb, currentColor, transparent);
       fill: currentColor;
       -moz-context-properties: fill;

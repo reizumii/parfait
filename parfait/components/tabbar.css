@@ -358,7 +358,7 @@ tab-split-view-wrapper {
 
       & > .tab-stack {
         margin-inline-start: var(--pf-tab-group-indent-1, 0px);
-        transition: all var(--pf-ts-15) !important;
+        transition: margin-top var(--pf-ts-15), opacity var(--pf-ts-15) !important;
       }
     }
     tab-split-view-wrapper {
