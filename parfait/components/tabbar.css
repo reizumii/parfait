@@ -246,20 +246,13 @@ scrollbox[orient="vertical"][smoothscroll="true"] {
   opacity: 0.75;
 }
 #tabbrowser-tabs[orient="vertical"] .tabbrowser-tab {
-  &:not([pinned]) .tab-background {
-    flex-direction: row !important;
-
-    .tab-context-line {
-      width: 2px !important;
-      height: var(--icon-size) !important;
-      margin-block: auto !important;
-      margin-inline-start: 0 !important;
-    }
+  &:not([pinned]) .tab-context-line {
+    inset-inline-start: var(--tab-margin-inline-inner) !important;
+    inset-inline-end: unset !important;
   }
   &[pinned] .tab-context-line {
-    order: 1;
-    width: var(--icon-size) !important;
-    margin-inline: auto !important;
+    inset-block-start: unset !important;
+    inset-block-end: var(--tab-margin-block);
   }
 }
 #tabbrowser-tabs[orient="horizontal"] .tab-context-line {
