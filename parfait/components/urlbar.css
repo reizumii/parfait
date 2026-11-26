@@ -13,7 +13,7 @@
   --urlbar-icon-padding: calc((var(--urlbar-basic-component-size) - var(--icon-size)) / 2) !important;
   --urlbar-input-gap: var(--urlbar-input-container-padding);
   --urlbar-component-gap: 0px !important;
-  --urlbar-inner-border-radius: calc(var(--urlbar-border-radius) - (var(--urlbar-input-container-padding) / 2)) !important;
+  --urlbar-inner-border-radius: max(var(--urlbar-input-container-padding), calc(var(--urlbar-border-radius) - var(--urlbar-input-container-padding))) !important;
   --urlbar-background-border-top-radius-open: var(--pf-urlbar-open-border-radius) !important;
   --urlbar-joint-background-shadow-margin: 90px;
 }
@@ -98,6 +98,7 @@
     --pf-urlbar-offset-x: calc(50% - (var(--pf-urlbar-max-width) / 2));
     --urlbar-height: 36px !important;
     --urlbar-background-color-focus: var(--pf-urlbar-open-background-color);
+    --urlbar-inner-border-radius: calc(var(--pf-urlbar-open-border-radius) / 2) !important;
 
     /* calc: pf-urlbar-max-width / 0.8 = max-width */
     @media (max-width: 900px) {
@@ -389,6 +390,7 @@
   --button-background-color-muted: transparent !important;
   --button-icon-fill: var(--toolbarbutton-icon-fill);
   --button-padding: var(--urlbar-icon-padding) !important;
+  --button-border-radius: var(--urlbar-inner-border-radius) !important;
   --space-small: 0;
 
   &:not([open]) {
