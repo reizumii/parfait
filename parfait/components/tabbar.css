@@ -72,9 +72,6 @@
   }
 }
 /* tabs overflow */
-spacer:is([part="overflow-start-indicator"], [part="overflow-end-indicator"]) {
-  background-image: none !important;
-}
 scrollbox[orient="vertical"][smoothscroll="true"] {
   --tab-overflow-fade-start: 0 !important;
   --tab-overflow-fade-end: 0 !important;
@@ -82,9 +79,8 @@ scrollbox[orient="vertical"][smoothscroll="true"] {
 #tabbrowser-arrowscrollbox[orient="vertical"][overflowing] {
   box-shadow: inset 0 1px 0 var(--pf-border-color-light);
   transition: box-shadow var(--pf-ts-25);
-}
-#tabbrowser-arrowscrollbox[orient="vertical"][overflowing][scrolledtostart] {
-  box-shadow: none;
+
+  &[scrolledtostart] { box-shadow: none; }
 }
 
 /* tabs */
@@ -94,18 +90,6 @@ scrollbox[orient="vertical"][smoothscroll="true"] {
   &:not([pinned]) {
     &[pending] .tab-content {
       opacity: 0.5;
-    }
-    @media (prefers-reduced-motion: no-preference) {
-      #tabbrowser-tabs[orient="vertical"] & {
-        .tab-background[selected] {
-          animation: pf-tab-select var(--pf-ts-25) var(--pf-easing-bounce);
-        }
-        .tab-stack {
-          transition: scale var(--pf-ts-15);
-
-          &:hover:active:not(:has(.tab-audio-button:active, .tab-close-button:active)) { scale: 0.985; }
-        }
-      }
     }
     #tabbrowser-tabs[orient="vertical"]:not([expanded]) & .tab-close-button {
       top: 1px !important;
@@ -158,7 +142,7 @@ scrollbox[orient="vertical"][smoothscroll="true"] {
 #tabbrowser-tabs[expanded] .tab-close-button {
   border-radius: var(--pf-border-radius-sm) !important;
 }
-.tab-audio-button {
+.tab-audio-button:not([activemedia-blocked]) {
   background: no-repeat center var(--pf-icon-audio-fill-12);
   fill: currentColor;
   -moz-context-properties: fill;
@@ -167,9 +151,6 @@ scrollbox[orient="vertical"][smoothscroll="true"] {
   &[muted] {
     background-image: var(--pf-icon-audio-mute-fill-12);
   }
-  &[activemedia-blocked] {
-    background-image: url("chrome://browser/skin/tabbrowser/tab-audio-blocked-circle-12.svg");
-  }
 }
 .tab-icon-overlay[soundplaying] {
   list-style-image: var(--pf-icon-audio-fill-12) !important;
@@ -177,8 +158,18 @@ scrollbox[orient="vertical"][smoothscroll="true"] {
 .tab-icon-overlay[muted] {
   list-style-image: var(--pf-icon-audio-mute-fill-12) !important;
 }
-/* tab loading spinner */
+/* tab animations */
 @media (prefers-reduced-motion: no-preference) {
+  #tabbrowser-tabs[orient="vertical"] .tab-stack {
+    transition: scale var(--pf-ts-15);
+    --pf-tab-select-scale: 0.985;
+
+    .tabbrowser-tab[pinned] & {
+      --pf-tab-select-scale: 0.9375;
+    }
+    &:hover:active:not(:has(.tab-audio-button:active, .tab-close-button:active)) { scale: var(--pf-tab-select-scale); }
+  }
+  /* tab loading spinner */
   .tab-throbber[busy] ~ .tab-icon-image[src]:not(:-moz-broken) {
     display: flex !important;
     border-radius: var(--border-radius-circle);
@@ -202,10 +193,6 @@ scrollbox[orient="vertical"][smoothscroll="true"] {
 @keyframes pf-tab-icon-bounce {
   0%, 100% { transform: translateY(0px) scale(1); }
   50% { transform: translateY(-8px) scale(1.1); }
-}
-@keyframes pf-tab-select {
-  0%   { scale: 1.025 1.1; }
-  100% { scale: 1; }
 }
 
 /* pinned tabs */
